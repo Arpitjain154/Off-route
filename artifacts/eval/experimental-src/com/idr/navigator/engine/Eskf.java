@@ -15,6 +15,7 @@ public final class Eskf {
     private SimpleMatrix covariance = SimpleMatrix.identity(15).scale(.1);
     private long last;
     public boolean initialized = false;
+    public boolean freezeGyroBias;
     public double originLat, originLon, originAlt;
     private static final double EARTH = 6378137.0;
     private boolean boundedOutage;
@@ -143,7 +144,7 @@ public final class Eskf {
             noise.set(i + 3, i + 3, .16 * dt);
             noise.set(i + 6, i + 6, .0004 * dt);
             noise.set(i + 9, i + 9, 1e-5 * dt);
-            noise.set(i + 12, i + 12, 1e-7 * dt);
+            noise.set(i + 12, i + 12, (freezeGyroBias?0:1e-7) * dt);
         }
         covariance = f.mult(covariance).mult(f.transpose()).plus(noise);
     }
@@ -161,6 +162,7 @@ public final class Eskf {
         if (!Double.isFinite(nis) || nis > 36 * m.residual().numRows()) return false; // Reject grossly inconsistent advisors, not ordinary drift.
         SimpleMatrix gain = covariance.mult(h.transpose()).mult(inverse),
             dx = gain.mult(m.residual());
+        if(freezeGyroBias)for(int i=12;i<15;i++)for(int j=0;j<gain.numCols();j++)gain.set(i,j,0);
         // Sparse/poor GNSS must not turn position innovations into unbounded sensor biases.
         // Scale the corresponding gain rows and use that same gain in the Joseph covariance update.
         for(int i=9;i<15;i++) {

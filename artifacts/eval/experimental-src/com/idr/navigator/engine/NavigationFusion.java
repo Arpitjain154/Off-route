@@ -16,6 +16,7 @@ public final class NavigationFusion {
     private Fix latest, recovery, courseAnchor;
     private int rejected;
     private double[] stopPosition;
+    public boolean freezeOutageGyroBias=OutageTuning.FREEZE_GYRO_BIAS;
     public boolean boundedOutageSpeed=OutageTuning.BOUNDED_SPEED;
     private double trustedSpeed;
     public String diagnostic="Waiting for sensors and GPS";
@@ -73,6 +74,7 @@ public final class NavigationFusion {
         ImuSample sample=new ImuSample(t,clean[0].apply(raw.ax(),dt),clean[1].apply(raw.ay(),dt),
             clean[2].apply(raw.az(),dt),raw.gx(),raw.gy(),raw.gz());
         physics.observe(sample);
+        filter.freezeGyroBias=freezeOutageGyroBias&&filter.initialized&&t-lastFix>2_000_000_000L;
         filter.outageSpeed(boundedOutageSpeed && filter.initialized && !physics.isStopped(t) && t-lastFix>2_000_000_000L,trustedSpeed);
         // A missing gyro is not a zero angular rate. GPS still updates, but unaided INS is unavailable.
         if (tiltReady && gyroFresh && (physics.aligned || physics.isStopped(t))) filter.predict(sample);
@@ -148,6 +150,7 @@ public final class NavigationFusion {
         }
         if (!accepted) return false;
         rejected=0;recovery=null;latest=f;lastFix=f.time();
+        filter.freezeGyroBias=false;
         if(courseAnchor==null||f.time()-courseAnchor.time()>=10_000_000_000L)courseAnchor=f;
         physics.gpsPosition(f.time(),f.lat(),f.lon(),f.accuracy());
         physics.gpsSpeed(f.time(),f.speedValid()?f.speed():Double.NaN,f.speedError());
