@@ -18,7 +18,7 @@ public final class MapMatchAdvisor implements FilterAdvisor, AutoCloseable {
     private GraphHopper hopper;
     private MapMatching matcher;
     private final List<Observation> track = new ArrayList<>();
-    public record Match(long time,double lat,double lon,double sourceLat,double sourceLon,double heading,double trust) {}
+    public record Match(long time,double lat,double lon,double sourceLat,double sourceLon,double heading,double trust,int edge) {}
     private volatile Match matched;
     private volatile double trust;
     private volatile long matchedTime;
@@ -87,7 +87,8 @@ public final class MapMatchAdvisor implements FilterAdvisor, AutoCloseable {
             }
             trust = Math.min(.65, Math.exp((-error * error) / (2 * 30 * 30)) * .65);
             double heading=Math.toDegrees(Math.atan2((mlon-points.getLon(last-1))*Math.cos(Math.toRadians(mlat)),mlat-points.getLat(last-1)));
-            matched = new Match(timestamp,mlat,mlon,lat,lon,heading,trust);
+            int edge=result.getEdgeMatches().isEmpty()?-1:result.getEdgeMatches().get(result.getEdgeMatches().size()-1).getEdgeState().getEdge();
+            matched = new Match(timestamp,mlat,mlon,lat,lon,heading,trust,edge);
             matchedTime = timestamp;
             status = region + " HMM active";
         } catch (RuntimeException ex) {

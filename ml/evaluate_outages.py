@@ -122,7 +122,8 @@ def compile_java(out, baseline):
         for name in files:
             if name.endswith('.java'):
                 (dest/Path(name).name).write_bytes(subprocess.check_output(['git','show',BASE+':'+name],cwd=ROOT))
-    command=[str(jdk/'javac.exe'),'-cp',cp,'-sourcepath',str(source),'-d',str(classes),str(ROOT/'ml/java/OutageEvaluation.java')]
+    sourcepath=str(source) if baseline else os.pathsep.join([str(ROOT/'artifacts/eval/experimental-src'),str(out/'baseline-src')])
+    command=[str(jdk/'javac.exe'),'-cp',cp,'-sourcepath',sourcepath,'-d',str(classes),str(ROOT/'ml/java/OutageEvaluation.java')]
     subprocess.run(command,check=True,capture_output=True)
     return [str(jdk/'java.exe'),'-Xmx512m','-cp',str(classes)+os.pathsep+cp,'OutageEvaluation']
 

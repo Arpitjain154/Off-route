@@ -432,7 +432,7 @@ public final class SensorCaptureService
                     });
                 }
                 var match=map.latest();
-                if(match!=null)live.road(now,match.time(),match.sourceLat(),match.sourceLon(),match.lat(),match.lon(),match.heading(),match.trust());
+                if(match!=null)live.road(now,match.time(),match.sourceLat(),match.sourceLon(),match.lat(),match.lon(),match.heading(),match.trust(),match.edge());
                 publish(now);
             } catch (Exception | LinkageError e) {
                 fail("Updating tracking engine", e);
