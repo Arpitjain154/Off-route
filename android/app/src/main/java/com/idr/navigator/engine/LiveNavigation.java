@@ -17,7 +17,6 @@ public final class LiveNavigation {
     public final InertialNavigation inertial=new InertialNavigation();
     public final NavigationFusion fusion=new NavigationFusion();
     private long lastModel,lastRoad,lastCalibrationFix;
-    private final OutageRoadConstraint outageRoad=new OutageRoadConstraint();
     private boolean fusedPose;
     private long clock,recoveryStart;private double recoveryLat,recoveryLon,recoverySeconds,recoverySpeed;
     private double recoveryGpsLat,recoveryGpsLon,recoveryGpsSpeed;
@@ -45,9 +44,6 @@ public final class LiveNavigation {
             Math.max(1,inertial.modelRmse()*inertial.modelRmse()),inertial.aiWeight(now));
     }
     public void road(long now,long t,double sourceLat,double sourceLon,double matchedLat,double matchedLon,double roadHeading,double trust) {
-        road(now,t,sourceLat,sourceLon,matchedLat,matchedLon,roadHeading,trust,-1);
-    }
-    public void road(long now,long t,double sourceLat,double sourceLon,double matchedLat,double matchedLon,double roadHeading,double trust,int edge) {
         if(!estimated(now)||stopped(now)||t<=lastRoad||t<=fixTime()||t>now||now-t>3_000_000_000L||
             !Double.isFinite(sourceLat+sourceLon+matchedLat+matchedLon+roadHeading+trust)||trust<.3||trust>1)return;
         lastRoad=t;double h=Math.toRadians(roadHeading),east=(matchedLon-sourceLon)*111320*Math.cos(Math.toRadians(latitude())),north=(matchedLat-sourceLat)*111320;
@@ -57,8 +53,6 @@ public final class LiveNavigation {
         jacobian.set(0,0,Math.cos(h));jacobian.set(0,1,-Math.sin(h));
         fusion.filter.update(new Measurement(new org.ejml.simple.SimpleMatrix(1,1,true,new double[]{east*Math.cos(h)-north*Math.sin(h)}),
             jacobian,org.ejml.simple.SimpleMatrix.identity(1).scale(25)),trust);
-        if(OutageTuning.ROAD_HEADING&&outageRoad.accept(t,edge,trust,Math.hypot(east,north),Eskf.wrapDegrees(roadHeading-heading())))
-            fusion.filter.update(fusion.filter.course(roadHeading,10),trust);
     }
     public void tick(long now){clock=now;}
     public boolean healthy(long now){return fresh(now)&&fix.accuracy()<=20;}
@@ -103,7 +97,6 @@ public final class LiveNavigation {
         double dt=fix==null?1:Math.min(5,(next.time()-fix.time())*1e-9);
         boolean reacquired=fix==null||next.time()-fix.time()>2_000_000_000L;
         fix=next;disabled=false;
-        if(next.accuracy()<=20)outageRoad.reset();
         double error=Double.isFinite(next.speedError())?next.speedError():2;
         boolean speedValid=Double.isFinite(next.speed())&&next.speed()>=0&&next.speed()<=80&&error>=0&&error<=3;
         stationary.position(next.time(),next.lat(),next.lon(),next.accuracy());
