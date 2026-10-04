@@ -1,0 +1,9 @@
+JUnit version 4.13.2
+.....Ideal straight simulation: distance=50.0 m, endpoint error=5.814627002109773E-7 m; zero bias, not physical validation.
+Ideal straight simulation: distance=1000.0000000000001 m, endpoint error=2.353887111894437E-7 m; zero bias, not physical validation.
+................................Confirmed stationary outage: drift=0.0 m, speed=0.0 m/s, uncertainty=3.349626844888428 m
+..
+Time: 1.902
+
+OK (39 tests)
+

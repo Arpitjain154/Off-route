@@ -11,7 +11,8 @@ sourceSets.main.java {
         'com/idr/navigator/engine/ImuSample.java', 'com/idr/navigator/engine/NavigationFusion.java',
         'com/idr/navigator/engine/Eskf.java', 'com/idr/navigator/engine/GpsAdvisor.java',
         'com/idr/navigator/engine/PhysicsAdvisor.java', 'com/idr/navigator/engine/FilterAdvisor.java',
-        'com/idr/navigator/engine/Measurement.java', 'com/idr/navigator/engine/Butterworth.java'
+        'com/idr/navigator/engine/Measurement.java', 'com/idr/navigator/engine/Butterworth.java',
+        'com/idr/navigator/engine/AiSpeedAdvisor.java'
 }
 distributions.main.contents {
     from('README.md')
