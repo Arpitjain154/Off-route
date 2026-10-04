@@ -1,0 +1,770 @@
+[
+  {
+    "recording": "S-S1",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90000000000146
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90000000000146
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 299.90000000000146
+  }
+]
