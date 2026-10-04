@@ -1,0 +1,86 @@
+S-S1-60-30 complete
+S-S1-60-60 complete
+S-S1-60-120 complete
+S-S1-300-30 complete
+S-S1-300-60 complete
+S-S1-300-120 complete
+S-S2-60-30 complete
+S-S2-60-60 complete
+S-S2-60-120 complete
+S-S2-300-30 complete
+S-S2-300-60 complete
+S-S2-300-120 complete
+S-S3a-60-30 complete
+S-S3a-60-60 complete
+S-S3a-60-120 complete
+S-S3a-300-30 complete
+S-S3a-300-60 complete
+S-S3a-300-120 complete
+S-S3b-60-30 complete
+S-S3b-60-60 complete
+S-S3b-60-120 complete
+S-S3b-300-30 complete
+S-S3b-300-60 complete
+S-S3b-300-120 complete
+S-S3c-60-30 complete
+S-S3c-60-60 complete
+S-S3c-60-120 complete
+S-S3c-300-30 complete
+S-S3c-300-60 complete
+S-S3c-300-120 complete
+S-S4-60-30 complete
+S-S4-60-60 complete
+S-S4-60-120 complete
+S-S4-300-30 complete
+S-S4-300-60 complete
+S-S4-300-120 complete
+S-Vfa01-60-30 complete
+S-Vfa01-60-60 complete
+S-Vfa01-60-120 complete
+S-Vfa01-300-30 complete
+S-Vfa01-300-60 complete
+S-Vfa01-300-120 complete
+S-Vfa02-60-30 complete
+S-Vfa02-60-60 complete
+S-Vfa02-60-120 complete
+S-Vfa02-300-30 complete
+S-Vfa02-300-60 complete
+S-Vfa02-300-120 complete
+Matplotlib is building the font cache; this may take a moment.
+         split    subset  duration_s                           ablation  windows  median_drift_pct  mean_drift_pct  under_10_pct       ate_m  speed_mae_mps  speed_rmse_mps
+  regression-S       all          30             ESKF + A (live source)       12         59.760288      430.353106           0.0   74.157808       3.948740        4.627353
+  regression-S       all          30               ESKF baseline commit       12        185.772824     1496.886953           0.0  173.805357       7.033988        8.487113
+  regression-S       all          30 last GNSS speed + constant heading       12         73.278909      618.179119           0.0   93.890481       4.180498        4.738814
+  regression-S       all          60             ESKF + A (live source)       12         47.970695       61.194642           0.0  133.265971       4.740911        5.572679
+  regression-S       all          60               ESKF baseline commit       12         88.979898      694.535306           0.0  397.566896       9.491940       11.078031
+  regression-S       all          60 last GNSS speed + constant heading       12         84.199286       95.534718           0.0  193.367584       4.792250        5.416829
+  regression-S       all         120             ESKF + A (live source)       12         59.482036       56.073719           0.0  320.911455       5.220666        6.140812
+  regression-S       all         120               ESKF baseline commit       12         73.870195     1206.040960           0.0  892.908093      12.862917       14.763442
+  regression-S       all         120 last GNSS speed + constant heading       12         85.203406       96.911063           0.0  431.362676       5.131432        5.808949
+validation-Vfa       all          30             ESKF + A (live source)        4         18.736781       22.281383          25.0   66.892770       3.315100        3.925602
+validation-Vfa       all          30               ESKF baseline commit        4         66.191837       62.839454           0.0  173.350778       6.547385        7.663595
+validation-Vfa       all          30 last GNSS speed + constant heading        4         11.535447       12.215043          50.0   38.745136       1.239075        1.529986
+validation-Vfa       all          60             ESKF + A (live source)        4         21.364618       27.684203          25.0  160.175833       4.070518        4.770267
+validation-Vfa       all          60               ESKF baseline commit        4         80.683812       77.097014           0.0  463.944095      10.120490       11.272074
+validation-Vfa       all          60 last GNSS speed + constant heading        4         15.942610       18.773660          50.0  105.415683       1.719578        2.057035
+validation-Vfa       all         120             ESKF + A (live source)        4         19.251996       30.421726          50.0  395.289863       4.498236        5.229700
+validation-Vfa       all         120               ESKF baseline commit        4         73.884408       77.768113           0.0 1083.556434      12.642696       13.875988
+validation-Vfa       all         120 last GNSS speed + constant heading        4         15.484956       23.680526          25.0  317.704691       1.998883        2.390461
+  regression-S >=40 km/h          30             ESKF + A (live source)        3         39.251529       43.086640           0.0  100.249544       5.483295        6.448840
+  regression-S >=40 km/h          30               ESKF baseline commit        3         52.926338       45.034198           0.0  107.381485       4.511643        5.430438
+  regression-S >=40 km/h          30 last GNSS speed + constant heading        3         56.466016       56.900475           0.0  125.510636       6.365856        6.823762
+  regression-S >=40 km/h          60             ESKF + A (live source)        3         57.597749       48.568585           0.0  214.060141       7.365410        8.200596
+  regression-S >=40 km/h          60               ESKF baseline commit        3         56.738672       57.963169           0.0  243.057563       5.198356        6.291382
+  regression-S >=40 km/h          60 last GNSS speed + constant heading        3         65.269228       62.727597           0.0  267.583204       7.118932        7.531656
+  regression-S >=40 km/h         120             ESKF + A (live source)        1         72.787514       72.787514           0.0  571.906521       6.545474        7.141617
+  regression-S >=40 km/h         120               ESKF baseline commit        1         76.935538       76.935538           0.0  674.547964       4.693633        5.637786
+  regression-S >=40 km/h         120 last GNSS speed + constant heading        1         49.260787       49.260787           0.0  394.799508       3.959412        4.452459
+validation-Vfa >=40 km/h          30             ESKF + A (live source)        4         18.736781       22.281383          25.0   66.892770       3.315100        3.925602
+validation-Vfa >=40 km/h          30               ESKF baseline commit        4         66.191837       62.839454           0.0  173.350778       6.547385        7.663595
+validation-Vfa >=40 km/h          30 last GNSS speed + constant heading        4         11.535447       12.215043          50.0   38.745136       1.239075        1.529986
+validation-Vfa >=40 km/h          60             ESKF + A (live source)        4         21.364618       27.684203          25.0  160.175833       4.070518        4.770267
+validation-Vfa >=40 km/h          60               ESKF baseline commit        4         80.683812       77.097014           0.0  463.944095      10.120490       11.272074
+validation-Vfa >=40 km/h          60 last GNSS speed + constant heading        4         15.942610       18.773660          50.0  105.415683       1.719578        2.057035
+validation-Vfa >=40 km/h         120             ESKF + A (live source)        4         19.251996       30.421726          50.0  395.289863       4.498236        5.229700
+validation-Vfa >=40 km/h         120               ESKF baseline commit        4         73.884408       77.768113           0.0 1083.556434      12.642696       13.875988
+validation-Vfa >=40 km/h         120 last GNSS speed + constant heading        4         15.484956       23.680526          25.0  317.704691       1.998883        2.390461

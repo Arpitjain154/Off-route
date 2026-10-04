@@ -1,0 +1,6 @@
+{
+  "stage_a_max_metric_difference": 0.0,
+  "legacy_median_pct": 70.585,
+  "stage_a_retained": false,
+  "reason": "Existing sideways-mount acceleration regression failed with flag enabled."
+}

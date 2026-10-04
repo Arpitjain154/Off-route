@@ -115,7 +115,7 @@ def mapping(a, changed, start):
                         calibration_samples=len(rates),last_calibration_s=float(raw[-1,0]))
 
 
-def compile_java(out, baseline):
+def compile_java(out, baseline, live_stage_a=False):
     jdk = Path(os.environ.get('JAVA_HOME', str(Path.home()/'.jdks/jbr-21.0.11')))/'bin'
     jars = [p for p in (Path.home()/'.gradle/caches/modules-2/files-2.1/org.ejml').glob('**/*.jar')
             if not p.name.endswith(('-sources.jar','-javadoc.jar'))]
@@ -128,7 +128,7 @@ def compile_java(out, baseline):
         for name in files:
             if name.endswith('.java'):
                 (dest/Path(name).name).write_bytes(subprocess.check_output(['git','show',BASE+':'+name],cwd=ROOT))
-    sourcepath=str(source) if baseline else os.pathsep.join([str(ROOT/'artifacts/eval/experimental-src'),str(out/'baseline-src')])
+    sourcepath=str(source) if baseline or live_stage_a else os.pathsep.join([str(ROOT/'artifacts/eval/experimental-src'),str(out/'baseline-src')])
     command=[str(jdk/'javac.exe'),'-cp',cp,'-sourcepath',sourcepath,'-d',str(classes),str(ROOT/'ml/java/OutageEvaluation.java')]
     subprocess.run(command,check=True,capture_output=True)
     return [str(jdk/'java.exe'),'-Xmx512m','-cp',str(classes)+os.pathsep+cp,'OutageEvaluation']
@@ -137,11 +137,13 @@ def compile_java(out, baseline):
 def main():
     parser=argparse.ArgumentParser(); parser.add_argument('--label',default='final')
     parser.add_argument('--prepare-only',action='store_true'); parser.add_argument('--no-ai',action='store_true')
+    parser.add_argument('--live-stage-a',action='store_true',help='Evaluate actual app sources with only Stage A; no AI or Stage C.')
     args=parser.parse_args(); out=ROOT/'artifacts/eval'/args.label; out.mkdir(parents=True,exist_ok=True)
+    if args.live_stage_a:args.no_ai=True
     recordings=prepare(out)
     (out/'recordings.json').write_text(json.dumps(recordings,indent=2))
     if args.prepare_only: return
-    commands={'baseline':compile_java(out,True),'candidate':compile_java(out,False)}
+    commands={'baseline':compile_java(out,True),'candidate':compile_java(out,False,args.live_stage_a)}
     interpreter=None
     if not args.no_ai:
         os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -179,7 +181,8 @@ def main():
                 elapsed=window[:,0]-window[0,0]; h=np.deg2rad(anchor[11])
                 constant=np.column_stack([elapsed*anchor[10]*np.cos(h),elapsed*anchor[10]*np.sin(h)])
                 runs=[('last GNSS speed + constant heading',constant,np.full(len(window),anchor[10]),0.)]
-                for mode,ai in [('baseline',False),('speed',False),('gyro',False),('candidate',False),('candidate',True)]:
+                modes=[('baseline',False),('speed',False)] if args.live_stage_a else [('baseline',False),('speed',False),('gyro',False),('candidate',False),('candidate',True)]
+                for mode,ai in modes:
                     if ai and args.no_ai: continue
                     target=out/(stem+'-'+mode+('-ai' if ai else '')+'.csv')
                     key=(rec['name'],start,mode,ai)
@@ -191,6 +194,7 @@ def main():
                     points=estimated[['lat','lon']].to_numpy()
                     points=(points-points[0])*scale
                     title={'baseline':'ESKF baseline commit','speed':'ESKF + A (rejected)','gyro':'ESKF + C only','candidate':'ESKF + A+C (experimental; B not evaluated)'}[mode]
+                    if args.live_stage_a and mode=='speed':title='ESKF + A (live source)'
                     if ai:title+=' + AI'
                     runs.append((title,points,estimated.speed.to_numpy(),float(estimated.ai_used.mean())))
                 for title,points,speed,used in runs:
@@ -216,10 +220,11 @@ def main():
     summary=pd.DataFrame(summaries);summary.to_csv(out/'summary.csv',index=False)
     pivot=frame.pivot(index=['split','recording','start_s','duration_s'],columns='ablation',values='endpoint_drift_pct')
     baseline=pivot['ESKF baseline commit'];combined='ESKF + A+C (experimental; B not evaluated)'
-    decision={'windows':len(pivot),'stage_a_regressed_windows':int((pivot['ESKF + A (rejected)']>baseline+1e-6).sum()),
-              'stage_c_regressed_windows':int((pivot['ESKF + C only']>baseline+1e-6).sum()),
+    stage_a='ESKF + A (live source)' if args.live_stage_a else 'ESKF + A (rejected)'
+    decision={'windows':len(pivot),'stage_a_regressed_windows':int((pivot[stage_a]>baseline+1e-6).sum()),
+              'stage_c_regressed_windows':None if args.live_stage_a else int((pivot['ESKF + C only']>baseline+1e-6).sum()),
               'ai_regressed_windows':None if args.no_ai else int((pivot[combined+' + AI']>pivot[combined]+1e-6).sum()),
-              'production_promoted':False,'map_matching':'not evaluated'}
+              'production_promoted':False,'map_matching':'not evaluated','live_stage_a':args.live_stage_a}
     (out/'decisions.json').write_text(json.dumps(decision,indent=2))
     lines=['# OFFROUTE outage evaluation','',f'Baseline source: `{BASE}`. Run: `{sys.executable} ml/evaluate_outages.py --label {args.label}`.',
         '', '| Split | Subset | Seconds | Ablation | N | Median drift % | Mean drift % | Under 10% (%) | ATE m | Speed MAE m/s | Speed RMSE m/s |',
@@ -237,7 +242,11 @@ def main():
         'Planar replay suppresses unidentifiable transverse gyro components. Low-correlation mappings are flagged, not claimed calibrated. '
         'The 10 Hz recording is held at 100 Hz for the existing filter; output is 10 Hz. This is not a measured mobile performance result. '
         'AI uses the unchanged 300x6 -> 1 bundled model, with experimental variance 25 (m/s)^2 and trust 0.10; it is not validated or enabled live.']
-    lines += ['', 'Disposition: A and C are evaluation-only rejected snapshots; no live engine change is retained. '
+    if args.live_stage_a:
+        lines += ['', 'Live Stage A source evaluated with BOUNDED_SPEED enabled. Stage C and AI are absent from this ablation. '
+                  'Promotion uses aggregate median/mean drift, legacy replay and existing tests; individual regressions alone do not reject it. '
+                  'See the follow-up verification report for the complete promotion gate.']
+    else: lines += ['', 'Disposition: A and C are evaluation-only rejected snapshots; no live engine change is retained. '
               'Stage B is not included in numeric ablations because no UK graph is available; its attempted live wiring was reverted after an edge source-list incompatibility. '
               'Earlier stage-a results used an overly restrictive calibration interval gate and are superseded by this final run. '
               'Neither the aggregate gains nor experimental AI establish the <10% benchmark. Optional latency work was skipped.']
