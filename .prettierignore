@@ -1,0 +1,10 @@
+node_modules
+dist
+data
+uploads
+.tools
+android/.gradle
+**/build
+android/app/src/main/assets
+public/maps
+package-lock.json

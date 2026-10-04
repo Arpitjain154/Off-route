@@ -1,0 +1,15 @@
+**/node_modules
+**/build
+**/.gradle
+.git
+.env*
+**/.env
+.signing
+.venv*
+data
+artifacts
+uploads
+tmp
+dist
+android
+public

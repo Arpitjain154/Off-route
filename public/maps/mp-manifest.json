@@ -1,0 +1,18 @@
+{
+  "name": "Madhya Pradesh",
+  "bounds": [
+    74.029382,
+    21.0706885,
+    82.8126116,
+    26.8695616
+  ],
+  "minzoom": 5,
+  "maxzoom": 13,
+  "features": 554852,
+  "routing_ways": 540011,
+  "source_url": "https://download.geofabrik.de/asia/india/central-zone-260911.osm.pbf",
+  "source_md5": "9ecb4884b1e1f49f06f49c7e6ee1a1dd",
+  "source_sha256": "2520e54eae40296cd26950d8545ee9d3754eeb4c69498871a1ceb3388ddc6ffa",
+  "license": "ODbL 1.0; OpenStreetMap contributors",
+  "detail": "Statewide roads, water and parks; central Bhopal includes additional buildings. Roads crossing state boundary retain complete ways."
+}

@@ -1,0 +1,17 @@
+package com.idr.navigator.engine;
+import static org.junit.Assert.*;
+import org.junit.Test;
+public class RefinementTest {
+ static void imu(LiveNavigation n,ImuSample s){n.gravity(s.t(),0,0,9.80665);n.imu(s);}
+ static final long S=1_000_000_000L;
+ static NavigationFusion.Fix fix(long t,double speed){return new NavigationFusion.Fix(t,23.3,77.35,0,3,speed,.2,0,5);}
+ static InertialNavigation aligned(){var n=new InertialNavigation();n.gravity(S,0,0,9.80665);n.compass(S,0,5);n.anchor(fix(S,10),S,10,false,0);n.predict(new ImuSample(S,0,0,9.80665,0,0,0),false,false);n.predict(new ImuSample(S+10_000_000L,0,0,9.80665,0,0,0),false,false);return n;}
+ @Test public void stoppedColdStartCannotObserveMountYaw(){var n=new InertialNavigation();n.gravity(S,0,0,9.80665);n.compass(S,0,5);n.anchor(fix(S,0),S,0,true,0);assertFalse(n.aligned());}
+ @Test public void roadCorrectionIsNormalToRoadNotVehicle(){var n=aligned();double lat=n.latitude(),lon=n.longitude();double h=Math.toRadians(30);n.road(S+10_000_000L,lat,lon,lat-4*Math.sin(h)/111320,lon+4*Math.cos(h)/(111320*Math.cos(Math.toRadians(lat))),30,.8);double north=(n.latitude()-lat)*111320,east=(n.longitude()-lon)*111320*Math.cos(Math.toRadians(lat));assertEquals(0,north*Math.cos(h)+east*Math.sin(h),1e-6);assertEquals(2,Math.hypot(north,east),1e-5);}
+ @Test public void futureMapResultIsRejected(){var n=aligned();double lon=n.longitude();n.road(2*S,n.latitude(),lon,n.latitude(),lon+.00005,0,.8);assertEquals(lon,n.longitude(),0);}
+ @Test public void recoveryUncertaintyIncludesDisplayedOffset(){var n=new LiveNavigation();n.gravity(S,0,0,9.80665);n.compass(S,0,5);n.fix(fix(S,10),S);imu(n,new ImuSample(S,0,0,9.80665,0,0,0));n.providerDisabled();for(int i=1;i<=500;i++)imu(n,new ImuSample(S+i*10_000_000L,0,0,9.80665,0,0,0));double old=n.latitude();n.fix(new NavigationFusion.Fix(6*S,old+.0002,77.35,0,3,10,.2,0,5),6*S);assertTrue(n.uncertainty(6*S)>20);}
+ static PhysicsAdvisor advisor(Eskf f){var a=new PhysicsAdvisor(f);a.aligned=true;for(int i=1;i<=100;i++)a.observe(new ImuSample(S+i*10_000_000L,0,0,9.80665,0,0,0));return a;}
+ @Test public void uphillForwardMotionHasNoFalseVerticalConstraint(){var f=new Eskf();f.initialize(23,77,0);f.align(new double[]{0,0,9.80665},0);f.q=Eskf.multiply(f.q,Eskf.delta(new double[]{.2,0,0}));double[] v=Eskf.rotate(f.q,new double[]{0,10,0});System.arraycopy(v,0,f.v,0,3);var m=advisor(f).provide(2*S);assertNotNull(m);assertEquals(0,m.residual().get(0),1e-8);assertEquals(0,m.residual().get(1),1e-8);}
+ @Test public void nhcAttitudeJacobianMatchesRightErrorPerturbation(){var f=new Eskf();f.initialize(23,77,0);f.align(new double[]{1,7,6.8},34);f.v[0]=7;f.v[1]=4;f.v[2]=2;var a=advisor(f);var m=a.provide(2*S);double[] q=f.q.clone();for(int j=0;j<3;j++){double[] d=new double[3];d[j]=1e-6;f.q=Eskf.multiply(q,Eskf.delta(d));var changed=a.provide(2*S);for(int i=0;i<2;i++)assertEquals(m.h().get(i,6+j),-(changed.residual().get(i)-m.residual().get(i))/1e-6,1e-4);}f.q=q;}
+ @Test public void confirmedStationaryPositionRejectsJitterAndReleasesOnMotion(){var n=new LiveNavigation();for(int i=0;i<=500;i++){long t=S+i*10_000_000L;if(i%100==0)n.fix(fix(t,0),t);imu(n,new ImuSample(t,0,0,9.80665,0,0,0));}assertTrue(n.stopped(6*S));double lat=n.latitude();n.fix(new NavigationFusion.Fix(6*S+100_000_000L,23.30001,77.35,0,3,0,.2,0,5),6*S+100_000_000L);assertEquals(lat,n.latitude(),0);imu(n,new ImuSample(6*S+110_000_000L,0,1,9.80665,0,0,0));n.fix(new NavigationFusion.Fix(7*S,23.30002,77.35,0,3,3,.2,0,5),7*S);assertTrue(n.latitude()>lat);}
+}

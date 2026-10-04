@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      MONGO_URI: mongodb://mongo:27017/idr_navigator
+      UPLOAD_DIR: /data/uploads
+      PORT: 3001
+      NODE_ENV: development
+      API_KEY: ${API_KEY:-}
+    ports:
+      - "127.0.0.1:3001:3001"
+    volumes:
+      - drive-files:/data/uploads
+    depends_on:
+      - mongo
+volumes:
+  mongo-data:
+  drive-files:

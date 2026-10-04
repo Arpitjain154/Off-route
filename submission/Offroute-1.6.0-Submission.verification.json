@@ -1,0 +1,12 @@
+{
+  "archive": "Offroute-1.6.0-Submission.zip",
+  "sizeBytes": 341305875,
+  "sizeMB": 341.31,
+  "zipIntegrity": "passed",
+  "fileChecksums": "passed",
+  "files": 511,
+  "restorableAssetsVerified": 39468,
+  "publicDatasetCsvsVerified": 144,
+  "personalRecordingsIncluded": false,
+  "sha256": "ef74f9c5a9cab4c216fc9bd06bba21a59d56f1e259281aeb4f305d82142d87ce"
+}
