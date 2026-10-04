@@ -72,10 +72,16 @@ def mapping(a, changed, start):
     pre = a[:,0] < start
     raw = a[pre]; up = np.median(raw[:,1:4],axis=0); up /= np.linalg.norm(up)
     fixes = np.flatnonzero(pre & changed)
+    # Aggregate 10 Hz speed/course tuples over >=1 s for causal heading rates.
+    selected=[]
+    for index in fixes:
+        if not selected or a[index,0]-a[selected[-1],0]>=1:
+            selected.append(index)
+    fixes=np.asarray(selected,dtype=int)
     gyro, rates, accels, dv = [], [], [], []
     for lo, hi in zip(fixes[:-1], fixes[1:]):
         dt = a[hi,0]-a[lo,0]
-        if .2 <= dt <= 3 and min(a[lo,10],a[hi,10]) > 3 and max(a[lo,9],a[hi,9]) <= 15:
+        if 1 <= dt <= 20 and min(a[lo,10],a[hi,10]) > 3 and max(a[lo,9],a[hi,9]) <= 15:
             turn = ((a[hi,11]-a[lo,11]+180)%360-180)*np.pi/180/dt
             if abs(turn) < 1:
                 gyro.append(a[lo:hi,4:7].mean(axis=0)); rates.append(turn)
@@ -83,14 +89,14 @@ def mapping(a, changed, start):
     corr = np.zeros(3); axis = 2; sign = -1.; reliable = False
     forward = np.array([0.,1.,0.]); forward -= up*np.dot(up,forward)
     acceleration_reliable = False
-    if len(rates) >= 8 and np.std(rates) > .005:
+    if len(rates) >= 4 and np.std(rates) > .005:
         g = np.asarray(gyro)
         for k in range(3):
             if np.std(g[:,k]) > .001: corr[k] = np.corrcoef(g[:,k],rates)[0,1]
         axis = int(np.argmax(abs(corr))); reliable = abs(corr[axis]) >= .5
         if reliable: sign = -float(np.sign(corr[axis]))
         else: axis = 2
-    if len(dv) >= 8 and np.std(dv) > .1:
+    if len(dv) >= 4 and np.std(dv) > .1:
         acc = np.asarray(accels); target = np.asarray(dv)
         direction = np.mean((acc-acc.mean(axis=0))*(target-target.mean())[:,None],axis=0)
         direction -= up*np.dot(up,direction)
@@ -143,7 +149,7 @@ def main():
         interpreter=tf.lite.Interpreter(model_path=str(ROOT/'android/app/src/main/assets/models/speed.tflite'),num_threads=1)
         interpreter.allocate_tensors()
         assert tuple(interpreter.get_input_details()[0]['shape']) == (1,300,6)
-    metrics=[]; audits=[]; trajectories=[]
+    metrics=[]; audits=[]; trajectories=[]; replay_cache={}
     for rec in recordings:
         data=np.load(out/(rec['name']+'.npz')); raw=data['rows']; changed=data['changed']
         predictions=np.full(len(raw),np.nan)
@@ -160,9 +166,9 @@ def main():
             for duration in [30,60,120]:
                 if raw[-1,0] < start+duration: continue
                 mapped,audit=mapping(raw,changed,start); audits.append(dict(recording=rec['name'],duration_s=duration,**audit))
-                take=(raw[:,0]>=max(0,start-60))&(raw[:,0]<=start+duration)
+                take=(raw[:,0]>=max(0,start-60))&(raw[:,0]<=start+120)
                 fixture=np.column_stack([mapped,predictions,changed.astype(int)])[take]
-                window=fixture[fixture[:,0]>=start]; reference=window[:,12:14]
+                window=fixture[(fixture[:,0]>=start)&(fixture[:,0]<=start+duration)]; reference=window[:,12:14]
                 lat=reference[0,0]; scale=np.array([111320,111320*np.cos(np.deg2rad(lat))])
                 truth=(reference-reference[0])*scale
                 distance=float(np.linalg.norm(np.diff(truth,axis=0),axis=1).sum())
@@ -173,13 +179,19 @@ def main():
                 elapsed=window[:,0]-window[0,0]; h=np.deg2rad(anchor[11])
                 constant=np.column_stack([elapsed*anchor[10]*np.cos(h),elapsed*anchor[10]*np.sin(h)])
                 runs=[('last GNSS speed + constant heading',constant,np.full(len(window),anchor[10]),0.)]
-                for mode,ai in [('baseline',False),('candidate',False),('candidate',True)]:
+                for mode,ai in [('baseline',False),('speed',False),('gyro',False),('candidate',False),('candidate',True)]:
                     if ai and args.no_ai: continue
                     target=out/(stem+'-'+mode+('-ai' if ai else '')+'.csv')
-                    subprocess.run(commands[mode]+[str(path),str(target),mode,str(ai).lower(),str(start)],check=True,capture_output=True,timeout=180)
-                    estimated=pd.read_csv(target); points=estimated[['lat','lon']].to_numpy()
+                    key=(rec['name'],start,mode,ai)
+                    if key not in replay_cache:
+                        subprocess.run(commands['baseline' if mode=='baseline' else 'candidate']+[str(path),str(target),mode,str(ai).lower(),str(start)],check=True,capture_output=True,timeout=180)
+                        replay_cache[key]=pd.read_csv(target)
+                    estimated=replay_cache[key];estimated=estimated[estimated.seconds<=start+duration+1e-8]
+                    assert len(estimated)==len(window)
+                    points=estimated[['lat','lon']].to_numpy()
                     points=(points-points[0])*scale
-                    title='ESKF baseline commit' if mode=='baseline' else 'ESKF + stages' if not ai else 'ESKF + stages + AI (experimental)'
+                    title={'baseline':'ESKF baseline commit','speed':'ESKF + A (rejected)','gyro':'ESKF + C only','candidate':'ESKF + A+C (experimental; B not evaluated)'}[mode]
+                    if ai:title+=' + AI'
                     runs.append((title,points,estimated.speed.to_numpy(),float(estimated.ai_used.mean())))
                 for title,points,speed,used in runs:
                     error=np.linalg.norm(points-truth,axis=1); speed_error=speed-window[:,14]
@@ -202,6 +214,13 @@ def main():
                 under_10_pct=float((group.endpoint_drift_pct<10).mean()*100),ate_m=group.ate_m.mean(),
                 speed_mae_mps=group.speed_mae_mps.mean(),speed_rmse_mps=group.speed_rmse_mps.mean()))
     summary=pd.DataFrame(summaries);summary.to_csv(out/'summary.csv',index=False)
+    pivot=frame.pivot(index=['split','recording','start_s','duration_s'],columns='ablation',values='endpoint_drift_pct')
+    baseline=pivot['ESKF baseline commit'];combined='ESKF + A+C (experimental; B not evaluated)'
+    decision={'windows':len(pivot),'stage_a_regressed_windows':int((pivot['ESKF + A (rejected)']>baseline+1e-6).sum()),
+              'stage_c_regressed_windows':int((pivot['ESKF + C only']>baseline+1e-6).sum()),
+              'ai_regressed_windows':None if args.no_ai else int((pivot[combined+' + AI']>pivot[combined]+1e-6).sum()),
+              'production_promoted':False,'map_matching':'not evaluated'}
+    (out/'decisions.json').write_text(json.dumps(decision,indent=2))
     lines=['# OFFROUTE outage evaluation','',f'Baseline source: `{BASE}`. Run: `{sys.executable} ml/evaluate_outages.py --label {args.label}`.',
         '', '| Split | Subset | Seconds | Ablation | N | Median drift % | Mean drift % | Under 10% (%) | ATE m | Speed MAE m/s | Speed RMSE m/s |',
         '|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|']
@@ -218,6 +237,10 @@ def main():
         'Planar replay suppresses unidentifiable transverse gyro components. Low-correlation mappings are flagged, not claimed calibrated. '
         'The 10 Hz recording is held at 100 Hz for the existing filter; output is 10 Hz. This is not a measured mobile performance result. '
         'AI uses the unchanged 300x6 -> 1 bundled model, with experimental variance 25 (m/s)^2 and trust 0.10; it is not validated or enabled live.']
+    lines += ['', 'Disposition: A and C are evaluation-only rejected snapshots; no live engine change is retained. '
+              'Stage B is not included in numeric ablations because no UK graph is available; its attempted live wiring was reverted after an edge source-list incompatibility. '
+              'Earlier stage-a results used an overly restrictive calibration interval gate and are superseded by this final run. '
+              'Neither the aggregate gains nor experimental AI establish the <10% benchmark. Optional latency work was skipped.']
     (out/'report.md').write_text('\n'.join(lines),encoding='utf-8')
     import matplotlib
     matplotlib.use('Agg')

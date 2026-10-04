@@ -7,10 +7,10 @@ import java.util.*;
 public final class OutageEvaluation {
     public static void main(String[] args) throws Exception {
         NavigationFusion n=new NavigationFusion();
-        boolean candidate=args[2].equals("candidate"),ai=args[3].equals("true");
+        boolean candidate=!args[2].equals("baseline"),ai=args[3].equals("true");
         if(candidate) {
-            n.getClass().getField("boundedOutageSpeed").setBoolean(n,true);
-            try { n.getClass().getField("freezeOutageGyroBias").setBoolean(n,true); }
+            n.getClass().getField("boundedOutageSpeed").setBoolean(n,!args[2].equals("gyro"));
+            try { n.getClass().getField("freezeOutageGyroBias").setBoolean(n,!args[2].equals("speed")); }
             catch(NoSuchFieldException absent) { /* Stage A snapshot. */ }
         }
         double start=Double.parseDouble(args[4]);

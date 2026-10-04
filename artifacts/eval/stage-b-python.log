@@ -1,0 +1,120 @@
+2026-10-05 01:45:11.985814: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-10-05 01:45:32.656665: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Checking motion
+C:\Users\surya\Documents\ChatGPT\offroute 3.0\.venv-ml\Lib\site-packages\tensorflow\lite\python\interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in
+    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.
+    See the [migration guide](https://ai.google.dev/edge/litert/migration)
+    for details.
+    
+  warnings.warn(_INTERPRETER_DELETION_WARNING)
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+Checking gps-health
+Checking speed
+{
+  "motion": {
+    "windows_checked": 306,
+    "unsupported_classes_zero": true
+  },
+  "gps-health": {
+    "windows_checked": 306,
+    "missing_features_masked": true
+  },
+  "speed": {
+    "stationary": {
+      "windows_checked": 1236,
+      "mae_mps": 0.8893765211105347,
+      "median_prediction_mps": 0.007240836508572102,
+      "p95_prediction_mps": 7.414573669433594
+    },
+    "moving": {
+      "windows_checked": 1032,
+      "mae_mps": 4.074574947357178,
+      "median_prediction_mps": 9.511517524719238,
+      "p95_prediction_mps": 16.403202056884766
+    }
+  },
+  "fusion_gate": "Bundled learned corrections remain disabled pending phone validation. Live navigation uses the ESKF after mount alignment, with GNSS fallback beforehand. These model tests do not validate navigation accuracy."
+}
+test_backoff_counts_navigation_regressions (test_laptop_agent.CohortTests.test_backoff_counts_navigation_regressions) ... ok
+test_deployed_cloud_baseline_is_used (test_laptop_agent.CohortTests.test_deployed_cloud_baseline_is_used) ... ok
+test_historical_duplicate_keeps_its_original_identity (test_laptop_agent.CohortTests.test_historical_duplicate_keeps_its_original_identity) ... ok
+test_cache_tampering_and_changed_manifest_fail_closed (test_laptop_agent.DownloadTests.test_cache_tampering_and_changed_manifest_fail_closed) ... ok
+test_corrupt_chunk_never_commits (test_laptop_agent.DownloadTests.test_corrupt_chunk_never_commits) ... ok
+test_download_requires_marker_and_reconstructs_in_order (test_laptop_agent.DownloadTests.test_download_requires_marker_and_reconstructs_in_order) ... ok
+test_manifest_rejects_escape_duplicate_reorder_and_wrong_identity (test_laptop_agent.DownloadTests.test_manifest_rejects_escape_duplicate_reorder_and_wrong_identity) ... ok
+test_drift_regression_and_inactive_candidate_block (test_laptop_agent.EvaluationTests.test_drift_regression_and_inactive_candidate_block) ... ok
+test_fresh_test_trips_and_new_data_are_required (test_laptop_agent.EvaluationTests.test_fresh_test_trips_and_new_data_are_required) ... ok
+test_missing_stop_or_nonfinite_data_blocks (test_laptop_agent.EvaluationTests.test_missing_stop_or_nonfinite_data_blocks) ... ok
+test_stop_regression_blocks_even_when_overall_error_improves (test_laptop_agent.EvaluationTests.test_stop_regression_blocks_even_when_overall_error_improves) ... ok
+test_approval_requires_real_unchanged_evidence (test_laptop_agent.ReleaseTests.test_approval_requires_real_unchanged_evidence) ... ok
+test_binary_uploaded_verified_then_manifest_preserves_other_models (test_laptop_agent.ReleaseTests.test_binary_uploaded_verified_then_manifest_preserves_other_models) ... ok
+test_changed_deployed_baseline_blocks_publication (test_laptop_agent.ReleaseTests.test_changed_deployed_baseline_blocks_publication) ... ok
+test_different_existing_version_is_never_overwritten (test_laptop_agent.ReleaseTests.test_different_existing_version_is_never_overwritten) ... ok
+test_second_publisher_cannot_enter_critical_section (test_laptop_agent.ReleaseTests.test_second_publisher_cannot_enter_critical_section) ... ok
+test_dpapi_roundtrip (test_laptop_agent.RuntimeTests.test_dpapi_roundtrip) ... ok
+test_same_candidate_approval_and_changed_evidence (test_laptop_agent.RuntimeTests.test_same_candidate_approval_and_changed_evidence) ... ok
+test_trial_import_selects_recording_time_not_archive_order (test_laptop_agent.RuntimeTests.test_trial_import_selects_recording_time_not_archive_order) ... ok
+test_existing_trainer_exports_separate_executable_candidate (test_laptop_agent_integration.IntegrationTests.test_existing_trainer_exports_separate_executable_candidate) ... C:\Users\surya\Documents\ChatGPT\offroute 3.0\.venv-ml\Lib\site-packages\tensorflow\lite\python\interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in
+    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.
+    See the [migration guide](https://ai.google.dev/edge/litert/migration)
+    for details.
+    
+  warnings.warn(_INTERPRETER_DELETION_WARNING)
+2026-10-05 01:45:57.291579: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Saved artifact at 'C:\Users\surya\AppData\Local\Temp\tmpomptgdcu'. The following endpoints are available:
+
+* Endpoint 'serve'
+  args_0 (POSITIONAL_ONLY): TensorSpec(shape=(1, 300, 6), dtype=tf.float32, name='keras_tensor')
+Output Type:
+  TensorSpec(shape=(1, 1), dtype=tf.float32, name=None)
+Captures:
+  1416947470736: TensorSpec(shape=(), dtype=tf.resource, name=None)
+  1416947473040: TensorSpec(shape=(), dtype=tf.resource, name=None)
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+W0000 00:00:1791144958.930524   22600 tf_tfl_flatbuffer_helpers.cc:364] Ignored output_format.
+W0000 00:00:1791144958.931660   22600 tf_tfl_flatbuffer_helpers.cc:367] Ignored drop_control_dependency.
+2026-10-05 01:45:58.941945: I tensorflow/cc/saved_model/reader.cc:83] Reading SavedModel from: C:\Users\surya\AppData\Local\Temp\tmpomptgdcu
+2026-10-05 01:45:58.944872: I tensorflow/cc/saved_model/reader.cc:52] Reading meta graph with tags { serve }
+2026-10-05 01:45:58.944966: I tensorflow/cc/saved_model/reader.cc:147] Reading SavedModel debug info (if present) from: C:\Users\surya\AppData\Local\Temp\tmpomptgdcu
+I0000 00:00:1791144958.956970   22600 mlir_graph_optimization_pass.cc:437] MLIR V1 optimization pass is not enabled
+2026-10-05 01:45:58.960633: I tensorflow/cc/saved_model/loader.cc:236] Restoring SavedModel bundle.
+2026-10-05 01:45:59.233442: I tensorflow/cc/saved_model/loader.cc:220] Running initialization op on SavedModel bundle at path: C:\Users\surya\AppData\Local\Temp\tmpomptgdcu
+2026-10-05 01:45:59.251425: I tensorflow/cc/saved_model/loader.cc:471] SavedModel load for tags { serve }; Status: success: OK. Took 310961 microseconds.
+2026-10-05 01:45:59.395888: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:269] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2026-10-05 01:45:59.805337: I tensorflow/compiler/mlir/lite/flatbuffer_export.cc:4150] Estimated count of arithmetic ops: 2161  ops, equivalently 1080  MACs
+C:\Users\surya\Documents\ChatGPT\offroute 3.0\.venv-ml\Lib\site-packages\tensorflow\lite\python\interpreter.py:457: UserWarning:     Warning: tf.lite.Interpreter is deprecated and is scheduled for deletion in
+    TF 2.20. Please use the LiteRT interpreter from the ai_edge_litert package.
+    See the [migration guide](https://ai.google.dev/edge/litert/migration)
+    for details.
+    
+  warnings.warn(_INTERPRETER_DELETION_WARNING)
+ok
+test_real_java_replay_emits_outage_observations (test_laptop_agent_integration.IntegrationTests.test_real_java_replay_emits_outage_observations) ... ok
+test_candidate_trial_is_not_ordinary_training_data (test_phone_learning.PhoneLearningTest.test_candidate_trial_is_not_ordinary_training_data) ... ok
+test_delayed_fix_window_ends_at_measurement_not_arrival (test_phone_learning.PhoneLearningTest.test_delayed_fix_window_ends_at_measurement_not_arrival) ... ok
+test_duplicate_session_cannot_cross_splits (test_phone_learning.PhoneLearningTest.test_duplicate_session_cannot_cross_splits) ... ok
+test_missing_quality_rejects_window (test_phone_learning.PhoneLearningTest.test_missing_quality_rejects_window) ... ok
+test_no_legacy_or_simulation_labels (test_phone_learning.PhoneLearningTest.test_no_legacy_or_simulation_labels) ... ok
+test_quality_gates (test_phone_learning.PhoneLearningTest.test_quality_gates) ... ok
+test_ridge_fits_real_coefficients_and_regression_gate (test_phone_learning.PhoneLearningTest.test_ridge_fits_real_coefficients_and_regression_gate) ... ok
+test_sensor_gap_is_not_interpolated_away (test_phone_learning.PhoneLearningTest.test_sensor_gap_is_not_interpolated_away) ... ok
+test_training_blocks_insufficient_independent_data (test_phone_learning.PhoneLearningTest.test_training_blocks_insufficient_independent_data) ... ok
+test_unique_fresh_fixes_and_tensor_contract (test_phone_learning.PhoneLearningTest.test_unique_fresh_fixes_and_tensor_contract) ... ok
+test_capture_error_blocks_even_complete_sidecars (test_raw_training.RawTrainingTests.test_capture_error_blocks_even_complete_sidecars) ... ok
+test_independent_gyro_gap_rejects_training_despite_dense_accelerometer (test_raw_training.RawTrainingTests.test_independent_gyro_gap_rejects_training_despite_dense_accelerometer) ... ok
+test_invalid_receiver_labels_never_fall_back_to_drlog_or_fusion (test_raw_training.RawTrainingTests.test_invalid_receiver_labels_never_fall_back_to_drlog_or_fusion) ... ok
+test_missing_declared_sidecar_fails_closed (test_raw_training.RawTrainingTests.test_missing_declared_sidecar_fails_closed) ... ok
+test_precise_receiver_speed_and_raw_gyro_override_lossy_drlog (test_raw_training.RawTrainingTests.test_precise_receiver_speed_and_raw_gyro_override_lossy_drlog) ... ok
+test_replay_uses_receiver_coordinates_after_arrival (test_raw_training.RawTrainingTests.test_replay_uses_receiver_coordinates_after_arrival) ... ok
+test_stale_receiver_callback_is_rejected (test_raw_training.RawTrainingTests.test_stale_receiver_callback_is_rejected) ... ok
+test_manifest_requires_declared_sidecars (test_raw_training.SidecarDownloadTests.test_manifest_requires_declared_sidecars) ... ok
+test_precise_sidecars_roundtrip (test_raw_training.SidecarDownloadTests.test_precise_sidecars_roundtrip) ... ok
+test_training_metadata_cannot_hide_missing_sidecars (test_raw_training.SidecarDownloadTests.test_training_metadata_cannot_hide_missing_sidecars) ... ok
+test_phone_rotation_does_not_change_features (test_vehicle_speed_candidate.VehicleSpeedFeatureTest.test_phone_rotation_does_not_change_features) ... ok
+test_zero_motion_is_finite_and_batch_independent (test_vehicle_speed_candidate.VehicleSpeedFeatureTest.test_zero_motion_is_finite_and_batch_independent) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 15.829s
+
+OK

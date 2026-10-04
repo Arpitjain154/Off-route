@@ -1,0 +1,66 @@
+[
+  {
+    "name": "S-S1",
+    "split": "regression-S",
+    "source": "S (Driver A)/S1/S-S1.csv",
+    "sha256": "e79a2eea18143b825438f9a11c7d724a97c9e18329776defd4d9291d03d4aaca",
+    "rows": 6001,
+    "speed_unit_ratio": 0.9999571383834954
+  },
+  {
+    "name": "S-S2",
+    "split": "regression-S",
+    "source": "S (Driver A)/S2/S-S2.csv",
+    "sha256": "8f48d68ef4ab225c8381af6fb8ec0f36fe6f6048977eeebecc74cfec50d13cb8",
+    "rows": 5989,
+    "speed_unit_ratio": 0.9819099513061433
+  },
+  {
+    "name": "S-S3a",
+    "split": "regression-S",
+    "source": "S (Driver A)/S3a/S-S3a.csv",
+    "sha256": "b9e45dc8d856271f0a69030b7dd98f32c6b6b88b627138d67e8d3a1b7c5329fe",
+    "rows": 6001,
+    "speed_unit_ratio": 0.9881454277468752
+  },
+  {
+    "name": "S-S3b",
+    "split": "regression-S",
+    "source": "S (Driver A)/S3b/S-S3b.csv",
+    "sha256": "19447009a96bd80bb896f3a728283ae2990d94b4cf1ed37f69866ed78ca36901",
+    "rows": 5957,
+    "speed_unit_ratio": 0.9662124654094961
+  },
+  {
+    "name": "S-S3c",
+    "split": "regression-S",
+    "source": "S (Driver A)/S3c/S-S3c.csv",
+    "sha256": "b87fa6978d7d50087ca63bfee5230692013485aaccef5474dbc847a9c1498739",
+    "rows": 6001,
+    "speed_unit_ratio": 0.9802216406939113
+  },
+  {
+    "name": "S-S4",
+    "split": "regression-S",
+    "source": "S (Driver A)/S4/S-S4.csv",
+    "sha256": "a2bb1e1eb28d111f84963240c54b790f32366f6c5b09dff1713770b52d3f5616",
+    "rows": 6001,
+    "speed_unit_ratio": 0.9800367783959115
+  },
+  {
+    "name": "S-Vfa01",
+    "split": "validation-Vfa",
+    "source": "Vf (Driver E)/V-Vfa01/S-Vfa01.csv",
+    "sha256": "7f46f770cd49c85185446420bc10db9e7a9ffe4aa190e3b1cc1111220eab04b2",
+    "rows": 6000,
+    "speed_unit_ratio": 0.9923479457831761
+  },
+  {
+    "name": "S-Vfa02",
+    "split": "validation-Vfa",
+    "source": "Vf (Driver E)/V-Vfa02/S-Vfa02.csv",
+    "sha256": "ec666af90866254a55578f4e9371860b64602cad0694b02defcc56eec5d85a44",
+    "rows": 6001,
+    "speed_unit_ratio": 0.9914685332590427
+  }
+]

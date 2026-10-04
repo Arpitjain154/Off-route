@@ -1,0 +1,13 @@
+{
+  "tests": 129,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 1,
+  "legacy_csv_identical": true,
+  "fusion_csv_identical": true,
+  "bundled_model_sha256": {
+    "gps-health.tflite": "5dfea3dc82218d9944439f92d8853bd4fa4eb608428a6117a78e33e1e83f0275",
+    "motion.tflite": "5518fa4a83faabdabcd570a098bdd08135de9c5eb29569623cd41ed3c9035edc",
+    "speed.tflite": "e923026a9f6300e4cb056ee783219dc9f5ef806609390164481b74c64ff1a2e2"
+  }
+}
