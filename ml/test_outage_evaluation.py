@@ -1,7 +1,8 @@
 """Fixture causality tests; synthetic traces are not accuracy evidence."""
 import unittest
 import numpy as np
-from evaluate_outages import mapping
+import pandas as pd
+from evaluate_outages import mapping, ai_promotion_gate
 
 
 class OutageFixtureTest(unittest.TestCase):
@@ -27,6 +28,20 @@ class OutageFixtureTest(unittest.TestCase):
         _,audit=mapping(a,changed,60)
         self.assertGreaterEqual(audit['calibration_samples'],4)
         self.assertTrue(audit['gyro_reliable'])
+
+    def test_ai_gate_requires_both_drift_metrics_in_every_group(self):
+        rows=[]
+        for split in ['validation-Vfa','regression-S']:
+            for duration in [30,60,120]:
+                for title,median,mean in [('ESKF + A (live source)',10,20),
+                                          ('ESKF + A + AI (live source)',9,19)]:
+                    rows.append(dict(split=split,subset='all',duration_s=duration,ablation=title,
+                                     median_drift_pct=median,mean_drift_pct=mean))
+        frame=pd.DataFrame(rows)
+        self.assertTrue(ai_promotion_gate(frame)['eligible'])
+        frame.loc[11,'mean_drift_pct']=20
+        self.assertFalse(ai_promotion_gate(frame)['eligible'])
+        self.assertFalse(ai_promotion_gate(frame.iloc[:-2])['eligible'])
 
 
 if __name__=='__main__':unittest.main()

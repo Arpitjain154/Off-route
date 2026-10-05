@@ -115,10 +115,27 @@ def mapping(a, changed, start):
                         calibration_samples=len(rates),last_calibration_s=float(raw[-1,0]))
 
 
-def compile_java(out, baseline, live_stage_a=False):
+TITLES = {
+    'baseline': 'ESKF baseline commit 41670ae7',
+    'constant': 'last GNSS speed + constant heading',
+    'speed': 'ESKF + A (live source)',
+    'ai': 'ESKF + A + AI (live source)',
+    'oracle': 'ESKF + A + B oracle (reference route; upper bound)',
+}
+
+
+def java_tools():
+    suffix = '.exe' if os.name == 'nt' else ''
     jdk = Path(os.environ.get('JAVA_HOME', str(Path.home()/'.jdks/jbr-21.0.11')))/'bin'
-    jars = [p for p in (Path.home()/'.gradle/caches/modules-2/files-2.1/org.ejml').glob('**/*.jar')
-            if not p.name.endswith(('-sources.jar','-javadoc.jar'))]
+    return str(jdk/('javac'+suffix)), str(jdk/('java'+suffix))
+
+
+def compile_java(out, baseline):
+    javac, java = java_tools()
+    jars = sorted(p for p in (Path.home()/'.gradle/caches/modules-2/files-2.1/org.ejml').glob('**/*.jar')
+                  if not p.name.endswith(('-sources.jar','-javadoc.jar')))
+    if not jars:
+        raise RuntimeError('Existing EJML cache is required; build the edge project first.')
     cp = os.pathsep.join(map(str,jars)); classes=out/('baseline-classes' if baseline else 'candidate-classes')
     classes.mkdir(exist_ok=True)
     source = ROOT/'android/app/src/main/java'
@@ -128,22 +145,74 @@ def compile_java(out, baseline, live_stage_a=False):
         for name in files:
             if name.endswith('.java'):
                 (dest/Path(name).name).write_bytes(subprocess.check_output(['git','show',BASE+':'+name],cwd=ROOT))
-    sourcepath=str(source) if baseline or live_stage_a else os.pathsep.join([str(ROOT/'artifacts/eval/experimental-src'),str(out/'baseline-src')])
-    command=[str(jdk/'javac.exe'),'-cp',cp,'-sourcepath',sourcepath,'-d',str(classes),str(ROOT/'ml/java/OutageEvaluation.java')]
-    subprocess.run(command,check=True,capture_output=True)
-    return [str(jdk/'java.exe'),'-Xmx512m','-cp',str(classes)+os.pathsep+cp,'OutageEvaluation']
+    # Every candidate class is built from the actual app tree. No experimental overlay.
+    command=[javac,'-cp',cp,'-sourcepath',str(source),'-d',str(classes),str(ROOT/'ml/java/OutageEvaluation.java')]
+    if not baseline:
+        command += [str(source/'com/idr/navigator/engine/RouteFollower.java')]
+    with (out/('baseline-javac.log' if baseline else 'candidate-javac.log')).open('w') as log:
+        subprocess.run(command,check=True,stdout=log,stderr=subprocess.STDOUT)
+    return [java,'-Xmx512m','-cp',str(classes)+os.pathsep+cp,'OutageEvaluation']
+
+
+def ai_promotion_gate(summary):
+    groups=[]
+    for split in ['validation-Vfa','regression-S']:
+        for duration in [30,60,120]:
+            group=summary[(summary.split==split)&(summary.duration_s==duration)&(summary.subset=='all')]
+            base=group[group.ablation==TITLES['speed']]
+            candidate=group[group.ablation==TITLES['ai']]
+            present=len(base)==1 and len(candidate)==1
+            median=bool(present and candidate.iloc[0].median_drift_pct < base.iloc[0].median_drift_pct)
+            mean=bool(present and candidate.iloc[0].mean_drift_pct < base.iloc[0].mean_drift_pct)
+            groups.append(dict(split=split,duration_s=duration,present=present,
+                               median_improved=median,mean_improved=mean))
+    return dict(eligible=all(g['median_improved'] and g['mean_improved'] for g in groups),
+                criterion='Strict improvement in both median and mean endpoint drift in all six all-speed split/duration groups',
+                groups=groups)
+
+
+def healthy_parity(out, commands, recordings):
+    # A complete 600 s Vfa recording with continuously available recorded phone GNSS.
+    rec=next(r for r in recordings if r['split']=='validation-Vfa')
+    data=np.load(out/(rec['name']+'.npz')); raw=data['rows']
+    fixture=np.column_stack([raw,np.full(len(raw),np.nan),data['changed'].astype(int)])
+    path=out/'healthy-input.csv'
+    np.savetxt(path,fixture,delimiter=',',header='seconds,ax,ay,az,gx,gy,gz,lat,lon,accuracy,speed,bearing,ref_lat,ref_lon,ref_speed,ai_speed,new_fix',comments='')
+    outputs=[]
+    for variant in ['baseline','candidate']:
+        target=out/('healthy-'+variant+'.csv')
+        subprocess.run(commands[variant]+[str(path),str(target),'healthy','false','0'],check=True,capture_output=True,timeout=180)
+        outputs.append(target.read_bytes())
+    identical=outputs[0]==outputs[1]
+    report=dict(recording=rec['name'],rows=len(raw),duration_s=float(raw[-1,0]),identical=identical,
+                baseline_sha256=hashlib.sha256(outputs[0]).hexdigest(),candidate_sha256=hashlib.sha256(outputs[1]).hexdigest(),
+                contract='Actual LiveNavigation source; every native sample delivers its recorded phone GNSS tuple, no outage, route, or model. Exact CSV byte comparison.')
+    (out/'healthy-parity.json').write_text(json.dumps(report,indent=2))
+    if not identical:
+        raise AssertionError('Healthy recorded-trip LiveNavigation outputs differ from baseline; see healthy-parity.json')
+    return report
 
 
 def main():
-    parser=argparse.ArgumentParser(); parser.add_argument('--label',default='final')
+    parser=argparse.ArgumentParser(); parser.add_argument('--label',default='final2')
     parser.add_argument('--prepare-only',action='store_true'); parser.add_argument('--no-ai',action='store_true')
-    parser.add_argument('--live-stage-a',action='store_true',help='Evaluate actual app sources with only Stage A; no AI or Stage C.')
+    parser.add_argument('--live-stage-a',action='store_true',help='Compatibility alias: live A is now always evaluated; skip AI and route oracle.')
+    parser.add_argument('--healthy-parity-only',action='store_true')
     args=parser.parse_args(); out=ROOT/'artifacts/eval'/args.label; out.mkdir(parents=True,exist_ok=True)
     if args.live_stage_a:args.no_ai=True
     recordings=prepare(out)
     (out/'recordings.json').write_text(json.dumps(recordings,indent=2))
     if args.prepare_only: return
-    commands={'baseline':compile_java(out,True),'candidate':compile_java(out,False,args.live_stage_a)}
+    commands={'baseline':compile_java(out,True),'candidate':compile_java(out,False)}
+    parity=healthy_parity(out,commands,recordings)
+    if args.healthy_parity_only:
+        print(json.dumps(parity,indent=2));return
+    source_files=sorted((ROOT/ENGINE).glob('*.java'))+[ROOT/'ml/java/OutageEvaluation.java',Path(__file__)]
+    (out/'source-provenance.json').write_text(json.dumps(dict(
+        baseline_commit=BASE,candidate_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        candidate_source='live working tree (hashes below)',files={str(p.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in source_files},
+        model_sha256=hashlib.sha256((ROOT/'android/app/src/main/assets/models/speed.tflite').read_bytes()).hexdigest(),
+        stage_c=False,ai_variance=25,ai_trust=.10),indent=2))
     interpreter=None
     if not args.no_ai:
         os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
@@ -165,9 +234,10 @@ def main():
                 interpreter.set_tensor(interpreter.get_input_details()[0]['index'],value);interpreter.invoke()
                 predictions[i]=float(interpreter.get_tensor(interpreter.get_output_details()[0]['index']).flat[0])
         for start in [60.,300.]:
+            mapped,audit=mapping(raw,changed,start)
             for duration in [30,60,120]:
                 if raw[-1,0] < start+duration: continue
-                mapped,audit=mapping(raw,changed,start); audits.append(dict(recording=rec['name'],duration_s=duration,**audit))
+                audits.append(dict(recording=rec['name'],duration_s=duration,**audit))
                 take=(raw[:,0]>=max(0,start-60))&(raw[:,0]<=start+120)
                 fixture=np.column_stack([mapped,predictions,changed.astype(int)])[take]
                 window=fixture[(fixture[:,0]>=start)&(fixture[:,0]<=start+duration)]; reference=window[:,12:14]
@@ -180,32 +250,28 @@ def main():
                 anchor=fixture[(fixture[:,0]<start)&(fixture[:,16]==1)][-1]
                 elapsed=window[:,0]-window[0,0]; h=np.deg2rad(anchor[11])
                 constant=np.column_stack([elapsed*anchor[10]*np.cos(h),elapsed*anchor[10]*np.sin(h)])
-                runs=[('last GNSS speed + constant heading',constant,np.full(len(window),anchor[10]),0.)]
-                modes=[('baseline',False),('speed',False)] if args.live_stage_a else [('baseline',False),('speed',False),('gyro',False),('candidate',False),('candidate',True)]
-                for mode,ai in modes:
-                    if ai and args.no_ai: continue
-                    target=out/(stem+'-'+mode+('-ai' if ai else '')+'.csv')
-                    key=(rec['name'],start,mode,ai)
+                runs=[(TITLES['constant'],constant,np.full(len(window),anchor[10]),0.,0.)]
+                modes=['baseline','speed']+([] if args.no_ai else ['ai'])+([] if args.live_stage_a else ['oracle'])
+                for mode in modes:
+                    target=out/(stem+'-'+mode+'.csv');key=(rec['name'],start,mode)
                     if key not in replay_cache:
-                        subprocess.run(commands['baseline' if mode=='baseline' else 'candidate']+[str(path),str(target),mode,str(ai).lower(),str(start)],check=True,capture_output=True,timeout=180)
+                        subprocess.run(commands['baseline' if mode=='baseline' else 'candidate']+
+                                       [str(path),str(target),mode,str(mode=='ai').lower(),str(start)],
+                                       check=True,capture_output=True,timeout=180)
                         replay_cache[key]=pd.read_csv(target)
                     estimated=replay_cache[key];estimated=estimated[estimated.seconds<=start+duration+1e-8]
                     assert len(estimated)==len(window)
-                    points=estimated[['lat','lon']].to_numpy()
-                    points=(points-points[0])*scale
-                    title={'baseline':'ESKF baseline commit','speed':'ESKF + A (rejected)','gyro':'ESKF + C only','candidate':'ESKF + A+C (experimental; B not evaluated)'}[mode]
-                    if args.live_stage_a and mode=='speed':title='ESKF + A (live source)'
-                    if ai:title+=' + AI'
-                    runs.append((title,points,estimated.speed.to_numpy(),float(estimated.ai_used.mean())))
-                for title,points,speed,used in runs:
+                    points=estimated[['lat','lon']].to_numpy();points=(points-points[0])*scale
+                    runs.append((TITLES[mode],points,estimated.speed.to_numpy(),float(estimated.ai_used.mean()),float(estimated.route_used.mean())))
+                for title,points,speed,used,route_used in runs:
                     error=np.linalg.norm(points-truth,axis=1); speed_error=speed-window[:,14]
                     metrics.append(dict(split=rec['split'],recording=rec['name'],start_s=start,duration_s=duration,ablation=title,
                         distance_m=distance,mean_reference_kmh=float(window[:,14].mean()*3.6),endpoint_drift_pct=float(error[-1]/distance*100),
                         ate_m=float(np.sqrt(np.mean(error**2))),speed_mae_mps=float(np.mean(abs(speed_error))),
-                        speed_rmse_mps=float(np.sqrt(np.mean(speed_error**2))),ai_used_fraction=used))
+                        speed_rmse_mps=float(np.sqrt(np.mean(speed_error**2))),ai_used_fraction=used,route_used_fraction=route_used))
                     for t,ref,est in zip(window[:,0],truth,points):
                         trajectories.append((rec['split'],rec['name'],start,duration,title,t,ref[1],ref[0],est[1],est[0]))
-                print(stem, 'complete',flush=True)
+                print(stem,'complete',flush=True)
     frame=pd.DataFrame(metrics);frame.to_csv(out/'windows.csv',index=False)
     pd.DataFrame(trajectories,columns=['split','recording','start_s','duration_s','ablation','seconds','reference_east','reference_north','estimated_east','estimated_north']).to_csv(out/'trajectories.csv',index=False)
     (out/'axis-calibration.json').write_text(json.dumps(audits,indent=2))
@@ -219,37 +285,36 @@ def main():
                 speed_mae_mps=group.speed_mae_mps.mean(),speed_rmse_mps=group.speed_rmse_mps.mean()))
     summary=pd.DataFrame(summaries);summary.to_csv(out/'summary.csv',index=False)
     pivot=frame.pivot(index=['split','recording','start_s','duration_s'],columns='ablation',values='endpoint_drift_pct')
-    baseline=pivot['ESKF baseline commit'];combined='ESKF + A+C (experimental; B not evaluated)'
-    stage_a='ESKF + A (live source)' if args.live_stage_a else 'ESKF + A (rejected)'
-    decision={'windows':len(pivot),'stage_a_regressed_windows':int((pivot[stage_a]>baseline+1e-6).sum()),
-              'stage_c_regressed_windows':None if args.live_stage_a else int((pivot['ESKF + C only']>baseline+1e-6).sum()),
-              'ai_regressed_windows':None if args.no_ai else int((pivot[combined+' + AI']>pivot[combined]+1e-6).sum()),
-              'production_promoted':False,'map_matching':'not evaluated','live_stage_a':args.live_stage_a}
+    gate=ai_promotion_gate(summary)
+    decision=dict(windows=len(pivot),stage_a_regressed_windows=int((pivot[TITLES['speed']]>pivot[TITLES['baseline']]+1e-6).sum()),
+                  ai_regressed_windows=None if args.no_ai else int((pivot[TITLES['ai']]>pivot[TITLES['speed']]+1e-6).sum()),
+                  ai_promotion_gate=gate,healthy_recorded_parity=parity['identical'],stage_c_enabled=False,
+                  map_matching='Reference-route oracle only; contaminated upper bound. Real UK road-map matching not evaluated.')
     (out/'decisions.json').write_text(json.dumps(decision,indent=2))
-    lines=['# OFFROUTE outage evaluation','',f'Baseline source: `{BASE}`. Run: `{sys.executable} ml/evaluate_outages.py --label {args.label}`.',
+    lines=['# OFFROUTE final outage evaluation','',f'Baseline source: {BASE}. Reproduce: python ml/evaluate_outages.py --label {args.label}.',
+        'All candidate rows compile the live Android-independent engine sources. Stage C is OFF.',
         '', '| Split | Subset | Seconds | Ablation | N | Median drift % | Mean drift % | Under 10% (%) | ATE m | Speed MAE m/s | Speed RMSE m/s |',
         '|---|---|---:|---|---:|---:|---:|---:|---:|---:|---:|']
     for r in summaries:
-        lines.append('| '+ ' | '.join(str(r[k]) if k in ['split','subset','ablation','duration_s','windows'] else f'{r[k]:.3f}' for k in r)+' |')
-    lines += ['', 'Map matching: **not evaluated**. Bundled graph covers Madhya Pradesh; no Coventry graph is supplied.', '',
-        'Limitations: Vfa is validation; S* is a previously reused regression set, not a blind test. No training data is used here. '
-        'First 600 seconds per local recording; independent outages start at 60 and 300 seconds, with 60 seconds of warmup. '
-        'Phone/vehicle elapsed clocks are aligned as in the existing harness; vehicle GNSS is a noisy scoring reference, never estimator input. '
-        'Paths are translated to zero at the first outage sample (relative ATE; no rotation or scale fitting). '
-        'Speed errors use vehicle GNSS speed. ATE and speed metrics in the table are means of per-window metrics. '
+        lines.append('| '+' | '.join(str(r[k]) if k in ['split','subset','ablation','duration_s','windows'] else f'{r[k]:.3f}' for k in r)+' |')
+    lines += ['', 'AI promotion gate: '+('PASS' if gate['eligible'] else 'FAIL')+'. '+gate['criterion']+'. The evaluator does not change production flags.',
+        '', 'Healthy recorded-trip parity: '+('PASS' if parity['identical'] else 'FAIL')+f' ({parity["recording"]}, {parity["rows"]} native samples; exact baseline/candidate LiveNavigation CSV bytes).',
+        '', 'The A+B row uses the vehicle-reference path as an oracle route and advances RouteFollower with A estimated speed only. '
+        'Reference speed and timed reference positions do not update the estimator. The route geometry still leaks the scoring path: '
+        'this is a contaminated upper-bound ablation, not a real UK map-matching result or evidence of deployment accuracy. '
+        'The bundled road graph covers Madhya Pradesh, not this UK recording.',
+        '', 'Limitations: Vfa is validation; S* is a previously reused regression set, not a blind test. '
+        'First 600 seconds per local recording; independent outages start at 60 and 300 seconds with 60 seconds of warmup. '
+        'Phone/vehicle elapsed clocks follow the existing harness. Vehicle GNSS is a noisy scoring reference. '
+        'Paths are translated to zero at the first outage sample (relative ATE, no rotation or scale fitting). '
+        'Speed errors use vehicle GNSS speed. ATE and speed metrics are means of per-window metrics. '
         'The high-speed subset uses mean reference speed >=40 km/h. Near-stationary distance under 1 m is excluded. '
-        'Frame calibration uses only pre-outage phone GNSS and raw accelerometer/gyro; constant GRAVITY columns are ignored. '
-        'Planar replay suppresses unidentifiable transverse gyro components. Low-correlation mappings are flagged, not claimed calibrated. '
-        'The 10 Hz recording is held at 100 Hz for the existing filter; output is 10 Hz. This is not a measured mobile performance result. '
-        'AI uses the unchanged 300x6 -> 1 bundled model, with experimental variance 25 (m/s)^2 and trust 0.10; it is not validated or enabled live.']
-    if args.live_stage_a:
-        lines += ['', 'Live Stage A source evaluated with BOUNDED_SPEED enabled. Stage C and AI are absent from this ablation. '
-                  'Promotion uses aggregate median/mean drift, legacy replay and existing tests; individual regressions alone do not reject it. '
-                  'See the follow-up verification report for the complete promotion gate.']
-    else: lines += ['', 'Disposition: A and C are evaluation-only rejected snapshots; no live engine change is retained. '
-              'Stage B is not included in numeric ablations because no UK graph is available; its attempted live wiring was reverted after an edge source-list incompatibility. '
-              'Earlier stage-a results used an overly restrictive calibration interval gate and are superseded by this final run. '
-              'Neither the aggregate gains nor experimental AI establish the <10% benchmark. Optional latency work was skipped.']
+        'Frame calibration uses only pre-outage phone GNSS and raw accelerometer/gyro. '
+        'Planar replay suppresses unidentifiable transverse gyro components; low-correlation mappings remain flagged. '
+        'The outage accuracy harness preserves its historical 10 Hz sample hold at 100 Hz; output remains 10 Hz. '
+        'The separate edge runner exercises native 10 Hz and resampled 200 Hz transport. Neither is measured mobile performance. '
+        'AI uses the unchanged 300x6 -> 1 bundled model, variance 25 (m/s)^2 and trust 0.10. '
+        'These offline results do not validate or retrain the model. See source-provenance.json for exact source/model hashes.']
     (out/'report.md').write_text('\n'.join(lines),encoding='utf-8')
     import matplotlib
     matplotlib.use('Agg')
@@ -268,9 +333,10 @@ def main():
             ax.set_title(f'{name}: {duration}s (first eligible window)');ax.set_aspect('equal',adjustable='datalim');ax.grid(alpha=.25)
             ax.set_xlabel('East (m)');ax.set_ylabel('North (m)')
     handles,labels=axes[0,0].get_legend_handles_labels();fig.legend(handles,labels,loc='outside lower center',ncol=2,fontsize=8)
-    fig.suptitle('Reference vs estimated — pre-outage frame calibration; no road graph')
+    fig.suptitle('Live source outage ablations; reference-route oracle is an upper bound')
     fig.savefig(out/'reference-vs-estimated.png',dpi=150);plt.close(fig)
     print(summary.to_string(index=False),flush=True)
+    print('AI promotion eligible:',gate['eligible'],flush=True)
 
 
 if __name__=='__main__':main()

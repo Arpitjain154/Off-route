@@ -1,0 +1,56 @@
+{
+  "windows": 48,
+  "stage_a_regressed_windows": 9,
+  "ai_regressed_windows": 23,
+  "ai_promotion_gate": {
+    "eligible": false,
+    "criterion": "Strict improvement in both median and mean endpoint drift in all six all-speed split/duration groups",
+    "groups": [
+      {
+        "split": "validation-Vfa",
+        "duration_s": 30,
+        "present": true,
+        "median_improved": true,
+        "mean_improved": true
+      },
+      {
+        "split": "validation-Vfa",
+        "duration_s": 60,
+        "present": true,
+        "median_improved": true,
+        "mean_improved": true
+      },
+      {
+        "split": "validation-Vfa",
+        "duration_s": 120,
+        "present": true,
+        "median_improved": false,
+        "mean_improved": false
+      },
+      {
+        "split": "regression-S",
+        "duration_s": 30,
+        "present": true,
+        "median_improved": true,
+        "mean_improved": true
+      },
+      {
+        "split": "regression-S",
+        "duration_s": 60,
+        "present": true,
+        "median_improved": true,
+        "mean_improved": true
+      },
+      {
+        "split": "regression-S",
+        "duration_s": 120,
+        "present": true,
+        "median_improved": true,
+        "mean_improved": true
+      }
+    ]
+  },
+  "healthy_recorded_parity": true,
+  "stage_c_enabled": false,
+  "map_matching": "Reference-route oracle only; contaminated upper bound. Real UK road-map matching not evaluated."
+}
