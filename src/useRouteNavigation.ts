@@ -1,6 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import {calculateRoute,resolveEndpoint,type RoadRoute} from './directions';
-import {projectOnRoute,RerouteGate} from './routeProgress';
+import {projectOnRoute,RerouteGate,RECOVERY_REROUTE} from './routeProgress';
 import type {Pose} from './types';
 export function useRouteNavigation(pose:Pose,route:RoadRoute|null,onRoute:(route:RoadRoute)=>void) {
   const gate=useRef(new RerouteGate()),epoch=useRef(0),pending=useRef(false);
@@ -17,7 +17,7 @@ export function useRouteNavigation(pose:Pose,route:RoadRoute|null,onRoute:(route
   useEffect(()=>{
     if(!route?.live)return;
     if(pending.current){
-      if(pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false)){
+      if(RECOVERY_REROUTE&&pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false)){
         // Preserve outage history and discard the pre-outage request even if GPS returns first.
         gate.current.shouldReroute(pose,Infinity,Date.now());epoch.current++;
         if(notice.text)setNotice({text:'',at:0});

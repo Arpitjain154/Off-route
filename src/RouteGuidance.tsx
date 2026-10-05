@@ -5,6 +5,8 @@ import type { RoadRoute } from './directions';
 import { routeGuidance } from './routeProgress';
 import './route-guidance.css';
 
+export const OUTAGE_DIRECTIONAL_GUIDANCE = true;
+
 type GuidanceProps = { route: RoadRoute; pose: Pose; units?: 'km' | 'mi'; onExit?: () => void };
 
 export function formatRouteDistance(metres: number, units: 'km' | 'mi' = 'km') {
@@ -28,7 +30,7 @@ function navigationState(route: RoadRoute, pose: Pose) {
   const directional = Number.isFinite(along) && along >= 0 && Number.isFinite(cross) && cross >= 0 &&
     Number.isFinite(halfWidth) && halfWidth > 0 && progress !== null &&
     along < progress.toTurn && cross <= 2 * halfWidth;
-  const usable = !route.live || (pose.ready && valid && fresh && (outage ? directional : precision <= 50));
+  const usable = !route.live || (pose.ready && valid && fresh && (outage && OUTAGE_DIRECTIONAL_GUIDANCE ? directional : precision <= 50));
   const arrival = Boolean(route.live && usable && !pose.estimated && precision <= 25 && progress && progress.remaining < 25 && progress.offRoute < 25);
   const reason = !pose.ready ? 'Waiting for a position fix'
     : !fresh ? 'Waiting for a fresh position'

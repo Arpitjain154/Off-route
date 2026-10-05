@@ -29,12 +29,13 @@ export function projectOnRoute(point:{lat:number;lon:number},coordinates:[number
   }
   return best;
 }
+export const RECOVERY_REROUTE = true;
 /** Decisions consume distinct GPS fixes, not repeated UI polling of one fix. */
 export class RerouteGate {
   private lastFix=-1;private offSince=0;private count=0;private lastRequest=-Infinity;
   private recovering=false;private lastRecoveryFixAt:number|null=null;private onSince:number|null=null;
   shouldReroute(pose:Pose,distance:number,now:number) {
-    if(pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false))this.recovering=true;
+    if(RECOVERY_REROUTE&&pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false))this.recovering=true;
     const precision=Math.max(pose.gpsAccuracy??pose.accuracy,pose.accuracy);
     if((pose.gpsAccuracy!==undefined&&(!Number.isFinite(pose.gpsAccuracy)||pose.gpsAccuracy<0))||pose.accuracy<0||!pose.ready||pose.estimated||pose.positionFresh===false||pose.health!=='HEALTHY'||!Number.isFinite(precision)||precision<0||precision>25||(pose.gpsAge!==undefined&&pose.gpsAge>2.5)||!Number.isFinite(distance)||pose.speedAvailable===false){this.offSince=0;this.count=0;this.onSince=null;this.lastRecoveryFixAt=null;return false;}
     const fix=pose.fixTime??now;

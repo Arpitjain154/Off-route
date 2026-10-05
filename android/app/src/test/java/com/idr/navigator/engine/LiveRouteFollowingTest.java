@@ -20,4 +20,22 @@ public class LiveRouteFollowingTest {
   double before=n.latitude();sample(n,124*S+10_000_000L);assertFalse(n.followingRoute());
   assertEquals(before,n.latitude(),.2/111320);assertTrue(n.estimated(124*S+10_000_000L));
  }
+ @Test public void recoveryAlongABendDoesNotDrawADiagonalOffTheRoute(){
+  LiveNavigation n=prepare(true);
+  n.setActiveRoute(new double[][]{{77.35,23.3},{77.35,23.301},{77.352,23.301}});
+  // A new trusted fix anchors the replacement route.
+  sample(n,4*S+10_000_000L);n.fix(new NavigationFusion.Fix(4*S+10_000_000L,23.3+30.1/111320,77.35,0,3,10,.2,0,5),4*S+10_000_000L);
+  n.providerDisabled();
+  for(int i=2;i<=200;i++)sample(n,4*S+i*10_000_000L);
+  assertTrue(n.followingRoute());
+  double targetLon=77.35+30/(111320*Math.cos(Math.toRadians(23.301)));
+  double beforeLat=n.latitude(),beforeLon=n.longitude();
+  for(int i=0;i<=100;i++) {
+   long t=6*S+i*100_000_000L;
+   n.fix(new NavigationFusion.Fix(t,23.301,targetLon,0,3,10,.2,90,5),t);n.tick(t);
+   assertTrue("Recovery follows one of the two route legs at "+i+": "+n.latitude()+","+n.longitude(),Math.abs(n.longitude()-77.35)<1e-9||Math.abs(n.latitude()-23.301)<1e-9);
+   double jump=Math.hypot((n.latitude()-beforeLat)*111320,(n.longitude()-beforeLon)*111320*Math.cos(Math.toRadians(n.latitude())));
+   assertTrue("No icon snap",jump<=5.00001);beforeLat=n.latitude();beforeLon=n.longitude();
+  }
+ }
 }

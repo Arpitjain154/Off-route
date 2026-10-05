@@ -21,6 +21,7 @@ public final class LiveNavigation {
     public boolean routeFollow=OutageTuning.ROUTE_FOLLOW;
     public void setActiveRoute(double[][] coordinates) {
         route.setRoute(coordinates);
+        if(coordinates==null||coordinates.length<2){routeEstimate=null;blendRouteProgress=Double.NaN;}
         if(fix!=null&&healthy(clock))anchorRoute();
     }
     private void anchorRoute() {
@@ -46,25 +47,25 @@ public final class LiveNavigation {
     private double recoveryGpsLat,recoveryGpsLon,recoveryGpsSpeed;
     private boolean blendingRecovery,largeRecovery;
     private long blendTime;
-    private double blendLat,blendLon;
+    private double blendLat,blendLon,blendRouteProgress=Double.NaN;
     private double targetLat(){return retainInertialPosition()?fusion.filter.latitude():fix==null?23.2418:holdingStop?stopLat:fix.lat();}
     private double targetLon(){return retainInertialPosition()?fusion.filter.longitude():fix==null?77.4029:holdingStop?stopLon:fix.lon();}
     private void advanceRecovery(long now) {
         if(!blendingRecovery||now<=blendTime)return;
         if(!fresh(now)&&!fused(now)){blendTime=now;return;}
         double dt=(now-blendTime)*1e-9;blendTime=now;
-        double targetLat=targetLat(),targetLon=targetLon();
+        double targetLat=fix!=null?fix.lat():targetLat(),targetLon=fix!=null?fix.lon():targetLon();
         double north=(targetLat-blendLat)*111320,east=(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat));
         double distance=Math.hypot(east,north);
         double step=Math.min(5,dt*(Math.max(0,Double.isFinite(speed)?speed:0)+10));
-        RouteFollower.Projection from=route.project(blendLat,blendLon,heading),to=route.project(targetLat,targetLon,heading);
+        RouteFollower.Projection from=Double.isFinite(blendRouteProgress)?route.positionAt(blendRouteProgress):route.project(blendLat,blendLon,heading),to=route.project(targetLat,targetLon,heading);
         if(from!=null&&to!=null&&Math.abs(to.progressMeters()-from.progressMeters())<=distance+50) {
             double delta=to.progressMeters()-from.progressMeters();
             RouteFollower.Projection next=route.positionAt(from.progressMeters()+Math.copySign(Math.min(Math.abs(delta),step),delta));
-            if(next!=null){blendLat=next.latitude();blendLon=next.longitude();}
+            if(next!=null){blendLat=next.latitude();blendLon=next.longitude();blendRouteProgress=next.progressMeters();}
             // Keep the route interpolation for this recovery even when its remaining offset is small.
-            if(Math.abs(delta)<=step&&distance<=step&&Math.hypot((targetLat-blendLat)*111320,(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.05)blendingRecovery=false;
-        } else if(distance<=step){blendLat=targetLat;blendLon=targetLon;blendingRecovery=false;}
+            if(Math.abs(delta)<=step&&distance<=step&&Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.00001)blendingRecovery=false;
+        } else if(distance<=step){blendLat=targetLat;blendLon=targetLon;blendingRecovery=Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))>.05;}
         else {blendLat+=(targetLat-blendLat)*step/distance;blendLon+=(targetLon-blendLon)*step/distance;}
     }
 
@@ -162,6 +163,7 @@ public final class LiveNavigation {
         }
         boolean recovering=estimated(now)&&next.accuracy()<=20;
         boolean poorDuringOutage=estimated(now)&&next.accuracy()>20;
+        RouteFollower.Estimate priorRoute=followingRoute()?routeEstimate:null;
         double priorLat=latitude(),priorLon=longitude(),priorSpeed=speed(now);clock=now;
         candidates=0;candidate=null;
         double dt=fix==null?1:Math.min(5,(next.time()-fix.time())*1e-9);
@@ -221,6 +223,7 @@ public final class LiveNavigation {
         if(recovering&&OutageTuning.SMOOTH_RECOVERY){
             largeRecovery=Math.hypot((next.lat()-priorLat)*111320,(next.lon()-priorLon)*111320*Math.cos(Math.toRadians(priorLat)))>10;
             blendingRecovery=largeRecovery;blendLat=priorLat;blendLon=priorLon;blendTime=now;
+            blendRouteProgress=priorRoute==null?Double.NaN:priorRoute.progressMeters();
         }
         if(healthy(now)){routeGyroHeading=inertial.heading();anchorRoute();routeEstimate=null;}
         return true;
