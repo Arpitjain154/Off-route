@@ -16,6 +16,9 @@ public final class NavigationFusion {
     private Fix latest, recovery, courseAnchor;
     private int rejected;
     private double[] stopPosition;
+    public boolean boundedOutageSpeed=OutageTuning.BOUNDED_SPEED;
+    private double trustedSpeed;
+    private boolean providerLost;
     public String diagnostic="Waiting for sensors and GPS";
 
     public void mount(double[] gravity,double[] forward,double heading,double speed) {
@@ -71,6 +74,7 @@ public final class NavigationFusion {
         ImuSample sample=new ImuSample(t,clean[0].apply(raw.ax(),dt),clean[1].apply(raw.ay(),dt),
             clean[2].apply(raw.az(),dt),raw.gx(),raw.gy(),raw.gz());
         physics.observe(sample);
+        filter.outageSpeed(boundedOutageSpeed && filter.initialized && !physics.isStopped(t) && (providerLost || t-lastFix>2_000_000_000L),trustedSpeed);
         // A missing gyro is not a zero angular rate. GPS still updates, but unaided INS is unavailable.
         if (tiltReady && gyroFresh && (physics.aligned || physics.isStopped(t))) filter.predict(sample);
         if (t-lastPhysics>=100_000_000L && gyroFresh) {
@@ -144,11 +148,12 @@ public final class NavigationFusion {
             }
         }
         if (!accepted) return false;
-        rejected=0;recovery=null;latest=f;lastFix=f.time();
+        rejected=0;recovery=null;latest=f;lastFix=f.time();providerLost=false;
         if(courseAnchor==null||f.time()-courseAnchor.time()>=10_000_000_000L)courseAnchor=f;
         physics.gpsPosition(f.time(),f.lat(),f.lon(),f.accuracy());
         physics.gpsSpeed(f.time(),f.speedValid()?f.speed():Double.NaN,f.speedError());
         if(physics.isStopped(now)) {
+            trustedSpeed=0;
             filter.update(Measurement.direct(3,new double[]{0,0,0},filter.v,.0025),1);
             return true;
         }
@@ -168,9 +173,10 @@ public final class NavigationFusion {
             filter.update(new Measurement(new org.ejml.simple.SimpleMatrix(1,1,true,new double[]{f.speed()-magnitude}),h,
                 org.ejml.simple.SimpleMatrix.identity(1).scale(Math.max(.09,f.speedError()*f.speedError()))),.8);
         }
+        trustedSpeed=f.speedValid()?f.speed():filter.speed();
         return true;
     }
-    public void providerDisabled() { lastFix=0;latest=null;courseAnchor=null; }
+    public void providerDisabled() { providerLost=true;lastFix=0;latest=null;courseAnchor=null; }
     public long lastFix() { return lastFix; }
     public boolean aligned() { return physics.aligned; }
     public boolean imuFresh(long now) { return lastImu>0 && now>=lastImu && now-lastImu<500_000_000L; }

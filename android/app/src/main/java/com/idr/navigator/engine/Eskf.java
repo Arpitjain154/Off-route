@@ -17,6 +17,17 @@ public final class Eskf {
     public boolean initialized = false;
     public double originLat, originLon, originAlt;
     private static final double EARTH = 6378137.0;
+    private boolean boundedOutage;
+    private double outageAnchor;
+    private double[] outageBias;
+
+    public void outageSpeed(boolean active,double trustedSpeed) {
+        if(active&&!boundedOutage) {
+            outageAnchor=Math.max(0,Math.min(80,trustedSpeed));outageBias=ba.clone();
+            double h=Math.toRadians(heading());v[0]=Math.sin(h)*outageAnchor;v[1]=Math.cos(h)*outageAnchor;
+        }
+        boundedOutage=active;
+    }
 
     public Eskf() {
         for (int i = 0; i < 3; i++) {
@@ -105,6 +116,16 @@ public final class Eskf {
         q = normalize(multiply(q, delta(new double[] { w[0] * dt, w[1] * dt, w[2] * dt })));
         double[] world = rotate(midpoint, a);
         world[2] -= 9.80665;
+        if(boundedOutage) {
+            // Freeze the pre-loss acceleration bias for this bounded speed integrator.
+            double[] corrected=rotate(midpoint,new double[]{s.ax()-outageBias[0],s.ay()-outageBias[1],s.az()-outageBias[2]});
+            double h=Math.toRadians(heading()),east=Math.sin(h),north=Math.cos(h);
+            double acceleration=Math.max(-OutageTuning.MAX_ACCELERATION_MPS2,Math.min(OutageTuning.MAX_ACCELERATION_MPS2,corrected[0]*east+corrected[1]*north));
+            double next=Math.max(0,Math.min(80,Math.max(outageAnchor-OutageTuning.MAX_SPEED_CHANGE_MPS,
+                Math.min(outageAnchor+OutageTuning.MAX_SPEED_CHANGE_MPS,speed()+acceleration*dt))));
+            // Position and velocity share the same bounded propagation, including turns.
+            world[0]=(next*east-v[0])/dt;world[1]=(next*north-v[1])/dt;
+        }
         for (int i = 0; i < 3; i++) {
             p[i] += v[i] * dt + .5 * world[i] * dt * dt;
             v[i] += world[i] * dt;
