@@ -22,5 +22,7 @@ test('GPS recovery must establish several distinct reliable fixes before rerouti
  for(let i=1;i<8;i++)assert.equal(gate.shouldReroute({...base,estimated:true,fixTime:i},80,i*1000),false);
  assert.equal(gate.shouldReroute({...base,fixTime:10},80,10000),false);
  assert.equal(gate.shouldReroute({...base,fixTime:11},80,11000),false);
- assert.equal(gate.shouldReroute({...base,fixTime:12},80,13000),true);
+ // Recovery now needs more than 10 seconds of continuous accepted GPS deviation.
+ for(let i=12;i<=20;i++)assert.equal(gate.shouldReroute({...base,fixTime:i},80,i*1000),false);
+ assert.equal(gate.shouldReroute({...base,fixTime:21},80,21000),true);
 });

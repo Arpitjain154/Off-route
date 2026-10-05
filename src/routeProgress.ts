@@ -32,15 +32,32 @@ export function projectOnRoute(point:{lat:number;lon:number},coordinates:[number
 /** Decisions consume distinct GPS fixes, not repeated UI polling of one fix. */
 export class RerouteGate {
   private lastFix=-1;private offSince=0;private count=0;private lastRequest=-Infinity;
+  private recovering=false;private lastRecoveryFixAt:number|null=null;private onSince:number|null=null;
   shouldReroute(pose:Pose,distance:number,now:number) {
+    if(pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false))this.recovering=true;
     const precision=Math.max(pose.gpsAccuracy??pose.accuracy,pose.accuracy);
-    if((pose.gpsAccuracy!==undefined&&(!Number.isFinite(pose.gpsAccuracy)||pose.gpsAccuracy<0))||pose.accuracy<0||!pose.ready||pose.estimated||pose.positionFresh===false||pose.health!=='HEALTHY'||!Number.isFinite(precision)||precision<0||precision>25||(pose.gpsAge!==undefined&&pose.gpsAge>2.5)||!Number.isFinite(distance)||pose.speedAvailable===false){this.offSince=0;this.count=0;return false;}
+    if((pose.gpsAccuracy!==undefined&&(!Number.isFinite(pose.gpsAccuracy)||pose.gpsAccuracy<0))||pose.accuracy<0||!pose.ready||pose.estimated||pose.positionFresh===false||pose.health!=='HEALTHY'||!Number.isFinite(precision)||precision<0||precision>25||(pose.gpsAge!==undefined&&pose.gpsAge>2.5)||!Number.isFinite(distance)||pose.speedAvailable===false){this.offSince=0;this.count=0;this.onSince=null;this.lastRecoveryFixAt=null;return false;}
     const fix=pose.fixTime??now;
     if(fix===this.lastFix)return false;this.lastFix=fix;
-    if(distance<=Math.max(25,2*precision)||pose.stationary){this.offSince=0;this.count=0;return false;}
+    const healthyThreshold=Math.max(25,2*precision);
+    if(this.recovering){
+      // A suspended UI or missing fixes cannot establish continuous GPS evidence.
+      if(this.lastRecoveryFixAt!==null&&(now-this.lastRecoveryFixAt>2500||now<this.lastRecoveryFixAt)){
+        this.offSince=0;this.count=0;this.onSince=null;
+      }
+      this.lastRecoveryFixAt=now;
+      if(distance<=healthyThreshold){
+        if(this.onSince===null)this.onSince=now;
+        if(now-this.onSince>10000){this.recovering=false;this.lastRecoveryFixAt=null;}
+        this.offSince=0;this.count=0;return false;
+      }
+      this.onSince=null;
+    }
+    if(distance<=Math.max(this.recovering?40:25,2*precision)||pose.stationary){this.offSince=0;this.count=0;return false;}
     if(!this.count)this.offSince=now;
     this.count++;
-    if(this.count<3||now-this.offSince<2500||now-this.lastRequest<10000)return false;
+    const sustained=this.recovering?now-this.offSince>10000:now-this.offSince>=2500;
+    if(this.count<3||!sustained||now-this.lastRequest<10000)return false;
     this.lastRequest=now;this.count=0;this.offSince=0;return true;
   }
 }

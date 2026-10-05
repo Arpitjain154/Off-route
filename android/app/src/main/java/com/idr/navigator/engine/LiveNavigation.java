@@ -17,19 +17,20 @@ public final class LiveNavigation {
     private boolean predictionValid;
     private final RouteFollower route=new RouteFollower();
     private RouteFollower.Estimate routeEstimate;
+    private double routeGyroHeading;
     public boolean routeFollow=OutageTuning.ROUTE_FOLLOW;
     public void setActiveRoute(double[][] coordinates) {
         route.setRoute(coordinates);
         if(fix!=null&&healthy(clock))anchorRoute();
     }
     private void anchorRoute() {
-        route.anchor(fix.time(),fix.lat(),fix.lon(),fix.accuracy(),heading,inertial.heading());
+        route.anchor(fix.time(),fix.lat(),fix.lon(),fix.accuracy(),heading,routeGyroHeading);
     }
     public boolean followingRoute(){return routeEstimate!=null&&!healthy(clock)&&fused(clock);}
     public double alongTrackUncertainty(long now){return followingRoute()?Math.max(routeEstimate.alongUncertaintyMeters(),fusion.filter.directionalUncertainty(routeEstimate.bearingDegrees())):uncertainty(now);}
     public double crossTrackUncertainty(long now){return followingRoute()?routeEstimate.crossTrackUncertaintyMeters():uncertainty(now);}
     private void updateRoute(long now) {
-        routeEstimate=routeFollow&&fused(now)?route.update(now,!healthy(now),stopped(now),fusion.speed(now),inertial.heading()):null;
+        routeEstimate=routeFollow&&fused(now)?route.update(now,!healthy(now),stopped(now),fusion.speed(now),routeGyroHeading):null;
         if(routeEstimate!=null) {
             // Carry the route-constrained pose into the same filter so fallback does not
             // jump to a separately diverged trajectory. Preserve the full covariance.
@@ -43,6 +44,29 @@ public final class LiveNavigation {
     private boolean fusedPose;
     private long clock,recoveryStart;private double recoveryLat,recoveryLon,recoverySeconds,recoverySpeed;
     private double recoveryGpsLat,recoveryGpsLon,recoveryGpsSpeed;
+    private boolean blendingRecovery,largeRecovery;
+    private long blendTime;
+    private double blendLat,blendLon;
+    private double targetLat(){return retainInertialPosition()?fusion.filter.latitude():fix==null?23.2418:holdingStop?stopLat:fix.lat();}
+    private double targetLon(){return retainInertialPosition()?fusion.filter.longitude():fix==null?77.4029:holdingStop?stopLon:fix.lon();}
+    private void advanceRecovery(long now) {
+        if(!blendingRecovery||now<=blendTime)return;
+        if(!fresh(now)&&!fused(now)){blendTime=now;return;}
+        double dt=(now-blendTime)*1e-9;blendTime=now;
+        double targetLat=targetLat(),targetLon=targetLon();
+        double north=(targetLat-blendLat)*111320,east=(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat));
+        double distance=Math.hypot(east,north);
+        double step=Math.min(5,dt*(Math.max(0,Double.isFinite(speed)?speed:0)+10));
+        RouteFollower.Projection from=route.project(blendLat,blendLon,heading),to=route.project(targetLat,targetLon,heading);
+        if(from!=null&&to!=null&&Math.abs(to.progressMeters()-from.progressMeters())<=distance+50) {
+            double delta=to.progressMeters()-from.progressMeters();
+            RouteFollower.Projection next=route.positionAt(from.progressMeters()+Math.copySign(Math.min(Math.abs(delta),step),delta));
+            if(next!=null){blendLat=next.latitude();blendLon=next.longitude();}
+            // Keep the route interpolation for this recovery even when its remaining offset is small.
+            if(Math.abs(delta)<=step&&distance<=step&&Math.hypot((targetLat-blendLat)*111320,(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.05)blendingRecovery=false;
+        } else if(distance<=step){blendLat=targetLat;blendLon=targetLon;blendingRecovery=false;}
+        else {blendLat+=(targetLat-blendLat)*step/distance;blendLon+=(targetLon-blendLon)*step/distance;}
+    }
 
     public void imu(ImuSample sample) { imu(sample,true); }
     public void imu(ImuSample sample,boolean gyroFresh) {
@@ -50,6 +74,11 @@ public final class LiveNavigation {
         predictionValid=Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())&&
             (lastImu==0||sample.t()-lastImu<=250_000_000L);
         if(!Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())){gyroscopeFresh=false;return;}
+        double routeDt=lastImu==0?0:(sample.t()-lastImu)*1e-9;
+        if(!healthy(sample.t())&&gyroFresh&&routeDt>0&&routeDt<=.25) {
+            var d=inertial.diagnostics();double g=Math.sqrt(d.gravityX()*d.gravityX()+d.gravityY()*d.gravityY()+d.gravityZ()*d.gravityZ());
+            if(g>8)routeGyroHeading=wrap(routeGyroHeading-Math.toDegrees((sample.gx()*d.gravityX()+sample.gy()*d.gravityY()+sample.gz()*d.gravityZ())/g-d.angularBias())*routeDt);
+        }
         stationary.observe(sample);lastImu=sample.t();clock=sample.t();gyroscopeFresh=gyroFresh;
         if(!stationary.isStopped(sample.t()))holdingStop=false;
         if(gyroFresh)inertial.predict(sample,healthy(sample.t()),stationary.isStopped(sample.t()));
@@ -58,7 +87,9 @@ public final class LiveNavigation {
         fusion.imu(sample,gyroFresh&&gravityAge>=-20_000_000L&&gravityAge<500_000_000L);
         if(!inertial.aligned())fusion.invalidateMount();
         if(fused(sample.t()))fusedPose=true;
+        if(healthy(sample.t()))routeGyroHeading=inertial.heading();
         updateRoute(sample.t());
+        advanceRecovery(sample.t());
     }
     public void gravity(long t,double x,double y,double z){inertial.gravity(t,x,y,z);fusion.gravity(t,x,y,z);if(!inertial.aligned())fusion.invalidateMount();}
     public boolean fused(long now){
@@ -91,14 +122,16 @@ public final class LiveNavigation {
         fusion.filter.update(new Measurement(new org.ejml.simple.SimpleMatrix(1,1,true,new double[]{east*Math.cos(h)-north*Math.sin(h)}),
             jacobian,org.ejml.simple.SimpleMatrix.identity(1).scale(25)),trust);
     }
-    public void tick(long now){clock=now;}
+    public void tick(long now){clock=now;advanceRecovery(now);}
     public boolean healthy(long now){return fresh(now)&&fix.accuracy()<=20;}
     public boolean estimated(long now){return !healthy(now)&&fused(now);}
     public boolean trackingAvailable(long now){return fresh(now)||estimated(now);}
     public String speedSource(long now){return fused(now)?"ESKF · "+(healthy(now)?"GNSS + IMU":"IMU")+(fusion.aiActive(now)?" + AI":""):speedAvailable(now)?stopped(now)?"Confirmed stop":"GNSS speed · aligning ESKF":"Awaiting sensor alignment";}
-    public String status(long now){return recoveryFactor()>0?"Reconciling ESKF estimate with GPS":fused(now)?healthy(now)?"ESKF · GNSS + INS fusion":"ESKF · inertial tracking":!ready()?"Waiting for GPS":!fresh(now)?inertial.diagnostic:"Live GNSS tracking";}
-    public double uncertainty(long now){double base=fused(now)||!fresh(now)&&fusedPose?fusion.filter.uncertainty():accuracy();return Math.hypot(base,recoveryFactor()*Math.hypot(recoveryGpsLat*111320,recoveryGpsLon*111320*Math.cos(Math.toRadians(latitude()))));}
-    private double recoveryFactor(){return recoveryStart>0&&clock>=recoveryStart?Math.max(0,1-(clock-recoveryStart)*1e-9/recoverySeconds):0;}
+    public String status(long now){return blendingRecovery||recoveryFactor()>0?"Reconciling ESKF estimate with GPS":fused(now)?healthy(now)?"ESKF · GNSS + INS fusion":"ESKF · inertial tracking":!ready()?"Waiting for GPS":!fresh(now)?inertial.diagnostic:"Live GNSS tracking";}
+    public double uncertainty(long now){double base=fused(now)||!fresh(now)&&fusedPose?fusion.filter.uncertainty():accuracy();double offset=blendingRecovery?Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))):recoveryFactor()*Math.hypot(recoveryGpsLat*111320,recoveryGpsLon*111320*Math.cos(Math.toRadians(latitude())));
+        if(blendingRecovery&&fix!=null)offset=Math.max(offset,Math.hypot((fix.lat()-blendLat)*111320,(fix.lon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))));
+        return Math.hypot(base,offset);}
+    private double recoveryFactor(){if(OutageTuning.SMOOTH_RECOVERY&&largeRecovery)return 0;return recoveryStart>0&&clock>=recoveryStart?Math.max(0,1-(clock-recoveryStart)*1e-9/recoverySeconds):0;}
     public void compass(long time,double degrees,double error) {
         if(time<=compassTime||!Double.isFinite(degrees+error)||error<0||error>30)return;
         compassTime=time;compass=wrap(degrees);compassError=error;
@@ -185,11 +218,17 @@ public final class LiveNavigation {
             recoveryLat=priorLat-fusion.filter.latitude();recoveryLon=priorLon-fusion.filter.longitude();
             recoveryGpsSpeed=priorSpeed-speed;recoverySpeed=priorSpeed-fusion.speed(now);
         }
-        if(healthy(now)){anchorRoute();routeEstimate=null;}
+        if(recovering&&OutageTuning.SMOOTH_RECOVERY){
+            largeRecovery=Math.hypot((next.lat()-priorLat)*111320,(next.lon()-priorLon)*111320*Math.cos(Math.toRadians(priorLat)))>10;
+            blendingRecovery=largeRecovery;blendLat=priorLat;blendLon=priorLon;blendTime=now;
+        }
+        if(healthy(now)){routeGyroHeading=inertial.heading();anchorRoute();routeEstimate=null;}
         return true;
     }
     private boolean disabled;
-    public void providerDisabled(){disabled=true;speed=Double.NaN;courseAnchor=null;fusion.providerDisabled();}
+    public void providerDisabled(){
+        if(blendingRecovery&&fusion.filter.initialized){double[] p=fusion.filter.enu(blendLat,blendLon,fusion.filter.originAlt);fusion.filter.p[0]=p[0];fusion.filter.p[1]=p[1];blendingRecovery=false;}
+        disabled=true;speed=Double.NaN;courseAnchor=null;fusion.providerDisabled();}
     public void providerEnabled(){disabled=false;}
     public boolean fresh(long now){return !disabled&&fix!=null&&now>=fix.time()&&now-fix.time()<=2_000_000_000L;}
     public boolean ready(){return fix!=null;}
@@ -198,8 +237,8 @@ public final class LiveNavigation {
     // Losing alignment makes the estimate unavailable, not a reason to rewind the
     // map to the GPS coordinate from before the outage. Keep the last known pose.
     private boolean retainInertialPosition(){return fused(clock)||!fresh(clock)&&fusedPose;}
-    public double latitude(){return retainInertialPosition()?fusion.filter.latitude()+recoveryLat*recoveryFactor():fix==null?23.2418:(holdingStop?stopLat:fix.lat())+recoveryGpsLat*recoveryFactor();}
-    public double longitude(){return retainInertialPosition()?fusion.filter.longitude()+recoveryLon*recoveryFactor():fix==null?77.4029:(holdingStop?stopLon:fix.lon())+recoveryGpsLon*recoveryFactor();}
+    public double latitude(){if(blendingRecovery)return blendLat;return retainInertialPosition()?fusion.filter.latitude()+recoveryLat*recoveryFactor():fix==null?23.2418:(holdingStop?stopLat:fix.lat())+recoveryGpsLat*recoveryFactor();}
+    public double longitude(){if(blendingRecovery)return blendLon;return retainInertialPosition()?fusion.filter.longitude()+recoveryLon*recoveryFactor():fix==null?77.4029:(holdingStop?stopLon:fix.lon())+recoveryGpsLon*recoveryFactor();}
     public double accuracy(){return fix==null?0:fix.accuracy();}
     public boolean stopped(long now){return fused(now)?fusion.physics.isStopped(now):fresh(now)&&stationary.isStopped(now);}
     public boolean speedAvailable(long now){return fused(now)||fresh(now)&&(stopped(now)||Double.isFinite(speed));}

@@ -64,6 +64,25 @@ public final class SensorCaptureService
     private final AiSpeedReading aiSpeedReading=new AiSpeedReading();
     private float[] previousHealth = new float[5];
     private long previousHealthTime;
+    private final GnssLossDetector lossDetector=new GnssLossDetector();
+    private double lossLatencyMs=-1;
+    private String lossReason="none";
+    private void detectLoss(long now) {
+        live.providerDisabled();lastFix=0;health="BLACKOUT";
+        lossLatencyMs=Math.max(0,(SystemClock.elapsedRealtimeNanos()-lossDetector.evidenceNs())*1e-6);
+        lossReason=lossDetector.reason();
+        EngineDiagnostics.stage(this,"GNSS loss "+lossReason+" evidence-to-detection="+lossLatencyMs+" ms (callback receipt clock)");
+        publish(now);
+    }
+    private final GnssStatus.Callback gnssStatus=new GnssStatus.Callback() {
+        @Override public void onSatelliteStatusChanged(GnssStatus status) {
+            if(stopping||!OutageTuning.EARLY_LOSS)return;
+            long now=SystemClock.elapsedRealtimeNanos();int used=0;double cn0=0;
+            for(int i=0;i<status.getSatelliteCount();i++)if(status.usedInFix(i)){used++;cn0+=status.getCn0DbHz(i);}
+            boolean before=lossDetector.detected();
+            if(lossDetector.used(now,used,used==0?0:cn0/used)&&!before)detectLoss(now);
+        }
+    };
 
     public void onCreate() {
         super.onCreate();
@@ -182,6 +201,8 @@ public final class SensorCaptureService
                 thread.getLooper()
             );
             locationRegistrations++;
+            try {locations.registerGnssStatusCallback(gnssStatus,handler);}
+            catch(RuntimeException e){EngineDiagnostics.failure(this,"GNSS status unavailable",e);}
             // Raw measurements are optional. A vendor callback failure must not disable GPS fixes.
             try {
                 androidx.core.location.LocationManagerCompat.registerGnssMeasurementsCallback(locations, command -> handler.post(command), gnss);
@@ -344,6 +365,7 @@ public final class SensorCaptureService
                 l.isFromMockProvider(),accepted);
         } catch(IOException error){recordingFailed("Raw GNSS recording failed",error);}
         if(accepted) {
+            if(fix.accuracy()<=20)lossDetector.acceptedFix(now);
             lastLocation=new Location(l);lastFix=fix.time();
             declination=new GeomagneticField((float)l.getLatitude(),(float)l.getLongitude(),(float)(l.hasAltitude()?l.getAltitude():0),System.currentTimeMillis()).getDeclination();
         }
@@ -353,7 +375,9 @@ public final class SensorCaptureService
     private double displayedSpeed(long now) { return live.speed(now); }
 
     @Override public void onProviderDisabled(String provider) {
-        if (LocationManager.GPS_PROVIDER.equals(provider)) { navigation.providerDisabled();live.providerDisabled();lastFix=0; health="BLACKOUT";publish(SystemClock.elapsedRealtimeNanos()); }
+        if (LocationManager.GPS_PROVIDER.equals(provider)) {
+            long now=SystemClock.elapsedRealtimeNanos();lossDetector.providerDisabled(now);detectLoss(now);
+        }
     }
     @Override public void onProviderEnabled(String provider) { if(LocationManager.GPS_PROVIDER.equals(provider))live.providerEnabled(); }
     @Override public void onStatusChanged(String provider, int status, Bundle extras) {}
@@ -395,7 +419,7 @@ public final class SensorCaptureService
                             double speedPrediction=models.speed(features);
                             aiSpeedReading.update(now,models.placeholder("speed")?Double.NaN:speedPrediction);
                             live.models(now,models.enabled("speed")?speedPrediction:Double.NaN,
-                                models.enabled("motion")?motion:null,models.enabled("gps-health")?prediction:null,
+                                models.enabled("motion")?motion:null,null,
                                 lastLocation!=null&&lastLocation.hasSpeed()?(double)lastLocation.getSpeed():null,
                                 live.healthy(now)&&live.accuracy()<=15&&now-lastFix<=1_000_000_000L&&live.imuFresh(now)&&lastFix>lastCalibrationFix&&lastLocation!=null&&lastLocation.hasSpeedAccuracy()&&lastLocation.getSpeedAccuracyMetersPerSecond()>=0&&lastLocation.getSpeedAccuracyMetersPerSecond()<=1);
                             lastCalibrationFix=Math.max(lastCalibrationFix,lastFix);
@@ -472,6 +496,8 @@ public final class SensorCaptureService
         s.put("crossTrackUncertainty",live.crossTrackUncertainty(now));
         s.put("roadHalfWidthMeters",6); // Assumed corridor; offline geometry contains no measured width.
         s.put("routeFollowing",live.followingRoute());
+        s.put("gnssLossLatencyMs",lossLatencyMs);
+        s.put("gnssLossReason",lossReason);
         s.put(
             "confidence",
             live.trackingAvailable(now) ? Math.max(0, Math.min(1, Math.exp(-live.uncertainty(now) / 50))) : 0
@@ -601,6 +627,7 @@ public final class SensorCaptureService
         if (locations != null) try {
             locations.removeUpdates(this);
             androidx.core.location.LocationManagerCompat.unregisterGnssMeasurementsCallback(locations, gnss);
+            locations.unregisterGnssStatusCallback(gnssStatus);
         } catch (RuntimeException e) { EngineDiagnostics.failure(this, "Unregistering GPS", e); }
         if (handler != null) {
         handler.removeCallbacks(ticker);

@@ -15,7 +15,15 @@ export function useRouteNavigation(pose:Pose,route:RoadRoute|null,onRoute:(route
     return()=>clearTimeout(timer);
   },[notice.at]);
   useEffect(()=>{
-    if(!route?.live||pending.current)return;
+    if(!route?.live)return;
+    if(pending.current){
+      if(pose.ready&&(pose.estimated||pose.health==='BLACKOUT'||pose.positionFresh===false)){
+        // Preserve outage history and discard the pre-outage request even if GPS returns first.
+        gate.current.shouldReroute(pose,Infinity,Date.now());epoch.current++;
+        if(notice.text)setNotice({text:'',at:0});
+      }
+      return;
+    }
     const projection=projectOnRoute(pose,route.coordinates);
     const reliable=!pose.estimated&&pose.health==='HEALTHY'&&pose.positionFresh!==false;
     if(reliable&&projection.distance<=Math.max(25,2*(pose.gpsAccuracy??pose.accuracy))&&notice.text){

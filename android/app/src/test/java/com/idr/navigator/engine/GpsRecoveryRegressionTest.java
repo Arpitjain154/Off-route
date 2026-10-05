@@ -20,27 +20,35 @@ public class GpsRecoveryRegressionTest {
         }
         assertTrue(n.estimated(RETURN));return n;
     }
-    @Test public void largeOffsetBlendsWithoutJumpAndClearsWithinTwoSeconds() {
+    // The old two-second 150 m transition is intentionally replaced by a bounded correction.
+    @Test public void largeOffsetBlendsWithoutJumpAtEveryPublishedFrameAndConverges() {
         for(double offset:new double[]{-150,150}) {
             var n=outage();double prior=n.latitude(),target=prior+offset/111320;
             assertTrue(n.fix(fix(RETURN,target,4),RETURN));
             assertEquals("First recovery frame remains continuous",prior,n.latitude(),1e-10);
-            assertTrue("Reported uncertainty includes the unresolved offset",n.uncertainty(RETURN)>149);
-            n.tick(RETURN+S);
-            assertEquals(prior+offset/2/111320,n.latitude(),1e-10);
-            n.tick(RETURN+2*S);
-            assertEquals("Fresh GPS must not retain a 150 m offset for eight seconds",target,n.latitude(),1e-10);
-            assertEquals(4,n.uncertainty(RETURN+2*S),1e-8);
-            assertEquals("Live GNSS tracking",n.status(RETURN+2*S));
+            assertTrue("Uncertainty includes unresolved GNSS offset",n.uncertainty(RETURN)>149);
+            double previous=prior;
+            for(int i=1;i<=120;i++) {
+                long t=RETURN+i*S/10;
+                if(i%10==0)n.fix(fix(t,target,4),t);
+                n.tick(t);
+                assertTrue("Recovery correction is bounded per 100 ms",Math.abs(n.latitude()-previous)*111320<=1.50001);
+                previous=n.latitude();
+            }
+            assertEquals("Repeated good fixes converge without restarting recovery",target,n.latitude(),1e-10);
+            assertEquals(4,n.uncertainty(RETURN+12*S),1e-8);
         }
     }
     @Test public void newGoodFixesDoNotRestartTheRecoveryClock() {
-        var n=outage();double target=n.latitude()+150.0/111320;
+        var n=outage();double initial=n.latitude(),target=initial+150.0/111320;
         n.fix(fix(RETURN,target,4),RETURN);
-        n.fix(fix(RETURN+S,target+5.0/111320,4),RETURN+S);
-        n.fix(fix(RETURN+2*S,target+10.0/111320,4),RETURN+2*S);
-        assertEquals(target+10.0/111320,n.latitude(),1e-10);
-        assertEquals(5,n.speed(RETURN+2*S),1e-10);
+        for(int i=1;i<=200;i++) {
+            long t=RETURN+i*S/10;
+            if(i%10==0)n.fix(fix(t,target+i*.5/111320,4),t);
+            n.tick(t);
+        }
+        assertEquals(target+100.0/111320,n.latitude(),1e-10);
+        assertEquals(5,n.speed(RETURN+20*S),1e-10);
     }
     @Test public void poorOrStaleReturnCannotStartGpsRecovery() {
         var n=outage();double prior=n.latitude();
@@ -55,5 +63,10 @@ public class GpsRecoveryRegressionTest {
         assertEquals(prior,n.latitude(),1e-10);
         n.tick(RETURN+S/2);assertEquals((prior+target)/2,n.latitude(),1e-10);
         n.tick(RETURN+S);assertEquals(target,n.latitude(),1e-10);
+    }
+    @Test public void lossDuringBlendResumesFromDisplayedPosition() {
+        var n=outage();double prior=n.latitude();n.fix(fix(RETURN,prior+150.0/111320,4),RETURN);
+        n.tick(RETURN+S/10);double displayed=n.latitude();n.providerDisabled();
+        assertEquals(displayed,n.latitude(),1e-10);
     }
 }
