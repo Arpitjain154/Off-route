@@ -468,6 +468,10 @@ public final class SensorCaptureService
         s.put("gpsAccuracy",lastLocation==null?0:lastLocation.getAccuracy());
         s.put("gpsAge",lastFix==0?-1:(now-lastFix)*1e-9);
         s.put("accuracy",live.uncertainty(now));
+        s.put("alongTrackUncertainty",live.alongTrackUncertainty(now));
+        s.put("crossTrackUncertainty",live.crossTrackUncertainty(now));
+        s.put("roadHalfWidthMeters",6); // Assumed corridor; offline geometry contains no measured width.
+        s.put("routeFollowing",live.followingRoute());
         s.put(
             "confidence",
             live.trackingAvailable(now) ? Math.max(0, Math.min(1, Math.exp(-live.uncertainty(now) / 50))) : 0
@@ -502,6 +506,8 @@ public final class SensorCaptureService
         }
         snapshot = s;
     }
+
+    public void setActiveRoute(double[][] coordinates) { live.setActiveRoute(coordinates); }
 
     public JSObject position() {
         return snapshot;

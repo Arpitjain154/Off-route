@@ -103,6 +103,24 @@ public final class DrEnginePlugin extends Plugin {
     }
 
     @PluginMethod
+    public void setActiveRoute(PluginCall call) {
+        SensorCaptureService service=SensorCaptureService.instance;
+        if(service==null||!service.isReady()){call.reject("Tracking engine is not running");return;}
+        try {
+            JSArray input=call.getArray("coordinates",new JSArray());
+            if(input.length()>100000)throw new IllegalArgumentException("Route is too large");
+            double[][] points=new double[input.length()][2];
+            for(int i=0;i<input.length();i++) {
+                org.json.JSONArray point=input.getJSONArray(i);
+                points[i][0]=point.getDouble(0);points[i][1]=point.getDouble(1);
+                if(!Double.isFinite(points[i][0]+points[i][1])||Math.abs(points[i][0])>180||Math.abs(points[i][1])>85)
+                    throw new IllegalArgumentException("Invalid route coordinate");
+            }
+            service.handler.post(()->{service.setActiveRoute(points);call.resolve();});
+        } catch(Exception e){call.reject("Invalid active route",e);}
+    }
+
+    @PluginMethod
     public void getPosition(PluginCall call) {
         SensorCaptureService service = SensorCaptureService.instance;
         if (service == null || !service.isReady()) {

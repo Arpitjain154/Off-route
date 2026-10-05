@@ -15,6 +15,28 @@ public final class LiveNavigation {
     private long lastImu;
     private boolean gyroscopeFresh;
     private boolean predictionValid;
+    private final RouteFollower route=new RouteFollower();
+    private RouteFollower.Estimate routeEstimate;
+    public boolean routeFollow=OutageTuning.ROUTE_FOLLOW;
+    public void setActiveRoute(double[][] coordinates) {
+        route.setRoute(coordinates);
+        if(fix!=null&&healthy(clock))anchorRoute();
+    }
+    private void anchorRoute() {
+        route.anchor(fix.time(),fix.lat(),fix.lon(),fix.accuracy(),heading,inertial.heading());
+    }
+    public boolean followingRoute(){return routeEstimate!=null&&!healthy(clock)&&fused(clock);}
+    public double alongTrackUncertainty(long now){return followingRoute()?Math.max(routeEstimate.alongUncertaintyMeters(),fusion.filter.directionalUncertainty(routeEstimate.bearingDegrees())):uncertainty(now);}
+    public double crossTrackUncertainty(long now){return followingRoute()?routeEstimate.crossTrackUncertaintyMeters():uncertainty(now);}
+    private void updateRoute(long now) {
+        routeEstimate=routeFollow&&fused(now)?route.update(now,!healthy(now),stopped(now),fusion.speed(now),inertial.heading()):null;
+        if(routeEstimate!=null) {
+            // Carry the route-constrained pose into the same filter so fallback does not
+            // jump to a separately diverged trajectory. Preserve the full covariance.
+            double[] position=fusion.filter.enu(routeEstimate.latitude(),routeEstimate.longitude(),fusion.filter.originAlt);
+            fusion.filter.p[0]=position[0];fusion.filter.p[1]=position[1];
+        }
+    }
     public final InertialNavigation inertial=new InertialNavigation();
     public final NavigationFusion fusion=new NavigationFusion();
     private long lastModel,lastRoad,lastCalibrationFix;
@@ -36,6 +58,7 @@ public final class LiveNavigation {
         fusion.imu(sample,gyroFresh&&gravityAge>=-20_000_000L&&gravityAge<500_000_000L);
         if(!inertial.aligned())fusion.invalidateMount();
         if(fused(sample.t()))fusedPose=true;
+        updateRoute(sample.t());
     }
     public void gravity(long t,double x,double y,double z){inertial.gravity(t,x,y,z);fusion.gravity(t,x,y,z);if(!inertial.aligned())fusion.invalidateMount();}
     public boolean fused(long now){
@@ -162,6 +185,7 @@ public final class LiveNavigation {
             recoveryLat=priorLat-fusion.filter.latitude();recoveryLon=priorLon-fusion.filter.longitude();
             recoveryGpsSpeed=priorSpeed-speed;recoverySpeed=priorSpeed-fusion.speed(now);
         }
+        if(healthy(now)){anchorRoute();routeEstimate=null;}
         return true;
     }
     private boolean disabled;
@@ -180,7 +204,7 @@ public final class LiveNavigation {
     public boolean stopped(long now){return fused(now)?fusion.physics.isStopped(now):fresh(now)&&stationary.isStopped(now);}
     public boolean speedAvailable(long now){return fused(now)||fresh(now)&&(stopped(now)||Double.isFinite(speed));}
     public double speed(long now){double factor=recoveryStart>0?Math.max(0,1-(now-recoveryStart)*1e-9/2):0;return stopped(now)?0:fused(now)?Math.max(0,fusion.speed(now)+recoverySpeed*factor):speedAvailable(now)?Math.max(0,speed+recoveryGpsSpeed*factor):0;}
-    public double heading(){return fused(clock)?fusion.filter.heading():heading;}
+    public double heading(){return followingRoute()?routeEstimate.bearingDegrees():fused(clock)?fusion.filter.heading():heading;}
     public boolean headingReady(long now){return fused(now)||headingKnown&&now>=headingTime&&now-headingTime<5_000_000_000L;}
     public String headingSource(long now){return fused(now)?"ESKF attitude":headingReady(now)?headingSource:"Unavailable";}
     public boolean imuFresh(long now){return gyroscopeFresh&&lastImu>0&&now>=lastImu&&now-lastImu<500_000_000L;}

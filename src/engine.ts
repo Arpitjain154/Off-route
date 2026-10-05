@@ -7,6 +7,7 @@ interface EnginePlugin {
   startEngine(): Promise<void>;
   stopEngine(): Promise<void>;
   getPosition(): Promise<Pose>;
+  setActiveRoute(o: { coordinates: [number, number][] }): Promise<void>;
   requestPermissions(): Promise<unknown>;
   backgroundSettings(): Promise<void>;
   reportDiagnostic(o: { message: string }): Promise<void>;

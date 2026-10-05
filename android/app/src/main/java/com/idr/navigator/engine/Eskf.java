@@ -92,6 +92,11 @@ public final class Eskf {
         return Math.sqrt(Math.max(0, covariance.get(0, 0) + covariance.get(1, 1)));
     }
 
+    public double directionalUncertainty(double bearingDegrees) {
+        double h=Math.toRadians(bearingDegrees),east=Math.sin(h),north=Math.cos(h);
+        return Math.sqrt(Math.max(0,east*east*covariance.get(0,0)+north*north*covariance.get(1,1)+2*east*north*covariance.get(0,1)));
+    }
+
     public void predict(ImuSample s) {
         if (!Double.isFinite(s.ax()+s.ay()+s.az()+s.gx()+s.gy()+s.gz())) return;
         if (last == 0) {

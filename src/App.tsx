@@ -6,7 +6,7 @@ import DestinationSearch from './DestinationSearch';
 import RouteGuidance,{NavigationSummary} from './RouteGuidance';
 import {useRouteNavigation} from './useRouteNavigation';
 import {api,errorMessage,readSettings} from './api';
-import {native,DrEngine,SensorPlugin,ModelPlugin,initialPose,ensureNativeEngine,startEngine,stopEngine,getPose,beginLog,endLog,uploadDrive} from './engine';
+import {native,DrEngine,SensorPlugin,ModelPlugin,initialPose,ensureNativeEngine,startEngine,stopEngine,getPose,beginLog,endLog,uploadDrive,reportEngineDiagnostic} from './engine';
 import {RecordingLifecycle} from './recordingLifecycle';
 import modelManifest from './model-manifest.json';
 import type {Drive,Pose,Report,Settings} from './types';
@@ -82,11 +82,16 @@ export default function App(){
  useEffect(()=>{const query=window.matchMedia('(prefers-color-scheme: dark)');const listener=()=>setSystemDark(query.matches);query.addEventListener('change',listener);return()=>query.removeEventListener('change',listener);},[]);
  useEffect(()=>{if(route?.live)localStorage.setItem('idr-active-route',JSON.stringify(route));else localStorage.removeItem('idr-active-route');},[route]);
  useEffect(()=>{
+   if(native&&running)void DrEngine.setActiveRoute({coordinates:route?.live?route.coordinates:[]}).catch(reportEngineDiagnostic);
+ },[route,running]);
+ useEffect(()=>{
    if(!native)return;let alive=true;
    const resume=async()=>{
     if(document.visibilityState==='hidden')return;
     try{
-      await ensureNativeEngine();await recorder.current!.settled();const p=await getPose();if(!alive)return;
+      await ensureNativeEngine();
+      await DrEngine.setActiveRoute({coordinates:routeRef.current?.live?routeRef.current.coordinates:[]});
+      await recorder.current!.settled();const p=await getPose();if(!alive)return;
       setPose(p);setError('');
       const savedLog=localStorage.getItem('idr-active-log');
       if(!p.logging&&savedLog){
