@@ -14,6 +14,7 @@ public final class LiveNavigation {
     private double stopLat,stopLon;
     private long lastImu;
     private boolean gyroscopeFresh;
+    private boolean predictionValid;
     public final InertialNavigation inertial=new InertialNavigation();
     public final NavigationFusion fusion=new NavigationFusion();
     private long lastModel,lastRoad,lastCalibrationFix;
@@ -23,6 +24,10 @@ public final class LiveNavigation {
 
     public void imu(ImuSample sample) { imu(sample,true); }
     public void imu(ImuSample sample,boolean gyroFresh) {
+        if(sample.t()<=lastImu)return;
+        predictionValid=Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())&&
+            (lastImu==0||sample.t()-lastImu<=250_000_000L);
+        if(!Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())){gyroscopeFresh=false;return;}
         stationary.observe(sample);lastImu=sample.t();clock=sample.t();gyroscopeFresh=gyroFresh;
         if(!stationary.isStopped(sample.t()))holdingStop=false;
         if(gyroFresh)inertial.predict(sample,healthy(sample.t()),stationary.isStopped(sample.t()));
@@ -33,7 +38,16 @@ public final class LiveNavigation {
         if(fused(sample.t()))fusedPose=true;
     }
     public void gravity(long t,double x,double y,double z){inertial.gravity(t,x,y,z);fusion.gravity(t,x,y,z);if(!inertial.aligned())fusion.invalidateMount();}
-    public boolean fused(long now){return fusion.filter.initialized&&fusion.aligned()&&inertial.available(now)&&imuFresh(now);}
+    public boolean fused(long now){
+        boolean sensors=inertial.available(now);
+        if(OutageTuning.OUTAGE_CONTINUITY&&!healthy(now)) {
+            // Availability follows the live ESKF sensor/mount contract, never its growing covariance
+            // or the independent planar estimator. There is deliberately no outage-age timeout.
+            long gravityAge=now-inertial.diagnostics().gravityTime();
+            sensors=predictionValid&&inertial.aligned()&&gravityAge>=-20_000_000L&&gravityAge<500_000_000L;
+        }
+        return fusion.filter.initialized&&fusion.aligned()&&sensors&&imuFresh(now);
+    }
     public void models(long now,double prediction,float[] motion,float[] health,Double gpsSpeed,boolean goodGps) {
         if(now<=lastModel)return;lastModel=now;
         boolean label=goodGps&&healthy(now)&&imuFresh(now)&&fix.accuracy()<=15&&fix.speedValid()&&

@@ -18,8 +18,17 @@ function navigationState(route: RoadRoute, pose: Pose) {
   const fresh = pose.estimated
     ? pose.imuFresh !== false && pose.trackingAvailable !== false
     : pose.positionFresh !== false && pose.health !== 'BLACKOUT' && (pose.gpsAge === undefined || (pose.gpsAge >= 0 && pose.gpsAge <= 8));
-  const usable = !route.live || (pose.ready && valid && fresh && precision <= 50);
   const progress = valid && route.coordinates.length >= 2 ? routeGuidance(route, pose) : null;
+  const outage = pose.estimated === true || pose.health === 'BLACKOUT';
+  // Missing directional information cannot imply a narrower uncertainty than the total.
+  const along = pose.alongTrackUncertainty ?? precision;
+  const cross = pose.crossTrackUncertainty ?? precision;
+  // The offline route has no measured road width; 6 m is an assumed half-width.
+  const halfWidth = pose.roadHalfWidthMeters ?? 6;
+  const directional = Number.isFinite(along) && along >= 0 && Number.isFinite(cross) && cross >= 0 &&
+    Number.isFinite(halfWidth) && halfWidth > 0 && progress !== null &&
+    along < progress.toTurn && cross <= 2 * halfWidth;
+  const usable = !route.live || (pose.ready && valid && fresh && (outage ? directional : precision <= 50));
   const arrival = Boolean(route.live && usable && !pose.estimated && precision <= 25 && progress && progress.remaining < 25 && progress.offRoute < 25);
   const reason = !pose.ready ? 'Waiting for a position fix'
     : !fresh ? 'Waiting for a fresh position'

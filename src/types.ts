@@ -5,6 +5,9 @@ export type Pose = {
   heading: number;
   speed: number;
   accuracy: number;
+  alongTrackUncertainty?: number;
+  crossTrackUncertainty?: number;
+  roadHalfWidthMeters?: number;
   confidence: number;
   health: Health;
   distance: number;

@@ -1,0 +1,9 @@
+{
+  "recording": "S-Vfa01",
+  "rows": 6000,
+  "duration_s": 599.9010000000053,
+  "identical": true,
+  "baseline_sha256": "5672b5e2bfb173abeb641aed1e3df85f661020b53d6de2c98510ebb5f738c19a",
+  "candidate_sha256": "5672b5e2bfb173abeb641aed1e3df85f661020b53d6de2c98510ebb5f738c19a",
+  "contract": "Actual LiveNavigation source; every native sample delivers its recorded phone GNSS tuple, no outage, route, or model. Exact CSV byte comparison."
+}
