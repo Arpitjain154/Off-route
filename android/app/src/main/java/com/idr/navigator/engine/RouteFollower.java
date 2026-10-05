@@ -85,6 +85,8 @@ public final class RouteFollower {
         return true;
     }
 
+    public void invalidateAnchor(){anchored=false;active=false;latest=null;turns.clear();}
+
     public boolean eligible(){return anchored&&!rejected&&!segments.isEmpty();}
     public boolean active(){return active;}
 

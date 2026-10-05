@@ -21,6 +21,7 @@ public final class LiveNavigation {
     public boolean routeFollow=OutageTuning.ROUTE_FOLLOW;
     public void setActiveRoute(double[][] coordinates) {
         route.setRoute(coordinates);
+        blendRouteProgress=Double.NaN;
         if(coordinates==null||coordinates.length<2){routeEstimate=null;blendRouteProgress=Double.NaN;}
         if(fix!=null&&healthy(clock))anchorRoute();
     }
@@ -31,6 +32,7 @@ public final class LiveNavigation {
     public double alongTrackUncertainty(long now){return followingRoute()?Math.max(routeEstimate.alongUncertaintyMeters(),fusion.filter.directionalUncertainty(routeEstimate.bearingDegrees())):uncertainty(now);}
     public double crossTrackUncertainty(long now){return followingRoute()?routeEstimate.crossTrackUncertaintyMeters():uncertainty(now);}
     private void updateRoute(long now) {
+        if(!healthy(now)&&!fused(now)){route.invalidateAnchor();routeEstimate=null;return;}
         routeEstimate=routeFollow&&fused(now)?route.update(now,!healthy(now),stopped(now),fusion.speed(now),routeGyroHeading):null;
         if(routeEstimate!=null) {
             // Carry the route-constrained pose into the same filter so fallback does not
@@ -47,12 +49,19 @@ public final class LiveNavigation {
     private double recoveryGpsLat,recoveryGpsLon,recoveryGpsSpeed;
     private boolean blendingRecovery,largeRecovery;
     private long blendTime;
-    private double blendLat,blendLon,blendRouteProgress=Double.NaN;
+    private double blendLat,blendLon,blendRouteProgress=Double.NaN,retainedRecoveryError;
     private double targetLat(){return retainInertialPosition()?fusion.filter.latitude():fix==null?23.2418:holdingStop?stopLat:fix.lat();}
     private double targetLon(){return retainInertialPosition()?fusion.filter.longitude():fix==null?77.4029:holdingStop?stopLon:fix.lon();}
+    private void abandonRecovery() {
+        if(!blendingRecovery)return;
+        retainedRecoveryError=Math.max(retainedRecoveryError,Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))));
+        if(fix!=null)retainedRecoveryError=Math.max(retainedRecoveryError,Math.hypot((fix.lat()-blendLat)*111320,(fix.lon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))));
+        if(fusion.filter.initialized){double[] p=fusion.filter.enu(blendLat,blendLon,fusion.filter.originAlt);fusion.filter.p[0]=p[0];fusion.filter.p[1]=p[1];}
+        blendingRecovery=false;route.invalidateAnchor();routeEstimate=null;
+    }
     private void advanceRecovery(long now) {
         if(!blendingRecovery||now<=blendTime)return;
-        if(!fresh(now)&&!fused(now)){blendTime=now;return;}
+        if(!healthy(now)){abandonRecovery();return;}
         double dt=(now-blendTime)*1e-9;blendTime=now;
         double targetLat=fix!=null?fix.lat():targetLat(),targetLon=fix!=null?fix.lon():targetLon();
         double north=(targetLat-blendLat)*111320,east=(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat));
@@ -64,7 +73,13 @@ public final class LiveNavigation {
             RouteFollower.Projection next=route.positionAt(from.progressMeters()+Math.copySign(Math.min(Math.abs(delta),step),delta));
             if(next!=null){blendLat=next.latitude();blendLon=next.longitude();blendRouteProgress=next.progressMeters();}
             // Keep the route interpolation for this recovery even when its remaining offset is small.
-            if(Math.abs(delta)<=step&&distance<=step&&Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.00001)blendingRecovery=false;
+            if(Math.abs(delta)<=step&&distance<=step) {
+                double residual=Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)));
+                if(residual<=step&&Math.hypot((targetLat-blendLat)*111320,(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.05) {
+                    if(fusion.filter.initialized){double[] p=fusion.filter.enu(blendLat,blendLon,fusion.filter.originAlt);fusion.filter.p[0]=p[0];fusion.filter.p[1]=p[1];}
+                    blendingRecovery=false;
+                }
+            }
         } else if(distance<=step){blendLat=targetLat;blendLon=targetLon;blendingRecovery=Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))>.05;}
         else {blendLat+=(targetLat-blendLat)*step/distance;blendLon+=(targetLon-blendLon)*step/distance;}
     }
@@ -72,9 +87,10 @@ public final class LiveNavigation {
     public void imu(ImuSample sample) { imu(sample,true); }
     public void imu(ImuSample sample,boolean gyroFresh) {
         if(sample.t()<=lastImu)return;
+        if(blendingRecovery&&!healthy(sample.t()))abandonRecovery();
         predictionValid=Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())&&
             (lastImu==0||sample.t()-lastImu<=250_000_000L);
-        if(!Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())){gyroscopeFresh=false;return;}
+        if(!Double.isFinite(sample.ax()+sample.ay()+sample.az()+sample.gx()+sample.gy()+sample.gz())){gyroscopeFresh=false;if(!healthy(sample.t())){route.invalidateAnchor();routeEstimate=null;}return;}
         double routeDt=lastImu==0?0:(sample.t()-lastImu)*1e-9;
         if(!healthy(sample.t())&&gyroFresh&&routeDt>0&&routeDt<=.25) {
             var d=inertial.diagnostics();double g=Math.sqrt(d.gravityX()*d.gravityX()+d.gravityY()*d.gravityY()+d.gravityZ()*d.gravityZ());
@@ -123,7 +139,7 @@ public final class LiveNavigation {
         fusion.filter.update(new Measurement(new org.ejml.simple.SimpleMatrix(1,1,true,new double[]{east*Math.cos(h)-north*Math.sin(h)}),
             jacobian,org.ejml.simple.SimpleMatrix.identity(1).scale(25)),trust);
     }
-    public void tick(long now){clock=now;advanceRecovery(now);}
+    public void tick(long now){clock=now;advanceRecovery(now);if(!healthy(now)&&!fused(now)){route.invalidateAnchor();routeEstimate=null;}}
     public boolean healthy(long now){return fresh(now)&&fix.accuracy()<=20;}
     public boolean estimated(long now){return !healthy(now)&&fused(now);}
     public boolean trackingAvailable(long now){return fresh(now)||estimated(now);}
@@ -131,7 +147,7 @@ public final class LiveNavigation {
     public String status(long now){return blendingRecovery||recoveryFactor()>0?"Reconciling ESKF estimate with GPS":fused(now)?healthy(now)?"ESKF · GNSS + INS fusion":"ESKF · inertial tracking":!ready()?"Waiting for GPS":!fresh(now)?inertial.diagnostic:"Live GNSS tracking";}
     public double uncertainty(long now){double base=fused(now)||!fresh(now)&&fusedPose?fusion.filter.uncertainty():accuracy();double offset=blendingRecovery?Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))):recoveryFactor()*Math.hypot(recoveryGpsLat*111320,recoveryGpsLon*111320*Math.cos(Math.toRadians(latitude())));
         if(blendingRecovery&&fix!=null)offset=Math.max(offset,Math.hypot((fix.lat()-blendLat)*111320,(fix.lon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat))));
-        return Math.hypot(base,offset);}
+        return Math.hypot(Math.hypot(base,offset),retainedRecoveryError);}
     private double recoveryFactor(){if(OutageTuning.SMOOTH_RECOVERY&&largeRecovery)return 0;return recoveryStart>0&&clock>=recoveryStart?Math.max(0,1-(clock-recoveryStart)*1e-9/recoverySeconds):0;}
     public void compass(long time,double degrees,double error) {
         if(time<=compassTime||!Double.isFinite(degrees+error)||error<0||error>30)return;
@@ -220,6 +236,7 @@ public final class LiveNavigation {
             recoveryLat=priorLat-fusion.filter.latitude();recoveryLon=priorLon-fusion.filter.longitude();
             recoveryGpsSpeed=priorSpeed-speed;recoverySpeed=priorSpeed-fusion.speed(now);
         }
+        if(healthy(now))retainedRecoveryError=0;
         if(recovering&&OutageTuning.SMOOTH_RECOVERY){
             largeRecovery=Math.hypot((next.lat()-priorLat)*111320,(next.lon()-priorLon)*111320*Math.cos(Math.toRadians(priorLat)))>10;
             blendingRecovery=largeRecovery;blendLat=priorLat;blendLon=priorLon;blendTime=now;
@@ -230,7 +247,7 @@ public final class LiveNavigation {
     }
     private boolean disabled;
     public void providerDisabled(){
-        if(blendingRecovery&&fusion.filter.initialized){double[] p=fusion.filter.enu(blendLat,blendLon,fusion.filter.originAlt);fusion.filter.p[0]=p[0];fusion.filter.p[1]=p[1];blendingRecovery=false;}
+        abandonRecovery();
         disabled=true;speed=Double.NaN;courseAnchor=null;fusion.providerDisabled();}
     public void providerEnabled(){disabled=false;}
     public boolean fresh(long now){return !disabled&&fix!=null&&now>=fix.time()&&now-fix.time()<=2_000_000_000L;}

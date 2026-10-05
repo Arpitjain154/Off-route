@@ -38,4 +38,11 @@ public class LiveRouteFollowingTest {
    assertTrue("No icon snap",jump<=5.00001);beforeLat=n.latitude();beforeLon=n.longitude();
   }
  }
+ @Test public void sensorGapCannotCatchUpUnobservedRouteDistance(){
+  LiveNavigation n=prepare(true);n.providerDisabled();sample(n,4*S+10_000_000L);
+  double before=n.latitude();n.tick(9*S);assertFalse(n.trackingAvailable(9*S));
+  sample(n,9*S+10_000_000L);sample(n,9*S+20_000_000L);
+  assertTrue(n.estimated(9*S+20_000_000L));assertFalse(n.followingRoute());
+  assertTrue("Missing sensor seconds must not become a route jump",Math.abs(n.latitude()-before)*111320<1);
+ }
 }

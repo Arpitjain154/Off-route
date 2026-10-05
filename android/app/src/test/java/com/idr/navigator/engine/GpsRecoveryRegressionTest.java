@@ -69,4 +69,16 @@ public class GpsRecoveryRegressionTest {
         n.tick(RETURN+S/10);double displayed=n.latitude();n.providerDisabled();
         assertEquals(displayed,n.latitude(),1e-10);
     }
+    @Test public void silentSecondLossDuringBlendContinuesFromDisplayedPose() {
+        var n=outage();double prior=n.latitude();n.fix(fix(RETURN,prior+150.0/111320,4),RETURN);
+        double beforeLoss=0,afterLoss=0;
+        for(int i=1;i<=800;i++) {
+            long t=RETURN+i*10_000_000L;n.gravity(t,0,0,9.80665);n.imu(new ImuSample(t,0,0,9.80665,0,0,0));n.tick(t);
+            if(i==200)beforeLoss=n.latitude();if(i==201)afterLoss=n.latitude();
+        }
+        assertTrue(n.estimated(RETURN+8*S));assertTrue(n.speedAvailable(RETURN+8*S));
+        assertTrue("No jump at silent timeout",Math.abs(afterLoss-beforeLoss)*111320<1);
+        assertTrue("DR continues beyond stale returned fix",(n.latitude()-afterLoss)*111320>20);
+        assertTrue("Unresolved recovery error stays reported",n.uncertainty(RETURN+8*S)>100);
+    }
 }
