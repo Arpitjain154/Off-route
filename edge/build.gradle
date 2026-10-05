@@ -12,7 +12,9 @@ sourceSets.main.java {
         'com/idr/navigator/engine/Eskf.java', 'com/idr/navigator/engine/GpsAdvisor.java',
         'com/idr/navigator/engine/PhysicsAdvisor.java', 'com/idr/navigator/engine/FilterAdvisor.java',
         'com/idr/navigator/engine/Measurement.java', 'com/idr/navigator/engine/Butterworth.java',
-        'com/idr/navigator/engine/AiSpeedAdvisor.java'
+        'com/idr/navigator/engine/AiSpeedAdvisor.java',
+        'com/idr/navigator/engine/OutageTuning.java', 'com/idr/navigator/engine/RouteFollower.java',
+        'com/idr/navigator/engine/IovnbdCsvRunner.java', 'com/idr/navigator/engine/GnssLossDetector.java'
 }
 distributions.main.contents {
     from('README.md')
