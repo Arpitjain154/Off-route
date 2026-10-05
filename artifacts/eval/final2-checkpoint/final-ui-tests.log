@@ -1,0 +1,48 @@
+✔ raw AI reading is visible without granting navigation trust (33.2063ms)
+✔ stale, absent and invalid estimates never display a speed (3.3461ms)
+✔ calibration waiting does not claim corrections are active (2.108ms)
+✔ calibrated model does not claim ESKF use when measurement was rejected (1.433ms)
+✔ legacy upload is never shown as Supabase upload (3.494ms)
+✔ simulation and disabled consent cannot enqueue (0.6205ms)
+✔ queue states remain understandable (1.3483ms)
+✔ missing, stale and uncertain poses pause precise maneuvers and never announce arrival (57.9908ms)
+✔ fresh precise accepted GPS can announce arrival (3.0756ms)
+✔ usable sensor estimate can show maneuver but cannot announce arrival (3.6204ms)
+✔ summary suppresses ETA and progress when guidance is paused (95.734ms)
+✔ navigation source changes automatically and never represents advisor trust as fusion proportions (174.6643ms)
+✔ outage guidance compares uncertainty to the next maneuver and road corridor (6.6253ms)
+✔ outage guidance treats missing axes conservatively and rejects invalid uncertainty (12.9925ms)
+✔ healthy trip guidance and arrival are unchanged by outage uncertainty fields (7.625ms)
+✔ Offline Bhopal tiles contain non-collapsed roads and buildings at every zoom (2538.7324ms)
+✔ accuracy area uses geographic metres and grows with reported uncertainty (8.8749ms)
+✔ missing, nonfinite and negative uncertainty never becomes a measured halo (0.7931ms)
+✔ State map includes roads in six Madhya Pradesh cities at every supported zoom (2625.9752ms)
+✔ GPS lock with absent or invalid heading stays renderable and awaits heading (4.4223ms)
+✔ invalid coordinates never reach the map camera (0.7876ms)
+✔ heading wrap and pending alignment are preserved (0.6658ms)
+✔ navigation start and immediate exit serialize one start and one stop (8.5065ms)
+✔ failed start permits retry without a false recording state (2.3696ms)
+✔ restored native recording is stopped without starting a duplicate (0.8133ms)
+✔ recovery failure retains identity and releases recording state without blocking the engine (1.0838ms)
+✔ inertial estimates never change the route without reliable GNSS confirmation (12.0897ms)
+✔ invalid precision and degraded fixes never request a route (1.0743ms)
+✔ GPS recovery must establish several distinct reliable fixes before rerouting (0.8849ms)
+✔ route progress projects onto the current road instead of extending a trail (17.2684ms)
+✔ off-route requires sustained distinct reliable fixes with retry cooldown (4.1736ms)
+✔ GPS noise, missing signals and a stationary phone do not trigger rerouting (2.5976ms)
+✔ remaining distance, next turn and travel time advance with position (1.5857ms)
+✔ sensor estimates retain the route until reliable GNSS can confirm deviation (0.776ms)
+✔ post-outage rerouting requires over 40 metres for more than 10 seconds (0.7865ms)
+✔ recovery deviation timer resets when evidence is interrupted (1.1759ms)
+✔ recovery requires new fixes and reliable rejoin before restoring healthy rerouting (1.1821ms)
+✔ healthy-only journey keeps the existing reroute decisions (1.435ms)
+✔ a healthy pending reroute still applies normally (752.887ms)
+✔ an outage invalidates a pending reroute even if GPS returns before the router responds (255.4081ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3156.7157

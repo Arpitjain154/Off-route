@@ -1,0 +1,56 @@
+[
+  {
+    "recording": "S-S1",
+    "diagnostic_only": true,
+    "axis": {
+      "gx": {
+        "turn_rate_correlation": -0.13459300254935677,
+        "std": 0.02197370378298878
+      },
+      "gy": {
+        "turn_rate_correlation": -0.8022737251696355,
+        "std": 0.08502333152574802
+      },
+      "gz": {
+        "turn_rate_correlation": 0.5013610108800025,
+        "std": 0.018522021931516728
+      }
+    }
+  },
+  {
+    "recording": "S-S2",
+    "diagnostic_only": true,
+    "axis": {
+      "gx": {
+        "turn_rate_correlation": -0.02285953640965228,
+        "std": 0.09778821433582356
+      },
+      "gy": {
+        "turn_rate_correlation": 0.005312213060111166,
+        "std": 0.09490092658349318
+      },
+      "gz": {
+        "turn_rate_correlation": 0.017508829012023743,
+        "std": 0.03334829611002897
+      }
+    }
+  },
+  {
+    "recording": "S-S3a",
+    "diagnostic_only": true,
+    "axis": {
+      "gx": {
+        "turn_rate_correlation": -0.027088473796651427,
+        "std": 0.006791250827222696
+      },
+      "gy": {
+        "turn_rate_correlation": 0.16505629207935438,
+        "std": 0.07613651936520506
+      },
+      "gz": {
+        "turn_rate_correlation": -0.1411448621582147,
+        "std": 0.009867016239830535
+      }
+    }
+  }
+]

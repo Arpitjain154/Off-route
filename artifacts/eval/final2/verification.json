@@ -1,0 +1,51 @@
+{
+  "commit": "a5b2bf1c6979dbc813fe9e9030b376b58990362f",
+  "android": {
+    "tests": 165,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1,
+    "passed": 164
+  },
+  "python_passed": 47,
+  "frontend_passed": 40,
+  "edge_junit_passed": 41,
+  "browser_navigation_tests": 2,
+  "healthy_parity": {
+    "recording": "S-Vfa01",
+    "rows": 6000,
+    "duration_s": 599.9010000000053,
+    "identical": true,
+    "baseline_sha256": "5672b5e2bfb173abeb641aed1e3df85f661020b53d6de2c98510ebb5f738c19a",
+    "candidate_sha256": "5672b5e2bfb173abeb641aed1e3df85f661020b53d6de2c98510ebb5f738c19a",
+    "contract": "Actual LiveNavigation source; every native sample delivers its recorded phone GNSS tuple, no outage, route, or model. Exact CSV byte comparison."
+  },
+  "legacy": {
+    "windows": 15,
+    "median": 70.585,
+    "mean": 140.53653333333332,
+    "under10": 1
+  },
+  "apk": {
+    "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\offroute-final.apk",
+    "bytes": 222487504,
+    "sha256": "eadfe82e48f7f55def2902b66d08d06673f27dc575c42357836880ac152eab7c",
+    "version_lines": [
+      "        versionCode 17",
+      "        versionName \"1.6.0-offroute\""
+    ],
+    "referenced_web_assets": [
+      "/assets/index-D2bF7bbM.js",
+      "/assets/index-CdrjW2fj.css"
+    ]
+  },
+  "edge_jar": {
+    "path": "edge/build/libs/idr-edge-engine-1.5.0-qa.jar",
+    "sha256": "dfb40873d641b758bd1f79bc00dba673aef08dd36dac43bbefd5bb4a3dd579c0"
+  },
+  "payload_unchanged_entries": 39472,
+  "physical_phone_test": false,
+  "gnss_loss_latency": "Diagnostics measure callback evidence-to-detection; physical signal-loss latency not measured",
+  "protected_source_scope": "No dependency/version/cloud/server/map/model/layout/CSS edits",
+  "evaluation_command": ".venv-ml/Scripts/python.exe ml/evaluate_outages.py --label final2"
+}

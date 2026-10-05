@@ -1,6 +1,6 @@
 {
   "baseline_commit": "41670ae7",
-  "candidate_commit": "e0c2af2b5e46df2f74cea7000f5e91611070fa1e",
+  "candidate_commit": "a5b2bf1c6979dbc813fe9e9030b376b58990362f",
   "candidate_source": "live working tree (hashes below)",
   "files": {
     "android/app/src/main/java/com/idr/navigator/engine/AiSpeedAdvisor.java": "03fa8f75aa7dd8b516545a8fb00c76290a76133b8c5acf28dfe3047d9efe42f3",
@@ -19,7 +19,7 @@
     "android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java": "0b1e2d2c4f3da23617ea6552739132ece851f01d08d938f1a5461ef9c0f27b77",
     "android/app/src/main/java/com/idr/navigator/engine/IovnbdCsvRunner.java": "3f519802134d0734dacb27346984bc02c8d088412ecd85290ea03d855e6ff502",
     "android/app/src/main/java/com/idr/navigator/engine/LaptopTrialProvenance.java": "17996983a005cdd087dca2cae8b2e619872bb7815369907be373c2f72a4ef551",
-    "android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java": "d709cca076e9695a43bc26c882de36fcb18240d0e2b22d89b46f541c2cb2c9f2",
+    "android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java": "b8f3d617dff6a5298cf574e2525ee72c95664b39cb6e48e65c633238ddc9c525",
     "android/app/src/main/java/com/idr/navigator/engine/LogRecovery.java": "604682a58398b0efedbc7082605e49b43c6bd2440a2f7e23737d750081e594bb",
     "android/app/src/main/java/com/idr/navigator/engine/MapMatchAdvisor.java": "a5117c69151e14dfbb765a056b26d07ff35b1ff615bdc82eff755fba21d5b394",
     "android/app/src/main/java/com/idr/navigator/engine/Measurement.java": "899ac91732dafd16f7b831bcdd02775b64ed600e92e82e5bb21e761234f8887b",
@@ -31,8 +31,8 @@
     "android/app/src/main/java/com/idr/navigator/engine/OutageTuning.java": "d92ff9b3edfed95ca079d9d1a20f990b5bb2cb90340ed2618724df99768ceb9b",
     "android/app/src/main/java/com/idr/navigator/engine/PhysicsAdvisor.java": "8e3b7a5c1c06f22b46adb252f41e76533e47d7f9bbb6e511f0e5d5336cc42fee",
     "android/app/src/main/java/com/idr/navigator/engine/RawTrainingWriter.java": "e18263ea3e904023692b21d5671a7626e5b8887887225ccf8f14652037e6583d",
-    "android/app/src/main/java/com/idr/navigator/engine/RouteFollower.java": "8a05aa88eb91f47a6430acfa727cce6a9dedf4dff69e26ed7c6b7a4d5d0c7ef8",
-    "android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java": "10dc9aa273bc2436cbc48afeda5963b74ebf30b41d8657c8e434e7dc0de878e1",
+    "android/app/src/main/java/com/idr/navigator/engine/RouteFollower.java": "2d90f32080786b0f117faad7a043365bbf62b73714a27ce3ea25fe9889be8ca2",
+    "android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java": "5cf671cc834d2b41a05fe1e24463607c54fd69d951bf95c4b54224b771dd4065",
     "android/app/src/main/java/com/idr/navigator/engine/StationaryDetector.java": "38d1ced2a01c77b591b85e4a311ad53aa94509f3088b85c0047332198bab3b65",
     "android/app/src/main/java/com/idr/navigator/engine/TfliteModels.java": "cf0b26afcfc11f328e8081f2d09a5638c104da8e97084bafcb12063246715b36",
     "android/app/src/main/java/com/idr/navigator/engine/TrainingQualityWriter.java": "4d4a7c5cbd74d1424f35e332bf8700645127ad1e11c01b08e3a5c5f229444f0a",
