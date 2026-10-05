@@ -1,0 +1,2 @@
+# AI assist decision
+The bundled speed model remains unvalidated. The AI_SPEED flag is OFF. The experimental observation is outage-only, variance 25 (m/s)^2 and trust 0.10. Final2 decisions.json contains the measured six-group promotion test. Vfa at 120 seconds worsens in both median and mean, so the required all-group improvement is not met. GPS-health model outputs are not passed into navigation decisions. Stage C remains absent/off. No model files were changed.

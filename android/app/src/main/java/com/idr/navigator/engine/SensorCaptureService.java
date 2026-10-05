@@ -422,6 +422,8 @@ public final class SensorCaptureService
                                 models.enabled("motion")?motion:null,null,
                                 lastLocation!=null&&lastLocation.hasSpeed()?(double)lastLocation.getSpeed():null,
                                 live.healthy(now)&&live.accuracy()<=15&&now-lastFix<=1_000_000_000L&&live.imuFresh(now)&&lastFix>lastCalibrationFix&&lastLocation!=null&&lastLocation.hasSpeedAccuracy()&&lastLocation.getSpeedAccuracyMetersPerSecond()>=0&&lastLocation.getSpeedAccuracyMetersPerSecond()<=1);
+                            if(OutageTuning.AI_SPEED&&!live.healthy(now)&&!live.stopped(now)&&!models.placeholder("speed")&&Double.isFinite(speedPrediction))
+                                navigation.aiSpeed(now,speedPrediction,25,.10);
                             lastCalibrationFix=Math.max(lastCalibrationFix,lastFix);
                             modelInferences++;
                         } else aiSpeedReading.clear();
