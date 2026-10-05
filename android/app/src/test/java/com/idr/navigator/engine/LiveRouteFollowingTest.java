@@ -45,4 +45,21 @@ public class LiveRouteFollowingTest {
   assertTrue(n.estimated(9*S+20_000_000L));assertFalse(n.followingRoute());
   assertTrue("Missing sensor seconds must not become a route jump",Math.abs(n.latitude()-before)*111320<1);
  }
+ @Test public void movingGnssAndCrossTrackResidualFinishRecoveryWithImuStillActive(){
+  for(boolean routed:new boolean[]{false,true}) {
+   LiveNavigation n=prepare(routed);n.providerDisabled();
+   for(int i=1;i<=500;i++)sample(n,4*S+i*10_000_000L);
+   double targetNorth=(n.latitude()-23.3)*111320+40;
+   double targetLon=77.35+3/(111320*Math.cos(Math.toRadians(23.3)));
+   for(int i=0;i<=2000;i++) {
+    long t=9*S+i*10_000_000L;sample(n,t);
+    if(i%100==0)n.fix(new NavigationFusion.Fix(t,23.3+(targetNorth+i*.1)/111320,targetLon,0,3,10,.2,0,5),t);
+    n.tick(t);
+   }
+   assertTrue(n.healthy(29*S));assertTrue(n.fused(29*S));
+   assertFalse("Normal GPS/filter residual must not keep recovery active",n.status(29*S).contains("Reconciling"));
+   double before=n.latitude();sample(n,29*S+100_000_000L);n.tick(29*S+100_000_000L);
+   assertTrue("Healthy tracking moves between fixes after recovery",n.latitude()>before);
+  }
+ }
 }

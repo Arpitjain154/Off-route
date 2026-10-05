@@ -47,7 +47,7 @@ public final class LiveNavigation {
     private boolean fusedPose;
     private long clock,recoveryStart;private double recoveryLat,recoveryLon,recoverySeconds,recoverySpeed;
     private double recoveryGpsLat,recoveryGpsLon,recoveryGpsSpeed;
-    private boolean blendingRecovery,largeRecovery;
+    private boolean blendingRecovery,largeRecovery,finishingRecovery;
     private long blendTime;
     private double blendLat,blendLon,blendRouteProgress=Double.NaN,retainedRecoveryError;
     private double targetLat(){return retainInertialPosition()?fusion.filter.latitude():fix==null?23.2418:holdingStop?stopLat:fix.lat();}
@@ -63,24 +63,23 @@ public final class LiveNavigation {
         if(!blendingRecovery||now<=blendTime)return;
         if(!healthy(now)){abandonRecovery();return;}
         double dt=(now-blendTime)*1e-9;blendTime=now;
-        double targetLat=fix!=null?fix.lat():targetLat(),targetLon=fix!=null?fix.lon():targetLon();
+        double targetLat=finishingRecovery?targetLat():fix!=null?fix.lat():targetLat(),targetLon=finishingRecovery?targetLon():fix!=null?fix.lon():targetLon();
         double north=(targetLat-blendLat)*111320,east=(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat));
         double distance=Math.hypot(east,north);
         double step=Math.min(5,dt*(Math.max(0,Double.isFinite(speed)?speed:0)+10));
         RouteFollower.Projection from=Double.isFinite(blendRouteProgress)?route.positionAt(blendRouteProgress):route.project(blendLat,blendLon,heading),to=route.project(targetLat,targetLon,heading);
-        if(from!=null&&to!=null&&Math.abs(to.progressMeters()-from.progressMeters())<=distance+50) {
+        if(!finishingRecovery&&from!=null&&to!=null&&Math.abs(to.progressMeters()-from.progressMeters())<=distance+50) {
             double delta=to.progressMeters()-from.progressMeters();
             RouteFollower.Projection next=route.positionAt(from.progressMeters()+Math.copySign(Math.min(Math.abs(delta),step),delta));
             if(next!=null){blendLat=next.latitude();blendLon=next.longitude();blendRouteProgress=next.progressMeters();}
             // Keep the route interpolation for this recovery even when its remaining offset is small.
-            if(Math.abs(delta)<=step&&distance<=step) {
-                double residual=Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)));
-                if(residual<=step&&Math.hypot((targetLat-blendLat)*111320,(targetLon-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))<.05) {
-                    if(fusion.filter.initialized){double[] p=fusion.filter.enu(blendLat,blendLon,fusion.filter.originAlt);fusion.filter.p[0]=p[0];fusion.filter.p[1]=p[1];}
-                    blendingRecovery=false;
-                }
-            }
-        } else if(distance<=step){blendLat=targetLat;blendLon=targetLon;blendingRecovery=Math.hypot((targetLat()-blendLat)*111320,(targetLon()-blendLon)*111320*Math.cos(Math.toRadians(blendLat)))>.05;}
+            // Once along-route progress catches up, reconcile the small lateral/filter
+            // residual at the same bounded rate; real GNSS is rarely exactly on a polyline.
+            if(Math.abs(delta)<=Math.max(2,step))finishingRecovery=true;
+        } else if(distance<=step){
+            blendLat=targetLat;blendLon=targetLon;
+            if(finishingRecovery)blendingRecovery=false;else finishingRecovery=true;
+        }
         else {blendLat+=(targetLat-blendLat)*step/distance;blendLon+=(targetLon-blendLon)*step/distance;}
     }
 
@@ -239,7 +238,7 @@ public final class LiveNavigation {
         if(healthy(now))retainedRecoveryError=0;
         if(recovering&&OutageTuning.SMOOTH_RECOVERY){
             largeRecovery=Math.hypot((next.lat()-priorLat)*111320,(next.lon()-priorLon)*111320*Math.cos(Math.toRadians(priorLat)))>10;
-            blendingRecovery=largeRecovery;blendLat=priorLat;blendLon=priorLon;blendTime=now;
+            blendingRecovery=largeRecovery;finishingRecovery=false;blendLat=priorLat;blendLon=priorLon;blendTime=now;
             blendRouteProgress=priorRoute==null?Double.NaN:priorRoute.progressMeters();
         }
         if(healthy(now)){routeGyroHeading=inertial.heading();anchorRoute();routeEstimate=null;}
