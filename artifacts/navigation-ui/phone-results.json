@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Real native route renders focused navigation",
+    "GPS/IMU detail taps",
+    "Heading-up / north-up / recenter controls",
+    "Sensor page and return",
+    "Exit restores dashboard"
+  ],
+  "passed": true,
+  "errors": []
+}

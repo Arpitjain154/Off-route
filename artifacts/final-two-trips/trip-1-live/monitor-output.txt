@@ -1,0 +1,90 @@
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-1-live\\2026-10-03T13-21-16.032Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": null,
+    "routeActive": false,
+    "journeyCount": 3
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 171,
+  "loggingSamples": 115,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-1-live\\2026-10-03T13-22-48.100Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+      "startedAt": "2026-10-03T13:21:46.417Z",
+      "route": "Central Jail Bhopal",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 3
+  },
+  "samples": 172,
+  "imuFreshSamples": 172,
+  "gpsFreshSamples": 124,
+  "loggingSamples": 172,
+  "aiAvailableSamples": 172,
+  "inferenceCountDelta": 89
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-1-live\\2026-10-03T13-24-19.771Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+      "startedAt": "2026-10-03T13:21:46.417Z",
+      "route": "Central Jail Bhopal",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 3
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 96,
+  "loggingSamples": 171,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-1-live\\2026-10-03T13-25-51.645Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+      "startedAt": "2026-10-03T13:21:46.417Z",
+      "route": "Central Jail Bhopal",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 3
+  },
+  "samples": 170,
+  "imuFreshSamples": 170,
+  "gpsFreshSamples": 127,
+  "loggingSamples": 170,
+  "aiAvailableSamples": 170,
+  "inferenceCountDelta": 88
+}

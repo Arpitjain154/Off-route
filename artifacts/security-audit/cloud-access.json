@@ -1,0 +1,115 @@
+{
+  "checked_at": "2026-09-29T19:30:28.348039+00:00",
+  "checks": [
+    {
+      "check": "no-key-public-marker",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-authenticated-marker",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-public-recording",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-authenticated-recording",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-trip-list-root",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-trip-list-user",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-trip-list-session",
+      "http_status": 400
+    },
+    {
+      "check": "no-key-model-list",
+      "http_status": 400
+    },
+    {
+      "check": "publishable-key-public-marker",
+      "http_status": 400
+    },
+    {
+      "check": "publishable-key-authenticated-marker",
+      "http_status": 400
+    },
+    {
+      "check": "publishable-key-public-recording",
+      "http_status": 400
+    },
+    {
+      "check": "publishable-key-authenticated-recording",
+      "http_status": 400
+    },
+    {
+      "check": "publishable-key-trip-list-root",
+      "http_status": 200,
+      "visible_entries": 0
+    },
+    {
+      "check": "publishable-key-trip-list-user",
+      "http_status": 200,
+      "visible_entries": 0
+    },
+    {
+      "check": "publishable-key-trip-list-session",
+      "http_status": 200,
+      "visible_entries": 0
+    },
+    {
+      "check": "publishable-key-model-list",
+      "http_status": 200,
+      "visible_entries": 0
+    },
+    {
+      "check": "anonymous-buckets",
+      "http_status": 200,
+      "visible_entries": 0
+    },
+    {
+      "check": "anonymous-rest-schema",
+      "http_status": 401,
+      "exposed_paths": []
+    },
+    {
+      "check": "auth-settings",
+      "http_status": 200,
+      "settings": {
+        "disable_signup": false,
+        "mailer_autoconfirm": false,
+        "phone_autoconfirm": false
+      }
+    },
+    {
+      "check": "owner-marker",
+      "http_status": 200
+    },
+    {
+      "check": "owner-recording",
+      "http_status": 200
+    },
+    {
+      "check": "owner-root-list",
+      "http_status": 200,
+      "visible_entries": 1
+    },
+    {
+      "check": "owner-model-list",
+      "http_status": 200,
+      "visible_entries": 0
+    }
+  ],
+  "limitations": [
+    "No second account used; cross-account isolation needs a separate test.",
+    "No uploads, deletes, policy changes, or new accounts.",
+    "Read checks do not prove past access history."
+  ]
+}

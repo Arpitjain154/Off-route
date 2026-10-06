@@ -1,0 +1,68 @@
+INSTRUMENTATION_STATUS: class=com.idr.navigator.GpsLockTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.idr.navigator.GpsLockTest:
+INSTRUMENTATION_STATUS: test=roadEncodingWorksWithoutJavaCompilerClasses
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.idr.navigator.GpsLockTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.NoClassDefFoundError: Failed resolution of: Ljavax/lang/model/SourceVersion;
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.isValidEncodedValue(IntEncodedValueImpl.java:237)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:74)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:58)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:33)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:29)
+	at com.idr.navigator.GpsLockTest.roadEncodingWorksWithoutJavaCompilerClasses(GpsLockTest.java:22)
+	... 32 trimmed
+Caused by: java.lang.ClassNotFoundException: Didn't find class "javax.lang.model.SourceVersion" on path: DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/system/framework/android.test.mock.jar", zip file "/system/framework/android.test.base.jar", zip file "/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk", zip file "/data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk"],nativeLibraryDirectories=[/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/lib/x86_64, /data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk!/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk!/lib/x86_64, /system/lib64, /system_ext/lib64]]
+	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+	... 39 more
+
+INSTRUMENTATION_STATUS: stream=
+Error in roadEncodingWorksWithoutJavaCompilerClasses(com.idr.navigator.GpsLockTest):
+java.lang.NoClassDefFoundError: Failed resolution of: Ljavax/lang/model/SourceVersion;
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.isValidEncodedValue(IntEncodedValueImpl.java:237)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:74)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:58)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:33)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:29)
+	at com.idr.navigator.GpsLockTest.roadEncodingWorksWithoutJavaCompilerClasses(GpsLockTest.java:22)
+	... 32 trimmed
+Caused by: java.lang.ClassNotFoundException: Didn't find class "javax.lang.model.SourceVersion" on path: DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/system/framework/android.test.mock.jar", zip file "/system/framework/android.test.base.jar", zip file "/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk", zip file "/data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk"],nativeLibraryDirectories=[/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/lib/x86_64, /data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk!/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk!/lib/x86_64, /system/lib64, /system_ext/lib64]]
+	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+	... 39 more
+
+INSTRUMENTATION_STATUS: test=roadEncodingWorksWithoutJavaCompilerClasses
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.067
+There was 1 failure:
+1) roadEncodingWorksWithoutJavaCompilerClasses(com.idr.navigator.GpsLockTest)
+java.lang.NoClassDefFoundError: Failed resolution of: Ljavax/lang/model/SourceVersion;
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.isValidEncodedValue(IntEncodedValueImpl.java:237)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:74)
+	at com.graphhopper.routing.ev.IntEncodedValueImpl.<init>(IntEncodedValueImpl.java:58)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:33)
+	at com.graphhopper.routing.ev.SimpleBooleanEncodedValue.<init>(SimpleBooleanEncodedValue.java:29)
+	at com.idr.navigator.GpsLockTest.roadEncodingWorksWithoutJavaCompilerClasses(GpsLockTest.java:22)
+	... 32 trimmed
+Caused by: java.lang.ClassNotFoundException: Didn't find class "javax.lang.model.SourceVersion" on path: DexPathList[[zip file "/system/framework/android.test.runner.jar", zip file "/system/framework/android.test.mock.jar", zip file "/system/framework/android.test.base.jar", zip file "/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk", zip file "/data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk"],nativeLibraryDirectories=[/data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/lib/x86_64, /data/app/~~4_KH0HHr1CqiInO-HpHTiQ==/com.idr.navigator.test-UKBFuyWlAgVq1l4oFiCiBw==/base.apk!/lib/x86_64, /data/app/~~E6da8kc6PTR6dX-R4e4jIA==/com.idr.navigator-vcTa2iqyXsakIbexClESUg==/base.apk!/lib/x86_64, /system/lib64, /system_ext/lib64]]
+	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:637)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:573)
+	... 39 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

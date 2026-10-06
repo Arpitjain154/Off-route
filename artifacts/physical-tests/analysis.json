@@ -1,0 +1,42 @@
+[
+  {
+    "drive": "af866a4b-f2a3-4d1b-90f7-30f74f921eaa",
+    "duration_s": 245.999987968,
+    "raw_gps_speed_range_mps": [
+      0.0,
+      11.859999656677246
+    ],
+    "speed_abs_difference_median_mps": 0.3247702336502074,
+    "speed_abs_difference_max_mps": 2.230189809265137,
+    "first_gps": [
+      23.3089656829834,
+      77.36178588867188
+    ],
+    "last_gps": [
+      23.297197341918945,
+      77.35356140136719
+    ],
+    "moving_gps_but_fused_below_half": 0,
+    "missing_gps_trace_rows": 955
+  },
+  {
+    "drive": "d62bf76e-e570-4555-8d65-c5ce7eb8870e",
+    "duration_s": 98.331659649,
+    "raw_gps_speed_range_mps": [
+      1.809999942779541,
+      9.59000015258789
+    ],
+    "speed_abs_difference_median_mps": 0.2914601525878915,
+    "speed_abs_difference_max_mps": 2.6724998283386228,
+    "first_gps": [
+      23.29804229736328,
+      77.35433197021484
+    ],
+    "last_gps": [
+      23.302282333374023,
+      77.35601043701172
+    ],
+    "moving_gps_but_fused_below_half": 5,
+    "missing_gps_trace_rows": 280
+  }
+]

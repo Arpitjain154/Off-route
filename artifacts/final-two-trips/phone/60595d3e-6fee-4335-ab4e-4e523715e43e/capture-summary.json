@@ -1,0 +1,73 @@
+{
+  "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+  "summary": {
+    "path": "file:/data/user/0/com.idr.navigator/files/drives/60595d3e-6fee-4335-ab4e-4e523715e43e.drlog",
+    "sizeBytes": 3205080,
+    "durationSeconds": 379.354741561,
+    "distanceMeters": 1515.9275902721324,
+    "phoneModel": "samsung SM-E156B"
+  },
+  "raw_samples": 45784,
+  "raw_hz": 120.68871367215073,
+  "max_gap_ms": 12.569146000000002,
+  "gaps_over_100ms": 0,
+  "quality_rows": 49303,
+  "fusion_rows": 3671,
+  "raw_capture_target": 200,
+  "all_raw_timestamps_in_quality": true,
+  "aligned_fraction": 1.0,
+  "sensor_position_fraction": 0.23917188776900028,
+  "speed_available_fraction": 1.0,
+  "location_transitions": [
+    {
+      "receivedAt": "2026-10-03T13:21:16.128Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 334783.35,
+      "roundTripMs": 175
+    },
+    {
+      "receivedAt": "2026-10-03T13:23:53.052Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 334940.28,
+      "roundTripMs": 149
+    },
+    {
+      "receivedAt": "2026-10-03T13:24:28.173Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 334975.4,
+      "roundTripMs": 203
+    },
+    {
+      "receivedAt": "2026-10-03T13:25:19.981Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335027.21,
+      "roundTripMs": 177
+    },
+    {
+      "receivedAt": "2026-10-03T13:25:59.932Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335067.16,
+      "roundTripMs": 172
+    },
+    {
+      "receivedAt": "2026-10-03T13:26:48.425Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335115.65,
+      "roundTripMs": 177
+    },
+    {
+      "receivedAt": "2026-10-03T13:27:01.803Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335129.03,
+      "roundTripMs": 164
+    }
+  ],
+  "next_trip_ready": true
+}

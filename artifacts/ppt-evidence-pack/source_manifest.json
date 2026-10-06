@@ -1,0 +1,38 @@
+[
+  {
+    "path": "artifacts/ml/training-report.json",
+    "sha256": "51091cd434219e11ca82f1e6f49fe4d83403892f5d287ea028d249f01ae18ef0"
+  },
+  {
+    "path": "artifacts/ml/refinement/report.json",
+    "sha256": "6d414f60a983392691be543011b4603b6dd095194a4af54f172e0ce94dfae309"
+  },
+  {
+    "path": "artifacts/qa-1.5/iovnbd/drift-summary.csv",
+    "sha256": "65f99f117d3ad326eabbef917f9aa29c2832812e9c7e3996f51a37fb80f7da3f"
+  },
+  {
+    "path": "artifacts/qa-1.5/iovnbd/S-S1-positions.csv",
+    "sha256": "0ebe0553d9e37cc2df03b373858e06331f113f2c160896749f10fcc09bd6b109"
+  },
+  {
+    "path": "artifacts/qa-1.5/iovnbd/S-S2-positions.csv",
+    "sha256": "c0b7b8930322256c8c501106674890b23649be482d8cd988f0d07509ae1c12e5"
+  },
+  {
+    "path": "artifacts/qa-1.5/iovnbd/S-S3a-positions.csv",
+    "sha256": "8ef4497475136149030fe6fe5b32a9d69003b82c4fe69ed672874f9210adac35"
+  },
+  {
+    "path": "docs/live-eskf-and-training.md",
+    "sha256": "869edec5780de184390e9b68c09aba85ac5540f841b077ec3717cabfc2b55524"
+  },
+  {
+    "path": "artifacts/drift-fix/REPORT.md",
+    "sha256": "a79ee6f6b637a991c191f07dcbc0e464df10d9236bf4afb924da29e26a478845"
+  },
+  {
+    "path": "artifacts/qa-1.5/iovnbd/manifest.json",
+    "sha256": "2f9e9013199b06f1a7eda704f065c945f6440cf098cb520406198ca427768068"
+  }
+]

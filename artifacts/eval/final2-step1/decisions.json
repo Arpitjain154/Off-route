@@ -1,0 +1,9 @@
+{
+  "windows": 48,
+  "stage_a_regressed_windows": 9,
+  "stage_c_regressed_windows": null,
+  "ai_regressed_windows": null,
+  "production_promoted": false,
+  "map_matching": "not evaluated",
+  "live_stage_a": true
+}

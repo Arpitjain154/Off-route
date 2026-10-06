@@ -1,0 +1,38 @@
+{
+  "sessions": [
+    {
+      "file": "523b3753-04cf-470d-a0fa-dce17bba0fc5.drlog",
+      "rejections": {},
+      "session": "523b3753-04cf-470d-a0fa-dce17bba0fc5",
+      "rejected_session": "too_short"
+    },
+    {
+      "file": "7eaa60d2-d594-4997-b2b6-3fee5aa8a708.drlog",
+      "rejections": {},
+      "rejected_session": "missing_quality_metadata"
+    },
+    {
+      "file": "f475ca55-53fd-41f7-a6ff-3a7a2c56f522.drlog",
+      "rejections": {},
+      "session": "f475ca55-53fd-41f7-a6ff-3a7a2c56f522",
+      "rejected_session": "too_short"
+    }
+  ],
+  "accepted_windows": 0,
+  "training_blockers": [
+    "Need at least five independent sessions",
+    "Need at least 100 quality fixes in train",
+    "Need at least 100 quality fixes in validation",
+    "Need at least 100 quality fixes in test"
+  ],
+  "candidate": {
+    "status": "blocked",
+    "reasons": [
+      "Need at least five independent sessions",
+      "Need at least 100 quality fixes in train",
+      "Need at least 100 quality fixes in validation",
+      "Need at least 100 quality fixes in test"
+    ],
+    "promoted": false
+  }
+}

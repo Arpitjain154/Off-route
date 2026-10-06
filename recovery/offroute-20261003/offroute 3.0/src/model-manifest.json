@@ -1,0 +1,31 @@
+{
+  "version": "1.1.0",
+  "dataset": "IO-VNBD",
+  "revision": "118939602e3422d47b8ab0807b623751c3ac135b",
+  "models": [
+    {
+      "name": "motion",
+      "version": "1.1.0",
+      "placeholder": false,
+      "validated": false,
+      "sha256": "5518fa4a83faabdabcd570a098bdd08135de9c5eb29569623cd41ed3c9035edc",
+      "dataset": "IO-VNBD"
+    },
+    {
+      "name": "gps-health",
+      "version": "1.0.0",
+      "placeholder": false,
+      "validated": false,
+      "sha256": "5dfea3dc82218d9944439f92d8853bd4fa4eb608428a6117a78e33e1e83f0275",
+      "dataset": "IO-VNBD"
+    },
+    {
+      "name": "speed",
+      "version": "1.1.0",
+      "placeholder": false,
+      "validated": false,
+      "sha256": "e923026a9f6300e4cb056ee783219dc9f5ef806609390164481b74c64ff1a2e2",
+      "dataset": "IO-VNBD"
+    }
+  ]
+}

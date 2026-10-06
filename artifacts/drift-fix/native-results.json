@@ -1,0 +1,10 @@
+{
+  "tests": 63,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 2,
+  "skipped_tests": [
+    "replayRecordedPhoneDataWithThirtySecondOutages",
+    "buildMadhyaPradeshAndFindMajorCities"
+  ]
+}

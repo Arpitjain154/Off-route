@@ -1,0 +1,118 @@
+diff --git a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java b/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java
+index 61fb1f2..d455beb 100644
+--- a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java
++++ b/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java
+@@ -197,7 +197,11 @@ public final class InertialNavigation {
+         double correction=clamp(cross*trust,-2,2);
+         lon+=correction*Math.cos(h)/(111320*Math.cos(Math.toRadians(lat)));lat-=correction*Math.sin(h)/111320;
+     }
+-    private boolean gravityFresh(long now){return gravityTime>0&&now>=gravityTime&&now-gravityTime<500_000_000L;}
++    // Android delivers independent streams: gravity may lead the current accelerometer
++    // event by one sampling interval. Allow at most 20 ms of skew, never a stale
++    // gravity value or a large clock mismatch. The mounted-phone frame changes
++    // negligibly over this interval; the remount guard still applies in gravity().
++    private boolean gravityFresh(long now){return gravityTime>0&&now-gravityTime>=-20_000_000L&&now-gravityTime<500_000_000L;}
+     public boolean available(long now){return anchored&&aligned&&predictionFresh&&gravityFresh(now)&&last>0&&now>=last&&now-last<500_000_000L;}
+     public boolean hasPosition(){return anchored;}
+     public boolean aligned(){return aligned;}public boolean stopped(){return stopped;}
+diff --git a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java b/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java
+index 1913d9e..bdbc356 100644
+--- a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java
++++ b/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java
+@@ -13,12 +13,13 @@ public final class LiveNavigation {
+     private boolean holdingStop;
+     private double stopLat,stopLon;
+     private long lastImu;
++    private boolean gyroscopeFresh;
+     public final InertialNavigation inertial=new InertialNavigation();
+     private long clock,recoveryStart;private double recoveryLat,recoveryLon,recoverySeconds,recoverySpeed;
+ 
+     public void imu(ImuSample sample) { imu(sample,true); }
+     public void imu(ImuSample sample,boolean gyroFresh) {
+-        stationary.observe(sample);lastImu=sample.t();clock=sample.t();
++        stationary.observe(sample);lastImu=sample.t();clock=sample.t();gyroscopeFresh=gyroFresh;
+         if(!stationary.isStopped(sample.t()))holdingStop=false;
+         if(gyroFresh)inertial.predict(sample,healthy(sample.t()),stationary.isStopped(sample.t()));
+     }
+@@ -122,5 +123,5 @@ public final class LiveNavigation {
+     public double heading(){return estimated(clock)?inertial.heading():heading;}
+     public boolean headingReady(long now){return estimated(now)||headingKnown&&now>=headingTime&&now-headingTime<5_000_000_000L;}
+     public String headingSource(long now){return estimated(now)?"Gyroscope + calibrated compass":headingReady(now)?headingSource:"Unavailable";}
+-    public boolean imuFresh(long now){return lastImu>0&&now>=lastImu&&now-lastImu<500_000_000L;}
++    public boolean imuFresh(long now){return gyroscopeFresh&&lastImu>0&&now>=lastImu&&now-lastImu<500_000_000L;}
+ }
+diff --git a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java b/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java
+index d005b68..0f081fc 100644
+--- a/recovery/offroute-20261003/source-before/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java
++++ b/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java
+@@ -98,7 +98,7 @@ public final class SensorCaptureService
+             41,
+             new NotificationCompat.Builder(this, "idr-tracking")
+                 .setSmallIcon(com.idr.navigator.R.drawable.ic_tracking)
+-                .setContentTitle("Off Route is tracking")
++                .setContentTitle("Offroute is tracking")
+                 .setContentText("GPS and motion tracking are active.")
+                 .setOngoing(true)
+                 .setContentIntent(open)
+diff --git a/recovery/offroute-20261003/source-before/android/app/src/main/res/values/strings.xml b/android/app/src/main/res/values/strings.xml
+index c09b342..fe728ea 100644
+--- a/recovery/offroute-20261003/source-before/android/app/src/main/res/values/strings.xml
++++ b/android/app/src/main/res/values/strings.xml
+@@ -1,7 +1,7 @@
+ <?xml version='1.0' encoding='utf-8'?>
+ <resources>
+-    <string name="app_name">Off Route</string>
+-    <string name="title_activity_main">Off Route</string>
++    <string name="app_name">Offroute</string>
++    <string name="title_activity_main">Offroute</string>
+     <string name="package_name">com.idr.navigator</string>
+     <string name="custom_url_scheme">com.idr.navigator</string>
+ </resources>
+diff --git a/recovery/offroute-20261003/source-before/android/app/build.gradle b/android/app/build.gradle
+index 0449bf6..6b2dbf0 100644
+--- a/recovery/offroute-20261003/source-before/android/app/build.gradle
++++ b/android/app/build.gradle
+@@ -22,8 +22,8 @@ android {
+         applicationId "com.idr.navigator"
+         minSdkVersion rootProject.ext.minSdkVersion
+         targetSdkVersion rootProject.ext.targetSdkVersion
+-        versionCode 12
+-        versionName "1.5.3-stationary"
++        versionCode 13
++        versionName "1.5.4-offroute"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+         aaptOptions {
+              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+diff --git a/recovery/offroute-20261003/source-before/src/App.tsx b/src/App.tsx
+index 03b879f..698ea35 100644
+--- a/recovery/offroute-20261003/source-before/src/App.tsx
++++ b/src/App.tsx
+@@ -253,7 +253,7 @@ export default function App(){
+     </details>
+     <button className="button primary save-preferences" disabled={busy} onClick={()=>void savePreferences()}><Check size={16}/>Save Preferences</button></div>
+    </dialog>
+-   {onboarding&&<div className="stitch-onboarding"><section className="surface"><span className="heading-icon"><Navigation size={30}/></span><h1>OffRoute</h1><h2>Your map, beyond the signal.</h2><p>Keep your phone mounted. OffRoute uses location and motion sensors to estimate movement when GPS is limited.</p><p>{native?'Location permission starts the engine. Android shows a notification while tracking.':'This browser preview can show simulated motion. Live navigation and offline route calculation run on Android.'}</p><button className="button primary" disabled={busy} onClick={async()=>{try{if(native)await DrEngine.requestPermissions();localStorage.setItem('idr-onboarded','true');setOnboarding(false);}catch(e){setToast(errorMessage(e));}}}>{native?'Enable permissions':'Explore the preview'}</button></section></div>}
++   {onboarding&&<div className="stitch-onboarding"><section className="surface"><span className="heading-icon"><Navigation size={30}/></span><h1>Offroute</h1><h2>Your map, beyond the signal.</h2><p>Keep your phone mounted. Offroute uses location and motion sensors to estimate movement when GPS is limited.</p><p>{native?'Location permission starts the engine. Android shows a notification while tracking.':'This browser preview can show simulated motion. Live navigation and offline route calculation run on Android.'}</p><button className="button primary" disabled={busy} onClick={async()=>{try{if(native)await DrEngine.requestPermissions();localStorage.setItem('idr-onboarded','true');setOnboarding(false);}catch(e){setToast(errorMessage(e));}}}>{native?'Enable permissions':'Explore the preview'}</button></section></div>}
+    {toast&&<div className="stitch-toast" role="status"><Info size={18}/><span>{toast}</span><button aria-label="Dismiss notification" onClick={()=>setToast('')}><X size={17}/></button></div>}
+  </div>;
+ }
+diff --git a/recovery/offroute-20261003/source-before/index.html b/index.html
+index b033256..a00ff6b 100644
+--- a/recovery/offroute-20261003/source-before/index.html
++++ b/index.html
+@@ -1 +1 @@
+-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/><meta name="theme-color" content="#0b0e14"/><meta name="description" content="Off Route — stay on track, even when GPS doesn't."/><title>Off Route</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
++<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/><meta name="theme-color" content="#0b0e14"/><meta name="description" content="Offroute — stay on track, even when GPS doesn't."/><title>Offroute</title></head><body><div id="root"></div><script type="module" src="/src/main.tsx"></script></body></html>
+diff --git a/recovery/offroute-20261003/source-before/capacitor.config.ts b/capacitor.config.ts
+index fc0233b..122c963 100644
+--- a/recovery/offroute-20261003/source-before/capacitor.config.ts
++++ b/capacitor.config.ts
+@@ -1,7 +1,7 @@
+ import type { CapacitorConfig } from '@capacitor/cli';
+ const config: CapacitorConfig = {
+   appId: 'com.idr.navigator',
+-  appName: 'Off Route',
++  appName: 'Offroute',
+   webDir: 'dist',
+   android: { backgroundColor: '#0B0E14' },
+   server: { androidScheme: 'https' },

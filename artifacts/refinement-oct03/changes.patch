@@ -1,0 +1,367 @@
+--- before/src\App.tsx
++++ after/src\App.tsx
+@@ -5,14 +5,15 @@
+ import DestinationSearch from './DestinationSearch';
+ import RouteGuidance,{NavigationSummary} from './RouteGuidance';
+ import {useRouteNavigation} from './useRouteNavigation';
+-import {api,client,errorMessage,readSettings} from './api';
+-import {native,DrEngine,SensorPlugin,ModelPlugin,initialPose,ensureNativeEngine,startEngine,stopEngine,getPose,beginLog,endLog,uploadDrive,updateModels} from './engine';
++import {api,errorMessage,readSettings} from './api';
++import {native,DrEngine,SensorPlugin,ModelPlugin,initialPose,ensureNativeEngine,startEngine,stopEngine,getPose,beginLog,endLog,uploadDrive} from './engine';
+ import {RecordingLifecycle} from './recordingLifecycle';
+ import modelManifest from './model-manifest.json';
+ import type {Drive,Pose,Report,Settings} from './types';
+ import type {RoadRoute} from './directions';
+ import './stitch-shell.css';
+ import CloudSettings from './CloudSettings';
++import AiSpeedStatus from './AiSpeedStatus';
+ import {Cloud,useCloud} from './cloud';
+ import {cloudJourneyLabel,canUploadJourney} from './cloudState';
+ 
+@@ -122,6 +123,7 @@
+    if(native&&route?.live&&running&&pose.ready&&settings.learningEnabled!==false)void changeRecording(true);
+  },[route?.live,running,pose.ready,settings.learningEnabled]);
+  useEffect(()=>{
++   if(!settings.apiUrl.trim()){setOnline(false);return;}
+    let active=true;const check=()=>api.health().then(()=>active&&setOnline(true)).catch(()=>active&&setOnline(false));
+    void check();const timer=setInterval(check,20000);return()=>{active=false;clearInterval(timer);};
+  },[settings.apiUrl,settings.apiKey]);
+@@ -133,6 +135,7 @@
+  async function refreshDrives(){
+   setRefreshing(true);
+   try{
++   if(!settingsRef.current.apiUrl.trim()){setDrives(readDrives());setOnline(false);return;}
+    const remote=await api.drives(),local=readDrives();
+    const merged=[...local.filter(d=>!remote.some(r=>r.sessionId===d.sessionId)),...remote.map(d=>({...local.find(l=>l.sessionId===d.sessionId),...d,status:'uploaded' as const}))];
+    saveDrives(merged);setOnline(true);
+@@ -231,7 +234,7 @@
+    {page==='sensors'&&<section className="stitch-page sensors-page"><header className="page-heading"><span className="heading-icon"><Radio size={23}/></span><div><h1>Sensors</h1><p>Live device measurements</p></div><button aria-label="Open settings" className="quiet-button" onClick={openSettings}><Settings2 size={20}/></button></header>
+     <section className="surface"><h2><ShieldCheck size={19}/> Position & alignment</h2>{diagnostics}</section>
+     <section className="surface"><h2><Activity size={19}/> Adaptive learning</h2>{recoveryWarning&&<p role="alert">{recoveryWarning}</p>}<p>Navigation sessions collect IMU and GNSS data locally. Only quality-checked observations can train a candidate model; new weights are evaluated before deployment.</p><div className="recording-status"><span className={'status-dot '+(logging?'green':'')}/>{logging?'Collecting locally':settings.learningEnabled===false?'Collection paused':'Ready for the next navigation'}</div><p className="muted">{logging?elapsed(pose.elapsed)+' · '+num(pose.bytes/1048576,2)+' MB on device':cloud.status.consent?'Cloud contribution enabled · uploads follow your network preference.':'Cloud contribution is off; recordings stay on this phone.'}</p><button className="button secondary" disabled={busy} onClick={async()=>{if(settings.learningEnabled===false)setSettings({...settings,learningEnabled:true});else if(await changeRecording(false))setSettings({...settings,learningEnabled:false});}}>{settings.learningEnabled===false?'Enable local collection':'Pause local collection'}</button>{logging&&!active&&<button className="button secondary" disabled={busy} onClick={()=>void changeRecording(false)}>Finish recovered recording</button>}</section>
+-    <section className="surface"><h2>Model status</h2><p>{pose.modelStatus||'Live model status unavailable'}</p>{modelVersions.map(v=><p className="model-line" key={v}><span className="green-dot"/>{v}</p>)}<div className="telemetry-list">{[['GNSS',pose.gpsTrust],['Physics',pose.physicsTrust],['Map match',pose.mapTrust],['AI speed',pose.aiTrust]].map(([name,value])=><div key={String(name)}><span>{name} advisor trust</span><strong>{pose.ready?num(Number(value)*100)+'%':'Unavailable'}</strong></div>)}</div><p className="muted">Advisor trust values are diagnostics, not measured positioning accuracy or percentages that must sum to 100.</p></section>
++    <section className="surface"><h2>Model status</h2><p>{pose.modelStatus||'Live model status unavailable'}</p>{modelVersions.map(v=><p className="model-line" key={v}><span className="green-dot"/>{v}</p>)}<AiSpeedStatus pose={pose} units={settings.units}/><div className="telemetry-list">{[['GNSS',pose.gpsTrust],['Physics',pose.physicsTrust],['Map match',pose.mapTrust],['AI speed',pose.aiTrust]].map(([name,value])=><div key={String(name)}><span>{name} advisor trust</span><strong>{pose.ready?num(Number(value)*100)+'%':'Unavailable'}</strong></div>)}</div><p className="muted">Advisor trust values are diagnostics, not measured positioning accuracy or percentages that must sum to 100.</p></section>
+     {native&&<div className="sensor-actions"><button className="button secondary" onClick={()=>void SensorPlugin.shareDiagnostics().catch(e=>setToast(errorMessage(e)))}><Download size={18}/> Export diagnostics & latest training log</button><button className="text-button" onClick={()=>void DrEngine.backgroundSettings()}>Location and background permissions</button></div>}
+    </section>}
+    {!plannerOpen&&!(active&&page==='navigate')&&<nav className="stitch-nav" aria-label="Main navigation">{([{id:'navigate',label:'Navigate',icon:Navigation},{id:'drives',label:'Journeys',icon:Route},{id:'sensors',label:'Sensors',icon:Radio}] as const).map(item=><button key={item.id} aria-current={page===item.id?'page':undefined} className={page===item.id?'active':''} onClick={()=>go(item.id)}><item.icon size={19}/><span>{item.label}</span></button>)}</nav>}
+@@ -241,14 +244,9 @@
+     <section className="settings-box"><span className="field-caption">PHONE MOUNT SETUP</span><div className="segments">{(['dashboard','windshield','console'] as const).map(m=><button key={m} disabled={logging} className={draft.mount===m?'selected':''} onClick={()=>setDraft({...draft,mount:m})}>{m.charAt(0).toUpperCase()+m.slice(1)}</button>)}</div><small>{logging?'Pause collection before changing the mount.':pose.fusionStatus||'Alignment status unavailable'}</small></section>
+     <section className="settings-box"><span className="field-caption">DISTANCE UNITS</span><div className="segments">{(['km','mi'] as const).map(u=><button key={u} className={draft.units===u?'selected':''} onClick={()=>setDraft({...draft,units:u})}>{u==='km'?'Kilometers (km)':'Miles (mi)'}</button>)}</div></section>
+     <section className="settings-box"><span className="field-caption">APPEARANCE THEME</span><div className="segments">{(['light','dark','system'] as const).map(t=><button key={t} className={draft.theme===t?'selected':''} onClick={()=>setDraft({...draft,theme:t})}>{t.charAt(0).toUpperCase()+t.slice(1)}</button>)}</div></section>
+-    <CloudSettings status={cloud.status} refresh={cloud.refresh} error={cloud.error} canApply={!route?.live&&!logging&&!busy} onApply={async()=>{if(routeRef.current?.live||recorder.current?.active)throw new Error('Finish navigation and recording first');setBusy(true);setRunning(false);try{await stopEngine();await Cloud.applyPendingModels();}finally{try{await ensureNativeEngine();setRunning(true);}finally{setBusy(false);}}}}/><details className="advanced-settings"><summary>Collection & legacy server</summary>
++    <CloudSettings status={cloud.status} refresh={cloud.refresh} error={cloud.error} canApply={!route?.live&&!logging&&!busy} onApply={async()=>{if(routeRef.current?.live||recorder.current?.active)throw new Error('Finish navigation and recording first');setBusy(true);setRunning(false);try{await stopEngine();await Cloud.applyPendingModels();}finally{try{await ensureNativeEngine();setRunning(true);}finally{setBusy(false);}}}}/><details className="advanced-settings"><summary>Data collection</summary>
+      <label className="checkbox-label"><input type="checkbox" checked={draft.learningEnabled!==false} onChange={e=>setDraft({...draft,learningEnabled:e.target.checked})}/>Collect navigation data locally for learning</label>
+      <label className="field-label">Capture rate<select disabled={logging} value={draft.sampleRate} onChange={e=>setDraft({...draft,sampleRate:Number(e.target.value) as 100|200})}><option value={100}>100 Hz target</option><option value={200}>200 Hz target</option></select></label>
+-     <label className="field-label">Backend API address<input value={draft.apiUrl} placeholder="https://your-api.example.com" onChange={e=>setDraft({...draft,apiUrl:e.target.value})}/></label>
+-     <label className="field-label">Workspace API key<input type="password" autoComplete="off" value={draft.apiKey} onChange={e=>setDraft({...draft,apiKey:e.target.value})}/></label>
+-     <p className="muted">Save preferences before testing the connection. Uploads are optional and initiated from journey details.</p>
+-     <button className="button secondary" onClick={async()=>{try{await api.health();await client().get('/api/drives?limit=1');setOnline(true);setToast('API and database connected.');}catch(e){setOnline(false);setToast(errorMessage(e));}}}><Wifi size={16}/>Test saved connection</button>
+-     <button className="button secondary" disabled={busy} onClick={async()=>{setBusy(true);try{setToast((await updateModels()).join(' · '));if(native){const r=await ModelPlugin.checkForUpdate();setModelVersions(r.models.map(m=>m.name+' · '+m.version));}}catch(e){setToast(errorMessage(e));}finally{setBusy(false);}}}><Download size={16}/>Check legacy server models</button>
+      <button className="text-button" onClick={()=>{setSettingsOpen(false);setOnboarding(true);}}>Review permissions</button>
+     </details>
+     <button className="button primary save-preferences" disabled={busy} onClick={()=>void savePreferences()}><Check size={16}/>Save Preferences</button></div>
+--- before/src\types.ts
++++ after/src\types.ts
+@@ -36,6 +36,9 @@
+   trackingAvailable?: boolean;
+   estimateAge?: number;
+   aiSpeedRmse?: number;
++  aiSpeedEstimate?: number;
++  aiSpeedAvailable?: boolean;
++  aiSpeedValidated?: boolean;
+ };
+ export type Mount = 'windshield' | 'dashboard' | 'console';
+ export type Settings = {
+--- before/android\app\build.gradle
++++ after/android\app\build.gradle
+@@ -22,8 +22,8 @@
+         applicationId "com.idr.navigator"
+         minSdkVersion rootProject.ext.minSdkVersion
+         targetSdkVersion rootProject.ext.targetSdkVersion
+-        versionCode 13
+-        versionName "1.5.4-offroute"
++        versionCode 14
++        versionName "1.5.5-offroute"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+         aaptOptions {
+              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+--- before/android\app\src\main\java\com\idr\navigator\cloud\CloudScheduler.java
++++ after/android\app\src\main\java\com\idr\navigator\cloud\CloudScheduler.java
+@@ -128,7 +128,8 @@
+                 JSONObject e = entries.getJSONObject(i);
+                 if (
+                     !"uploaded".equals(e.optString("state")) &&
+-                    !"action-required".equals(e.optString("state"))
++                    (!"action-required".equals(e.optString("state")) ||
++                        e.optLong("generation") == s.generation() && CloudFailures.pausedEntry(e.optString("state"),e.optString("message")))
+                 ) queue(c).enqueue(
+                     s.config().projectUrl,
+                     s.user(),
+--- before/android\app\src\main\java\com\idr\navigator\cloud\CloudUploadWorker.java
++++ after/android\app\src\main\java\com\idr\navigator\cloud\CloudUploadWorker.java
+@@ -34,7 +34,7 @@
+                         "action-required".equals(item.optString("state"))
+                     ) continue;
+                     SupabaseClient.Guard guard = () -> {
+-                        if (isStopped()) throw new IOException("Upload paused");
++                        if (isStopped()) throw new InterruptedIOException("Upload paused");
+                         s.guard(user, generation, true);
+                         if (
+                             !cfg.projectUrl.equals(s.config().projectUrl) ||
+@@ -82,12 +82,7 @@
+                         if (staged != null) for (File f : staged) if (f.isFile()) f.delete();
+                         stage.delete();
+                     } catch (Exception e) {
+-                        boolean temporary =
+-                            e instanceof SupabaseClient.HttpError
+-                                ? ((SupabaseClient.HttpError) e).retry()
+-                                : e instanceof java.net.SocketException ||
+-                                  e instanceof java.net.SocketTimeoutException ||
+-                                  e instanceof java.net.UnknownHostException;
++                        boolean temporary = CloudFailures.retry(e);
+                         // Never overwrite a newer account/consent generation with this worker's result.
+                         synchronized (CloudSessionStore.LOCK) {
+                             if (s.generation() == generation) q.status(
+--- before/android\app\src\main\java\com\idr\navigator\cloud\SupabaseClient.java
++++ after/android\app\src\main\java\com\idr\navigator\cloud\SupabaseClient.java
+@@ -70,6 +70,21 @@
+                     : "Sign-in or registration failed (" + status + "). Check your details; use Create account if you have not registered in OFF-ROUTE.";
+         }
+         return new HttpError(status, message);
++    }
++
++    // Storage may wrap its actual status in an HTTP 400 response (legacy API).
++    // Normalize only recognized statuses; never display arbitrary response text.
++    static HttpError storageError(int status,String body) {
++        if(status==400)try {
++            JSONObject error=new JSONObject(body);
++            String code=error.optString("code");
++            int wrapped=error.optInt("statusCode",400);
++            if(wrapped==401||wrapped==403||wrapped==404||wrapped==409||wrapped==413||wrapped==429||wrapped>=500&&wrapped<=599)status=wrapped;
++            else if("NoSuchKey".equals(code)||"NoSuchBucket".equals(code))status=404;
++            else if("InvalidJWT".equals(code))status=401;
++            else if("AccessDenied".equals(code))status=403;
++        }catch(Exception ignored){}
++        return new HttpError(status);
+     }
+ 
+     public interface Guard {
+@@ -188,8 +203,13 @@
+                     }
+                 }
+                 int status = upload ? c.getResponseCode() : response[0];
+-                if (status == 401 && attempt == 0) continue;
+-                if (status < 200 || status >= 300) throw new HttpError(status);
++                if (status < 200 || status >= 300) {
++                    String body="";
++                    try { InputStream error=c.getErrorStream();if(error!=null)body=new String(read(error,16384),StandardCharsets.UTF_8); }catch(IOException ignored){}
++                    HttpError failure=storageError(status,body);
++                    if(failure.status==401&&attempt==0)continue;
++                    throw failure;
++                }
+                 if (!upload) {
+                     file.getParentFile().mkdirs();
+                     try (
+--- before/android\app\src\main\java\com\idr\navigator\engine\FeatureBuffer.java
++++ after/android\app\src\main\java\com\idr\navigator\engine\FeatureBuffer.java
+@@ -33,6 +33,10 @@
+ 
+     public boolean ready() {
+         return count == 300;
++    }
++
++    public boolean ready(long now) {
++        return ready() && now >= last && now-last <= 100_000_000L;
+     }
+ 
+     public float[][][] imu() {
+--- before/android\app\src\main\java\com\idr\navigator\engine\SensorCaptureService.java
++++ after/android\app\src\main\java\com\idr\navigator\engine\SensorCaptureService.java
+@@ -62,6 +62,7 @@
+     private String health = "BLACKOUT",
+         modelStatus = "Loading models";
+     private long lastGyro,modelInferences;
++    private final AiSpeedReading aiSpeedReading=new AiSpeedReading();
+     private float[] previousHealth = new float[5];
+     private long previousHealthTime;
+ 
+@@ -392,16 +393,17 @@
+                     previousHealthTime = now;
+                     if (models != null) try {
+                         float[] prediction = models.health(healthFeatures);
+-                        if (features.ready()) {
++                        if (features.ready(now)&&live.imuFresh(now)) {
+                             float[] motion = models.motion(features);
+                             double speedPrediction=models.speed(features);
++                            aiSpeedReading.update(now,models.placeholder("speed")?Double.NaN:speedPrediction);
+                             live.inertial.models(now,models.enabled("speed")?speedPrediction:Double.NaN,
+                                 models.enabled("motion")?motion:null,models.enabled("gps-health")?prediction:null,
+                                 lastLocation!=null&&lastLocation.hasSpeed()?(double)lastLocation.getSpeed():null,
+                                 live.healthy(now)&&live.accuracy()<=15&&now-lastFix<=1_000_000_000L&&live.imuFresh(now)&&lastFix>lastCalibrationFix&&lastLocation!=null&&lastLocation.hasSpeedAccuracy()&&lastLocation.getSpeedAccuracyMetersPerSecond()>=0&&lastLocation.getSpeedAccuracyMetersPerSecond()<=1);
+                             lastCalibrationFix=Math.max(lastCalibrationFix,lastFix);
+                             modelInferences++;
+-                        }
++                        } else aiSpeedReading.clear();
+                         modelStatus = models.placeholder("speed")
+                             ? "Placeholder ML · AI speed disabled"
+                             : !models.enabled("speed") ? "AI inference only · awaiting phone validation"
+@@ -409,6 +411,7 @@
+                             : "IO-VNBD inference active · speed calibration " + live.inertial.calibrationSamples()+"/15; physical drift validation pending";
+                     } catch(RuntimeException | LinkageError error) {
+                         modelStatus="Model inference unavailable · inertial tracking continues";
++                        aiSpeedReading.clear();
+                         live.inertial.models(now,Double.NaN,null,null,null,false);
+                         EngineDiagnostics.failure(SensorCaptureService.this,"Model inference",error);
+                         models.close();models=null;
+@@ -481,6 +484,10 @@
+         s.put("mapTrust", map.trustScore());
+         s.put("aiTrust", live.inertial.aiWeight(now));
+         s.put("aiSpeedRmse",live.inertial.modelRmse());
++        boolean aiAvailable=aiSpeedReading.available(now)&&live.imuFresh(now)&&features.ready(now);
++        s.put("aiSpeedAvailable",aiAvailable);
++        s.put("aiSpeedEstimate",aiAvailable?aiSpeedReading.speed(now):0);
++        s.put("aiSpeedValidated",models!=null&&models.enabled("speed"));
+         s.put("modelInferences",modelInferences);
+         s.put("distance", logDistance);
+         s.put("elapsed", logger == null ? 0 : (now - logStarted) * 1e-9);
+--- /dev/null
++++ src/AiSpeedStatus.tsx
+@@ -0,0 +1,6 @@
++import type {Pose} from './types';
++export default function AiSpeedStatus({pose,units}:{pose:Pose;units:'km'|'mi'}){
++ const valid=pose.aiSpeedAvailable===true&&Number.isFinite(pose.aiSpeedEstimate)&&pose.aiSpeedEstimate!>=0;
++ const value=valid?(pose.aiSpeedEstimate!*(units==='mi'?2.236936:3.6)).toFixed(1)+' '+(units==='mi'?'mph':'km/h'):'Unavailable';
++ return <><div className="telemetry-list"><div><span>AI speed estimate (experimental)</span><strong>{value}</strong></div></div><p className="muted">{!valid?'Waiting for fresh motion samples. ':''}{pose.aiSpeedValidated?pose.aiTrust>0?'Calibrated corrections active.':'Model loaded; corrections await calibration.':'Diagnostic output only  -  phone validation pending; not used for navigation.'}</p></>;
++}
+--- /dev/null
++++ android/app/src/main/java/com/idr/navigator/engine/AiSpeedReading.java
+@@ -0,0 +1,14 @@
++package com.idr.navigator.engine;
++
++/** Raw diagnostic output only. Availability never grants permission to steer navigation. */
++public final class AiSpeedReading {
++    private long timestamp;
++    private double value=Double.NaN;
++    public void clear(){timestamp=0;value=Double.NaN;}
++    public void update(long now,double speed){
++        clear();
++        if(now>0&&Double.isFinite(speed)&&speed>=0&&speed<=80){timestamp=now;value=speed;}
++    }
++    public boolean available(long now){return timestamp>0&&now>=timestamp&&now-timestamp<=2_000_000_000L&&Double.isFinite(value);}
++    public double speed(long now){return available(now)?value:Double.NaN;}
++}
+--- /dev/null
++++ android/app/src/main/java/com/idr/navigator/cloud/CloudFailures.java
+@@ -0,0 +1,16 @@
++package com.idr.navigator.cloud;
++
++import java.io.InterruptedIOException;
++import java.net.SocketException;
++import java.net.UnknownHostException;
++
++final class CloudFailures {
++    static boolean retry(Exception error) {
++        return error instanceof SupabaseClient.HttpError
++            ? ((SupabaseClient.HttpError)error).retry()
++            : error instanceof InterruptedIOException || error instanceof SocketException || error instanceof UnknownHostException;
++    }
++    static boolean pausedEntry(String state,String message){
++        return "action-required".equals(state)&&"Upload paused".equals(message);
++    }
++}
+--- /dev/null
++++ android/app/src/test/java/com/idr/navigator/engine/PredictionFreshnessTest.java
+@@ -0,0 +1,18 @@
++package com.idr.navigator.engine;
++import static org.junit.Assert.*;
++import org.junit.Test;
++public class PredictionFreshnessTest {
++ @Test public void stoppedSensorStreamCannotKeepAiWindowReady(){
++  var f=new FeatureBuffer();for(int i=0;i<300;i++)f.add(new ImuSample(1_000_000_000L+i*10_000_000L,0,0,9.80665,0,0,0));
++  assertTrue(f.ready(4_000_000_000L));assertFalse(f.ready(5_000_000_000L));
++  assertFalse(f.ready(3_000_000_000L));
++ }
++ @Test public void rawExperimentalSpeedIsVisibleButInvalidAndStaleReadingsAreNot(){
++  var r=new AiSpeedReading();assertFalse(r.available(1_000_000_000L));
++  r.update(1_000_000_000L,7.5);assertTrue(r.available(2_000_000_000L));assertEquals(7.5,r.speed(2_000_000_000L),0);
++  assertFalse(r.available(4_000_000_000L));r.update(4_000_000_000L,Double.NaN);assertFalse(r.available(4_000_000_000L));
++  r.update(5_000_000_000L,-1);assertFalse(r.available(5_000_000_000L));
++  r.update(6_000_000_000L,81);assertFalse(r.available(6_000_000_000L));
++  r.update(7_000_000_000L,0);assertTrue(r.available(7_000_000_000L));assertEquals(0,r.speed(7_000_000_000L),0);
++ }
++}
+--- /dev/null
++++ android/app/src/test/java/com/idr/navigator/cloud/StorageFailureTest.java
+@@ -0,0 +1,25 @@
++package com.idr.navigator.cloud;
++import static org.junit.Assert.*;
++import org.junit.Test;
++public class StorageFailureTest {
++ @Test public void onlyKnownPausedFailuresAreMigrated(){
++  assertTrue(CloudFailures.pausedEntry("action-required","Upload paused"));
++  assertFalse(CloudFailures.pausedEntry("action-required","Storage access denied"));
++  assertFalse(CloudFailures.pausedEntry("uploaded","Upload paused"));
++ }
++ @Test public void missingApprovedIndexWrappedIn400IsRecognized(){
++  assertEquals(404,SupabaseClient.storageError(400,"{\"statusCode\":\"404\",\"error\":\"not_found\",\"message\":\"Object not found\"}").status);
++  assertEquals(404,SupabaseClient.storageError(404,"{\"code\":\"NoSuchKey\"}").status);
++ }
++ @Test public void permissionAndMalformedResponsesDoNotBecomeMissingModels(){
++  assertEquals(403,SupabaseClient.storageError(400,"{\"statusCode\":\"403\",\"error\":\"Unauthorized\"}").status);
++  assertEquals(400,SupabaseClient.storageError(400,"not json").status);
++  assertFalse(SupabaseClient.storageError(400,"{\"message\":\"secret private@example.com\"}").getMessage().contains("secret"));
++ }
++ @Test public void interruptionsAndTransientFailuresCanRetryButPermissionsCannot(){
++  assertTrue(CloudFailures.retry(new java.io.InterruptedIOException("Upload paused")));
++  assertTrue(CloudFailures.retry(new SupabaseClient.HttpError(503)));
++  assertFalse(CloudFailures.retry(new SupabaseClient.HttpError(403)));
++  assertFalse(CloudFailures.retry(new java.io.IOException("Cloud account changed")));
++ }
++}
+--- /dev/null
++++ scripts/test-ai-speed-status.mjs
+@@ -0,0 +1,21 @@
++import {test} from 'node:test';
++import assert from 'node:assert/strict';
++import fs from 'node:fs';
++import {createRequire} from 'node:module';
++const require=createRequire(import.meta.url),ts=require('typescript'),React=require('react'),{renderToStaticMarkup}=require('react-dom/server');
++const mod={exports:{}};
++new Function('require','module','exports',ts.transpileModule(fs.readFileSync('src/AiSpeedStatus.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText)(require,mod,mod.exports);
++const render=(pose,units='km')=>renderToStaticMarkup(React.createElement(mod.exports.default,{pose,units}));
++test('raw AI reading is visible without granting navigation trust',()=>{
++ const html=render({aiSpeedAvailable:true,aiSpeedEstimate:10,aiTrust:0,aiSpeedValidated:false});
++ assert.match(html,/36.0 km\/h/);assert.match(html,/not used for navigation/);
++ assert.match(render({aiSpeedAvailable:true,aiSpeedEstimate:10},'mi'),/22.4 mph/);
++});
++test('stale, absent and invalid estimates never display a speed',()=>{
++ for(const p of [{},{aiSpeedAvailable:false,aiSpeedEstimate:10},{aiSpeedAvailable:true,aiSpeedEstimate:NaN},{aiSpeedAvailable:true,aiSpeedEstimate:-1}])assert.match(render(p),/Unavailable/);
++ assert.match(render({aiSpeedAvailable:true,aiSpeedEstimate:0}),/0.0 km\/h/);
++});
++test('calibration waiting does not claim corrections are active',()=>{
++ assert.match(render({aiSpeedValidated:true,aiTrust:0}),/await calibration/);
++ assert.match(render({aiSpeedValidated:true,aiTrust:.2}),/corrections active/);
++});
+--- /dev/null
++++ scripts/test-refinement-settings.mjs
+@@ -0,0 +1,21 @@
++import {chromium,expect} from '@playwright/test';
++const browser=await chromium.launch({headless:true,channel:'msedge'});
++try{
++ const page=await browser.newPage({viewport:{width:392,height:850}});
++ await page.addInitScript(()=>localStorage.setItem('idr-onboarded','true'));
++ await page.goto('http://127.0.0.1:5173',{waitUntil:'domcontentloaded'});
++ await page.getByRole('button',{name:'Sensors',exact:true}).click();
++ await expect(page.getByText('AI speed estimate (experimental)',{exact:true})).toBeVisible();
++ await expect(page.getByText(/Diagnostic output only/)).toBeVisible();
++ await page.getByText('AI speed estimate (experimental)',{exact:true}).scrollIntoViewIfNeeded();
++ await page.screenshot({path:'artifacts/refinement-oct03/sensors-preview.png'});
++ await page.getByRole('button',{name:'Open settings',exact:true}).click();
++ await page.getByText('Data collection',{exact:true}).click();
++ for(const label of ['Backend API address','Workspace API key','Test saved connection','Check legacy server models'])await expect(page.getByText(label,{exact:true})).toHaveCount(0);
++ await expect(page.getByRole('combobox',{name:'Capture rate',exact:true})).toBeVisible();
++ await expect(page.getByRole('checkbox',{name:'Collect navigation data locally for learning',exact:true})).toBeVisible();
++ await expect(page.getByRole('heading',{name:'Cloud contribution',exact:true})).toBeVisible();
++ await page.getByText('Data collection',{exact:true}).scrollIntoViewIfNeeded();
++ await page.screenshot({path:'artifacts/refinement-oct03/settings-preview.png'});
++ console.log('PASS: raw AI diagnostic is visible; legacy fields/buttons absent; cloud contribution, collection and capture settings retained.');
++}finally{await browser.close();}

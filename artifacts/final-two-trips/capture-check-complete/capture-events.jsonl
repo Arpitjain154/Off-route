@@ -1,0 +1,11 @@
+{"receivedAt":"2026-10-03T13:08:13.243Z","kind":"capture-start","serial":"RZCX71S8G8L","pid":"28866","limitSeconds":12,"phoneRecordingControlled":false}
+{"receivedAt":"2026-10-03T13:08:13.427Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334000.65,"roundTripMs":173}
+{"receivedAt":"2026-10-03T13:08:15.108Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334002.33,"roundTripMs":170}
+{"receivedAt":"2026-10-03T13:08:16.786Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334004.01,"roundTripMs":168}
+{"receivedAt":"2026-10-03T13:08:18.450Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334005.67,"roundTripMs":154}
+{"receivedAt":"2026-10-03T13:08:20.164Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334007.39,"roundTripMs":174}
+{"receivedAt":"2026-10-03T13:08:21.842Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334009.06,"roundTripMs":170}
+{"receivedAt":"2026-10-03T13:08:23.518Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334010.74,"roundTripMs":169}
+{"receivedAt":"2026-10-03T13:08:25.204Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":334012.43,"roundTripMs":169}
+{"receivedAt":"2026-10-03T13:08:25.986Z","kind":"monitor-exit","code":0}
+{"receivedAt":"2026-10-03T13:08:26.716Z","kind":"capture-end","reason":"time-limit","phoneRecordingStopped":false}

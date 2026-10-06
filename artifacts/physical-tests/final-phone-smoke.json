@@ -1,0 +1,19 @@
+{
+  "result": {
+    "type": "object",
+    "value": {}
+  },
+  "exceptionDetails": {
+    "exceptionId": 3,
+    "text": "Uncaught (in promise) Error: Tracking engine is not running",
+    "lineNumber": 0,
+    "columnNumber": 0,
+    "exception": {
+      "type": "object",
+      "subtype": "error",
+      "className": "pT",
+      "description": "pT: Tracking engine is not running\n    at returnResult (<anonymous>:956:32)\n    at win.androidBridge.onmessage (<anonymous>:931:21)",
+      "objectId": "-6982029617238111081.2.1"
+    }
+  }
+}

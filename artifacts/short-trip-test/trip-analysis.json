@@ -1,0 +1,87 @@
+[
+  {
+    "session": "1af1f4ce-0775-464e-b610-a1da68f7d510",
+    "phone": "samsung SM-E156B",
+    "duration_s": 49.644168952,
+    "samples": 3253,
+    "raw_effective_hz": 65.50618267261754,
+    "largest_imu_gap_ms": 16.551702000000002,
+    "gaps_over_100ms": 0,
+    "trace_hz": 9.682069601725228,
+    "aligned_fraction": 0.5675675675675675,
+    "gps_fresh_fraction": 1.0,
+    "speed_available_fraction": 1.0,
+    "uncertainty_max_m": 2.1,
+    "accel_bias_range": [
+      -0.013001,
+      0.0
+    ],
+    "outages": [],
+    "quality": {
+      "file": "1af1f4ce-0775-464e-b610-a1da68f7d510.drlog",
+      "rejections": {
+        "label_quality": 18,
+        "short_history": 4
+      },
+      "session": "1af1f4ce-0775-464e-b610-a1da68f7d510",
+      "accepted_fixes": 29
+    },
+    "ai_speed_error_mps": {
+      "rmse": 20.172608900561116,
+      "mae": 18.714802176787934,
+      "p95": 30.771657347679138
+    },
+    "quality_stopped_fixes": 3,
+    "ai_stopped_mean_kmh": 39.62577323913575
+  },
+  {
+    "session": "e200b4eb-7315-472a-b1d5-eb8c86b901e1",
+    "phone": "samsung SM-E156B",
+    "duration_s": 493.043933708,
+    "samples": 32091,
+    "raw_effective_hz": 65.08547779639646,
+    "largest_imu_gap_ms": 16.567387,
+    "gaps_over_100ms": 0,
+    "trace_hz": 9.694342304930101,
+    "aligned_fraction": 0.4993723849372385,
+    "gps_fresh_fraction": 0.9006276150627615,
+    "speed_available_fraction": 1.0,
+    "uncertainty_max_m": 76.06489,
+    "accel_bias_range": [
+      -0.381986,
+      0.141536
+    ],
+    "outages": [
+      {
+        "start_s": 384.148024652,
+        "duration_s": 28.683939642,
+        "start_speed_kmh": 11.975544000000001,
+        "end_speed_kmh": 2.537172,
+        "speed_available_fraction": 1.0
+      },
+      {
+        "start_s": 424.38802901,
+        "duration_s": 20.471993308,
+        "start_speed_kmh": 18.580104,
+        "end_speed_kmh": 24.883920000000003,
+        "speed_available_fraction": 1.0
+      }
+    ],
+    "quality": {
+      "file": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.drlog",
+      "rejections": {
+        "short_history": 3,
+        "label_quality": 95
+      },
+      "session": "e200b4eb-7315-472a-b1d5-eb8c86b901e1",
+      "accepted_fixes": 347
+    },
+    "ai_speed_error_mps": {
+      "rmse": 8.143879697150437,
+      "mae": 4.353748614294546,
+      "p95": 18.70991574525833
+    },
+    "quality_stopped_fixes": 272,
+    "ai_stopped_mean_kmh": 8.1310451074516
+  }
+]

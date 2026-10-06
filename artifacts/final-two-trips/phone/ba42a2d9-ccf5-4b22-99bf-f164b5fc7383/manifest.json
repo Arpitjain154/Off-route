@@ -1,0 +1,32 @@
+[
+  {
+    "name": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.drlog",
+    "bytes": 5935220,
+    "sha256": "41adb24118285025a33acc15de1299c5ad5abf76ccf0e7181b6f987bec1c48f5",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.quality.csv",
+    "bytes": 3802408,
+    "sha256": "bcd5a741cc6442d40b1413fd7c1699351ed330f123ae0002098ee7c4a64037db",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.fusion.csv",
+    "bytes": 2616147,
+    "sha256": "bcaaaa74d36a56e7a1e1a859dc1870209ddb47f8162658e5e825641e36d12afa",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.training.json",
+    "bytes": 89,
+    "sha256": "5f1fd35319e6dcfb882c64e388fa89e29b861eb1c904e5161ae4d9ec5c0f55b3",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.summary.json",
+    "bytes": 229,
+    "sha256": "f5c7a732a540b69199f2b36b404eed919e0cd9b4a4035acae530f8f1c2840808",
+    "deviceHashVerified": true
+  }
+]

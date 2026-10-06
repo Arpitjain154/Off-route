@@ -1,0 +1,42 @@
+[
+  {
+    "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+    "configured_target_hz": 100,
+    "available_samples": 45784,
+    "duration_seconds": 379.347816436,
+    "previous_count": 23751,
+    "updated_count": 37627,
+    "previous_rate_hz": 62.610087552743416,
+    "updated_rate_hz": 99.18865581857929
+  },
+  {
+    "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+    "configured_target_hz": 200,
+    "available_samples": 45784,
+    "duration_seconds": 379.347816436,
+    "previous_count": 45784,
+    "updated_count": 45784,
+    "previous_rate_hz": 120.69134977536966,
+    "updated_rate_hz": 120.69134977536966
+  },
+  {
+    "session": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+    "configured_target_hz": 100,
+    "available_samples": 84786,
+    "duration_seconds": 700.427459676,
+    "previous_count": 43867,
+    "updated_count": 69500,
+    "previous_rate_hz": 62.62889810215574,
+    "updated_rate_hz": 99.22512180226192
+  },
+  {
+    "session": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+    "configured_target_hz": 200,
+    "available_samples": 84786,
+    "duration_seconds": 700.427459676,
+    "previous_count": 84786,
+    "updated_count": 84786,
+    "previous_rate_hz": 121.04893780038243,
+    "updated_rate_hz": 121.04893780038243
+  }
+]

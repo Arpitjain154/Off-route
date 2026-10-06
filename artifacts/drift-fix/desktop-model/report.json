@@ -1,0 +1,103 @@
+{
+  "candidate_only": true,
+  "promoted": false,
+  "seed": 2026,
+  "sklearn_version": "1.9.1",
+  "cache_sha256": "b83a2e58d1825b052cca6dc70f7c0d2a48a557b0176bbf96704395b9712e0379",
+  "model": "Balanced logistic regression, C=1, seven rotation-invariant IMU features",
+  "label": "CAN endpoint speed <0.5 m/s stationary; >2 m/s moving; intermediate windows excluded",
+  "threshold_selection": "Smallest threshold satisfying empirical validation moving false-stop <=0.1%; ties excluded",
+  "threshold": 0.9553000622735919,
+  "allowed_validation_false_stops": 7,
+  "iterations": [
+    29
+  ],
+  "convergence_warnings": [],
+  "rotation_invariance_max_abs_error": 0.0,
+  "training": {
+    "windows": 65085,
+    "stationary_windows": 7949,
+    "moving_windows": 57136
+  },
+  "evaluation": {
+    "validation": {
+      "evaluated_windows": 7838,
+      "stationary_windows": 170,
+      "moving_windows": 7668,
+      "true_stops": 22,
+      "false_stops": 7,
+      "missed_stops": 148,
+      "stationary_precision": 0.7586206896551724,
+      "stationary_recall": 0.12941176470588237,
+      "moving_false_stop_rate": 0.0009128847157016171,
+      "moving_by_speed": {
+        "2_to_5_mps": {
+          "moving_windows": 96,
+          "false_stops": 2,
+          "false_stop_rate": 0.020833333333333332
+        },
+        "5_to_10_mps": {
+          "moving_windows": 378,
+          "false_stops": 4,
+          "false_stop_rate": 0.010582010582010581
+        },
+        "10_to_20_mps": {
+          "moving_windows": 962,
+          "false_stops": 1,
+          "false_stop_rate": 0.0010395010395010396
+        },
+        "20_to_81_mps": {
+          "moving_windows": 6232,
+          "false_stops": 0,
+          "false_stop_rate": 0.0
+        }
+      },
+      "excluded_windows": 55
+    },
+    "reused_driver_a": {
+      "evaluated_windows": 29081,
+      "stationary_windows": 3707,
+      "moving_windows": 25374,
+      "true_stops": 501,
+      "false_stops": 59,
+      "missed_stops": 3206,
+      "stationary_precision": 0.8946428571428572,
+      "stationary_recall": 0.13514971675209064,
+      "moving_false_stop_rate": 0.0023252147867896273,
+      "moving_by_speed": {
+        "2_to_5_mps": {
+          "moving_windows": 2917,
+          "false_stops": 33,
+          "false_stop_rate": 0.011312992800822763
+        },
+        "5_to_10_mps": {
+          "moving_windows": 10184,
+          "false_stops": 25,
+          "false_stop_rate": 0.0024548311076197957
+        },
+        "10_to_20_mps": {
+          "moving_windows": 10411,
+          "false_stops": 1,
+          "false_stop_rate": 9.605225242531937e-05
+        },
+        "20_to_81_mps": {
+          "moving_windows": 1862,
+          "false_stops": 0,
+          "false_stop_rate": 0.0
+        }
+      },
+      "excluded_windows": 1458
+    }
+  },
+  "limitations": [
+    "Driving-data CAN endpoint speed is a weak stationary proxy; windows may straddle transitions.",
+    "Validation chooses the threshold, so its false-stop rate is not an unbiased deployment estimate.",
+    "Driver A is a reused regression set, not a fresh blind test.",
+    "Overlapping windows are correlated; window metrics do not establish independent-event confidence.",
+    "IMU alone cannot distinguish every constant-speed interval from a true stop.",
+    "Fixed mounting rotation invariance does not cover changing orientation within a window.",
+    "10 Hz vehicle recordings do not establish performance on this still phone, walking, cycling, or GPS blackouts.",
+    "No deployed model changed; candidate must not directly trigger zero-velocity updates without further validation."
+  ],
+  "coefficient_roundtrip_max_abs_error": 1.6653345369377348e-16
+}

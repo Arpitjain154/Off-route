@@ -1,0 +1,162 @@
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-33-56.762Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": null,
+    "routeActive": false,
+    "journeyCount": 4
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 171,
+  "loggingSamples": 115,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-35-28.903Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 170,
+  "imuFreshSamples": 170,
+  "gpsFreshSamples": 122,
+  "loggingSamples": 170,
+  "aiAvailableSamples": 170,
+  "inferenceCountDelta": 89
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-37-01.151Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 170,
+  "imuFreshSamples": 170,
+  "gpsFreshSamples": 103,
+  "loggingSamples": 170,
+  "aiAvailableSamples": 170,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-38-33.044Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 39,
+  "loggingSamples": 171,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-40-03.996Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 84,
+  "loggingSamples": 171,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-41-36.547Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 161,
+  "loggingSamples": 171,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\trip-2-live\\2026-10-03T13-43-08.145Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": {
+      "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+      "startedAt": "2026-10-03T13:34:26.858Z",
+      "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+      "mount": "dashboard",
+      "source": "device"
+    },
+    "routeActive": true,
+    "journeyCount": 4
+  },
+  "samples": 171,
+  "imuFreshSamples": 171,
+  "gpsFreshSamples": 117,
+  "loggingSamples": 171,
+  "aiAvailableSamples": 171,
+  "inferenceCountDelta": 88
+}

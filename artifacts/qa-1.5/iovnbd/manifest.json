@@ -1,0 +1,34 @@
+{
+  "dataset": "IO-VNBD",
+  "revision": "118939602e3422d47b8ab0807b623751c3ac135b",
+  "recordings": [
+    {
+      "file": "S-S1.csv",
+      "rows": 6001,
+      "inferences": 598,
+      "source_sha256": "e79a2eea18143b825438f9a11c7d724a97c9e18329776defd4d9291d03d4aaca"
+    },
+    {
+      "file": "S-S2.csv",
+      "rows": 5989,
+      "inferences": 598,
+      "source_sha256": "8f48d68ef4ab225c8381af6fb8ec0f36fe6f6048977eeebecc74cfec50d13cb8"
+    },
+    {
+      "file": "S-S3a.csv",
+      "rows": 6001,
+      "inferences": 598,
+      "source_sha256": "b9e45dc8d856271f0a69030b7dd98f32c6b6b88b627138d67e8d3a1b7c5329fe"
+    }
+  ],
+  "limitations": [
+    "Gyro columns kept in dataset order; axis mapping to Android requires device calibration.",
+    "10 Hz IMU is sample-held to 100 Hz for the live filter. This adds no signal detail.",
+    "Repeated coordinate/speed/bearing tuples are not new fixes. Missing speed/course accuracies assumed 0.5 m/s and 10 degrees for replay only.",
+    "Phone speed is inferred as m/s from coordinate displacement, despite Kmh header. See per-recording audit ratios.",
+    "Vehicle GNSS reference is not surveyed ground truth. Outages are deliberately injected, not actual tunnel labels.",
+    "Compass is reconstructed from recorded gravity and magnetometer with Android ENU equations; no reference-trajectory heading is supplied to the estimator.",
+    "Original gyro columns are used as sensor x/y/z; ambiguous yaw/pitch/roll labels remain a source-frame uncertainty.",
+    "Driver A was evaluated previously and is a regression set, not new blind validation."
+  ]
+}

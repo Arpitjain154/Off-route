@@ -1,0 +1,14 @@
+[
+  {
+    "Path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\src\\main\\assets\\models\\gps-health.tflite",
+    "Hash": "5DFEA3DC82218D9944439F92D8853BD4FA4EB608428A6117A78E33E1E83F0275"
+  },
+  {
+    "Path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\src\\main\\assets\\models\\motion.tflite",
+    "Hash": "5518FA4A83FAABDABCD570A098BDD08135DE9C5EB29569623CD41ED3C9035EDC"
+  },
+  {
+    "Path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\src\\main\\assets\\models\\speed.tflite",
+    "Hash": "E923026A9F6300E4CB056EE783219DC9F5EF806609390164481B74C64FF1A2E2"
+  }
+]

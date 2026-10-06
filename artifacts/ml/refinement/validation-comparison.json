@@ -1,0 +1,26 @@
+{
+  "speed": {
+    "shipped": {
+      "mae_mps": 7.097517013549805
+    },
+    "candidate": {
+      "mae_mps": 5.108694076538086
+    }
+  },
+  "motion": {
+    "shipped": {
+      "balanced_accuracy": 0.55352135093367
+    },
+    "candidate": {
+      "balanced_accuracy": 0.6129091385179367
+    }
+  },
+  "gps-health": {
+    "shipped": {
+      "balanced_accuracy": 0.33186107980204943
+    },
+    "candidate": {
+      "balanced_accuracy": 0.32129234449640626
+    }
+  }
+}

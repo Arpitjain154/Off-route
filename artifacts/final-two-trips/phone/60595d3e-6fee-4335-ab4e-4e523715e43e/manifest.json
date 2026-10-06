@@ -1,0 +1,32 @@
+[
+  {
+    "name": "60595d3e-6fee-4335-ab4e-4e523715e43e.drlog",
+    "bytes": 3205080,
+    "sha256": "d64bca55110a5dafa38eca69dc10174b214fff608edb299766de6927d5fcaec5",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "60595d3e-6fee-4335-ab4e-4e523715e43e.quality.csv",
+    "bytes": 2173245,
+    "sha256": "1749ddeb82948a5f446f67751ec014ffca815be732f7294789795d5f8d662867",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "60595d3e-6fee-4335-ab4e-4e523715e43e.fusion.csv",
+    "bytes": 1405067,
+    "sha256": "54d03ceac8170c8ad2339e591505cfeec80b771084f4387064d94809056c6852",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "60595d3e-6fee-4335-ab4e-4e523715e43e.training.json",
+    "bytes": 89,
+    "sha256": "d0288bd47a223a7f44bc7c059e81a79201ace2b4a2a62ca9b1525924e99bbe01",
+    "deviceHashVerified": true
+  },
+  {
+    "name": "60595d3e-6fee-4335-ab4e-4e523715e43e.summary.json",
+    "bytes": 229,
+    "sha256": "d5c8fcbc14b6a1c20e678f0d9dbe822f34464fc6b47ad7c9ae48cdeeeb356da5",
+    "deviceHashVerified": true
+  }
+]

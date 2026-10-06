@@ -1,0 +1,3 @@
+    versionCode=15 minSdk=26 targetSdk=36
+    versionName=1.5.6-offroute
+        android.permission.ACCESS_FINE_LOCATION: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED|524288]

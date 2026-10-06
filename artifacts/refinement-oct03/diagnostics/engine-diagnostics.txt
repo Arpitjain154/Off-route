@@ -1,0 +1,14 @@
+IDR engine diagnostic report
+Phone: samsung SM-S711B
+Android: 16 (API 36)
+ABIs: arm64-v8a, armeabi-v7a, armeabi
+Java heap limit: 268435456
+App: 1.5.4-offroute
+Last stage: Live GNSS tracking
+Stage time: 1791009802095
+
+Previous process exit: reason=16, status=0, time=1791005002423, description=stop com.idr.navigator due to installPackageLI
+
+Previous process exit: reason=13, status=0, time=1791000927532, description=[ISOLATED NOT NEEDED] isolated not needed
+
+Previous process exit: reason=10, status=0, time=1791000927521, description=[STOP APP] fully stop com.idr.navigator/0 by user request

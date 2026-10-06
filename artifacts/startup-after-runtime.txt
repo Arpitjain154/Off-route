@@ -1,0 +1,26 @@
+--------- beginning of main
+09-14 11:11:03.136  2984  2984 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-14 11:11:03.139  2984  2984 I AndroidRuntime: Using default boot image
+09-14 11:11:03.140  2984  2984 I AndroidRuntime: Leaving lock profiling enabled
+09-14 11:11:03.260  2984  2984 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-14 11:11:03.996  2996  3010 I TestRunner: run started: 4 tests
+09-14 11:11:03.996  2996  3010 I TestRunner: started: diagnosticsCanBeExportedWithoutARecordedDrive(com.idr.navigator.EngineStartupTest)
+09-14 11:11:04.004  2996  3010 I TestRunner: finished: diagnosticsCanBeExportedWithoutARecordedDrive(com.idr.navigator.EngineStartupTest)
+09-14 11:11:04.008  2996  3010 I TestRunner: started: statewideGraphLoadsWithOtherAppMemoryInUse(com.idr.navigator.EngineStartupTest)
+--------- beginning of system
+09-14 11:11:04.037   696  1048 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 xflg=0x4 cmp=com.idr.navigator/.MainActivity} with LAUNCH_SINGLE_TASK from uid 10150 (BAL_ALLOW_PERMISSION) result code=0
+09-14 11:11:04.781   696   723 I ActivityTaskManager: Displayed com.idr.navigator/.MainActivity for user 0: +737ms
+09-14 11:11:10.696   696  2090 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 xflg=0x4 cmp=com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} with LAUNCH_MULTIPLE from uid 10150 (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+09-14 11:11:11.216  2996  3010 I TestRunner: finished: statewideGraphLoadsWithOtherAppMemoryInUse(com.idr.navigator.EngineStartupTest)
+09-14 11:11:11.436  2996  3010 I TestRunner: started: startStopAndRestartKeepsAppAlive(com.idr.navigator.EngineStartupTest)
+09-14 11:11:11.522   696   770 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 xflg=0x4 cmp=com.idr.navigator/.MainActivity} with LAUNCH_SINGLE_TASK from uid 10150 (BAL_ALLOW_PERMISSION) result code=0
+09-14 11:11:11.527   696  2625 W ActivityTaskManager: Finishing task with all activities already finished
+09-14 11:11:11.527   696  2625 W ActivityTaskManager: Duplicate finish request for r=ActivityRecord{209889708 u0 com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity t12 f}}
+09-14 11:11:11.823   696   723 I ActivityTaskManager: Displayed com.idr.navigator/.MainActivity for user 0: +299ms
+09-14 11:11:29.396   696  2089 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 xflg=0x4 cmp=com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} with LAUNCH_MULTIPLE from uid 10150 (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+09-14 11:11:29.599   696   723 I ActivityTaskManager: Displayed com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity for user 0: +212ms
+09-14 11:11:29.671  2996  3010 I TestRunner: finished: startStopAndRestartKeepsAppAlive(com.idr.navigator.EngineStartupTest)
+09-14 11:11:29.754  2996  3010 I TestRunner: started: allBundledModelsLoadAndInfer(com.idr.navigator.NativePipelineTest)
+09-14 11:11:29.765  2996  3010 I TestRunner: finished: allBundledModelsLoadAndInfer(com.idr.navigator.NativePipelineTest)
+09-14 11:11:29.773  2996  3010 I TestRunner: run finished: 4 tests, 0 failed, 0 ignored
+09-14 11:11:29.824  2984  2984 I AndroidRuntime: VM exiting with result code 0.

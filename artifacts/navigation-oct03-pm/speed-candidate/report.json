@@ -1,0 +1,87 @@
+{
+  "status": "research_only",
+  "promoted": false,
+  "input": "IMU only; rotation-invariant statistics",
+  "production_blockers": [
+    "Need at least 100 quality fixes in validation"
+  ],
+  "train_sessions": [
+    "23337fd9-b0ea-4682-a9ca-3fb0fce1d158",
+    "8c988ee6-b59d-4e1c-9050-bd7142cb1841",
+    "ea7f59ff-f1d6-4bbd-b6a2-59badf802639"
+  ],
+  "train_fixes": 717,
+  "selection": "leave-one-journey-out using training journeys only",
+  "cv": [
+    {
+      "alpha": 1.0,
+      "mean_journey_rmse": 4.30499289445771
+    },
+    {
+      "alpha": 10.0,
+      "mean_journey_rmse": 4.068816349069416
+    },
+    {
+      "alpha": 100.0,
+      "mean_journey_rmse": 3.604966039409076
+    },
+    {
+      "alpha": 1000.0,
+      "mean_journey_rmse": 3.723662633376479
+    }
+  ],
+  "chosen_alpha": 100.0,
+  "evaluations": [
+    {
+      "session": "00413cb6-72a2-4a81-a0c2-1aa45513ec17",
+      "quality": {
+        "file": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.drlog",
+        "rejections": {
+          "short_history": 4,
+          "label_quality": 2
+        },
+        "session": "00413cb6-72a2-4a81-a0c2-1aa45513ec17",
+        "accepted_fixes": 88
+      },
+      "export_max_abs_error_mps": 1.0566876667006397e-05,
+      "baseline": {
+        "rmse": 20.494006076882425,
+        "mae": 17.99959506392902,
+        "p95": 34.98519569635391
+      },
+      "candidate": {
+        "rmse": 3.2685266083234614,
+        "mae": 2.850314649774439,
+        "p95": 5.108663183450698
+      },
+      "blockers": [
+        "Insufficient stopped observations"
+      ]
+    }
+  ],
+  "reused_test_diagnostic": {
+    "baseline": {
+      "rmse": 12.9403958130245,
+      "mae": 8.825740742091115,
+      "p95": 25.745937947928898,
+      "stopped_false_movement_rate": 0.32051282051282054,
+      "stopped_mean_speed_mps": 4.627532374648954
+    },
+    "candidate": {
+      "rmse": 2.9015369534382605,
+      "mae": 2.4177764884777146,
+      "p95": 5.062335952371359,
+      "stopped_false_movement_rate": 0.9914529914529915,
+      "stopped_mean_speed_mps": 2.525692864870414
+    },
+    "blockers": [
+      "Regression while stopped: stopped_false_movement_rate"
+    ]
+  },
+  "deployment_blockers": [
+    "Need at least 100 quality fixes in validation",
+    "Independent phone/outage validation required; GPS-denied lane-level accuracy is not established",
+    "Insufficient stopped observations",
+    "Regression while stopped: stopped_false_movement_rate"
+  ]
+}

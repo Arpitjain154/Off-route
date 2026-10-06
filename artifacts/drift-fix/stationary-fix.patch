@@ -1,0 +1,107 @@
+--- before/InertialNavigation.java
++++ after/InertialNavigation.java
+@@ -13,6 +13,7 @@
+     private double calibrationMeanGps,calibrationMeanPrediction,calibrationGpsVariance,calibrationCovariance;
+     private int calibrationSamples;
+     private boolean anchored,aligned,stopped,unaided;
++    private boolean predictionFresh;
+     private double lastGpsSpeed;
+     private long stepTime,previousStep;private int steps;private double stepPeriod=.6,stepLength=.7;
+     private boolean rising;private double priorVertical;private long previousGpsStepCount;
+@@ -73,7 +74,10 @@
+         double dt=last==0?0:(t-last)*1e-9;last=t;
+         if(!anchored||dt<=0)return;
+         unaided=!aiding;
++        predictionFresh=false;
++        if(!gravityFresh(t)){acceleration=0;diagnostic="Gravity samples stale \u00b7 position held";return;}
+         if(dt>.25){positionVariance+=Math.pow(Math.max(1,speed)*dt,2);diagnostic="Sensor samples missing · high uncertainty";return;}
++        predictionFresh=true;
+         double gnorm=Math.sqrt(dot(gravity,gravity));double[] up={gravity[0]/gnorm,gravity[1]/gnorm,gravity[2]/gnorm};
+         double[] a={sample.ax()-gravity[0],sample.ay()-gravity[1],sample.az()-gravity[2]};
+         double[] w={sample.gx(),sample.gy(),sample.gz()};
+@@ -86,7 +90,10 @@
+         if(confirmedStop&&aiding&&quiet&&quietSince>0&&t-quietSince>1_500_000_000L){
+             bias=clamp(bias+.01*(linear-bias),-.5,.5);gyroBias=clamp(gyroBias+.01*(angular-gyroBias),-.03,.03);stopped=true;speed=0;
+         }
+-        if(stopped&&(!quiet||Math.abs(linear-bias)>.25))stopped=false;
++        // The independent detector combines recent GNSS and a quiet IMU window.
++        // Do not discard its confirmed stop because gravity removal has a small DC residual.
++        if(confirmedStop&&!shock)stopped=true;
++        else if(stopped&&(!quiet||Math.abs(linear-bias)>.25))stopped=false;
+         if(quiet&&speed<.12&&quietSince>0&&t-quietSince>2_000_000_000L)stopped=true;
+         // Step cadence is used only following pedestrian-speed GNSS, never for a moving car.
+         if(!shock&&lastGpsSpeed<2.5&&vertical>.8&&priorVertical<=.8&&t-stepTime>300_000_000L){
+@@ -97,8 +104,15 @@
+         if(!shock){accumulatedAcceleration+=linear*dt;accumulatedTime+=dt;}
+         // Predict between healthy fixes too, so timeout-based handoff includes
+         // the distance travelled since the last receiver observation.
+-        positionVariance+=dt*(.15*healthNoise+2*Math.sqrt(positionVariance*speedVariance));
+-        speedVariance+=dt*(.04*motionNoise+(shock?.8:0));yawVariance+=dt*(.00003+(shock?.003:0));
++        if(stopped) {
++            // Position is held, so moving-velocity process error cannot accumulate here.
++            // Retain the last GNSS uncertainty and a small residual process allowance.
++            positionVariance+=dt*.01;speedVariance=Math.min(speedVariance,.04);
++        } else {
++            positionVariance+=dt*(.15*healthNoise+2*Math.sqrt(positionVariance*speedVariance));
++            speedVariance+=dt*(.04*motionNoise+(shock?.8:0));
++        }
++        yawVariance+=dt*(.00003+(shock?.003:0));
+         if(!aligned){diagnostic="Mount direction uncertain · calibrate with GPS";return;}
+         heading=wrap(heading-Math.toDegrees(angular-gyroBias)*dt);
+         double oldSpeed=speed;
+@@ -113,7 +127,7 @@
+                 if(Math.abs(residual)<Math.max(3,3*Math.sqrt(modelError)))speed+=clamp(residual,-2,2)*modelWeight*dt/8;
+             }
+         }
+-        double distance=(oldSpeed+speed)*.5*dt,h=Math.toRadians(heading);
++        double distance=stopped?0:(oldSpeed+speed)*.5*dt,h=Math.toRadians(heading);
+         lat+=distance*Math.cos(h)/111320;lon+=distance*Math.sin(h)/(111320*Math.cos(Math.toRadians(lat)));
+         positionVariance+=distance*distance*yawVariance;
+         diagnostic=!unaided?"Mount calibrated · GNSS aiding":stopped?"Sensor tracking · confirmed stop":steps>=3&&lastGpsSpeed<2.5?"Step-based inertial tracking":
+@@ -155,7 +169,8 @@
+         double correction=clamp(cross*trust,-2,2);
+         lon+=correction*Math.cos(h)/(111320*Math.cos(Math.toRadians(lat)));lat-=correction*Math.sin(h)/111320;
+     }
+-    public boolean available(long now){return anchored&&aligned&&last>0&&now>=last&&now-last<500_000_000L;}
++    private boolean gravityFresh(long now){return gravityTime>0&&now>=gravityTime&&now-gravityTime<500_000_000L;}
++    public boolean available(long now){return anchored&&aligned&&predictionFresh&&gravityFresh(now)&&last>0&&now>=last&&now-last<500_000_000L;}
+     public boolean aligned(){return aligned;}public boolean stopped(){return stopped;}
+     public double latitude(){return lat;}public double longitude(){return lon;}public double speed(){return speed;}
+     public double heading(){return heading;}public double uncertainty(){return Math.sqrt(positionVariance);}
+--- before/StationaryDetector.java
++++ after/StationaryDetector.java
+@@ -8,7 +8,7 @@
+     private long gpsTime, quietSince;
+     private double gpsSpeed = Double.NaN, gpsError = Double.NaN;
+     private boolean stopped;
+-    private long lastSample;
++    private long lastSample, motionSince;
+     private double stopAx, stopAy, stopAz;
+     private long anchorTime,positionTime;
+     private double anchorLat,anchorLon;
+@@ -30,8 +30,14 @@
+     public void observe(ImuSample s) {
+         if (s.t()-lastSample<9_000_000L) return;
+         lastSample=s.t();
+-        if (stopped && Math.sqrt(Math.pow(s.ax()-stopAx,2)+Math.pow(s.ay()-stopAy,2)+Math.pow(s.az()-stopAz,2))>.35) {
+-            stopped=false;quietSince=0;
++        if (stopped) {
++            double change=Math.sqrt(Math.pow(s.ax()-stopAx,2)+Math.pow(s.ay()-stopAy,2)+Math.pow(s.az()-stopAz,2));
++            // Compare with the confirmed-stop baseline, not ideal gravity: a fixed
++            // sensor offset is harmless, but a sustained gentle launch is not.
++            if(change>.18){if(motionSince==0)motionSince=s.t();}else motionSince=0;
++            if(change>.35||(motionSince>0&&s.t()-motionSince>=250_000_000L)) {
++                stopped=false;quietSince=0;motionSince=0;
++            }
+         }
+         int i=cursor++ % norms.length;
+         norms[i]=Math.sqrt(s.ax()*s.ax()+s.ay()*s.ay()+s.az()*s.az());
+@@ -51,7 +57,7 @@
+              (gpsSpeed<=1.0&&compactPosition&&s.t()-positionTime<2_000_000_000L));
+         if (recent && !low) { stopped=false;quietSince=0; }
+         else if (recent && low && s.t()-quietSince>=1_500_000_000L && !stopped) {
+-            stopped=true;stopAx=s.ax();stopAy=s.ay();stopAz=s.az();
++            stopped=true;motionSince=0;stopAx=s.ax();stopAy=s.ay();stopAz=s.az();
+         }
+         // An already confirmed stop can persist through a dropout while the IMU stays quiet.
+     }

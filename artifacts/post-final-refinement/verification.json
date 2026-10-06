@@ -1,0 +1,21 @@
+{
+  "version": "1.5.7-offroute",
+  "version_code": 16,
+  "tests": {
+    "tests": 116,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "inertial_estimator_unchanged": true,
+  "unchanged_assets_and_native_libraries": 39486,
+  "changed_apk_entries": [
+    "classes7.dex",
+    "AndroidManifest.xml",
+    "META-INF/ANDROIDD.SF",
+    "META-INF/ANDROIDD.RSA",
+    "META-INF/MANIFEST.MF"
+  ],
+  "apk_bytes": 216939144,
+  "apk_sha256": "6414315b015517118c9212e1ac8c23866c0e73519c38963106b94a2bd5762b1e"
+}

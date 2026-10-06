@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "sample_rate_hz": 100,
+    "phone_model": "samsung SM-S711B",
+    "mount": "dashboard",
+    "session_id": "233db1ff-340e-487c-8a9a-9811c39040d1"
+  },
+  "files": [
+    {
+      "file": "233db1ff-340e-487c-8a9a-9811c39040d1.drlog",
+      "bytes": 132010,
+      "sha256": "13bb9d37c3f5c5a0ff821fe56499e6ba005a16ce622acbe7f94d58a795e9571a"
+    },
+    {
+      "file": "233db1ff-340e-487c-8a9a-9811c39040d1.fusion.csv",
+      "bytes": 74544,
+      "sha256": "d5f099547f4c06fdb9e7b9b2211e98add3631a30dd3e86304d10dc54a1d2daee"
+    }
+  ],
+  "samples": 1883,
+  "duration_seconds": 30.146984766,
+  "median_sample_interval_ms": 16.018633,
+  "gps_valid_fraction": 0.0,
+  "speed_range_mps": null,
+  "limitation": "Recorded by the previous installed app. No independent trajectory or stationary/motion annotation; not a validation pass for 1.5."
+}

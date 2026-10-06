@@ -1,0 +1,52 @@
+INSTRUMENTATION_STATUS: class=com.idr.navigator.EngineStartupTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.idr.navigator.EngineStartupTest:
+INSTRUMENTATION_STATUS: test=statewideGraphLoadsWithOtherAppMemoryInUse
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.idr.navigator.EngineStartupTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.OutOfMemoryError: Failed to allocate a 1048592 byte allocation with 691664 free bytes and 675KB until OOM, target footprint 201326592, growth limit 201326592
+	at com.graphhopper.storage.RAMIntDataAccess.loadExisting(RAMIntDataAccess.java:124)
+	at com.graphhopper.storage.index.LineIntIndex.loadExisting(LineIntIndex.java:58)
+	at com.graphhopper.storage.index.LocationIndexTree.loadExisting(LocationIndexTree.java:131)
+	at com.graphhopper.GraphHopper.createLocationIndex(GraphHopper.java:1255)
+	at com.graphhopper.GraphHopper.initLocationIndex(GraphHopper.java:1270)
+	at com.graphhopper.GraphHopper.postProcessing(GraphHopper.java:1173)
+	at com.graphhopper.GraphHopper.load(GraphHopper.java:1048)
+	at com.graphhopper.GraphHopper.importOrLoad(GraphHopper.java:810)
+	at com.idr.navigator.engine.MapMatchAdvisor.load(MapMatchAdvisor.java:41)
+	at com.idr.navigator.engine.SensorCaptureService.lambda$setup$0(SensorCaptureService.java:174)
+	at com.idr.navigator.engine.SensorCaptureService.$r8$lambda$K2Ojm--waBg8w8jH76eHI_qw0yw(Unknown Source:0)
+	at com.idr.navigator.engine.SensorCaptureService$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+	at java.lang.Thread.run(Thread.java:1119)
+
+INSTRUMENTATION_STATUS: stream=
+Process crashed while executing statewideGraphLoadsWithOtherAppMemoryInUse(com.idr.navigator.EngineStartupTest):
+java.lang.OutOfMemoryError: Failed to allocate a 1048592 byte allocation with 691664 free bytes and 675KB until OOM, target footprint 201326592, growth limit 201326592
+	at com.graphhopper.storage.RAMIntDataAccess.loadExisting(RAMIntDataAccess.java:124)
+	at com.graphhopper.storage.index.LineIntIndex.loadExisting(LineIntIndex.java:58)
+	at com.graphhopper.storage.index.LocationIndexTree.loadExisting(LocationIndexTree.java:131)
+	at com.graphhopper.GraphHopper.createLocationIndex(GraphHopper.java:1255)
+	at com.graphhopper.GraphHopper.initLocationIndex(GraphHopper.java:1270)
+	at com.graphhopper.GraphHopper.postProcessing(GraphHopper.java:1173)
+	at com.graphhopper.GraphHopper.load(GraphHopper.java:1048)
+	at com.graphhopper.GraphHopper.importOrLoad(GraphHopper.java:810)
+	at com.idr.navigator.engine.MapMatchAdvisor.load(MapMatchAdvisor.java:41)
+	at com.idr.navigator.engine.SensorCaptureService.lambda$setup$0(SensorCaptureService.java:174)
+	at com.idr.navigator.engine.SensorCaptureService.$r8$lambda$K2Ojm--waBg8w8jH76eHI_qw0yw(Unknown Source:0)
+	at com.idr.navigator.engine.SensorCaptureService$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+	at java.lang.Thread.run(Thread.java:1119)
+
+INSTRUMENTATION_STATUS: test=statewideGraphLoadsWithOtherAppMemoryInUse
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: shortMsg=Process crashed.
+INSTRUMENTATION_CODE: 0

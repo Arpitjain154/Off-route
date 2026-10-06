@@ -1,0 +1,10 @@
+{
+  "package": "package: name='com.idr.navigator' versionCode='10' versionName='1.5.1-refinement' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+  "same_signing_certificate": true,
+  "certificate_sha256": "b49ac0dfeaafd355ae9c87ef834e0aff4253baffbea8123acf5af0428beacce8",
+  "sha256": "7357bea0a21be9c5838616793ffea990dd7c4a1e8b0a6153f29ff80e7721825d",
+  "bytes": 223003489,
+  "offline_vector_tiles": 39445,
+  "latest_ui_verified": true,
+  "existing_model_bytes_verified": true
+}

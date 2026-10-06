@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "errors": [],
+  "checks": [
+    "map stays mounted across tabs",
+    "expand collapse",
+    "offline place selection and swap",
+    "car and motorcycle modes",
+    "unsupported modes disabled",
+    "invalid destination disabled",
+    "browser native-only directions error",
+    "modal Escape",
+    "settings persistence",
+    "empty history",
+    "Sensors access",
+    "360/390/412 and short viewport layouts"
+  ]
+}

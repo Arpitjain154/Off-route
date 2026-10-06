@@ -1,0 +1,6 @@
+{"receivedAt":"2026-10-03T13:07:10.953Z","kind":"capture-start","serial":"RZCX71S8G8L","pid":"28866","limitSeconds":5,"phoneRecordingControlled":false}
+{"receivedAt":"2026-10-03T13:07:11.171Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":333938.39,"roundTripMs":208}
+{"receivedAt":"2026-10-03T13:07:12.835Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":333940.06,"roundTripMs":157}
+{"receivedAt":"2026-10-03T13:07:14.491Z","kind":"provider-state","locationMode":"3","deviceUptimeSeconds":333941.71,"roundTripMs":154}
+{"receivedAt":"2026-10-03T13:07:16.014Z","kind":"monitor-exit","code":null}
+{"receivedAt":"2026-10-03T13:07:16.020Z","kind":"capture-end","reason":"time-limit","phoneRecordingStopped":false}

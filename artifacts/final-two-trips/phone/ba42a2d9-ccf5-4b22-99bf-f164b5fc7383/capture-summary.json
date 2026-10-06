@@ -1,0 +1,129 @@
+{
+  "session": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+  "summary": {
+    "path": "file:/data/user/0/com.idr.navigator/files/drives/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.drlog",
+    "sizeBytes": 5935220,
+    "durationSeconds": 700.439269965,
+    "distanceMeters": 1376.9300849309327,
+    "phoneModel": "samsung SM-E156B"
+  },
+  "raw_samples": 84786,
+  "raw_hz": 121.04751010078816,
+  "max_gap_ms": 12.654698000000002,
+  "gaps_over_100ms": 0,
+  "quality_rows": 90706,
+  "fusion_rows": 6777,
+  "raw_capture_target": 200,
+  "all_raw_timestamps_in_quality": true,
+  "aligned_fraction": 0.7708425557031134,
+  "sensor_position_fraction": 0.27283458757562346,
+  "speed_available_fraction": 0.9628154050464808,
+  "location_transitions": [
+    {
+      "receivedAt": "2026-10-03T13:33:56.879Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335544.11,
+      "roundTripMs": 177
+    },
+    {
+      "receivedAt": "2026-10-03T13:36:21.060Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335688.29,
+      "roundTripMs": 345
+    },
+    {
+      "receivedAt": "2026-10-03T13:36:42.783Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335710.01,
+      "roundTripMs": 166
+    },
+    {
+      "receivedAt": "2026-10-03T13:37:27.835Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335755.06,
+      "roundTripMs": 204
+    },
+    {
+      "receivedAt": "2026-10-03T13:37:47.812Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335775.04,
+      "roundTripMs": 185
+    },
+    {
+      "receivedAt": "2026-10-03T13:38:16.262Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335803.49,
+      "roundTripMs": 216
+    },
+    {
+      "receivedAt": "2026-10-03T13:39:16.855Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335864.08,
+      "roundTripMs": 220
+    },
+    {
+      "receivedAt": "2026-10-03T13:39:39.418Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335886.65,
+      "roundTripMs": 254
+    },
+    {
+      "receivedAt": "2026-10-03T13:40:23.706Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335930.93,
+      "roundTripMs": 357
+    },
+    {
+      "receivedAt": "2026-10-03T13:40:41.777Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335949,
+      "roundTripMs": 321
+    },
+    {
+      "receivedAt": "2026-10-03T13:40:53.952Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 335961.18,
+      "roundTripMs": 167
+    },
+    {
+      "receivedAt": "2026-10-03T13:41:24.797Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 335992.03,
+      "roundTripMs": 162
+    },
+    {
+      "receivedAt": "2026-10-03T13:41:41.557Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 336008.79,
+      "roundTripMs": 153
+    },
+    {
+      "receivedAt": "2026-10-03T13:43:23.101Z",
+      "kind": "provider-state",
+      "locationMode": "0",
+      "deviceUptimeSeconds": 336110.33,
+      "roundTripMs": 183
+    },
+    {
+      "receivedAt": "2026-10-03T13:43:49.795Z",
+      "kind": "provider-state",
+      "locationMode": "3",
+      "deviceUptimeSeconds": 336137.03,
+      "roundTripMs": 160
+    }
+  ],
+  "capture_complete": true
+}

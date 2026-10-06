@@ -1,0 +1,174 @@
+[
+  {
+    "file": "7d1032e8-1a87-4202-a0eb-69219ab9be4e.fusion.csv",
+    "rows": 1213,
+    "segments": [
+      {
+        "gps_fresh": true,
+        "start_s": 0.0,
+        "duration_s": 81.0,
+        "speed_start_kmh": 27.3,
+        "speed_end_kmh": 43.4,
+        "heading_start": "319.115",
+        "heading_end": "308.639",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 81.1,
+        "duration_s": 45.1,
+        "speed_start_kmh": 40.6,
+        "speed_end_kmh": 44.8,
+        "heading_start": "309.070",
+        "heading_end": "346.797",
+        "source": "Gyroscope + calibrated compass"
+      }
+    ]
+  },
+  {
+    "file": "ea7f59ff-f1d6-4bbd-b6a2-59badf802639.fusion.csv",
+    "rows": 6841,
+    "segments": [
+      {
+        "gps_fresh": true,
+        "start_s": 0.0,
+        "duration_s": 83.3,
+        "speed_start_kmh": 30.0,
+        "speed_end_kmh": 40.3,
+        "heading_start": "317.754",
+        "heading_end": "318.365",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 83.4,
+        "duration_s": 32.7,
+        "speed_start_kmh": 41.3,
+        "speed_end_kmh": 82.7,
+        "heading_start": "313.015",
+        "heading_end": "281.402",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 116.2,
+        "duration_s": 59.0,
+        "speed_start_kmh": 81.8,
+        "speed_end_kmh": 36.6,
+        "heading_start": "287.600",
+        "heading_end": "288.590",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 175.3,
+        "duration_s": 52.8,
+        "speed_start_kmh": 37.5,
+        "speed_end_kmh": 42.0,
+        "heading_start": "287.862",
+        "heading_end": "250.469",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 228.2,
+        "duration_s": 63.8,
+        "speed_start_kmh": 42.0,
+        "speed_end_kmh": 18.2,
+        "heading_start": "250.427",
+        "heading_end": "237.438",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 292.1,
+        "duration_s": 35.1,
+        "speed_start_kmh": 18.0,
+        "speed_end_kmh": 11.3,
+        "heading_start": "239.543",
+        "heading_end": "232.447",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 327.3,
+        "duration_s": 5.7,
+        "speed_start_kmh": 11.3,
+        "speed_end_kmh": 4.5,
+        "heading_start": "229.528",
+        "heading_end": "254.244",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 333.1,
+        "duration_s": 102.0,
+        "speed_start_kmh": 4.7,
+        "speed_end_kmh": 4.0,
+        "heading_start": "173.346",
+        "heading_end": "123.520",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 435.2,
+        "duration_s": 118.9,
+        "speed_start_kmh": 4.1,
+        "speed_end_kmh": 2.3,
+        "heading_start": "279.800",
+        "heading_end": "38.909",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 554.2,
+        "duration_s": 65.9,
+        "speed_start_kmh": 3.2,
+        "speed_end_kmh": 5.1,
+        "heading_start": "22.725",
+        "heading_end": "52.624",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 620.2,
+        "duration_s": 16.1,
+        "speed_start_kmh": 5.4,
+        "speed_end_kmh": 14.0,
+        "heading_start": "299.700",
+        "heading_end": "306.489",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 636.5,
+        "duration_s": 28.7,
+        "speed_start_kmh": 13.8,
+        "speed_end_kmh": 19.7,
+        "heading_start": "286.111",
+        "heading_end": "8.899",
+        "source": "Gyroscope + calibrated compass"
+      },
+      {
+        "gps_fresh": true,
+        "start_s": 665.3,
+        "duration_s": 19.5,
+        "speed_start_kmh": 20.1,
+        "speed_end_kmh": 34.4,
+        "heading_start": "19.900",
+        "heading_end": "357.822",
+        "source": "GPS course"
+      },
+      {
+        "gps_fresh": false,
+        "start_s": 684.9,
+        "duration_s": 27.2,
+        "speed_start_kmh": 34.6,
+        "speed_end_kmh": 41.1,
+        "heading_start": "352.169",
+        "heading_end": "53.711",
+        "source": "Gyroscope + calibrated compass"
+      }
+    ]
+  }
+]

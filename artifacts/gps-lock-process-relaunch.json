@@ -1,0 +1,12 @@
+[
+  {
+    "cycle": 1,
+    "pid": "2792",
+    "log": "--------- beginning of main\n09-15 03:02:39.859  2792  2875 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix"
+  },
+  {
+    "cycle": 2,
+    "pid": "2898",
+    "log": "--------- beginning of main\n09-15 03:02:45.348  2898  2976 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix"
+  }
+]

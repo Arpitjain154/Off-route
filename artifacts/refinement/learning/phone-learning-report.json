@@ -1,0 +1,20 @@
+{
+  "sessions": [],
+  "accepted_windows": 0,
+  "training_blockers": [
+    "Need at least five independent sessions",
+    "Need at least 100 quality fixes in train",
+    "Need at least 100 quality fixes in validation",
+    "Need at least 100 quality fixes in test"
+  ],
+  "candidate": {
+    "status": "blocked",
+    "reasons": [
+      "Need at least five independent sessions",
+      "Need at least 100 quality fixes in train",
+      "Need at least 100 quality fixes in validation",
+      "Need at least 100 quality fixes in test"
+    ],
+    "promoted": false
+  }
+}

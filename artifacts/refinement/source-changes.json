@@ -1,0 +1,190 @@
+[
+  {
+    "path": "src/api.ts",
+    "change": "modified"
+  },
+  {
+    "path": "src/App.tsx",
+    "change": "modified"
+  },
+  {
+    "path": "src/destination-search.css",
+    "change": "modified"
+  },
+  {
+    "path": "src/DestinationSearch.tsx",
+    "change": "modified"
+  },
+  {
+    "path": "src/engine.ts",
+    "change": "modified"
+  },
+  {
+    "path": "src/main.tsx",
+    "change": "modified"
+  },
+  {
+    "path": "src/map-view.css",
+    "change": "added"
+  },
+  {
+    "path": "src/MapView.tsx",
+    "change": "modified"
+  },
+  {
+    "path": "src/recordingLifecycle.ts",
+    "change": "added"
+  },
+  {
+    "path": "src/route-guidance.css",
+    "change": "added"
+  },
+  {
+    "path": "src/RouteGuidance.tsx",
+    "change": "modified"
+  },
+  {
+    "path": "src/routeProgress.ts",
+    "change": "modified"
+  },
+  {
+    "path": "src/stitch-shell.css",
+    "change": "added"
+  },
+  {
+    "path": "src/types.ts",
+    "change": "modified"
+  },
+  {
+    "path": "src/useRouteNavigation.ts",
+    "change": "modified"
+  },
+  {
+    "path": "ml/adapt_from_phone.py",
+    "change": "added"
+  },
+  {
+    "path": "ml/phone_learning.py",
+    "change": "added"
+  },
+  {
+    "path": "ml/test_phone_learning.py",
+    "change": "added"
+  },
+  {
+    "path": "scripts/build-refinement-code.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/diagnose-map-render.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/package-refinement-source.py",
+    "change": "added"
+  },
+  {
+    "path": "scripts/render-refinement-gallery.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/snapshot-phone-state.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-guidance-presentation.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-map-uncertainty.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-navigation-transition.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-recording-lifecycle.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-refinement-state.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/test-route-progress.mjs",
+    "change": "modified"
+  },
+  {
+    "path": "scripts/test-stitch-ui.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/verify-refinement-api.mjs",
+    "change": "added"
+  },
+  {
+    "path": "scripts/verify-refinement-apk.py",
+    "change": "added"
+  },
+  {
+    "path": "scripts/verify-refinement-phone.mjs",
+    "change": "added"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/DrLogWriter.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/Eskf.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/LogRecovery.java",
+    "change": "added"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/PhysicsAdvisor.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/engine/TrainingQualityWriter.java",
+    "change": "added"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/plugins/DrEnginePlugin.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/main/java/com/idr/navigator/plugins/SensorPlugin.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/test/java/com/idr/navigator/engine/InertialNavigationTest.java",
+    "change": "modified"
+  },
+  {
+    "path": "android/app/src/test/java/com/idr/navigator/engine/RecordingRecoveryTest.java",
+    "change": "added"
+  },
+  {
+    "path": "android/app/src/test/java/com/idr/navigator/engine/RefinementTest.java",
+    "change": "added"
+  },
+  {
+    "path": "android/app/build.gradle",
+    "change": "modified"
+  }
+]

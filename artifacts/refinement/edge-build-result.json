@@ -1,0 +1,8 @@
+{
+  "command": "android/gradlew.bat -p edge build --console=plain",
+  "exit_code": 0,
+  "result": "BUILD SUCCESSFUL",
+  "tasks_executed": 5,
+  "separate_edge_tests": "NO-SOURCE",
+  "note": "Compiles the same shared estimator classes. Build success does not establish real-world accuracy."
+}

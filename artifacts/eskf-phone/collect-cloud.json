@@ -1,0 +1,72 @@
+{
+  "connected": true,
+  "consent": true,
+  "wifiOnly": true,
+  "queue": [
+    {
+      "sessionId": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "380421b3-98bc-43f6-a803-aeb1a16427d3",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "00413cb6-72a2-4a81-a0c2-1aa45513ec17",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "632765d1-1912-428f-b676-48d4b518f3fe",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "a40377de-8091-47c8-92c8-1baeaccb0008",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "587c07e7-1b45-457c-969b-765afaecba13",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "b8bf220a-eede-4bdf-879a-e1c79c42fab5",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "5def5df1-a7ae-4d88-8ea6-7fb99e569356",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "3878fb3a-bddf-4d11-a6e5-2c0eb35590ef",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "1d1f96c1-6bd3-48ba-bf9d-94b6a8ff3634",
+      "state": "uploaded",
+      "message": ""
+    },
+    {
+      "sessionId": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a",
+      "state": "queued",
+      "message": ""
+    },
+    {
+      "sessionId": "3aa3f0c1-a3f2-40aa-a647-4b803fdeb548",
+      "state": "queued",
+      "message": ""
+    },
+    {
+      "sessionId": "1586f5b4-7386-4d83-89c3-890ebe6bbaa5",
+      "state": "queued",
+      "message": ""
+    }
+  ]
+}

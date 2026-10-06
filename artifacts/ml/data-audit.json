@@ -1,0 +1,1448 @@
+{
+  "repository": "https://github.com/onyekpeu/IO-VNBD",
+  "revision": "118939602e3422d47b8ab0807b623751c3ac135b",
+  "files": [
+    {
+      "path": "M (Driver B)/S-M.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/M (Driver B)/S-M.csv",
+      "sha256": "26a1ee080da4db98e175e15d6fec631e6f8c285c13817d9d74ecc90ed280d103",
+      "size_bytes": 19798721
+    },
+    {
+      "path": "M (Driver B)/V-M.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/M (Driver B)/V-M.csv",
+      "sha256": "ecf977cb798082d59ad1b03ce5631a61dbf525dfe484eb005ca630b5e95b86af",
+      "size_bytes": 22507823
+    },
+    {
+      "path": "S (Driver A)/S1/S-S1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S1/S-S1.csv",
+      "sha256": "e79a2eea18143b825438f9a11c7d724a97c9e18329776defd4d9291d03d4aaca",
+      "size_bytes": 9631499
+    },
+    {
+      "path": "S (Driver A)/S1/V-S1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S1/V-S1.csv",
+      "sha256": "29e92ed9bcb2d711e651246675c435b3f9499c040cfcad367624e8720c0dc891",
+      "size_bytes": 10967129
+    },
+    {
+      "path": "S (Driver A)/S2/S-S2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S2/S-S2.csv",
+      "sha256": "8f48d68ef4ab225c8381af6fb8ec0f36fe6f6048977eeebecc74cfec50d13cb8",
+      "size_bytes": 17469302
+    },
+    {
+      "path": "S (Driver A)/S2/V-S2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S2/V-S2.csv",
+      "sha256": "0514c4dd38fe24dd7e196ee206b880f4ccd984a255b80e6de984839bce40952c",
+      "size_bytes": 20091681
+    },
+    {
+      "path": "S (Driver A)/S3a/S-S3a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3a/S-S3a.csv",
+      "sha256": "b9e45dc8d856271f0a69030b7dd98f32c6b6b88b627138d67e8d3a1b7c5329fe",
+      "size_bytes": 4580130
+    },
+    {
+      "path": "S (Driver A)/S3a/V-S3a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3a/V-S3a.csv",
+      "sha256": "1cac1c8045c4f85423f01425881dd7e6814ae167100590c988a5ef141eb9e73f",
+      "size_bytes": 5286764
+    },
+    {
+      "path": "S (Driver A)/S3b/S-S3b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3b/S-S3b.csv",
+      "sha256": "19447009a96bd80bb896f3a728283ae2990d94b4cf1ed37f69866ed78ca36901",
+      "size_bytes": 1253565
+    },
+    {
+      "path": "S (Driver A)/S3b/V-S3b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3b/V-S3b.csv",
+      "sha256": "d44d29d46b7c46c574cdc90d5633cc90ac1b9cee57fb7f6b90d865aecc14ff64",
+      "size_bytes": 1464196
+    },
+    {
+      "path": "S (Driver A)/S3c/S-S3c.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3c/S-S3c.csv",
+      "sha256": "b87fa6978d7d50087ca63bfee5230692013485aaccef5474dbc847a9c1498739",
+      "size_bytes": 6881631
+    },
+    {
+      "path": "S (Driver A)/S3c/V-S3c.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S3c/V-S3c.csv",
+      "sha256": "d7a98f02899d331265eb0b892e44d343892ad6ec9dcb1e90ce6c6f80b264c0f3",
+      "size_bytes": 7976092
+    },
+    {
+      "path": "S (Driver A)/S4/S-S4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S4/S-S4.csv",
+      "sha256": "a2bb1e1eb28d111f84963240c54b790f32366f6c5b09dff1713770b52d3f5616",
+      "size_bytes": 17574514
+    },
+    {
+      "path": "S (Driver A)/S4/V-S4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/S (Driver A)/S4/V-S4.csv",
+      "sha256": "8a83103ce0f0b03ffc5adc772193c6738d1df3ac8f0fb4bab055597ac5bcd2c2",
+      "size_bytes": 20164189
+    },
+    {
+      "path": "Vf (Driver E)/V-Vfa01/S-Vfa01.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vf (Driver E)/V-Vfa01/S-Vfa01.csv",
+      "sha256": "7f46f770cd49c85185446420bc10db9e7a9ffe4aa190e3b1cc1111220eab04b2",
+      "size_bytes": 2134667
+    },
+    {
+      "path": "Vf (Driver E)/V-Vfa01/V-Vfa01.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vf (Driver E)/V-Vfa01/V-Vfa01.csv",
+      "sha256": "81ad22765340419e1ea88e69e2a92dc38c260f244c5aeb951c88fb668908ad37",
+      "size_bytes": 2398099
+    },
+    {
+      "path": "Vf (Driver E)/V-Vfa02/S-Vfa02.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vf (Driver E)/V-Vfa02/S-Vfa02.csv",
+      "sha256": "ec666af90866254a55578f4e9371860b64602cad0694b02defcc56eec5d85a44",
+      "size_bytes": 12603657
+    },
+    {
+      "path": "Vf (Driver E)/V-Vfa02/V-Vfa02.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vf (Driver E)/V-Vfa02/V-Vfa02.csv",
+      "sha256": "bce837348c306ba343b36f2d44878f0ac1e68ada3c2852bba50056749f40ca7d",
+      "size_bytes": 13955001
+    },
+    {
+      "path": "Vta (Driver E)/Vta01a/S-Vta1a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta01a/S-Vta1a.csv",
+      "sha256": "19b9d26888e58c71e28ca6de34dd423e9a779a29b1cf0976d3b2f4f7dac56601",
+      "size_bytes": 4766740
+    },
+    {
+      "path": "Vta (Driver E)/Vta01a/V-Vta1a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta01a/V-Vta1a.csv",
+      "sha256": "9522a6f43094ef5de4cfad4bb48a7805c8f470eee3b481564f5cacef28e2afec",
+      "size_bytes": 5444513
+    },
+    {
+      "path": "Vta (Driver E)/Vta01b/S-Vta1b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta01b/S-Vta1b.csv",
+      "sha256": "aca49109fc93729d942d13e2008699ac4471fcffae38396127fffaecbe42d5d7",
+      "size_bytes": 178260
+    },
+    {
+      "path": "Vta (Driver E)/Vta01b/V-Vta1b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta01b/V-Vta1b.csv",
+      "sha256": "35b4e74bd1597d9f82895c3451dbe71a2d4084a3718cbdf8ea7fbb04f206db94",
+      "size_bytes": 205277
+    },
+    {
+      "path": "Vta (Driver E)/Vta02/S-Vta2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta02/S-Vta2.csv",
+      "sha256": "97ef388d6e5cc3ce17ae3d56d69c77052e5d51a6234176eb95a5e4de6cec7fe5",
+      "size_bytes": 2038713
+    },
+    {
+      "path": "Vta (Driver E)/Vta02/V-vta2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta02/V-vta2.csv",
+      "sha256": "e7d255100464c70212aa0129e558b7a48d59d606041c8ce2e160e881f9b151e2",
+      "size_bytes": 2307461
+    },
+    {
+      "path": "Vta (Driver E)/Vta03/S-Vta3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta03/S-Vta3.csv",
+      "sha256": "7c5479fc893131a8c4d75daf73c3b5ae25512a1e194a6ced50fa24633de0f215",
+      "size_bytes": 116809
+    },
+    {
+      "path": "Vta (Driver E)/Vta03/V-vta3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta03/V-vta3.csv",
+      "sha256": "ef8bf81fdf5df786006e5805dbe09c29c71447cd274991bf47371c28c0f3c19f",
+      "size_bytes": 137891
+    },
+    {
+      "path": "Vta (Driver E)/Vta04/S-Vta4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta04/S-Vta4.csv",
+      "sha256": "0d16cd6deaddf30a98461a546ce47621f4b57fa3fd902623765bad1dd83c0887",
+      "size_bytes": 331302
+    },
+    {
+      "path": "Vta (Driver E)/Vta04/V-vta4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta04/V-vta4.csv",
+      "sha256": "71acb4e5c50919df05f1f56a0192d392793e9b10e66bbf6a101b6314ee398c33",
+      "size_bytes": 380874
+    },
+    {
+      "path": "Vta (Driver E)/Vta05/S-Vta5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta05/S-Vta5.csv",
+      "sha256": "b9030167541be560621a7aa9ef6a89710cb666ec47ad204f65cb1d96f7606fa0",
+      "size_bytes": 57485
+    },
+    {
+      "path": "Vta (Driver E)/Vta05/V-vta5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta05/V-vta5.csv",
+      "sha256": "6819d97f1291b377496982e51f5ba2178a083edaf8664b9258ead5e1151d33a2",
+      "size_bytes": 66401
+    },
+    {
+      "path": "Vta (Driver E)/Vta06/S-Vta6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta06/S-Vta6.csv",
+      "sha256": "15ad54e093b7ff783a88db02952fe634ba5b640173c93462d28152f71dcfa8a5",
+      "size_bytes": 254665
+    },
+    {
+      "path": "Vta (Driver E)/Vta06/V-vta6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta06/V-vta6.csv",
+      "sha256": "728629ca2a30457e7909e79c6a50040a1337274b7ada2003b2863e62a40c547a",
+      "size_bytes": 289249
+    },
+    {
+      "path": "Vta (Driver E)/Vta07/S-Vta7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta07/S-Vta7.csv",
+      "sha256": "eb6e66dbb3397aea7af0c93fe212e9ca0fc8310341083ce64652fe7842248acf",
+      "size_bytes": 155360
+    },
+    {
+      "path": "Vta (Driver E)/Vta07/V-vta7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta07/V-vta7.csv",
+      "sha256": "031765759d3336fa67fd8c6b98fdfb3a5786d284a5626734375ec61fe8f63e4d",
+      "size_bytes": 179784
+    },
+    {
+      "path": "Vta (Driver E)/Vta08/S-Vta8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta08/S-Vta8.csv",
+      "sha256": "cc1b57b0b539f1e756662c49ff4c4925d66e44396ad283e4d5fa472024675dec",
+      "size_bytes": 678900
+    },
+    {
+      "path": "Vta (Driver E)/Vta08/V-vta8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta08/V-vta8.csv",
+      "sha256": "93cef7816fb58c250c87bfa3dc02bce8a3a3c211ba08ee72b4a9d4dddf00d481",
+      "size_bytes": 753939
+    },
+    {
+      "path": "Vta (Driver E)/Vta09/S-Vta9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta09/S-Vta9.csv",
+      "sha256": "150b73335a4283e2aba5aa8c5320d32271bf20546005e7f5f60918d8381f5475",
+      "size_bytes": 29554
+    },
+    {
+      "path": "Vta (Driver E)/Vta09/V-vta9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta09/V-vta9.csv",
+      "sha256": "4f662af06a2ab067efc4741a2b39f478f59e802f763b7bce5d376f420d9de63b",
+      "size_bytes": 33110
+    },
+    {
+      "path": "Vta (Driver E)/Vta10/S-Vta10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta10/S-Vta10.csv",
+      "sha256": "212ba000dbad28b3375cb0e6a3b205a0415be2f3248ecff35e0c3db0089cf0a7",
+      "size_bytes": 279232
+    },
+    {
+      "path": "Vta (Driver E)/Vta10/V-vta10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta10/V-vta10.csv",
+      "sha256": "6f9911ce3037bf56e8c56b52dd5a87aa70088fe645daed359a5e69578a319834",
+      "size_bytes": 317921
+    },
+    {
+      "path": "Vta (Driver E)/Vta11/S-Vta11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta11/S-Vta11.csv",
+      "sha256": "af147288035d510dc6b315959b7b36dc63d5b327d57c8a9578bc573c18734128",
+      "size_bytes": 95272
+    },
+    {
+      "path": "Vta (Driver E)/Vta11/V-vta11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta11/V-vta11.csv",
+      "sha256": "e9d6bf8959e32ea8ab098741a11de015d64d00c1a326c3c175916d5b678a7083",
+      "size_bytes": 111690
+    },
+    {
+      "path": "Vta (Driver E)/Vta12/S-Vta12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta12/S-Vta12.csv",
+      "sha256": "9dc5cfe05e00e91feb1f6bf45e19e2c152567776bc6507bfaf037ffa63cd8662",
+      "size_bytes": 114418
+    },
+    {
+      "path": "Vta (Driver E)/Vta12/V-vta12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta12/V-vta12.csv",
+      "sha256": "21c4f30690769a052de0f97125d4c0e455e7fc527bd8d3e98e34e8bfb2bee81b",
+      "size_bytes": 128904
+    },
+    {
+      "path": "Vta (Driver E)/Vta13/S-Vta13.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta13/S-Vta13.csv",
+      "sha256": "b4a8f30e4fa8c1399c9c4d58a8220305d233e99789f2997e47be9dbb2dfa1eb0",
+      "size_bytes": 76217
+    },
+    {
+      "path": "Vta (Driver E)/Vta13/V-vta13.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta13/V-vta13.csv",
+      "sha256": "398df644de6920ef827742a99166cf05c5728f4dddf1379b993123c62419677b",
+      "size_bytes": 86963
+    },
+    {
+      "path": "Vta (Driver E)/Vta14/S-Vta14.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta14/S-Vta14.csv",
+      "sha256": "49535f49178bb6c542a62fe57747adc19164fbf3a4a7b0afee19d5cc2bee6894",
+      "size_bytes": 540523
+    },
+    {
+      "path": "Vta (Driver E)/Vta14/V-vta14.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta14/V-vta14.csv",
+      "sha256": "ddd26e084b97fe661ae6e783efbdbc5f45add9e5288cf7800370577ff2bc2b08",
+      "size_bytes": 612352
+    },
+    {
+      "path": "Vta (Driver E)/Vta15/S-Vta15.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta15/S-Vta15.csv",
+      "sha256": "9404fbd7420b32f5ca6f369e8a1377bbf854b5b6e3ee38a137c67bf73db5d7f7",
+      "size_bytes": 156907
+    },
+    {
+      "path": "Vta (Driver E)/Vta15/V-vta15.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta15/V-vta15.csv",
+      "sha256": "313565b6b7a44f7e80939527063b87519c0f5bc1937fa84683585e4287076100",
+      "size_bytes": 175132
+    },
+    {
+      "path": "Vta (Driver E)/Vta16/S-Vta16.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta16/S-Vta16.csv",
+      "sha256": "efef0aa0fae9e4cc0a40a85335a013fccb96797175819d46d97dfb13a854ce02",
+      "size_bytes": 2111083
+    },
+    {
+      "path": "Vta (Driver E)/Vta16/V-vta16.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta16/V-vta16.csv",
+      "sha256": "07cc3f87b51c3e68cdf517cb296e68bf0d17f49230baa724bbe96736af2c9da3",
+      "size_bytes": 2410634
+    },
+    {
+      "path": "Vta (Driver E)/Vta17/S-Vta17.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta17/S-Vta17.csv",
+      "sha256": "d918e507f6cf2b0c38004a61e90211e0c43c0a69fe268b468bb0471d80b439ab",
+      "size_bytes": 839635
+    },
+    {
+      "path": "Vta (Driver E)/Vta17/V-vta17.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta17/V-vta17.csv",
+      "sha256": "21dbfe17ff301ac645e0a2be39fd45d9da758d087ccf9e95875b90225a193781",
+      "size_bytes": 972437
+    },
+    {
+      "path": "Vta (Driver E)/Vta19/S-Vta19.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta19/S-Vta19.csv",
+      "sha256": "695cf51819c0f0f8b7894df11af667ab2e819bfff991330ceb8d4a3492a22428",
+      "size_bytes": 54578
+    },
+    {
+      "path": "Vta (Driver E)/Vta19/V-vta19.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta19/V-vta19.csv",
+      "sha256": "e5e7fb443b7a92a20ca13cae51d51a73330edda63786f1f7fb37b27aa45d80bc",
+      "size_bytes": 61675
+    },
+    {
+      "path": "Vta (Driver E)/Vta20/S-Vta20.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta20/S-Vta20.csv",
+      "sha256": "82c7e730c3aefbc0bbdc6fc9b9d3d6c20071e392bbdf34b78736f54e99632260",
+      "size_bytes": 582891
+    },
+    {
+      "path": "Vta (Driver E)/Vta20/V-vta20.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta20/V-vta20.csv",
+      "sha256": "a5e1f1e6afba77c64cc0a16f389d859f75ea22196cdfca82a523e148c0eafd93",
+      "size_bytes": 596090
+    },
+    {
+      "path": "Vta (Driver E)/Vta21/S-Vta21.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta21/S-Vta21.csv",
+      "sha256": "f22951b5bc4fed96a34f9affcb7c1c7118a4461ba8f3c22d910398a5f44d248c",
+      "size_bytes": 388495
+    },
+    {
+      "path": "Vta (Driver E)/Vta21/V-vta21.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta21/V-vta21.csv",
+      "sha256": "82687cefc4799459174ad6f7411fdea28250146d29144ed210c4188aad0999f4",
+      "size_bytes": 450180
+    },
+    {
+      "path": "Vta (Driver E)/Vta22/S-Vta22.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta22/S-Vta22.csv",
+      "sha256": "9291970633a370e9f89e966b1790193f80ccce7b4c32a162ac2eed0a1a2b4a82",
+      "size_bytes": 290331
+    },
+    {
+      "path": "Vta (Driver E)/Vta22/V-vta22.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta22/V-vta22.csv",
+      "sha256": "ddd4bb7ffd3aaf080e55c61c4ea5f92388b255fb65405188fa0932cc0dcfcf5c",
+      "size_bytes": 338739
+    },
+    {
+      "path": "Vta (Driver E)/Vta23/S-Vta23.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta23/S-Vta23.csv",
+      "sha256": "c5f9f4161bd33ec880d4cabab48189a02db647f86315860dd21bb48f5764cd75",
+      "size_bytes": 206507
+    },
+    {
+      "path": "Vta (Driver E)/Vta23/V-vta23.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta23/V-vta23.csv",
+      "sha256": "8b3508e408d88064cea06fe861879d79c92e368abf43706b87b7cce9ace42d8d",
+      "size_bytes": 242444
+    },
+    {
+      "path": "Vta (Driver E)/Vta24/S-Vta24.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta24/S-Vta24.csv",
+      "sha256": "ae6059b51b52fd216c38f4f9f26893207fec80e5a9c75991a51c709b1766f8ce",
+      "size_bytes": 217212
+    },
+    {
+      "path": "Vta (Driver E)/Vta24/V-vta24.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta24/V-vta24.csv",
+      "sha256": "db3726bc5e11c73f1623ff74da229726d014e04a4dbf5ded403906f23ed8f3e5",
+      "size_bytes": 250448
+    },
+    {
+      "path": "Vta (Driver E)/Vta25/S-Vta25.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta25/S-Vta25.csv",
+      "sha256": "9ff0c54126af8ccb8bd2707f2cb01505b87d823b74898a55999c312ae3ac69a1",
+      "size_bytes": 118562
+    },
+    {
+      "path": "Vta (Driver E)/Vta25/V-vta25.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta25/V-vta25.csv",
+      "sha256": "4241b50add001a19bab00fa0e165b88fd2280f74fcbae46539c6f8bcc893f79a",
+      "size_bytes": 135915
+    },
+    {
+      "path": "Vta (Driver E)/Vta26/S-Vta26.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta26/S-Vta26.csv",
+      "sha256": "d2d0de4a8ff2793825af978523c888e3579c788c98db13542b19f429288bf4d9",
+      "size_bytes": 358553
+    },
+    {
+      "path": "Vta (Driver E)/Vta26/V-vta26.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta26/V-vta26.csv",
+      "sha256": "e1067b6fd8561c4fd7b851f387c6a43df2c6fcd088f0552a321db210a4d05e09",
+      "size_bytes": 401896
+    },
+    {
+      "path": "Vta (Driver E)/Vta27/S-Vta27.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta27/S-Vta27.csv",
+      "sha256": "9607f8bbfcb7e92021b113e0971be3f8fec50267d9a4abae875d1062ab10d6d6",
+      "size_bytes": 471023
+    },
+    {
+      "path": "Vta (Driver E)/Vta27/V-vta27.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta27/V-vta27.csv",
+      "sha256": "766e63d6975426dcee66bb9b100daf6291240da1d65b4b1db851d4fd40e334c7",
+      "size_bytes": 550395
+    },
+    {
+      "path": "Vta (Driver E)/Vta28/S-Vta28.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta28/S-Vta28.csv",
+      "sha256": "30bece8d988e898902ad4e77d090ea33c80486222293104f78d42bd8611e03fa",
+      "size_bytes": 781902
+    },
+    {
+      "path": "Vta (Driver E)/Vta28/V-vta28.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta28/V-vta28.csv",
+      "sha256": "4778fd71aeb0165a77de1f0abb3a3ecad5b756993e5ec64a24fc025b02c315d2",
+      "size_bytes": 901238
+    },
+    {
+      "path": "Vta (Driver E)/Vta29/S-Vta29.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta29/S-Vta29.csv",
+      "sha256": "dc24cf9cd6b8cce2553f283d5c042396d7a4df29b7094321a09585e65d996476",
+      "size_bytes": 4387027
+    },
+    {
+      "path": "Vta (Driver E)/Vta29/V-vta29.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta29/V-vta29.csv",
+      "sha256": "6c6fbb29e6400817be84ecf2370d98025cfff9debf2f2e73c3ddaa3a9560dd1d",
+      "size_bytes": 5117097
+    },
+    {
+      "path": "Vta (Driver E)/Vta30/S-Vta30.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta30/S-Vta30.csv",
+      "sha256": "d6f65e16288c2fd1150435bca4c2383e323d55935824a8ae21799a8563271ccb",
+      "size_bytes": 3175640
+    },
+    {
+      "path": "Vta (Driver E)/Vta30/V-vta30.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vta (Driver E)/Vta30/V-vta30.csv",
+      "sha256": "d73b5ac746240670e9a420fa38bf910eacef4e7eb6a85e4c86c76abcae33fec1",
+      "size_bytes": 3628928
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb01/S-Vtb1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb01/S-Vtb1.csv",
+      "sha256": "7bdca3360c9411c58fdc41e4366fc79f336b087fd89c6d295976504c5e559e64",
+      "size_bytes": 6052896
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb01/V-vtb1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb01/V-vtb1.csv",
+      "sha256": "8ab039c67c83f62ed1abad0e74c1a92886584e16a67951771fcf9d55cf3d999a",
+      "size_bytes": 6989783
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb02/S-Vtb2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb02/S-Vtb2.csv",
+      "sha256": "6552ab344fe50a0163f980f3d852fef80ac8520530985902206eb7d15b44cfb1",
+      "size_bytes": 1053029
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb02/V-vtb2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb02/V-vtb2.csv",
+      "sha256": "4a194e6885091663a1df0f3572f8f42118bca278e39680912ce1aa3d4995ee83",
+      "size_bytes": 1200565
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb03/S-Vtb3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb03/S-Vtb3.csv",
+      "sha256": "7cadb0617ec69513de0ee718c707acc72cdb76261ec0ab33e629d8354cbaf883",
+      "size_bytes": 1530275
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb03/V-vtb3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb03/V-vtb3.csv",
+      "sha256": "17e9cc28a2a6b29038bb969725a96d8f46d514694d7b57686fa4ff0e2118577d",
+      "size_bytes": 1739502
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb04/S-Vtb4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb04/S-Vtb4.csv",
+      "sha256": "cdc2626adc124083a440cefb8a5ed0299e4c5e25aa4a5612316fb3dc784708c4",
+      "size_bytes": 103090
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb04/V-vtb4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb04/V-vtb4.csv",
+      "sha256": "b5aac0532f3eb63843807d10c6130b6c0b39f94c844acd3027ddb2f200b0be6b",
+      "size_bytes": 118374
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb05/S-Vtb5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb05/S-Vtb5.csv",
+      "sha256": "4753710832962b5ce8452cf62e314f81744a51dfa166f57f4dd7f678d4a199e8",
+      "size_bytes": 12010333
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb05/V-vtb5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb05/V-vtb5.csv",
+      "sha256": "a4aac15f70c4555ee69c2898b1254d25a815afa56cdb3e93f592819475272000",
+      "size_bytes": 13567208
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb06/S-Vtb6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb06/S-Vtb6.csv",
+      "sha256": "8ab4e1f0373173eb17f93426a6a2de2c1f01080fbc915c56443308256da28baa",
+      "size_bytes": 94210
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb06/V-vtb6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb06/V-vtb6.csv",
+      "sha256": "3f55326e614a377761a52e9ef1bc09e23653f0d37029679f4c171cacf364cfa3",
+      "size_bytes": 105659
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb07/S-Vtb7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb07/S-Vtb7.csv",
+      "sha256": "b798d898dc371334ce8627ed416fcbfc423852b204993bdfe884a2dc11b56696",
+      "size_bytes": 87349
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb07/V-vtb7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb07/V-vtb7.csv",
+      "sha256": "d2a5d2206394b29e775ffa7a240d49770c49168a898d78e0f87e8426dc6f2f32",
+      "size_bytes": 101086
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb08/S-Vtb8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb08/S-Vtb8.csv",
+      "sha256": "cdd40e3a04fe2f39eddf8dbaac68db124e0a1d858e70d08992ebc81708701e16",
+      "size_bytes": 126023
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb08/V-vtb8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb08/V-vtb8.csv",
+      "sha256": "0f11eea4a2c183a7bae05c0cc6f795d4344c2bbf621010129de8584747db93b2",
+      "size_bytes": 138162
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb09/S-Vtb9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb09/S-Vtb9.csv",
+      "sha256": "0a9dcbe6816e28e6c663f1b90668d37e024f314ee9bc91a674d49eb28b7fb01c",
+      "size_bytes": 85640
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb09/V-vtb9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb09/V-vtb9.csv",
+      "sha256": "ce69ae88e13086a35f6c21ed468959f79084a8e833e60ef886c303ce76297318",
+      "size_bytes": 93354
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb10/S-Vtb10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb10/S-Vtb10.csv",
+      "sha256": "b81e128fd1594a0730f36d285c1c447d17a370e6637616e4017b44ff3c714742",
+      "size_bytes": 37176
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb10/V-vtb10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb10/V-vtb10.csv",
+      "sha256": "5b0fe6e9f967fe9e9615defbf3674f9e8843747b6658867e8fee452e17a58d88",
+      "size_bytes": 42725
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb11/S-Vtb11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb11/S-Vtb11.csv",
+      "sha256": "cd3ec5fb7285089c5e37e8f42e7e899875839b7911ebec77751d8b1a01d90510",
+      "size_bytes": 68659
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb11/V-vtb11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb11/V-vtb11.csv",
+      "sha256": "e611eb46d62fb695e3b4e64943a50102a770d818b6e0f5a93b021d8eb2d13c71",
+      "size_bytes": 74838
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb12/S-Vtb12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb12/S-Vtb12.csv",
+      "sha256": "00e8dc12482919e0cfc43218275390f295c3f3b75e34ebeef0ade8b4809a3f5a",
+      "size_bytes": 83892
+    },
+    {
+      "path": "Vtb (Driver E)/Vtb12/V-vtb12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vtb (Driver E)/Vtb12/V-vtb12.csv",
+      "sha256": "dad39fa7ff152dc13ab8e7d903047bcfdb7882c8fe03b7c0f8f12eef07cbc115",
+      "size_bytes": 94747
+    },
+    {
+      "path": "Vw (Driver E)/Vw01/S-Vw1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw01/S-Vw1.csv",
+      "sha256": "41fb71ae3223748b2c0513d5b58338f92f25c85a5dd4e2816a932b263cf5f05b",
+      "size_bytes": 3524952
+    },
+    {
+      "path": "Vw (Driver E)/Vw01/V-Vw1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw01/V-Vw1.csv",
+      "sha256": "125a3ab348bca6b5d9fb2d52b7ba1f27d4a31f03b7b60b16ef778f7935bb4380",
+      "size_bytes": 4001856
+    },
+    {
+      "path": "Vw (Driver E)/Vw02/S-Vw2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw02/S-Vw2.csv",
+      "sha256": "c153268bf5f53e173934f50084c598d0c29ba93aad4a3b50b14a314d5402dbab",
+      "size_bytes": 9883172
+    },
+    {
+      "path": "Vw (Driver E)/Vw02/V-Vw2.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw02/V-Vw2.csv",
+      "sha256": "6aeca8956af02a64051042fa4b807e858691ea36b0c5a6642f78a33d5af113db",
+      "size_bytes": 11341576
+    },
+    {
+      "path": "Vw (Driver E)/Vw03/S-Vw3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw03/S-Vw3.csv",
+      "sha256": "6fa0f3d88a6c7c80cf7adf82b9e969d2de489e799b4f9a604758c8ce479ce7a3",
+      "size_bytes": 720455
+    },
+    {
+      "path": "Vw (Driver E)/Vw03/V-Vw3.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw03/V-Vw3.csv",
+      "sha256": "b89ca7c566b668ab0f4c16eda1343f9e0527a31bf6c603212e146ba84928dd6f",
+      "size_bytes": 839545
+    },
+    {
+      "path": "Vw (Driver E)/Vw04/S-Vw4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw04/S-Vw4.csv",
+      "sha256": "0d79ef3cd96f48b611e5da7dd14f4cb6ed0f1f747d247d26847918545440b9d3",
+      "size_bytes": 23607418
+    },
+    {
+      "path": "Vw (Driver E)/Vw04/V-Vw4.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw04/V-Vw4.csv",
+      "sha256": "db9ba7d930842b5f15543c71c1b350f52bef0fe0c27653279d3c35cffb331556",
+      "size_bytes": 27124526
+    },
+    {
+      "path": "Vw (Driver E)/Vw05/S-Vw5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw05/S-Vw5.csv",
+      "sha256": "0750e1ddccb84440e4984f308872a2ff20c64019b64e27815d79496a7e6dbce6",
+      "size_bytes": 188883
+    },
+    {
+      "path": "Vw (Driver E)/Vw05/V-Vw5.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw05/V-Vw5.csv",
+      "sha256": "a9972e12e8ea995a1387b768f625d1cf85444916bff03d0b50d2b133ee97116f",
+      "size_bytes": 216316
+    },
+    {
+      "path": "Vw (Driver E)/Vw06/S-Vw6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw06/S-Vw6.csv",
+      "sha256": "9543a52492106a1ee4ad815f5a2f183e2f7142979f4edb2ae34755d0c4b3a087",
+      "size_bytes": 238315
+    },
+    {
+      "path": "Vw (Driver E)/Vw06/V-Vw6.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw06/V-Vw6.csv",
+      "sha256": "2399eafd439216c38749ebc2b2751251f22dd4e3c46b7bce8c42d23b50e485cb",
+      "size_bytes": 278191
+    },
+    {
+      "path": "Vw (Driver E)/Vw07/S-Vw7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw07/S-Vw7.csv",
+      "sha256": "953176680614bf889a938ee4cc940227d820206a2f58942f8a5ff74ada4e7b2f",
+      "size_bytes": 300843
+    },
+    {
+      "path": "Vw (Driver E)/Vw07/V-Vw7.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw07/V-Vw7.csv",
+      "sha256": "3ba9d21d1532b4e15dc41ed9e4baa996e1ccf7b447f2fc41ee44564a5dd1f5ef",
+      "size_bytes": 346895
+    },
+    {
+      "path": "Vw (Driver E)/Vw08/S-Vw8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw08/S-Vw8.csv",
+      "sha256": "f1321e689b66128e7b116b9aedb0e8e5304f9566781f8111c4d1f4a933c543a2",
+      "size_bytes": 287123
+    },
+    {
+      "path": "Vw (Driver E)/Vw08/V-Vw8.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw08/V-Vw8.csv",
+      "sha256": "0b08f02c7568c47b79ae137f9811b6bead3d1550e60a0be496f7430b0fbb49de",
+      "size_bytes": 332609
+    },
+    {
+      "path": "Vw (Driver E)/Vw09/S-Vw9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw09/S-Vw9.csv",
+      "sha256": "40d96f99b100518c0f2dbe6bf9dbfc94b89e25c865b3d1e6b795d132127d917c",
+      "size_bytes": 103572
+    },
+    {
+      "path": "Vw (Driver E)/Vw09/V-Vw9.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw09/V-Vw9.csv",
+      "sha256": "ec3f3b288fe0793b17db003d0b9e1f6a0d6ec594b017ac2251a438df4743dfe7",
+      "size_bytes": 121383
+    },
+    {
+      "path": "Vw (Driver E)/Vw10/S-Vw10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw10/S-Vw10.csv",
+      "sha256": "b2aa8e3d7bae40e9f17cd20fe4c80d79f34b012a07e3b8aeb0eedf5ed42b7790",
+      "size_bytes": 123092
+    },
+    {
+      "path": "Vw (Driver E)/Vw10/V-Vw10.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw10/V-Vw10.csv",
+      "sha256": "acec110be8eb7ef43784d195d1bd55e44ac13833ab258b8d7ab696e18ac6b5bd",
+      "size_bytes": 141457
+    },
+    {
+      "path": "Vw (Driver E)/Vw11/S-Vw11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw11/S-Vw11.csv",
+      "sha256": "b9dd70fc7282ba469fdf8835062286bb3cb53bbf4f6d3d2dff4d71c5b597a5c1",
+      "size_bytes": 924189
+    },
+    {
+      "path": "Vw (Driver E)/Vw11/V-Vw11.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw11/V-Vw11.csv",
+      "sha256": "5e50658cbdd33fc9dfc0dd462a68996ab31cd6b584b67e6713d4f3d3bf04d455",
+      "size_bytes": 1032515
+    },
+    {
+      "path": "Vw (Driver E)/Vw12/S-Vw12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw12/S-Vw12.csv",
+      "sha256": "e5598004be4250cba1361d3b7fea8cb45526ce6e8b8efb7466c5a03a2e6fd57e",
+      "size_bytes": 170958
+    },
+    {
+      "path": "Vw (Driver E)/Vw12/V-Vw12.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw12/V-Vw12.csv",
+      "sha256": "f474667235581e514d44f371cc81039aacc6c0604669f552f127bdb8c60e370b",
+      "size_bytes": 188273
+    },
+    {
+      "path": "Vw (Driver E)/Vw13/S-Vw13.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw13/S-Vw13.csv",
+      "sha256": "8dbdb8d7c3c0790c66dc33bfffd3eb98d59010f849ef15bdf7097b67f23b8733",
+      "size_bytes": 53041
+    },
+    {
+      "path": "Vw (Driver E)/Vw13/V-Vw13.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw13/V-Vw13.csv",
+      "sha256": "2b5e7012d2fce26807d48ce46effd70d217574516c6fb77467beffde7f97e767",
+      "size_bytes": 59207
+    },
+    {
+      "path": "Vw (Driver E)/Vw14a/S-Vw14a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14a/S-Vw14a.csv",
+      "sha256": "de5b5da05baa7bedd0d9fa66c6faa908823ab731849c1dad0156d400252e4646",
+      "size_bytes": 585872
+    },
+    {
+      "path": "Vw (Driver E)/Vw14a/V-Vw14a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14a/V-Vw14a.csv",
+      "sha256": "442bef4ccc4464f0a0a31a332ea9c71e5e14baf7b50080c647e6fa6f7ddb5dbf",
+      "size_bytes": 651054
+    },
+    {
+      "path": "Vw (Driver E)/Vw14b/S-Vw14b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14b/S-Vw14b.csv",
+      "sha256": "5f13f8ede6117bb26ea26f977f19282415dc4064368b6ad3a502c8d3c1150b3f",
+      "size_bytes": 3668924
+    },
+    {
+      "path": "Vw (Driver E)/Vw14b/V-Vw14b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14b/V-Vw14b.csv",
+      "sha256": "ee81d26af18170ab6473f2f51bc6f8221be5b7fb233829c537d680b4ba2fa199",
+      "size_bytes": 4120915
+    },
+    {
+      "path": "Vw (Driver E)/Vw14c/S-Vw14c.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14c/S-Vw14c.csv",
+      "sha256": "ce97c12ec0c9cff740dfe3a18e17aa0be0b8b7ec43bc53daa01b357dd6bf11d7",
+      "size_bytes": 2957471
+    },
+    {
+      "path": "Vw (Driver E)/Vw14c/V-Vw14c.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw14c/V-Vw14c.csv",
+      "sha256": "1b3b6d1e2e4d7c89cbe66f7888534cee2d13bf1287d52432a995b7cad8a82c7f",
+      "size_bytes": 3363425
+    },
+    {
+      "path": "Vw (Driver E)/Vw15/S-Vw15.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw15/S-Vw15.csv",
+      "sha256": "7e440cc28168a538f694c07d24b374c75af7cce13cb108e342f5eb2ef5633728",
+      "size_bytes": 254039
+    },
+    {
+      "path": "Vw (Driver E)/Vw15/V-Vw15.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw15/V-Vw15.csv",
+      "sha256": "bd65ae3932fc1b6ec64d0347c34bfa66bf3ff8ef276f8aff31c546e0bac2684f",
+      "size_bytes": 263885
+    },
+    {
+      "path": "Vw (Driver E)/Vw16a/S-Vw16a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw16a/S-Vw16a.csv",
+      "sha256": "1b25f604e07545448be54970cd480b23bc7a37814118d6b86dad10ff29ba8d0f",
+      "size_bytes": 1100323
+    },
+    {
+      "path": "Vw (Driver E)/Vw16a/V-Vw16a.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw16a/V-Vw16a.csv",
+      "sha256": "0b92aa13c01d1436e10a3b3272a8649e6639630f72d3e2b3c618ae2957a97989",
+      "size_bytes": 1241037
+    },
+    {
+      "path": "Vw (Driver E)/Vw16b/S-Vw16b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw16b/S-Vw16b.csv",
+      "sha256": "817fd5f786beebb804b39e00c0da1a541e37074b7dcb843fdb43ea94dbefa190",
+      "size_bytes": 211892
+    },
+    {
+      "path": "Vw (Driver E)/Vw16b/V-Vw16b.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw16b/V-Vw16b.csv",
+      "sha256": "1e81b217eaf6c2340aafbbc122ad738d876013366737437155a4e722eb6fd8ed",
+      "size_bytes": 239979
+    },
+    {
+      "path": "Vw (Driver E)/Vw17/S-Vw17.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw17/S-Vw17.csv",
+      "sha256": "cc55c4ce1a945a78ccfa71d3f3e290a30145f88610d1e6cbc541cb1c48cd6ce4",
+      "size_bytes": 62489
+    },
+    {
+      "path": "Vw (Driver E)/Vw17/V-Vw17.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Vw (Driver E)/Vw17/V-Vw17.csv",
+      "sha256": "62ab9ddd16621eb70afaeec7237ae7b31499ae5df9e9d57324fc07fe648a48ee",
+      "size_bytes": 71065
+    },
+    {
+      "path": "Y (Driver D)/Y1/S-Y1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Y (Driver D)/Y1/S-Y1.csv",
+      "sha256": "cf17b89f6eec6872de2412f8a17a82ab9821a881c20cbcadc23d867d9e1dde84",
+      "size_bytes": 13039543
+    },
+    {
+      "path": "Y (Driver D)/Y1/V-Y1.csv",
+      "repository_path": "Synchronised V abd S datasets/Categorised IOVNB Dataset/Y (Driver D)/Y1/V-Y1.csv",
+      "sha256": "505749fb081d5a2b0d5e8eeee5865173071feda5a004ffff044560c0a1e16605",
+      "size_bytes": 14986075
+    }
+  ],
+  "recordings": [
+    {
+      "recording": "M (Driver B)/S-M.csv",
+      "split": "train",
+      "windows": 10584,
+      "clock_offset_seconds": 3601.1059999999998,
+      "aligned_fraction": 0.9997735293562572,
+      "median_pair_separation_m": 25.87695612494938
+    },
+    {
+      "recording": "S (Driver A)/S1/S-S1.csv",
+      "split": "test",
+      "windows": 5172,
+      "clock_offset_seconds": 3600.546000000002,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 27.172965449580378
+    },
+    {
+      "recording": "S (Driver A)/S2/S-S2.csv",
+      "split": "test",
+      "windows": 9381,
+      "clock_offset_seconds": 3607.3410000000003,
+      "aligned_fraction": 0.9998828241510077,
+      "median_pair_separation_m": 14.938686907322714
+    },
+    {
+      "recording": "S (Driver A)/S3a/S-S3a.csv",
+      "split": "test",
+      "windows": 2460,
+      "clock_offset_seconds": 3593.494000000006,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 113.80964579041571
+    },
+    {
+      "recording": "S (Driver A)/S3b/S-S3b.csv",
+      "split": "test",
+      "windows": 672,
+      "clock_offset_seconds": 3600.6929999999993,
+      "aligned_fraction": 0.9936885366211654,
+      "median_pair_separation_m": 17.854125847981777
+    },
+    {
+      "recording": "S (Driver A)/S3c/S-S3c.csv",
+      "split": "test",
+      "windows": 3716,
+      "clock_offset_seconds": 3600.7209999999905,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 37.651050242794526
+    },
+    {
+      "recording": "S (Driver A)/S4/S-S4.csv",
+      "split": "test",
+      "windows": 9138,
+      "clock_offset_seconds": 3601.711000000003,
+      "aligned_fraction": 0.966892177589852,
+      "median_pair_separation_m": 20.028337386930204
+    },
+    {
+      "recording": "Vf (Driver E)/V-Vfa01/S-Vfa01.csv",
+      "split": "validation",
+      "windows": 1146,
+      "clock_offset_seconds": 4.235999999997148,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 32.65144973237927
+    },
+    {
+      "recording": "Vf (Driver E)/V-Vfa02/S-Vfa02.csv",
+      "split": "validation",
+      "windows": 6747,
+      "clock_offset_seconds": 7.748999999996158,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 95.27291415774515
+    },
+    {
+      "recording": "Vta (Driver E)/Vta01a/S-Vta1a.csv",
+      "split": "train",
+      "windows": 2565,
+      "clock_offset_seconds": -13.637000000002445,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 242.60018986694968
+    },
+    {
+      "recording": "Vta (Driver E)/Vta01b/S-Vta1b.csv",
+      "split": "train",
+      "windows": 93,
+      "clock_offset_seconds": 0.46300000000337604,
+      "aligned_fraction": 0.9989517819706499,
+      "median_pair_separation_m": 3.596787557504106
+    },
+    {
+      "recording": "Vta (Driver E)/Vta02/S-Vta2.csv",
+      "split": "train",
+      "windows": 1097,
+      "clock_offset_seconds": 0.9649999999965075,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 2.1596646223897507
+    },
+    {
+      "recording": "Vta (Driver E)/Vta03/S-Vta3.csv",
+      "split": "train",
+      "windows": 62,
+      "clock_offset_seconds": -20.10700000000361,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 96.24202211589852
+    },
+    {
+      "recording": "Vta (Driver E)/Vta04/S-Vta4.csv",
+      "split": "train",
+      "windows": 176,
+      "clock_offset_seconds": 2.194000000003143,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 35.12148060324378
+    },
+    {
+      "recording": "Vta (Driver E)/Vta05/S-Vta5.csv",
+      "split": "train",
+      "windows": 28,
+      "clock_offset_seconds": 0.7929999999978463,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 53.23744602357671
+    },
+    {
+      "recording": "Vta (Driver E)/Vta06/S-Vta6.csv",
+      "split": "train",
+      "windows": 135,
+      "clock_offset_seconds": 2.2930000000051223,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 48.674776804051355
+    },
+    {
+      "recording": "Vta (Driver E)/Vta07/S-Vta7.csv",
+      "split": "train",
+      "windows": 82,
+      "clock_offset_seconds": 1.5930000000007567,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 56.12123794304473
+    },
+    {
+      "recording": "Vta (Driver E)/Vta08/S-Vta8.csv",
+      "split": "train",
+      "windows": 365,
+      "clock_offset_seconds": 1.2929999999978463,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 26.07939515339676
+    },
+    {
+      "recording": "Vta (Driver E)/Vta09/S-Vta9.csv",
+      "split": "train",
+      "windows": 13,
+      "clock_offset_seconds": 0.294000000001688,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 85.57437822362792
+    },
+    {
+      "recording": "Vta (Driver E)/Vta10/S-Vta10.csv",
+      "split": "train",
+      "windows": 148,
+      "clock_offset_seconds": 0.49299999999493593,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 113.81003845565503
+    },
+    {
+      "recording": "Vta (Driver E)/Vta11/S-Vta11.csv",
+      "split": "train",
+      "windows": 49,
+      "clock_offset_seconds": 0.49299999999493593,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 51.33786759231888
+    },
+    {
+      "recording": "Vta (Driver E)/Vta12/S-Vta12.csv",
+      "split": "train",
+      "windows": 59,
+      "clock_offset_seconds": 0.2929999999978463,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 86.61461009126629
+    },
+    {
+      "recording": "Vta (Driver E)/Vta13/S-Vta13.csv",
+      "split": "train",
+      "windows": 38,
+      "clock_offset_seconds": 0.3919999999998254,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 107.72258508577266
+    },
+    {
+      "recording": "Vta (Driver E)/Vta14/S-Vta14.csv",
+      "split": "train",
+      "windows": 286,
+      "clock_offset_seconds": 0.6929999999993015,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 68.33197564011846
+    },
+    {
+      "recording": "Vta (Driver E)/Vta15/S-Vta15.csv",
+      "split": "train",
+      "windows": 81,
+      "clock_offset_seconds": 2.992999999994936,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 45.917281297937436
+    },
+    {
+      "recording": "Vta (Driver E)/Vta16/S-Vta16.csv",
+      "split": "train",
+      "windows": 1131,
+      "clock_offset_seconds": 1.7929999999978463,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 25.73587526096015
+    },
+    {
+      "recording": "Vta (Driver E)/Vta17/S-Vta17.csv",
+      "split": "train",
+      "windows": 445,
+      "clock_offset_seconds": 0.4919999999983702,
+      "aligned_fraction": 0.9973445452533747,
+      "median_pair_separation_m": 33.77901808832126
+    },
+    {
+      "recording": "Vta (Driver E)/Vta19/S-Vta19.csv",
+      "split": "train",
+      "windows": 27,
+      "clock_offset_seconds": 0.47699999999895226,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 26.259466405766645
+    },
+    {
+      "recording": "Vta (Driver E)/Vta20/S-Vta20.csv",
+      "split": "train",
+      "windows": 320,
+      "clock_offset_seconds": 26.72200000000157,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 5.293374284736586
+    },
+    {
+      "recording": "Vta (Driver E)/Vta21/S-Vta21.csv",
+      "split": "train",
+      "windows": 205,
+      "clock_offset_seconds": 8.322000000000116,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 58.06673705317225
+    },
+    {
+      "recording": "Vta (Driver E)/Vta22/S-Vta22.csv",
+      "split": "train",
+      "windows": 154,
+      "clock_offset_seconds": 3.8220000000001164,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 24.17256968208112
+    },
+    {
+      "recording": "Vta (Driver E)/Vta23/S-Vta23.csv",
+      "split": "train",
+      "windows": 109,
+      "clock_offset_seconds": 0.9230000000025029,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 25.674427636621655
+    },
+    {
+      "recording": "Vta (Driver E)/Vta24/S-Vta24.csv",
+      "split": "train",
+      "windows": 115,
+      "clock_offset_seconds": 0.12199999999575084,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 6.825769763037319
+    },
+    {
+      "recording": "Vta (Driver E)/Vta25/S-Vta25.csv",
+      "split": "train",
+      "windows": 62,
+      "clock_offset_seconds": -1.275999999998021,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 4.535490909238016
+    },
+    {
+      "recording": "Vta (Driver E)/Vta26/S-Vta26.csv",
+      "split": "train",
+      "windows": 191,
+      "clock_offset_seconds": 1.3220000000001164,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 5.309372904537708
+    },
+    {
+      "recording": "Vta (Driver E)/Vta27/S-Vta27.csv",
+      "split": "train",
+      "windows": 252,
+      "clock_offset_seconds": -27.177999999999884,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 395.96166828102537
+    },
+    {
+      "recording": "Vta (Driver E)/Vta28/S-Vta28.csv",
+      "split": "train",
+      "windows": 419,
+      "clock_offset_seconds": -1.3780000000042492,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 40.655485442191214
+    },
+    {
+      "recording": "Vta (Driver E)/Vta29/S-Vta29.csv",
+      "split": "train",
+      "windows": 2364,
+      "clock_offset_seconds": -5.391999999999825,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 87.80806412748436
+    },
+    {
+      "recording": "Vta (Driver E)/Vta30/S-Vta30.csv",
+      "split": "train",
+      "windows": 1708,
+      "clock_offset_seconds": 2.286000000000058,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 11.213767056826164
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb01/S-Vtb1.csv",
+      "split": "train",
+      "windows": 2577,
+      "clock_offset_seconds": -0.6540000000022701,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 42.09868023943123
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb02/S-Vtb2.csv",
+      "split": "train",
+      "windows": 566,
+      "clock_offset_seconds": -0.9239999999990687,
+      "aligned_fraction": 0.9998249299719888,
+      "median_pair_separation_m": 16.417743366259895
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb03/S-Vtb3.csv",
+      "split": "train",
+      "windows": 822,
+      "clock_offset_seconds": -1.4239999999990687,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 13.272594300525938
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb04/S-Vtb4.csv",
+      "split": "train",
+      "windows": 53,
+      "clock_offset_seconds": -0.42400000000634464,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 13.007492532567438
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb05/S-Vtb5.csv",
+      "split": "train",
+      "windows": 6436,
+      "clock_offset_seconds": -28.325000000004366,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 516.4172808769806
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb06/S-Vtb6.csv",
+      "split": "train",
+      "windows": 47,
+      "clock_offset_seconds": -1.5239999999903375,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 79.50099092068285
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb07/S-Vtb7.csv",
+      "split": "train",
+      "windows": 44,
+      "clock_offset_seconds": -1.8249999999970896,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 72.72585211078582
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb08/S-Vtb8.csv",
+      "split": "train",
+      "windows": 64,
+      "clock_offset_seconds": -1.6239999999961583,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 92.40410480747046
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb09/S-Vtb9.csv",
+      "split": "train",
+      "windows": 43,
+      "clock_offset_seconds": -1.6230000000068685,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 109.67596328928329
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb10/S-Vtb10.csv",
+      "split": "train",
+      "windows": 17,
+      "clock_offset_seconds": 0.47500000000582077,
+      "aligned_fraction": 0.9948979591836735,
+      "median_pair_separation_m": 25.13151672132599
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb11/S-Vtb11.csv",
+      "split": "train",
+      "windows": 34,
+      "clock_offset_seconds": -1.6239999999961583,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 93.93437507876249
+    },
+    {
+      "recording": "Vtb (Driver E)/Vtb12/S-Vtb12.csv",
+      "split": "train",
+      "windows": 42,
+      "clock_offset_seconds": -1.625,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 38.86022403890769
+    },
+    {
+      "recording": "Vw (Driver E)/Vw01/S-Vw1.csv",
+      "split": "train",
+      "windows": 2045,
+      "clock_offset_seconds": 100.41599999999744,
+      "aligned_fraction": 0.9999511623363938,
+      "median_pair_separation_m": 1.7142663849114221
+    },
+    {
+      "recording": "Vw (Driver E)/Vw02/S-Vw2.csv",
+      "split": "train",
+      "windows": 5269,
+      "clock_offset_seconds": 1.8849999999947613,
+      "aligned_fraction": 0.9999810293475992,
+      "median_pair_separation_m": 39.454319942951265
+    },
+    {
+      "recording": "Vw (Driver E)/Vw03/S-Vw3.csv",
+      "split": "train",
+      "windows": 384,
+      "clock_offset_seconds": -0.01600000000325963,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 50.09332245376072
+    },
+    {
+      "recording": "Vw (Driver E)/Vw04/S-Vw4.csv",
+      "split": "train",
+      "windows": 12650,
+      "clock_offset_seconds": 0.3040000000037253,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 47.953992594628346
+    },
+    {
+      "recording": "Vw (Driver E)/Vw05/S-Vw5.csv",
+      "split": "train",
+      "windows": 99,
+      "clock_offset_seconds": 2.8029999999998836,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 13.749928331580925
+    },
+    {
+      "recording": "Vw (Driver E)/Vw06/S-Vw6.csv",
+      "split": "train",
+      "windows": 126,
+      "clock_offset_seconds": -1.2959999999948195,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 49.566302492316396
+    },
+    {
+      "recording": "Vw (Driver E)/Vw07/S-Vw7.csv",
+      "split": "train",
+      "windows": 158,
+      "clock_offset_seconds": -167.7960000000021,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 73.55288551382378
+    },
+    {
+      "recording": "Vw (Driver E)/Vw08/S-Vw8.csv",
+      "split": "train",
+      "windows": 150,
+      "clock_offset_seconds": -160.99599999999919,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 20.847815093619936
+    },
+    {
+      "recording": "Vw (Driver E)/Vw09/S-Vw9.csv",
+      "split": "train",
+      "windows": 53,
+      "clock_offset_seconds": 0.5029999999969732,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 30.675455311361134
+    },
+    {
+      "recording": "Vw (Driver E)/Vw10/S-Vw10.csv",
+      "split": "train",
+      "windows": 63,
+      "clock_offset_seconds": -0.4959999999991851,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 50.80803311488031
+    },
+    {
+      "recording": "Vw (Driver E)/Vw11/S-Vw11.csv",
+      "split": "train",
+      "windows": 488,
+      "clock_offset_seconds": 1.504000000000815,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 21.78598847537798
+    },
+    {
+      "recording": "Vw (Driver E)/Vw12/S-Vw12.csv",
+      "split": "train",
+      "windows": 89,
+      "clock_offset_seconds": 4.005000000004657,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 52.37753479594112
+    },
+    {
+      "recording": "Vw (Driver E)/Vw13/S-Vw13.csv",
+      "split": "train",
+      "windows": 26,
+      "clock_offset_seconds": 1.004000000000815,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 97.18751952667533
+    },
+    {
+      "recording": "Vw (Driver E)/Vw14a/S-Vw14a.csv",
+      "split": "train",
+      "windows": 311,
+      "clock_offset_seconds": 4.883999999998196,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 53.82170542347713
+    },
+    {
+      "recording": "Vw (Driver E)/Vw14b/S-Vw14b.csv",
+      "split": "train",
+      "windows": 1956,
+      "clock_offset_seconds": 3.88300000000163,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 44.46241385273298
+    },
+    {
+      "recording": "Vw (Driver E)/Vw14c/S-Vw14c.csv",
+      "split": "train",
+      "windows": 1580,
+      "clock_offset_seconds": 1.9839999999967404,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 16.813296175515617
+    },
+    {
+      "recording": "Vw (Driver E)/Vw15/S-Vw15.csv",
+      "split": "train",
+      "windows": 136,
+      "clock_offset_seconds": 3.0429999999978463,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 3.6650842126039316
+    },
+    {
+      "recording": "Vw (Driver E)/Vw16a/S-Vw16a.csv",
+      "split": "train",
+      "windows": 585,
+      "clock_offset_seconds": -10.197000000000116,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 216.5510918079168
+    },
+    {
+      "recording": "Vw (Driver E)/Vw16b/S-Vw16b.csv",
+      "split": "train",
+      "windows": 110,
+      "clock_offset_seconds": -0.19799999999668216,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 67.54462515511503
+    },
+    {
+      "recording": "Vw (Driver E)/Vw17/S-Vw17.csv",
+      "split": "train",
+      "windows": 30,
+      "clock_offset_seconds": 1.6019999999989523,
+      "aligned_fraction": 1.0,
+      "median_pair_separation_m": 49.78939849824027
+    },
+    {
+      "recording": "Y (Driver D)/Y1/S-Y1.csv",
+      "split": "train",
+      "windows": 6878,
+      "clock_offset_seconds": 3605.8029999999926,
+      "aligned_fraction": 0.980550615351782,
+      "median_pair_separation_m": 16.71230545173157
+    }
+  ]
+}

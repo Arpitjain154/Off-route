@@ -1,0 +1,57 @@
+--- 1.5.6/android/app/src/main/java/com/idr/navigator/engine/DrLogWriter.java
++++ 1.5.7/android/app/src/main/java/com/idr/navigator/engine/DrLogWriter.java
+@@ -10,8 +10,7 @@
+     private final BufferedOutputStream stream;
+     public final File file;
+     public final int sampleRate;
+-    private long bytes = 200,
+-        last;
++    private long bytes = 200, lastObserved, nextDue;
+     public String error;
+ 
+     public DrLogWriter(File file, int rate, String phone, String mount, String session)
+@@ -46,8 +45,15 @@
+         float cn0,
+         int flags
+     ) {
+-        if (t - last < 1_000_000_000L / sampleRate) return;
+-        last = t;
++        if (t <= 0 || t <= lastObserved) return;
++        lastObserved = t;
++        long period = 1_000_000_000L / sampleRate;
++        // Keep the requested cadence instead of resetting it after each write:
++        // 130 Hz callbacks otherwise become only 65 Hz at a 100 Hz target.
++        // Choose real samples within half a period; never synthesize timestamps.
++        if (nextDue != 0 && t < nextDue - period / 2) return;
++        // A slower source or a delivery gap starts a new cadence, not a backlog.
++        nextDue = nextDue == 0 || t > nextDue + period / 2 ? t + period : nextDue + period;
+         ByteBuffer b = ByteBuffer.allocate(70).order(ByteOrder.LITTLE_ENDIAN);
+         b.putLong(t);
+         for (float[] a : new float[][] { acc, gyro, mag }) for (float x : a) b.putFloat(x);
+--- 1.5.6/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java
++++ 1.5.7/android/app/src/main/java/com/idr/navigator/engine/LiveNavigation.java
+@@ -100,7 +100,10 @@
+             NavigationFusion.Fix anchor=holdingStop?new NavigationFusion.Fix(next.time(),stopLat,stopLon,next.alt(),next.accuracy(),next.speed(),next.speedError(),next.bearing(),next.bearingError()):next;
+             inertial.anchor(anchor,now,speed,stationary.isStopped(now),heading);
+             if(recovering){recoveryLat=priorLat-next.lat();recoveryLon=priorLon-next.lon();recoverySpeed=priorSpeed-speed;recoveryStart=now;
+-                recoverySeconds=Math.max(1,Math.min(8,Math.hypot(recoveryLat*111320,recoveryLon*111320*Math.cos(Math.toRadians(next.lat())))/5));}
++                // A large INS error must not keep guidance far behind an accepted
++                // GPS fix for eight seconds. Keep the first frame continuous,
++                // then reconcile position within the same two seconds as speed.
++                recoverySeconds=Math.max(1,Math.min(2,Math.hypot(recoveryLat*111320,recoveryLon*111320*Math.cos(Math.toRadians(next.lat())))/5));}
+         }
+         return true;
+     }
+--- 1.5.6/android/app/build.gradle
++++ 1.5.7/android/app/build.gradle
+@@ -22,8 +22,8 @@
+         applicationId "com.idr.navigator"
+         minSdkVersion rootProject.ext.minSdkVersion
+         targetSdkVersion rootProject.ext.targetSdkVersion
+-        versionCode 15
+-        versionName "1.5.6-offroute"
++        versionCode 16
++        versionName "1.5.7-offroute"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+         aaptOptions {
+              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.

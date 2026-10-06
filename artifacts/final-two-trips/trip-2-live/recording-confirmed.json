@@ -1,0 +1,21 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "activeLog": {
+        "sessionId": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+        "startedAt": "2026-10-03T13:34:26.858Z",
+        "route": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+        "mount": "dashboard",
+        "source": "device"
+      },
+      "sampleRate": 200,
+      "logging": true,
+      "bytes": 177860,
+      "elapsed": 21.289331078,
+      "imuFresh": true,
+      "positionFresh": true,
+      "fusionStatus": "Live GNSS tracking"
+    }
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+  "scope": "Trip 1 only. No Trip 2, cloud, training, or live-device access. GPS return discrepancy is not outage accuracy: there is no continuous independent position reference during Location-off. GNSS raw float32 coordinate quantization is up to approximately 0.4 m longitude in this region.",
+  "sample_quality": {
+    "raw_records": 45784,
+    "duration_s": 379.34781643596943,
+    "raw_hz": 120.68871367216046,
+    "raw_gap_ms": {
+      "n": 45783,
+      "min": 7.422096037771553,
+      "median": 7.9959300346672535,
+      "max": 12.569146056193858,
+      "p95": 11.995980981737375
+    },
+    "gyro_fresh_fraction": 1.0,
+    "fusion_hz": 9.67664189210119,
+    "fusion_gap_ms": {
+      "n": 3670,
+      "min": 100.0004910165444,
+      "median": 104.00308950920589,
+      "max": 108.00500400364399,
+      "p95": 107.95343938516451
+    },
+    "nav_aligned_fraction": 1.0,
+    "speed_available_fraction": 1.0,
+    "gravity_age_ms": {
+      "n": 3671,
+      "min": 3.993543,
+      "median": 7.995082999999999,
+      "max": 36.012001,
+      "p95": 8.026157
+    },
+    "finite_imu_fraction": 1.0
+  },
+  "sensor_intervals": [
+    {
+      "start_s": 127.54401502601104,
+      "end_s": 163.31195856595878,
+      "duration_s": 35.76794353994774,
+      "start_speed_mps": 5.95971,
+      "end_speed_mps": 0.21241,
+      "min_speed_mps": 0.21241,
+      "max_speed_mps": 6.01023,
+      "gps_last_speed_mps": 6.19931,
+      "estimated_path_m": 109.55553326528583,
+      "end_uncertainty_m": 76.87153,
+      "bias_start_mps2": -0.077605,
+      "bias_end_mps2": -0.077605,
+      "accel_mean_mps2": -0.1299189855072464,
+      "gyro_bias_start_rps": 0.001119,
+      "gyro_bias_end_rps": 0.001119,
+      "zero_speed_fraction": 0.0,
+      "confirmed_stationary_fraction": 0.0,
+      "unavailable_fraction": 0.0,
+      "reacquisition_fix_s": 163.24399360700045,
+      "reacquisition_gps_accuracy_m": 4.400000095367432,
+      "reacquisition_gps_speed_mps": 4.63713,
+      "reacquisition_gps_speed_error_mps": 2.3,
+      "comparison_time_from_last_ins_s": -0.06796495895832777,
+      "reacquisition_position_discrepancy_m": 157.14753616815537,
+      "comparison_method": "interpolated pre-recovery INS at GNSS observation time",
+      "reacquisition_nav_speed_mps": 0.31732,
+      "reacquisition_uncertainty_m": 156.46527,
+      "recovery_offsets_m_at_seconds": [
+        {
+          "s": 0.0,
+          "m": 156.09641960287453
+        },
+        {
+          "s": 2.0559982749982737,
+          "m": 115.70460640550894
+        },
+        {
+          "s": 5.044039756990969,
+          "m": 57.09542066931528
+        },
+        {
+          "s": 8.032049198984168,
+          "m": 0.3576874400895222
+        },
+        {
+          "s": 10.100028480985202,
+          "m": 0.08098302108326394
+        }
+      ],
+      "heading_start_deg": 58.872,
+      "heading_end_deg": 59.472,
+      "return_gps_bearing_deg": 58.72,
+      "return_gps_bearing_error_deg": 17.6,
+      "return_heading_disagreement_deg": 0.7520000000000095,
+      "map_trust_stats": {
+        "n": 65,
+        "min": 0.5408341491295641,
+        "median": 0.6093612444754767,
+        "max": 0.649993591208692,
+        "p95": 0.6499766498683865
+      },
+      "return_residual_along_estimated_heading_m": 155.94561969042357,
+      "return_residual_cross_estimated_heading_m": -19.396171431581934
+    },
+    {
+      "start_s": 214.27201833296567,
+      "end_s": 254.82395157701103,
+      "duration_s": 40.55193324404536,
+      "start_speed_mps": 6.27533,
+      "end_speed_mps": 0.44638,
+      "min_speed_mps": 0.44638,
+      "max_speed_mps": 6.30317,
+      "gps_last_speed_mps": 6.26005,
+      "estimated_path_m": 167.31230229467099,
+      "end_uncertainty_m": 78.06048,
+      "bias_start_mps2": -0.038302,
+      "bias_end_mps2": -0.038302,
+      "accel_mean_mps2": -0.12361520460358055,
+      "gyro_bias_start_rps": 0.001119,
+      "gyro_bias_end_rps": 0.001119,
+      "zero_speed_fraction": 0.0,
+      "confirmed_stationary_fraction": 0.0,
+      "unavailable_fraction": 0.0,
+      "reacquisition_fix_s": 254.7188566889963,
+      "reacquisition_gps_accuracy_m": 3.9000000953674316,
+      "reacquisition_gps_speed_mps": 5.65731,
+      "reacquisition_gps_speed_error_mps": 2.2,
+      "comparison_time_from_last_ins_s": -0.10509488801471889,
+      "reacquisition_position_discrepancy_m": 114.68257019910669,
+      "comparison_method": "interpolated pre-recovery INS at GNSS observation time",
+      "reacquisition_nav_speed_mps": 0.6488,
+      "reacquisition_uncertainty_m": 113.29131,
+      "recovery_offsets_m_at_seconds": [
+        {
+          "s": 0.0,
+          "m": 113.49414819517968
+        },
+        {
+          "s": 2.0800148060079664,
+          "m": 83.4725517939472
+        },
+        {
+          "s": 5.072047615016345,
+          "m": 41.102303241306934
+        },
+        {
+          "s": 8.06805138598429,
+          "m": 0.10396152992179025
+        },
+        {
+          "s": 10.020026747020893,
+          "m": 0.3804120331292566
+        }
+      ],
+      "heading_start_deg": 85.453,
+      "heading_end_deg": 91.583,
+      "return_gps_bearing_deg": 92.93,
+      "return_gps_bearing_error_deg": 14.4,
+      "return_heading_disagreement_deg": 1.3470000000000084,
+      "map_trust_stats": {
+        "n": 73,
+        "min": 0.5557549694030729,
+        "median": 0.6468185916747865,
+        "max": 0.6499996214067202,
+        "p95": 0.6499981983338454
+      },
+      "return_residual_along_estimated_heading_m": 113.51004005085312,
+      "return_residual_cross_estimated_heading_m": -16.35699038100907
+    },
+    {
+      "start_s": 302.35596769000404,
+      "end_s": 317.0279970119591,
+      "duration_s": 14.672029321955051,
+      "start_speed_mps": 7.03263,
+      "end_speed_mps": 5.94848,
+      "min_speed_mps": 5.31749,
+      "max_speed_mps": 7.04569,
+      "gps_last_speed_mps": 7.13817,
+      "estimated_path_m": 87.80510752366973,
+      "end_uncertainty_m": 17.39311,
+      "bias_start_mps2": -0.05844,
+      "bias_end_mps2": -0.05844,
+      "accel_mean_mps2": -0.08271280985915494,
+      "gyro_bias_start_rps": 0.001119,
+      "gyro_bias_end_rps": 0.001119,
+      "zero_speed_fraction": 0.0,
+      "confirmed_stationary_fraction": 0.0,
+      "unavailable_fraction": 0.0,
+      "reacquisition_fix_s": 316.9614766929881,
+      "reacquisition_gps_accuracy_m": 4.400000095367432,
+      "reacquisition_gps_speed_mps": 2.62045,
+      "reacquisition_gps_speed_error_mps": 2.3,
+      "comparison_time_from_last_ins_s": -0.06652031897101551,
+      "reacquisition_position_discrepancy_m": 43.003641408662425,
+      "comparison_method": "interpolated pre-recovery INS at GNSS observation time",
+      "reacquisition_nav_speed_mps": 5.87833,
+      "reacquisition_uncertainty_m": 43.8897,
+      "recovery_offsets_m_at_seconds": [
+        {
+          "s": 0.0,
+          "m": 43.32053646860053
+        },
+        {
+          "s": 2.06799533899175,
+          "m": 32.01585693943277
+        },
+        {
+          "s": 5.055966279993299,
+          "m": 16.097736175628743
+        },
+        {
+          "s": 8.051965557970107,
+          "m": 0.3752913204394405
+        },
+        {
+          "s": 10.011954507965129,
+          "m": 0.3282804666092699
+        }
+      ],
+      "heading_start_deg": 93.288,
+      "heading_end_deg": 96.207,
+      "return_gps_bearing_deg": 85.33,
+      "return_gps_bearing_error_deg": 31.1,
+      "return_heading_disagreement_deg": 10.87700000000001,
+      "map_trust_stats": {
+        "n": 27,
+        "min": 0.6466721300424461,
+        "median": 0.6499253159757327,
+        "max": 0.649999977224151,
+        "p95": 0.649999977224151
+      },
+      "return_residual_along_estimated_heading_m": -42.494074698025365,
+      "return_residual_cross_estimated_heading_m": -6.600415938400263
+    }
+  ],
+  "confirmed_stops": [],
+  "bias_accel_mps2": {
+    "n": 3671,
+    "min": -0.299906,
+    "median": -0.050389,
+    "max": 0.013474,
+    "p95": -0.001771
+  },
+  "bias_gyro_rps": {
+    "n": 3671,
+    "min": 0.001119,
+    "median": 0.001119,
+    "max": 0.001119,
+    "p95": 0.001119
+  },
+  "nav_uncertainty_m": {
+    "n": 3671,
+    "min": 1.1,
+    "median": 1.6,
+    "max": 156.46527,
+    "p95": 65.02499
+  },
+  "telemetry": {
+    "poses": 707,
+    "map_trust": {
+      "n": 707,
+      "min": 0.0,
+      "median": 0.6002594581561053,
+      "max": 0.649999977224151,
+      "p95": 0.6499796290088956
+    },
+    "ai_trust_max": 0,
+    "physics_trust": {
+      "n": 707,
+      "min": 0.0,
+      "median": 0.0,
+      "max": 0.55,
+      "p95": 0.0
+    },
+    "engine_generations": [
+      1
+    ],
+    "location_registrations": [
+      1
+    ],
+    "map_statuses": [
+      "Madhya Pradesh HMM active"
+    ],
+    "fusion_statuses": [
+      "Live GNSS tracking",
+      "Reconciling sensor estimate with GPS",
+      "Sensor tracking \u00b7 inertial estimate"
+    ]
+  },
+  "ai_gps_comparison": {
+    "sample_unit": "telemetry packets, repeated overlapping model windows, not independent evaluation samples",
+    "paired_packets": 451,
+    "rmse_mps": 9.0251582616318,
+    "mae_mps": 6.332913296394928,
+    "stopped_gps_packets": 150,
+    "stopped_ai_mps": {
+      "n": 150,
+      "min": 0.00020716428116429597,
+      "median": 0.028917460702359676,
+      "max": 13.701265335083008,
+      "p95": 2.169721841812134
+    },
+    "ai_trust_max": 0
+  },
+  "forward_vector_changes_deg": {
+    "n": 207,
+    "min": 0.10100979115631854,
+    "median": 1.4813182729451462,
+    "max": 16.098548119666248,
+    "p95": 4.778059243822332
+  },
+  "largest_forward_changes": [
+    {
+      "time_s": 55.71190634300001,
+      "degrees": 16.098548119666248,
+      "gps_speed_mps": 1.14011,
+      "bias_before": -0.001771,
+      "bias_after": -0.001771
+    },
+    {
+      "time_s": 341.71193061600206,
+      "degrees": 8.576129438743436,
+      "gps_speed_mps": 3.17584,
+      "bias_before": -0.050389,
+      "bias_after": -0.050389
+    },
+    {
+      "time_s": 317.6479938669945,
+      "degrees": 8.227160239207747,
+      "gps_speed_mps": 3.11304,
+      "bias_before": -0.05844,
+      "bias_after": -0.05844
+    },
+    {
+      "time_s": 337.6719861860038,
+      "degrees": 6.906302503830485,
+      "gps_speed_mps": 4.00608,
+      "bias_before": -0.050389,
+      "bias_after": -0.050389
+    },
+    {
+      "time_s": 58.70790464698803,
+      "degrees": 6.820018322267575,
+      "gps_speed_mps": 2.19889,
+      "bias_before": -0.001771,
+      "bias_after": -0.001771
+    },
+    {
+      "time_s": 333.65593697701115,
+      "degrees": 6.372575889772975,
+      "gps_speed_mps": 3.68541,
+      "bias_before": -0.050389,
+      "bias_after": -0.050389
+    },
+    {
+      "time_s": 109.68802573496941,
+      "degrees": 6.283000050172437,
+      "gps_speed_mps": 5.86732,
+      "bias_before": -0.085794,
+      "bias_after": -0.077605
+    },
+    {
+      "time_s": 338.7119945209706,
+      "degrees": 5.519197247328579,
+      "gps_speed_mps": 3.82902,
+      "bias_before": -0.050389,
+      "bias_after": -0.050389
+    }
+  ],
+  "low_gps_speed_intervals": [
+    {
+      "start_s": 1.6560101619688794,
+      "end_s": 52.61599323299015,
+      "duration_s": 50.95998307102127,
+      "acc_norm_mean": 10.44305419921875,
+      "acc_norm_std": 1.2739101648330688,
+      "gyro_rms": 0.2430378794670105,
+      "nav_speed_max": 0.18898
+    },
+    {
+      "start_s": 351.71198746497976,
+      "end_s": 379.2638025589986,
+      "duration_s": 27.55181509401882,
+      "acc_norm_mean": 11.83704662322998,
+      "acc_norm_std": 1.91325044631958,
+      "gyro_rms": 0.4567929804325104,
+      "nav_speed_max": 0.06013
+    }
+  ]
+}

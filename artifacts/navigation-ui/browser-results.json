@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "planner to active navigation",
+    "GPS to IMU to unavailable to GPS display",
+    "no dashboard tabs while navigating",
+    "sensor details return",
+    "360px portrait and landscape layout",
+    "exit restores dashboard"
+  ],
+  "fixtureOnly": true,
+  "errors": []
+}

@@ -1,0 +1,21 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "activeLog": {
+        "sessionId": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+        "startedAt": "2026-10-03T13:21:46.417Z",
+        "route": "Central Jail Bhopal",
+        "mount": "dashboard",
+        "source": "device"
+      },
+      "sampleRate": 200,
+      "logging": true,
+      "bytes": 216850,
+      "elapsed": 25.936483386000003,
+      "imuFresh": true,
+      "positionFresh": true,
+      "fusionStatus": "Live GNSS tracking"
+    }
+  }
+}

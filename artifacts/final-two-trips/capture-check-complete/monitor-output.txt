@@ -1,0 +1,18 @@
+{
+  "file": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\artifacts\\final-two-trips\\capture-check-complete\\2026-10-03T13-08-13.319Z-telemetry.jsonl",
+  "state": {
+    "hidden": false,
+    "mount": "dashboard",
+    "sampleRate": 200,
+    "collectionEnabled": true,
+    "activeLog": null,
+    "routeActive": false,
+    "journeyCount": 3
+  },
+  "samples": 23,
+  "imuFreshSamples": 23,
+  "gpsFreshSamples": 23,
+  "loggingSamples": 0,
+  "aiAvailableSamples": 23,
+  "inferenceCountDelta": 12
+}

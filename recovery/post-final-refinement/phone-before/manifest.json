@@ -1,0 +1,127 @@
+[
+  {
+    "name": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.drlog",
+    "bytes": 898090,
+    "sha256": "ccd6ca895f970a8ffd123d212e6a83a16b3054ee0c193242e8a636735c89611f"
+  },
+  {
+    "name": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.fusion.csv",
+    "bytes": 523134,
+    "sha256": "55a3a6946d9fee4a412a597da8c1007d2bb16233e25115220be6c94a34cd45dc"
+  },
+  {
+    "name": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.quality.csv",
+    "bytes": 938592,
+    "sha256": "ae92f8c6065cd0abee71e0086367c6dc0838ffff9c168420c8a4b5e931adde33"
+  },
+  {
+    "name": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.summary.json",
+    "bytes": 232,
+    "sha256": "d12dcde4ffc8c99abc74f71c7cff0a912ae2cd1ea3cf52661353731bdb7f5b3c"
+  },
+  {
+    "name": "00413cb6-72a2-4a81-a0c2-1aa45513ec17.training.json",
+    "bytes": 89,
+    "sha256": "5dca0bca4e32ea66ad8e29c7bc156aeb78b120a0511ecc0e57685f1f17f8a6d8"
+  },
+  {
+    "name": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.drlog",
+    "bytes": 765930,
+    "sha256": "e41ae959b0dc1cd9f31318e343a116d5f96739defa56c293375af33afc0868cb"
+  },
+  {
+    "name": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.fusion.csv",
+    "bytes": 439841,
+    "sha256": "5581928bc5a52075ccd781138f9e72aac5b188ec8671f83e78f638453c9bf319"
+  },
+  {
+    "name": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.quality.csv",
+    "bytes": 960791,
+    "sha256": "334da68a53e9553a353a8f599f413e6a8daa12161d6dded897c96998ac817bfa"
+  },
+  {
+    "name": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.summary.json",
+    "bytes": 232,
+    "sha256": "d990a5cfa955db7dd8601d9e5d0d9871608ddbe9d0c5238f42435c845d070dfd"
+  },
+  {
+    "name": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.training.json",
+    "bytes": 89,
+    "sha256": "c2a0e8ffbb9b33db3aa384e4f87f0bcd369a34d767314213bba50238381685b3"
+  },
+  {
+    "name": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.drlog",
+    "bytes": 131800,
+    "sha256": "bee4a5505fbac703481f97baac8d793ac1c18a60d90a2734505c6091d12d4041"
+  },
+  {
+    "name": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.fusion.csv",
+    "bytes": 74862,
+    "sha256": "06a391b3b5bdf6ce3bb3a138b6b553fbc4cd8782b87d7994b3440a7983d1b5f3"
+  },
+  {
+    "name": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.quality.csv",
+    "bytes": 169499,
+    "sha256": "74ea238a1072fc385720fa1425f84f5e891d50a6d297397d2f0f52c8f85396b9"
+  },
+  {
+    "name": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.summary.json",
+    "bytes": 232,
+    "sha256": "44cea9616b684af0d03e8fe873faf8f849bc85bfab1067f487d973ef566b8aff"
+  },
+  {
+    "name": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.training.json",
+    "bytes": 89,
+    "sha256": "aad9ef3644b167fa28bfbf7ec1101f429df868a13c08645c66fdc37c6da4617b"
+  },
+  {
+    "name": "380421b3-98bc-43f6-a803-aeb1a16427d3.drlog",
+    "bytes": 1060560,
+    "sha256": "c996be0e06d205e6c34400c4fb7d31029b48e1cf4c91a0969204638ceecf5920"
+  },
+  {
+    "name": "380421b3-98bc-43f6-a803-aeb1a16427d3.fusion.csv",
+    "bytes": 606814,
+    "sha256": "0e4d8225af485557d4fd80bb2611cc2ef7daf91739d96d730d6f9f111b09b152"
+  },
+  {
+    "name": "380421b3-98bc-43f6-a803-aeb1a16427d3.quality.csv",
+    "bytes": 1236494,
+    "sha256": "84412377e4151bbdac2a919b7360612d40f6ce7acbf0b193c3e7e5c4df10c1c2"
+  },
+  {
+    "name": "380421b3-98bc-43f6-a803-aeb1a16427d3.summary.json",
+    "bytes": 228,
+    "sha256": "2b725709a65f36caf44f22728200fcb491e0d0d5d3f332cc14a311cc64671750"
+  },
+  {
+    "name": "380421b3-98bc-43f6-a803-aeb1a16427d3.training.json",
+    "bytes": 89,
+    "sha256": "85ac3dd100d473ad0ec66f1049944d29cdfdfc09578d2bc42086f3927a2bae90"
+  },
+  {
+    "name": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.drlog",
+    "bytes": 2076120,
+    "sha256": "d897b46c0c5d5543a786dfa1de4d48707b277f0e8965d9fd1db6c3baf4413b57"
+  },
+  {
+    "name": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.fusion.csv",
+    "bytes": 1180980,
+    "sha256": "2c5f3ff37df22976b790452cd93d3d71abddff0b61d100696919176731888862"
+  },
+  {
+    "name": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.quality.csv",
+    "bytes": 2002282,
+    "sha256": "ab8c8cbdded2c714c77bf3b412e72d8139d9e8a5f9a20bb3ae8d35e63250f397"
+  },
+  {
+    "name": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.summary.json",
+    "bytes": 233,
+    "sha256": "1e2a4f40248738be4dd7f039c38fb347b8949fd434de7ce42d4352c4b99b4d8f"
+  },
+  {
+    "name": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.training.json",
+    "bytes": 89,
+    "sha256": "b54f9272b36ebe390dcd8fadc197bc530636f41d2669ea4cc37bdb9906c07f2a"
+  }
+]

@@ -1,0 +1,300 @@
+{
+  "evaluations": [
+    {
+      "file": "0bef8c26-c6c6-49d3-a3ce-f82be1f795f3.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "0bef8c26-c6c6-49d3-a3ce-f82be1f795f3",
+      "accepted_fixes": 18,
+      "speed_model_error_mps": {
+        "rmse": 6.88260723254406,
+        "mae": 5.077056754690905,
+        "p95": 12.541052662581201
+      },
+      "speed_prediction_range_kmh": [
+        0.04763152599334717,
+        55.191738510131835
+      ],
+      "mean_prediction_when_stopped_kmh": 18.61435109488666
+    },
+    {
+      "file": "23337fd9-b0ea-4682-a9ca-3fb0fce1d158.drlog",
+      "rejections": {
+        "label_quality": 2
+      },
+      "session": "23337fd9-b0ea-4682-a9ca-3fb0fce1d158",
+      "accepted_fixes": 236,
+      "speed_model_error_mps": {
+        "rmse": 10.193052076890627,
+        "mae": 6.931437300190367,
+        "p95": 18.726334810256958
+      },
+      "speed_prediction_range_kmh": [
+        0.002784557710401714,
+        194.15007476806642
+      ],
+      "mean_prediction_when_stopped_kmh": 33.16493475727038
+    },
+    {
+      "file": "2fb9fe12-5b10-4871-a66b-9bf99575039a.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "2fb9fe12-5b10-4871-a66b-9bf99575039a",
+      "accepted_fixes": 30,
+      "speed_model_error_mps": {
+        "rmse": 6.348437777011008,
+        "mae": 3.932262757605834,
+        "p95": 13.427701975405217
+      },
+      "speed_prediction_range_kmh": [
+        0.0009285682928748429,
+        59.79438171386719
+      ],
+      "mean_prediction_when_stopped_kmh": 12.500872390317575
+    },
+    {
+      "file": "380421b3-98bc-43f6-a803-aeb1a16427d3.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 8
+      },
+      "session": "380421b3-98bc-43f6-a803-aeb1a16427d3",
+      "accepted_fixes": 131,
+      "speed_model_error_mps": {
+        "rmse": 15.927773628820065,
+        "mae": 13.165854304460613,
+        "p95": 30.929907724261284
+      },
+      "speed_prediction_range_kmh": [
+        0.0021125314990058544,
+        123.13558959960938
+      ],
+      "mean_prediction_when_stopped_kmh": 43.60472214259706
+    },
+    {
+      "file": "3faa8432-6054-48e9-ac16-4d12bc7cd3a8.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 1
+      },
+      "session": "3faa8432-6054-48e9-ac16-4d12bc7cd3a8",
+      "accepted_fixes": 155,
+      "speed_model_error_mps": {
+        "rmse": 2.218633637789502,
+        "mae": 0.6553147211008059,
+        "p95": 6.158624856919042
+      },
+      "speed_prediction_range_kmh": [
+        0.00024546738713979724,
+        59.48206100463867
+      ],
+      "mean_prediction_when_stopped_kmh": 1.8588660393921013
+    },
+    {
+      "file": "4c2d7791-5868-46e4-b507-c724371682e3.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "4c2d7791-5868-46e4-b507-c724371682e3",
+      "accepted_fixes": 15,
+      "speed_model_error_mps": {
+        "rmse": 7.10079397424587,
+        "mae": 5.166118062908451,
+        "p95": 15.992968521267175
+      },
+      "speed_prediction_range_kmh": [
+        2.3892946243286133,
+        61.03439483642578
+      ],
+      "mean_prediction_when_stopped_kmh": 18.900425019264222
+    },
+    {
+      "file": "70c20d5e-62b6-4bcb-a7d9-850efb3a261d.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "70c20d5e-62b6-4bcb-a7d9-850efb3a261d",
+      "accepted_fixes": 22,
+      "speed_model_error_mps": {
+        "rmse": 3.9857639067813366,
+        "mae": 3.3621630668640137,
+        "p95": 7.025376796722412
+      },
+      "speed_prediction_range_kmh": [
+        30.502146148681643,
+        56.46760482788086
+      ]
+    },
+    {
+      "file": "a13ef063-bd5d-4dbc-81cf-a902893c36aa.drlog",
+      "rejections": {
+        "short_history": 2,
+        "label_quality": 2
+      },
+      "session": "a13ef063-bd5d-4dbc-81cf-a902893c36aa",
+      "accepted_fixes": 19,
+      "speed_model_error_mps": {
+        "rmse": 1.066037727474521,
+        "mae": 0.628607961406631,
+        "p95": 2.0843632712960205
+      },
+      "speed_prediction_range_kmh": [
+        0.0007131823513191193,
+        14.00731086730957
+      ],
+      "mean_prediction_when_stopped_kmh": 1.2439601080407066
+    },
+    {
+      "file": "a87339fb-9f19-4f9b-bf2c-af1a0d63da7c.drlog",
+      "rejections": {
+        "label_quality": 1,
+        "short_history": 2
+      },
+      "session": "a87339fb-9f19-4f9b-bf2c-af1a0d63da7c",
+      "accepted_fixes": 45,
+      "speed_model_error_mps": {
+        "rmse": 4.596828123241061,
+        "mae": 3.984847328397963,
+        "p95": 7.611546039581298
+      },
+      "speed_prediction_range_kmh": [
+        10.395456790924072,
+        57.97689971923828
+      ]
+    },
+    {
+      "file": "a8bd1e5b-a331-431a-8398-b6da213ef9f2.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "a8bd1e5b-a331-431a-8398-b6da213ef9f2",
+      "accepted_fixes": 16,
+      "speed_model_error_mps": {
+        "rmse": 1.2544943642398219,
+        "mae": 0.5986117571010254,
+        "p95": 2.6423827335238457
+      },
+      "speed_prediction_range_kmh": [
+        0.02065586429089308,
+        15.106359100341797
+      ],
+      "mean_prediction_when_stopped_kmh": 2.3331406583078205
+    },
+    {
+      "file": "ea7f59ff-f1d6-4bbd-b6a2-59badf802639.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 6
+      },
+      "session": "ea7f59ff-f1d6-4bbd-b6a2-59badf802639",
+      "accepted_fixes": 356,
+      "speed_model_error_mps": {
+        "rmse": 8.9850229593275,
+        "mae": 6.463086433344216,
+        "p95": 17.76812869310379
+      },
+      "speed_prediction_range_kmh": [
+        0.0010551336687058212,
+        146.88127441406252
+      ],
+      "mean_prediction_when_stopped_kmh": 27.388411593417175
+    },
+    {
+      "file": "f91ed260-e1a2-42eb-92f7-4f0df87f0524.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "f91ed260-e1a2-42eb-92f7-4f0df87f0524",
+      "accepted_fixes": 7,
+      "speed_model_error_mps": {
+        "rmse": 12.156463781013313,
+        "mae": 11.817015068871635,
+        "p95": 14.525176437944173
+      },
+      "speed_prediction_range_kmh": [
+        23.853316497802734,
+        54.87875862121582
+      ],
+      "mean_prediction_when_stopped_kmh": 43.19953994750977
+    },
+    {
+      "file": "e3910ca0-bc07-4073-8efe-c05689a9dc89.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "e3910ca0-bc07-4073-8efe-c05689a9dc89",
+      "accepted_fixes": 16,
+      "speed_model_error_mps": {
+        "rmse": 0.29376646005310547,
+        "mae": 0.17198745749192312,
+        "p95": 0.6363101257011294
+      },
+      "speed_prediction_range_kmh": [
+        0.008369484543800354,
+        2.882586765289307
+      ],
+      "mean_prediction_when_stopped_kmh": 0.6393252502894029
+    },
+    {
+      "file": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb",
+      "accepted_fixes": 118,
+      "speed_model_error_mps": {
+        "rmse": 16.497891524762537,
+        "mae": 14.408650776973168,
+        "p95": 25.64980158805846
+      },
+      "speed_prediction_range_kmh": [
+        0.008809174876660109,
+        138.1985870361328
+      ],
+      "mean_prediction_when_stopped_kmh": 41.39765267009551
+    },
+    {
+      "file": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 5
+      },
+      "session": "1fe8393f-aae7-45ba-9f9d-05aa94917d90",
+      "accepted_fixes": 14,
+      "speed_model_error_mps": {
+        "rmse": 9.097951236083968,
+        "mae": 3.723481801181541,
+        "p95": 20.597255972027774
+      },
+      "speed_prediction_range_kmh": [
+        0.0005231000657659025,
+        110.2580062866211
+      ],
+      "mean_prediction_when_stopped_kmh": 12.435938148312271
+    },
+    {
+      "file": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.drlog",
+      "rejections": {
+        "short_history": 3,
+        "label_quality": 31
+      },
+      "session": "8c988ee6-b59d-4e1c-9050-bd7142cb1841",
+      "accepted_fixes": 125,
+      "speed_model_error_mps": {
+        "rmse": 5.641813149468205,
+        "mae": 2.0009080591480597,
+        "p95": 15.153244638442994
+      },
+      "speed_prediction_range_kmh": [
+        0.000423978638718836,
+        91.58821105957031
+      ],
+      "mean_prediction_when_stopped_kmh": 3.5283345113389206
+    }
+  ],
+  "training_blockers": [
+    "Need at least 100 quality fixes in validation"
+  ]
+}

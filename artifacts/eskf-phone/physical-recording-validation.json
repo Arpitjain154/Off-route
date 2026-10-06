@@ -1,0 +1,28 @@
+{
+  "sessionId": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a",
+  "sensor_rows_by_android_type": {
+    "1": 3744,
+    "11": 3744,
+    "9": 3744,
+    "4": 3744,
+    "2": 3744
+  },
+  "gps_rows": 30,
+  "accepted_nonmock_gps_rows": 30,
+  "training_windows": 17,
+  "window_shape": [
+    17,
+    300,
+    6
+  ],
+  "audit": {
+    "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.drlog",
+    "rejections": {
+      "label_quality": 13
+    },
+    "session": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a",
+    "label_source": "receiver_gnss",
+    "imu_source": "original_sensor_events",
+    "accepted_fixes": 17
+  }
+}

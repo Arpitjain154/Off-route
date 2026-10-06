@@ -1,0 +1,8 @@
+{
+  "bundled": [
+    "motion",
+    "speed"
+  ],
+  "fusion_enabled": false,
+  "selection": "Improved validation metrics only; regression set did not select checkpoints."
+}

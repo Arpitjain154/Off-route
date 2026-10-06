@@ -1,0 +1,1 @@
+JSON.stringify({text:document.querySelector(".cloud-settings")?.innerText,buttons:[...document.querySelectorAll(".cloud-settings button")].map(b=>({text:b.textContent,disabled:b.disabled})),emailEntered:!!document.querySelector(".cloud-settings input[type=email]")?.value,passwordLength:document.querySelector(".cloud-settings input[type=password]")?.value.length})

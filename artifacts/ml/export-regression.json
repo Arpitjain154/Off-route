@@ -1,0 +1,25 @@
+{
+  "motion": {
+    "windows_checked": 306,
+    "unsupported_classes_zero": true
+  },
+  "gps-health": {
+    "windows_checked": 306,
+    "missing_features_masked": true
+  },
+  "speed": {
+    "stationary": {
+      "windows_checked": 1236,
+      "mae_mps": 0.8893765211105347,
+      "median_prediction_mps": 0.007240836508572102,
+      "p95_prediction_mps": 7.414573669433594
+    },
+    "moving": {
+      "windows_checked": 1032,
+      "mae_mps": 4.074574947357178,
+      "median_prediction_mps": 9.511517524719238,
+      "p95_prediction_mps": 16.403202056884766
+    }
+  },
+  "fusion_gate": "Bundled learned corrections remain disabled pending phone validation. Live navigation uses the ESKF after mount alignment, with GNSS fallback beforehand. These model tests do not validate navigation accuracy."
+}

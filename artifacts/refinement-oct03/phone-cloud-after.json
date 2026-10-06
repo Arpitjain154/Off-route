@@ -1,0 +1,24 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "connected": true,
+      "consent": true,
+      "wifiOnly": true,
+      "modelMessage": "Cloud request failed (400)",
+      "queue": [
+        {
+          "sessionId": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb",
+          "state": "uploaded",
+          "message": ""
+        },
+        {
+          "sessionId": "380421b3-98bc-43f6-a803-aeb1a16427d3",
+          "state": "uploaded",
+          "message": ""
+        }
+      ],
+      "journeyCount": 4
+    }
+  }
+}

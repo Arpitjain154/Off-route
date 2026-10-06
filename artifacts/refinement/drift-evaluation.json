@@ -1,0 +1,6 @@
+{
+  "outages": 15,
+  "below_10_percent": 0,
+  "median_drift_percent": 77.522,
+  "note": "Recorded IO-VNBD replay; excludes road matching and does not establish physical-phone accuracy."
+}

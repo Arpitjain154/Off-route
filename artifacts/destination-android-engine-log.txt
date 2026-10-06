@@ -1,0 +1,3 @@
+--------- beginning of main
+09-15 09:30:53.020  6151  6345 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix
+09-15 09:31:15.992  6151  6345 I IDR-Engine: generation=1 locationRegistrations=1 GPS locked; establishing vehicle heading

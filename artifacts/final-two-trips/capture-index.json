@@ -1,0 +1,28 @@
+[
+  {
+    "trip": 1,
+    "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+    "durationSeconds": 379.354741561,
+    "rawSamples": 45784,
+    "actualRawHz": 120.68871367215073,
+    "maxRawGapMs": 12.569146000000002,
+    "locationOffOnCycles": 3,
+    "liveTelemetrySamples": 834,
+    "telemetryErrors": [],
+    "rawHashesVerified": true,
+    "captureErrorMarker": false
+  },
+  {
+    "trip": 2,
+    "session": "ba42a2d9-ccf5-4b22-99bf-f164b5fc7383",
+    "durationSeconds": 700.439269965,
+    "rawSamples": 84786,
+    "actualRawHz": 121.04751010078816,
+    "maxRawGapMs": 12.654698000000002,
+    "locationOffOnCycles": 7,
+    "liveTelemetrySamples": 1362,
+    "telemetryErrors": [],
+    "rawHashesVerified": true,
+    "captureErrorMarker": false
+  }
+]

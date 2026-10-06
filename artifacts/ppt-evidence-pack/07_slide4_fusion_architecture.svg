@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="959.76pt" height="540pt" viewBox="0 0 959.76 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-05T01:04:06.619877</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540 
+L 959.76 540 
+L 959.76 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 93.41664 186.192 
+L 276.41088 186.192 
+Q 282.041472 186.192 282.041472 181.44 
+L 282.041472 116.1 
+Q 282.041472 111.348 276.41088 111.348 
+L 93.41664 111.348 
+Q 87.786048 111.348 87.786048 116.1 
+L 87.786048 181.44 
+Q 87.786048 186.192 93.41664 186.192 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 93.41664 299.052 
+L 276.41088 299.052 
+Q 282.041472 299.052 282.041472 294.3 
+L 282.041472 228.96 
+Q 282.041472 224.208 276.41088 224.208 
+L 93.41664 224.208 
+Q 87.786048 224.208 87.786048 228.96 
+L 87.786048 294.3 
+Q 87.786048 299.052 93.41664 299.052 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 93.41664 423.792 
+L 276.41088 423.792 
+Q 282.041472 423.792 282.041472 419.04 
+L 282.041472 353.7 
+Q 282.041472 348.948 276.41088 348.948 
+L 93.41664 348.948 
+Q 87.786048 348.948 87.786048 353.7 
+L 87.786048 419.04 
+Q 87.786048 423.792 93.41664 423.792 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 339.75504 423.792 
+L 550.90224 423.792 
+Q 556.532832 423.792 556.532832 419.04 
+L 556.532832 353.7 
+Q 556.532832 348.948 550.90224 348.948 
+L 339.75504 348.948 
+Q 334.124448 348.948 334.124448 353.7 
+L 334.124448 419.04 
+Q 334.124448 423.792 339.75504 423.792 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 389.02272 269.352 
+L 600.16992 269.352 
+Q 605.800512 269.352 605.800512 264.6 
+L 605.800512 175.5 
+Q 605.800512 170.748 600.16992 170.748 
+L 389.02272 170.748 
+Q 383.392128 170.748 383.392128 175.5 
+L 383.392128 264.6 
+Q 383.392128 269.352 389.02272 269.352 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #d9f1e9; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 677.59056 186.192 
+L 902.81424 186.192 
+Q 908.444832 186.192 908.444832 181.44 
+L 908.444832 116.1 
+Q 908.444832 111.348 902.81424 111.348 
+L 677.59056 111.348 
+Q 671.959968 111.348 671.959968 116.1 
+L 671.959968 181.44 
+Q 671.959968 186.192 677.59056 186.192 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 677.59056 322.812 
+L 902.81424 322.812 
+Q 908.444832 322.812 908.444832 318.06 
+L 908.444832 252.72 
+Q 908.444832 247.968 902.81424 247.968 
+L 677.59056 247.968 
+Q 671.959968 247.968 671.959968 252.72 
+L 671.959968 318.06 
+Q 671.959968 322.812 677.59056 322.812 
+z
+" clip-path="url(#pcb857a0586)" style="fill: #e9f2fa; stroke: #718096; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(146.666573 144.686016)">IMU / gravity</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(109.775948 159.089297)">Propagation + alignment</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(130.597823 257.546016)">GNSS health rules</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(125.721885 271.949297)">Accept / reject fixes</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(124.495635 382.286016)">Neural speed model</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(145.779697 396.689297)">IMU windows</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(375.104265 382.286016)">Validation + calibration</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(358.75239 396.689297)">Uncertain speed observation</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(436.398195 215.965547)">15-error-state ESKF</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(417.247882 230.368828)">Position · velocity · biases</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(714.600525 144.686016)">Offline road observations</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(724.199587 159.089297)">Cross-track constraint</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(736.143337 281.306016)">Navigation output</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'" transform="translate(696.566775 295.709297)">Position + speed + uncertainty</text>
+   </g>
+   <g id="patch_9">
+    <path d="M 285.250349 158.548667 
+Q 332.715551 181.439398 378.166667 203.358809 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 374.885711 199.112007 
+L 378.166667 203.358809 
+L 372.800652 203.435492 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 285.364618 264.022641 
+Q 332.717727 249.749721 377.929907 236.122108 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 372.641517 235.209455 
+L 377.929907 236.122108 
+L 374.02675 239.805227 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 285.448815 386.37 
+Q 308.083152 386.37 328.481421 386.37 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 323.681421 383.97 
+L 328.481421 386.37 
+L 323.681421 388.77 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 446.013391 345.881816 
+Q 459.404646 309.151301 472.029987 274.52159 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 468.131039 278.209164 
+L 472.029987 274.52159 
+L 472.640677 279.853293 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 668.955571 158.877861 
+Q 638.882728 181.438134 610.598578 202.656551 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 615.878462 201.695917 
+L 610.598578 202.656551 
+L 612.998001 197.856263 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 608.951826 241.821057 
+Q 638.88168 258.66081 666.86275 274.404098 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 663.856289 269.958741 
+L 666.86275 274.404098 
+L 661.502588 274.142052 
+" style="fill: none; stroke: #40566e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+  </g>
+  <g id="text_8">
+   <text style="font-weight: 700; font-size: 23px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #102a43" x="43.1892" y="36.376406" transform="rotate(-0 43.1892 36.376406)">AI measurements within the ESKF architecture</text>
+  </g>
+  <g id="text_9">
+   <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #526073" transform="translate(43.1892 515.697539)">Source: docs/live-eskf-and-training.md (October 4 update). Architecture capability, not proof of measured accuracy.</text>
+   <text style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #526073" transform="translate(43.1892 526.5)">Bundled model remains validated=false; accepted AI corrections require validation and live calibration. Learned reliability/drift correction is future work.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pcb857a0586">
+   <rect x="86.3784" y="86.4" width="844.5888" height="356.4"/>
+  </clipPath>
+ </defs>
+</svg>

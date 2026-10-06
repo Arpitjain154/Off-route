@@ -1,0 +1,35 @@
+.cloud-settings {
+  display: grid;
+  gap: 12px;
+}
+.cloud-settings h3,
+.cloud-settings p {
+  margin: 0;
+}
+.cloud-settings .cloud-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.cloud-settings .cloud-check input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.cloud-settings .cloud-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.cloud-settings details .field-label {
+  margin-top: 12px;
+}
+.cloud-settings strong {
+  overflow-wrap: anywhere;
+}
+.cloud-settings button {
+  min-height: 44px;
+}

@@ -1,0 +1,237 @@
+[
+  {
+    "path": "trip-1-live/2026-10-03T13-21-16.032Z-telemetry.jsonl",
+    "bytes": 184859,
+    "sha256": "7c805d7c20fe17cc1b815ba252d34582abfb4199af1f59315fa05c09cfddaf3c"
+  },
+  {
+    "path": "trip-1-live/2026-10-03T13-22-48.100Z-telemetry.jsonl",
+    "bytes": 192448,
+    "sha256": "d351a5052e5df536fe33a040f084859e58da924fd34eb9be50c66338d355e52d"
+  },
+  {
+    "path": "trip-1-live/2026-10-03T13-24-19.771Z-telemetry.jsonl",
+    "bytes": 191376,
+    "sha256": "f21179fec926633607f667c5c4cce67c618e116b5fe1075a72669dda842a6e87"
+  },
+  {
+    "path": "trip-1-live/2026-10-03T13-25-51.645Z-telemetry.jsonl",
+    "bytes": 190579,
+    "sha256": "a021f7b0b07978617b854e9ba66e219fe6970ce9a42286d6485c1dcddeaec198"
+  },
+  {
+    "path": "trip-1-live/2026-10-03T13-27-23.504Z-telemetry.jsonl",
+    "bytes": 167327,
+    "sha256": "a361c4172a059603d75abdc53383db9fbb7cb5e37534f6ac1ddcb4e76a8317f3"
+  },
+  {
+    "path": "trip-1-live/app-logcat.txt",
+    "bytes": 15997271,
+    "sha256": "f4c92393a4362155a63aea4c925531cbb64c2d267e384e8d45a036dbf31e53b1"
+  },
+  {
+    "path": "trip-1-live/capture-events.jsonl",
+    "bytes": 36779,
+    "sha256": "742594afbc495a7097fede686100075e459bf084979e569d54e5c7bd31897a13"
+  },
+  {
+    "path": "trip-1-live/monitor-output.txt",
+    "bytes": 2568,
+    "sha256": "ba6932b19f54152a586866f483bc0864e0161538be0b149f77a625614bf9ec0d"
+  },
+  {
+    "path": "trip-1-live/recording-confirmed.json",
+    "bytes": 506,
+    "sha256": "1dd897035f85162907a9ed84d6d98f80074877ae443d1f788f58f47acc539685"
+  },
+  {
+    "path": "trip-1-live/sensors.txt",
+    "bytes": 77965,
+    "sha256": "6d323a2503547b68eeedc5b7745de1080ce3c71c98b0d0292f969f66172028b2"
+  },
+  {
+    "path": "trip-1-live/space.txt",
+    "bytes": 102,
+    "sha256": "a671e5b2c3a31ac97ec1777e3635d5feba56bc378e5624f3b26ccfb9525d9fb7"
+  },
+  {
+    "path": "trip-1-live/STOP",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "trip-1-live/stopped.json",
+    "bytes": 138,
+    "sha256": "dffbe116bab12c7d34189ddc89c0a5b17f883e03fd92a75e4f96295ff309fa50"
+  },
+  {
+    "path": "trip-1-live/version.txt",
+    "bytes": 218,
+    "sha256": "c28b1a6fa1975ed2adef6e986253bc29ff2e5ea22e35df1dde2f24e981a3b4e5"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-33-56.762Z-telemetry.jsonl",
+    "bytes": 187152,
+    "sha256": "26763ab60d2996fae2f4ad6cb7524a9200376e4a9c80a9d8125dd1e519e2231c"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-35-28.903Z-telemetry.jsonl",
+    "bytes": 189437,
+    "sha256": "3b997e9432a91ff785ca6213d1641fdcdd8700c3a88649c8c6c23bba96bff3ef"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-37-01.151Z-telemetry.jsonl",
+    "bytes": 190744,
+    "sha256": "9de3741a6b99119750f42e5e0bd0ebf8c5ff43f8b4d28f8630d9f2694b301ac7"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-38-33.044Z-telemetry.jsonl",
+    "bytes": 192104,
+    "sha256": "0ef81515fe6ae8532308348f027e25cbd245946e25ac6534b51c3496a4ec552f"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-40-03.996Z-telemetry.jsonl",
+    "bytes": 191406,
+    "sha256": "c4fdb5a34f77e3c8b387e53ab63d87d41cfc7311a9f4d2a4bbed3bed04941ea0"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-41-36.547Z-telemetry.jsonl",
+    "bytes": 190332,
+    "sha256": "0f96454aaab01ea774fba42c693acfc58e67a84cd928c501591a4a0bcc2d60dc"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-43-08.145Z-telemetry.jsonl",
+    "bytes": 188661,
+    "sha256": "75ce15b4b0bd82798987a741797444b7befbb7116cc60a54759df9f1b7728554"
+  },
+  {
+    "path": "trip-2-live/2026-10-03T13-44-40.093Z-telemetry.jsonl",
+    "bytes": 185355,
+    "sha256": "a5d305b254acb8d4458047b8ee2ccd988ba1337d342203b2186fbd1bd89b0888"
+  },
+  {
+    "path": "trip-2-live/app-logcat.txt",
+    "bytes": 27993433,
+    "sha256": "e5d6646d5fac07da3b4da1cb6f77ddcdecf6c8f0fb9bdc57e408c6a88c64e919"
+  },
+  {
+    "path": "trip-2-live/capture-events.jsonl",
+    "bytes": 59256,
+    "sha256": "56d0fc51552ef9470b86346e8483ac2dd7cf5a4268abf8188f0d5670f2450445"
+  },
+  {
+    "path": "trip-2-live/monitor-output.txt",
+    "bytes": 4769,
+    "sha256": "56fab03d50113c85ca5cf65d06134377ce9fcdcfea5ca7ae0391bae6de2dfe57"
+  },
+  {
+    "path": "trip-2-live/recording-confirmed.json",
+    "bytes": 521,
+    "sha256": "bfce914598206e544bc0d18e85355fb6fe5f7bb91519551113660c25f3e5cedf"
+  },
+  {
+    "path": "trip-2-live/sensors.txt",
+    "bytes": 75243,
+    "sha256": "7369eaa32ffe370aa3b567479b5e7407f2f475855fedd22ceba6516e864ae67a"
+  },
+  {
+    "path": "trip-2-live/space.txt",
+    "bytes": 102,
+    "sha256": "583f261d646e8edd478614ea2c32a9efe2e9b6447d07c1d7d357ad646ff1d64b"
+  },
+  {
+    "path": "trip-2-live/STOP",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "trip-2-live/stopped.json",
+    "bytes": 138,
+    "sha256": "7f70120dda5d36ca3f345b84e8f073cfedb8702bf65d46a0c30b156db0f5aeea"
+  },
+  {
+    "path": "trip-2-live/version.txt",
+    "bytes": 218,
+    "sha256": "c28b1a6fa1975ed2adef6e986253bc29ff2e5ea22e35df1dde2f24e981a3b4e5"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/60595d3e-6fee-4335-ab4e-4e523715e43e.drlog",
+    "bytes": 3205080,
+    "sha256": "d64bca55110a5dafa38eca69dc10174b214fff608edb299766de6927d5fcaec5"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/60595d3e-6fee-4335-ab4e-4e523715e43e.fusion.csv",
+    "bytes": 1405067,
+    "sha256": "54d03ceac8170c8ad2339e591505cfeec80b771084f4387064d94809056c6852"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/60595d3e-6fee-4335-ab4e-4e523715e43e.quality.csv",
+    "bytes": 2173245,
+    "sha256": "1749ddeb82948a5f446f67751ec014ffca815be732f7294789795d5f8d662867"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/60595d3e-6fee-4335-ab4e-4e523715e43e.summary.json",
+    "bytes": 229,
+    "sha256": "d5c8fcbc14b6a1c20e678f0d9dbe822f34464fc6b47ad7c9ae48cdeeeb356da5"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/60595d3e-6fee-4335-ab4e-4e523715e43e.training.json",
+    "bytes": 89,
+    "sha256": "d0288bd47a223a7f44bc7c059e81a79201ace2b4a2a62ca9b1525924e99bbe01"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/capture-summary.json",
+    "bytes": 2097,
+    "sha256": "8c0aafdafa7c94df9dcca12e32811c16e79f6c7a99b3274d3ac56e597a6c1e61"
+  },
+  {
+    "path": "phone/60595d3e-6fee-4335-ab4e-4e523715e43e/manifest.json",
+    "bytes": 1060,
+    "sha256": "cd71bbc871676e7923ea76ce37e7dfbe994c8f893500e949b2e72b877896d820"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.drlog",
+    "bytes": 5935220,
+    "sha256": "41adb24118285025a33acc15de1299c5ad5abf76ccf0e7181b6f987bec1c48f5"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.fusion.csv",
+    "bytes": 2616147,
+    "sha256": "bcaaaa74d36a56e7a1e1a859dc1870209ddb47f8162658e5e825641e36d12afa"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.quality.csv",
+    "bytes": 3802408,
+    "sha256": "bcd5a741cc6442d40b1413fd7c1699351ed330f123ae0002098ee7c4a64037db"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.summary.json",
+    "bytes": 229,
+    "sha256": "f5c7a732a540b69199f2b36b404eed919e0cd9b4a4035acae530f8f1c2840808"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383.training.json",
+    "bytes": 89,
+    "sha256": "5f1fd35319e6dcfb882c64e388fa89e29b861eb1c904e5161ae4d9ec5c0f55b3"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/capture-summary.json",
+    "bytes": 3662,
+    "sha256": "3e979ceddd8441e4d6cc13d852ec0582be6e4f568b2f83107fa039f356f8c3a6"
+  },
+  {
+    "path": "phone/ba42a2d9-ccf5-4b22-99bf-f164b5fc7383/manifest.json",
+    "bytes": 1060,
+    "sha256": "5cbfeb8cff465c13a8bdd50f41aeab888a0ded25f3d2c53bff06c8076e546dcd"
+  },
+  {
+    "path": "capture-index.json",
+    "bytes": 776,
+    "sha256": "e14cee49811b598be2bb13796d3a8c0b15acf3ddba506e4a0e711fd2ce622d86"
+  },
+  {
+    "path": "PROTOCOL.md",
+    "bytes": 6266,
+    "sha256": "e17a87088f6d74d2a04e588269b11118d5985d40662d0f30b672cda3a75806ed"
+  }
+]

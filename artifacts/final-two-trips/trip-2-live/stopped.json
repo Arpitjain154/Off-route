@@ -1,0 +1,10 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "logging": false,
+      "activeLog": null,
+      "journeyCount": 5
+    }
+  }
+}

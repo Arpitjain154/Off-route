@@ -1,0 +1,1 @@
+window.Capacitor.nativePromise("DrEngine","getPosition",{}).then(p=>({logging:p.logging,speed:p.speed,speedSource:p.speedSource,trackingAvailable:p.trackingAvailable,health:p.health,modelStatus:p.modelStatus,bytes:p.bytes}))

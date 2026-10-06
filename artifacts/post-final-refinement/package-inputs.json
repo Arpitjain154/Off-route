@@ -1,0 +1,58 @@
+{
+  "method": "Fresh Gradle compiled resources and every dex partition; unchanged asset/library payload from 1.5.6; Android zipalign and apksigner follow.",
+  "changed_entries": [
+    "classes7.dex",
+    "AndroidManifest.xml"
+  ],
+  "dex_inputs": {
+    "classes.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex",
+      "sha256": "6c81735d21c38ee058a70069bec6e4d921439d9e2adc8d0ce8aedfa115100843"
+    },
+    "classes2.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex",
+      "sha256": "5a8f2b027428acea858fa78fe769f65674cfc8bfc1f73b6d2c704c98f9dd7617"
+    },
+    "classes11.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex",
+      "sha256": "84e5044e6613444f558479809fe7b2b552b2316bcaea6c07caf51a069182e238"
+    },
+    "classes12.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex",
+      "sha256": "db83aa13f302b2b7fd4c3859db0518f236c687b587bed2cbf3b4f683404c105e"
+    },
+    "classes3.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex",
+      "sha256": "fe7f7e99f5fd1ee79f8cdef6766d8d84cb78e7e04007006921df3752ff7f13d4"
+    },
+    "classes4.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex",
+      "sha256": "eda427f14757252b25a589a4a315ceee2a7dbf3fa8085414ba4085d51d63ec90"
+    },
+    "classes5.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex",
+      "sha256": "0935a3e647e2af243f797fa51881de62ee8016cc2e3b0a013595c791cdf2bb66"
+    },
+    "classes6.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex",
+      "sha256": "64fb75ddd65e87723a06fac3053bcf64d4837d97e94cc9ce8d1df4b815486f0d"
+    },
+    "classes7.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex",
+      "sha256": "d5e9b94dd6c6015f4f5bf5f80837d125238fcaf6f99433e5d46d62d76f4dd64f"
+    },
+    "classes8.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex",
+      "sha256": "798f5245f02e2a02400c3e38278c35e0e7d0aa383390f79fbd95c82eb1d90f12"
+    },
+    "classes9.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\global_synthetics_dex\\debug\\mergeDebugGlobalSynthetics\\classes.dex",
+      "sha256": "87943b5d747d9fe730ae00383ef8af11fb8bfb88760e50884162044a857364f6"
+    },
+    "classes10.dex": {
+      "path": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\desugar_lib_dex\\debug\\l8DexDesugarLibDebug\\classes1000.dex",
+      "sha256": "7e1572188c1287a5912a1eb2f00cd47a926c4ac63df499bf31f535c6fb2562f1"
+    }
+  },
+  "resources_sha256": "fa87685f7436ca6f84da01498f60e76da62200aaa62d106b94cc78f01e8bc018"
+}

@@ -1,0 +1,2 @@
+--------- beginning of main
+09-15 02:50:25.930  2046  2221 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix

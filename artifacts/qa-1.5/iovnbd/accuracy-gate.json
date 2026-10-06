@@ -1,0 +1,174 @@
+{
+  "criterion": "Endpoint relative drift <10% of reference distance in every replay window",
+  "accuracy_pass": false,
+  "passed_windows": 0,
+  "total_windows": 15,
+  "median_drift_percent": 77.521,
+  "maximum_drift_percent": 852.973,
+  "windows": [
+    {
+      "recording": "S-S1.csv",
+      "outage_start_s": 60.1,
+      "distance_m": 167.074,
+      "relative_endpoint_drift_m": 140.283,
+      "drift_percent": 83.964,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S1.csv",
+      "outage_start_s": 180.1,
+      "distance_m": 146.204,
+      "relative_endpoint_drift_m": 109.273,
+      "drift_percent": 74.74,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S1.csv",
+      "outage_start_s": 300.1,
+      "distance_m": 392.198,
+      "relative_endpoint_drift_m": 42.284,
+      "drift_percent": 10.781,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S1.csv",
+      "outage_start_s": 420.1,
+      "distance_m": 255.861,
+      "relative_endpoint_drift_m": 39.705,
+      "drift_percent": 15.518,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S1.csv",
+      "outage_start_s": 540.1,
+      "distance_m": 413.477,
+      "relative_endpoint_drift_m": 79.359,
+      "drift_percent": 19.193,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S2.csv",
+      "outage_start_s": 60.0,
+      "distance_m": 32.752,
+      "relative_endpoint_drift_m": 279.368,
+      "drift_percent": 852.973,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S2.csv",
+      "outage_start_s": 180.0,
+      "distance_m": 303.769,
+      "relative_endpoint_drift_m": 245.63,
+      "drift_percent": 80.861,
+      "aligned_fraction": 0.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S2.csv",
+      "outage_start_s": 300.0,
+      "distance_m": 2.721,
+      "relative_endpoint_drift_m": 0.301,
+      "drift_percent": 11.078,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S2.csv",
+      "outage_start_s": 420.0,
+      "distance_m": 93.368,
+      "relative_endpoint_drift_m": 72.38,
+      "drift_percent": 77.521,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S2.csv",
+      "outage_start_s": 540.0,
+      "distance_m": 237.017,
+      "relative_endpoint_drift_m": 249.612,
+      "drift_percent": 105.314,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S3a.csv",
+      "outage_start_s": 60.1,
+      "distance_m": 211.552,
+      "relative_endpoint_drift_m": 110.367,
+      "drift_percent": 52.17,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S3a.csv",
+      "outage_start_s": 180.0,
+      "distance_m": 279.34,
+      "relative_endpoint_drift_m": 137.537,
+      "drift_percent": 49.236,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S3a.csv",
+      "outage_start_s": 300.1,
+      "distance_m": 50.625,
+      "relative_endpoint_drift_m": 49.519,
+      "drift_percent": 97.816,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S3a.csv",
+      "outage_start_s": 420.1,
+      "distance_m": 331.419,
+      "relative_endpoint_drift_m": 316.509,
+      "drift_percent": 95.501,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    },
+    {
+      "recording": "S-S3a.csv",
+      "outage_start_s": 540.0,
+      "distance_m": 69.105,
+      "relative_endpoint_drift_m": 337.41,
+      "drift_percent": 488.26,
+      "aligned_fraction": 1.0,
+      "ai_used_fraction": 0.0,
+      "passes_10_percent": false
+    }
+  ],
+  "limitations": [
+    "Gyro columns kept in dataset order; axis mapping to Android requires device calibration.",
+    "10 Hz IMU is sample-held to 100 Hz for the live filter. This adds no signal detail.",
+    "Repeated coordinate/speed/bearing tuples are not new fixes. Missing speed/course accuracies assumed 0.5 m/s and 10 degrees for replay only.",
+    "Phone speed is inferred as m/s from coordinate displacement, despite Kmh header. See per-recording audit ratios.",
+    "Vehicle GNSS reference is not surveyed ground truth. Outages are deliberately injected, not actual tunnel labels.",
+    "Compass is reconstructed from recorded gravity and magnetometer with Android ENU equations; no reference-trajectory heading is supplied to the estimator.",
+    "Original gyro columns are used as sensor x/y/z; ambiguous yaw/pitch/roll labels remain a source-frame uncertainty.",
+    "Driver A was evaluated previously and is a regression set, not new blind validation.",
+    "No UK road graph loaded: these replays evaluate the inertial estimator, not map-constrained performance.",
+    "Relative endpoint error removes the initial absolute GNSS offset. Reference is vehicle GNSS, not surveyed truth.",
+    "Sensor uncertainty is a process-model estimate, not empirically calibrated coverage.",
+    "Dataset replay and emulator simulation do not establish real Samsung tunnel performance."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "source": "IO-VNBD replay in full Android suite",
+  "outages": 15,
+  "underTenPercent": 1,
+  "medianDriftPercent": 69.52,
+  "benchmarkMet": false,
+  "physicalValidation": false
+}

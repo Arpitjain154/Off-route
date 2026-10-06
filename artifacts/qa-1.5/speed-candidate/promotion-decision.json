@@ -1,0 +1,8 @@
+{
+  "promoted": false,
+  "reason": "Candidate worsens overall validation MAE and moving-speed error.",
+  "shipped_validation_mae_mps": 5.1087,
+  "candidate_validation_mae_mps": 5.629103183746338,
+  "candidate_sha256": "fded3bd45c82d9fb2225c58a7a6e01f530d9e3ebfd28c8e948c001bc4b509b35",
+  "models_in_apk": "Existing bundled models retained; no device-validation claim."
+}

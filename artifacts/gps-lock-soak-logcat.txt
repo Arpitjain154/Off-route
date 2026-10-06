@@ -1,0 +1,23 @@
+--------- beginning of main
+09-15 02:50:25.930  2046  2221 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix
+09-15 02:50:42.062  2267  2354 I IDR-Engine: generation=1 locationRegistrations=1 Acquiring GPS fix
+09-15 02:50:45.428  2267  2354 I IDR-Engine: generation=1 locationRegistrations=1 GPS locked; establishing vehicle heading
+09-15 02:50:50.417  2267  2354 I IDR-Engine: generation=1 locationRegistrations=1 Active GNSS + INS tracking
+09-15 02:51:18.940  2267  2282 I IDR-Soak: seconds=29.235 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:51:51.114  2267  2282 I IDR-Soak: seconds=62.737 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:52:23.687  2267  2282 I IDR-Soak: seconds=94.965 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:52:55.657  2267  2282 I IDR-Soak: seconds=127.477 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:53:27.447  2267  2282 I IDR-Soak: seconds=159.404 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:53:59.893  2267  2282 I IDR-Soak: seconds=191.221 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:54:31.979  2267  2282 I IDR-Soak: seconds=223.635 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:55:03.858  2267  2282 I IDR-Soak: seconds=255.746 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:55:35.541  2267  2282 I IDR-Soak: seconds=287.623 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:56:07.174  2267  2282 I IDR-Soak: seconds=319.293 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:56:39.439  2267  2282 I IDR-Soak: seconds=350.939 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:57:11.179  2267  2282 I IDR-Soak: seconds=383.234 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:57:42.856  2267  2282 I IDR-Soak: seconds=414.937 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:58:14.513  2267  2282 I IDR-Soak: seconds=446.623 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:58:46.278  2267  2282 I IDR-Soak: seconds=478.264 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:59:17.859  2267  2282 I IDR-Soak: seconds=510.022 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 02:59:49.325  2267  2282 I IDR-Soak: seconds=541.63 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active
+09-15 03:00:21.023  2267  2282 I IDR-Soak: seconds=573.045 generation=1 listeners=1 headingReady=true map=Madhya Pradesh HMM active

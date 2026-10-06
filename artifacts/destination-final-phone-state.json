@@ -1,0 +1,41 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "dialogClosed": true,
+      "routePins": 2,
+      "pose": {
+        "engineGeneration": 1,
+        "locationRegistrations": 1,
+        "lat": 23.30232379651485,
+        "lon": 77.35575979820845,
+        "heading": 0.31445098463746035,
+        "speed": 0,
+        "stationary": true,
+        "speedSource": "Confirmed stop",
+        "fusionStatus": "Drive straight to establish heading",
+        "headingReady": false,
+        "imuFresh": true,
+        "gpsAccuracy": 6,
+        "gpsAge": 0.207846836,
+        "accuracy": 0.09316365532368166,
+        "confidence": 0.9981384617092153,
+        "health": "HEALTHY",
+        "ready": true,
+        "logging": false,
+        "source": "device",
+        "gpsTrust": 0.8984722269905938,
+        "physicsTrust": 1,
+        "mapTrust": 0,
+        "aiTrust": 0,
+        "distance": 0,
+        "elapsed": 0,
+        "bytes": 0,
+        "satellites": 24,
+        "cn0": 26.954166809717815,
+        "mapStatus": "Madhya Pradesh HMM active",
+        "modelStatus": "IO-VNBD trained · device validation pending"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "af866a4b-f2a3-4d1b-90f7-30f74f921eaa.drlog",
+    "bytes": 1074910,
+    "sha256": "dcee24b75df9d4d2d0a023b6010e06cdbe538095469760bc61fb0ba4fed65fe8"
+  },
+  {
+    "name": "af866a4b-f2a3-4d1b-90f7-30f74f921eaa.fusion.csv",
+    "bytes": 341015,
+    "sha256": "0069f572079e60d635487b7b0e298e58f788caf4a39d7309ad4d025402a21b63"
+  },
+  {
+    "name": "d62bf76e-e570-4555-8d65-c5ce7eb8870e.drlog",
+    "bytes": 429020,
+    "sha256": "b18540549850bc0c87b8b9e458ffcf1430f6d7557802b50c3edc761664a04e66"
+  },
+  {
+    "name": "d62bf76e-e570-4555-8d65-c5ce7eb8870e.fusion.csv",
+    "bytes": 136042,
+    "sha256": "bfcc30d5b3f3ea5fc192ac0ca419634160a2c99a34a6ba0d54ce149603e7d6b6"
+  }
+]

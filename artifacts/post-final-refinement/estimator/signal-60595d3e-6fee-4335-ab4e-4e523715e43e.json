@@ -1,0 +1,81 @@
+{
+  "session": "60595d3e-6fee-4335-ab4e-4e523715e43e",
+  "phone_model": "samsung SM-E156B",
+  "method": "Approximate scalar acceleration replay; last available 10 Hz gravity/forward/bias held causally between traces; fixed existing tau=.18 and bounds -8,+5; no fitting.",
+  "limitations": [
+    "Not a full live-engine replay or position accuracy measurement.",
+    "Actual Android gravity events, compass events and exact stop detector state between traces are unavailable.",
+    "Restoring a lost acceleration impulse does not prove correct speed: mounting/gravity/bias errors can remain."
+  ],
+  "outages": [
+    {
+      "start_s": 127.54401502600001,
+      "duration_s": 35.871949254,
+      "raw_samples": 4475,
+      "shock_percent": 1.318435754189944,
+      "nonshock_linear_percentiles_mps2": [
+        -11.335084069324088,
+        -6.190017879458253,
+        -0.05253830757714717,
+        6.526393296414581,
+        12.004967457302888
+      ],
+      "positive_clipped_percent": 10.011173184357542,
+      "negative_clipped_percent": 1.5418994413407823,
+      "raw_clamp_impulse_error_mps": -6.400190637747496,
+      "old_filtered_impulse_mps": -5.797477435058481,
+      "new_filtered_impulse_mps": 0.6032180800151203,
+      "initial_recorded_speed_mps": 5.95971,
+      "last_recorded_speed_mps": 0.21241,
+      "approx_old_final_speed_mps": 0.162232564941555,
+      "approx_new_final_speed_mps": 6.562928080015126,
+      "next_gps_speed_mps": 4.63713
+    },
+    {
+      "start_s": 214.272018333,
+      "duration_s": 40.655934802000004,
+      "raw_samples": 5073,
+      "shock_percent": 9.166173861620344,
+      "nonshock_linear_percentiles_mps2": [
+        -11.846770467274284,
+        -7.390545329016764,
+        0.1528158484639397,
+        7.2960091770439535,
+        11.803656465456177
+      ],
+      "positive_clipped_percent": 11.551350285826926,
+      "negative_clipped_percent": 3.3510743150009854,
+      "raw_clamp_impulse_error_mps": -8.392639928239273,
+      "old_filtered_impulse_mps": -6.108891468714385,
+      "new_filtered_impulse_mps": 2.229159888556409,
+      "initial_recorded_speed_mps": 6.27533,
+      "last_recorded_speed_mps": 0.44638,
+      "approx_old_final_speed_mps": 0.16643853128561947,
+      "approx_new_final_speed_mps": 8.504489888556446,
+      "next_gps_speed_mps": 5.65731
+    },
+    {
+      "start_s": 302.35596769,
+      "duration_s": 14.776032701000002,
+      "raw_samples": 1838,
+      "shock_percent": 0.6528835690968444,
+      "nonshock_linear_percentiles_mps2": [
+        -11.584063167870193,
+        -5.954559444062361,
+        0.10859953507939119,
+        5.696433249268806,
+        10.511772429993036
+      ],
+      "positive_clipped_percent": 7.3449401523394995,
+      "negative_clipped_percent": 1.8498367791077257,
+      "raw_clamp_impulse_error_mps": -1.372423844637907,
+      "old_filtered_impulse_mps": -1.1281740152778161,
+      "new_filtered_impulse_mps": 0.2367947130210604,
+      "initial_recorded_speed_mps": 7.03263,
+      "last_recorded_speed_mps": 5.94848,
+      "approx_old_final_speed_mps": 5.9044559847221905,
+      "approx_new_final_speed_mps": 7.269424713021039,
+      "next_gps_speed_mps": 2.62045
+    }
+  ]
+}

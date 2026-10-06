@@ -1,0 +1,21 @@
+{
+  "method": "Compiled Gradle resources and all dex partitions; unchanged payload from 1.5.5",
+  "changed_entries": [
+    "classes7.dex",
+    "AndroidManifest.xml"
+  ],
+  "dex_inputs": {
+    "classes.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex",
+    "classes2.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\0\\classes.dex",
+    "classes11.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex",
+    "classes12.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex",
+    "classes3.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex",
+    "classes4.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex",
+    "classes5.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\15\\classes.dex",
+    "classes6.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex",
+    "classes7.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex",
+    "classes8.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex",
+    "classes9.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\global_synthetics_dex\\debug\\mergeDebugGlobalSynthetics\\classes.dex",
+    "classes10.dex": "C:\\Users\\surya\\Documents\\ChatGPT\\offroute 3.0\\android\\app\\build\\intermediates\\desugar_lib_dex\\debug\\l8DexDesugarLibDebug\\classes1000.dex"
+  }
+}

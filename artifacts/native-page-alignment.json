@@ -1,0 +1,24 @@
+{
+  "apk": "artifacts\\IDR-Navigator-1.4.0-navigation-fixes.apk",
+  "libraries": [
+    {
+      "library": "lib/arm64-v8a/libtensorflowlite_jni.so",
+      "load_alignments": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb_alignment": true
+    },
+    {
+      "library": "lib/x86_64/libtensorflowlite_jni.so",
+      "load_alignments": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb_alignment": true
+    }
+  ],
+  "passed": true
+}

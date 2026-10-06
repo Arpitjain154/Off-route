@@ -1,0 +1,68 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-15 01:38:23.830
+  package: com.idr.navigator
+    Historical Process Exit for uid=10375
+        ApplicationExitInfo #0:
+          timestamp=2026-09-15 01:17:45.404 pid=24466 realUid=99919 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=0.00 description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-09-15 01:17:45.276 pid=24392 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=429MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-09-15 01:13:12.016 pid=8965 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=200 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-09-15 01:11:03.509 pid=18232 realUid=99914 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=0.00 description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #4:
+          timestamp=2026-09-15 01:11:03.364 pid=18097 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=0.00 description=crash state=71 bytes trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-09-15 01:03:18.344 pid=14798 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=13 (OTHER KILLS BY SYSTEM) subreason=3 (TOO MANY EMPTY PROCS) status=0
+          importance=400 pss=0.00 rss=0.00 description=too many empty state=empty trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-09-15 00:19:36.682 pid=32430 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=200 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-09-15 00:01:55.889 pid=10224 realUid=99901 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=300MB description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-09-15 00:01:55.720 pid=10054 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=538MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-09-14 23:57:42.919 pid=7846 realUid=99899 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=0.00 description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-09-14 23:57:42.065 pid=7732 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=125 pss=0.00 rss=495MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-09-14 23:57:06.457 pid=29747 realUid=99898 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=0.00 description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #12:
+          timestamp=2026-09-14 23:57:06.337 pid=29575 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=444MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #13:
+          timestamp=2026-09-14 23:45:01.689 pid=16961 realUid=10375 packageUid=10375 definingUid=10375 user=0
+          process=com.idr.navigator reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=71 bytes trace=null
+        ApplicationExitInfo #14:
+          timestamp=2026-09-14 23:45:01.689 pid=17018 realUid=99896 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=10 (USER REQUESTED) subreason=22 (REMOVE TASK) status=0
+          importance=400 pss=0.00 rss=0.00 description=remove task state=empty trace=null
+        ApplicationExitInfo #15:
+          timestamp=2026-09-14 23:44:51.901 pid=16449 realUid=99895 packageUid=10375 definingUid=10237 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=261MB description=isolated not needed state=empty trace=null

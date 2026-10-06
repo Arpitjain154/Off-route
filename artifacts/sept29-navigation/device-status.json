@@ -1,0 +1,14 @@
+{
+  "result": {
+    "type": "object",
+    "value": {
+      "logging": false,
+      "speed": 0.6898915256652801,
+      "speedSource": "GNSS speed",
+      "trackingAvailable": true,
+      "health": "HEALTHY",
+      "modelStatus": "AI inference only · awaiting phone validation",
+      "bytes": 0
+    }
+  }
+}

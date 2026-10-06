@@ -1,0 +1,64 @@
+{
+  "sessionId": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a",
+  "verified": true,
+  "files": [
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.drlog",
+      "bytes": 210550,
+      "sha256": "19ccb401de0584202d1c98daf6bd092b05b28e0c8885296af46b9ad42c783f20",
+      "comparison": "byte-identical to phone"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.quality.csv",
+      "bytes": 197275,
+      "sha256": "54dd19cc642b87584ff1ad98658f899ef52fe99b40d50aefc5bbabab659ebf40",
+      "comparison": "byte-identical to phone"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.training.json",
+      "bytes": 506,
+      "sha256": "5116a73333732a08cd3e0a733d9ae3394234ae95b34a94ca050b602e68e65164",
+      "comparison": "byte-identical to phone"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.summary.json",
+      "bytes": 124,
+      "sha256": "6bb35944ecda74610ad9ca1c984bcf26503e5cb4b750a6db882e3e39e378f56d",
+      "comparison": "portable summary matches; device-local path intentionally excluded"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.fusion.csv",
+      "bytes": 109911,
+      "sha256": "d6fce2f37e45152716d8f119e6d6de40728ecca569e91e00a7386e470d35da4c",
+      "comparison": "byte-identical to phone"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.sensors.csv",
+      "bytes": 1081934,
+      "sha256": "903bebbbbeb0e7240d49535741d63c3798b0b9cef673bd317d3936d1a86b1db7",
+      "comparison": "byte-identical to phone"
+    },
+    {
+      "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.gnss.csv",
+      "bytes": 5310,
+      "sha256": "08302b0b55566c1e519edfd228c0ab5fb6810e419b48c0c54b1509dec142065e",
+      "comparison": "byte-identical to phone"
+    }
+  ],
+  "training_windows": 17,
+  "window_shape": [
+    17,
+    300,
+    6
+  ],
+  "audit": {
+    "file": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a.drlog",
+    "rejections": {
+      "label_quality": 13
+    },
+    "session": "5b0ae7b1-6157-4977-bc50-cbf8c8a5ea0a",
+    "label_source": "receiver_gnss",
+    "imu_source": "original_sensor_events",
+    "accepted_fixes": 17
+  }
+}

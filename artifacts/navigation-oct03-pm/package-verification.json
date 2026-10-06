@@ -1,0 +1,14 @@
+{
+  "versionCode": 15,
+  "versionName": "1.5.6-offroute",
+  "assets_unchanged": 39482,
+  "changed_assets": [],
+  "models": {
+    "assets/models/gps-health.tflite": "5dfea3dc82218d9944439f92d8853bd4fa4eb608428a6117a78e33e1e83f0275",
+    "assets/models/manifest.json": "a6e3802d4a8c32b40888d9135e4eee24a38fc77171947a9918b6ec471722c704",
+    "assets/models/motion.tflite": "5518fa4a83faabdabcd570a098bdd08135de9c5eb29569623cd41ed3c9035edc",
+    "assets/models/speed.tflite": "e923026a9f6300e4cb056ee783219dc9f5ef806609390164481b74c64ff1a2e2"
+  },
+  "apk_sha256": "b7ff63fdb3e5700aad77fed7b26c96f7a1af5936ef3bf1e4284d62258ce8493e",
+  "apk_bytes": 221113367
+}

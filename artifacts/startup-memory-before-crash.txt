@@ -1,0 +1,19 @@
+--------- beginning of crash
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: FATAL EXCEPTION: pool-8-thread-1
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: Process: com.idr.navigator, PID: 2811
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: java.lang.OutOfMemoryError: Failed to allocate a 1048592 byte allocation with 691664 free bytes and 675KB until OOM, target footprint 201326592, growth limit 201326592
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.storage.RAMIntDataAccess.loadExisting(RAMIntDataAccess.java:124)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.storage.index.LineIntIndex.loadExisting(LineIntIndex.java:58)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.storage.index.LocationIndexTree.loadExisting(LocationIndexTree.java:131)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.GraphHopper.createLocationIndex(GraphHopper.java:1255)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.GraphHopper.initLocationIndex(GraphHopper.java:1270)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.GraphHopper.postProcessing(GraphHopper.java:1173)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.GraphHopper.load(GraphHopper.java:1048)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.graphhopper.GraphHopper.importOrLoad(GraphHopper.java:810)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.idr.navigator.engine.MapMatchAdvisor.load(MapMatchAdvisor.java:41)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.idr.navigator.engine.SensorCaptureService.lambda$setup$0(SensorCaptureService.java:174)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.idr.navigator.engine.SensorCaptureService.$r8$lambda$K2Ojm--waBg8w8jH76eHI_qw0yw(Unknown Source:0)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at com.idr.navigator.engine.SensorCaptureService$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+09-14 10:53:25.770  2811  2916 E AndroidRuntime: 	at java.lang.Thread.run(Thread.java:1119)

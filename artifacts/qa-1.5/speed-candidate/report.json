@@ -1,0 +1,35 @@
+{
+  "seed": 2026,
+  "selection": "Existing validation family only; no automatic promotion",
+  "models": {},
+  "epochs": 16,
+  "validation": {
+    "mae_mps": 5.629103183746338,
+    "stationary_mae_mps": 3.495333671569824,
+    "stationary_p95_mps": 16.033203125,
+    "moving_mae_mps": 5.676072120666504
+  },
+  "regression_driver_a": {
+    "mae_mps": 3.9922635555267334,
+    "stationary_mae_mps": 0.7381097674369812,
+    "stationary_p95_mps": 6.266057014465332,
+    "moving_mae_mps": 4.4418439865112305
+  },
+  "input_shape": [
+    1,
+    300,
+    6
+  ],
+  "output_shape": [
+    1,
+    1
+  ],
+  "sha256": "fded3bd45c82d9fb2225c58a7a6e01f530d9e3ebfd28c8e948c001bc4b509b35",
+  "size_bytes": 49312,
+  "max_tflite_error": 9.5367431640625e-06,
+  "limitations": [
+    "Absolute IMU speed is environment-dependent; no guarantee of unseen-phone accuracy.",
+    "No annotated walking, pothole, phone-knock or tunnel events in this training target.",
+    "A candidate must improve validation without sacrificing moving-speed behavior before promotion."
+  ]
+}

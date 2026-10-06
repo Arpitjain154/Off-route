@@ -1,0 +1,41 @@
+{
+  "device": "RZCX80NLSNN",
+  "pid": "9225",
+  "checks": [
+    "Search opens with current GPS starting point and empty destination",
+    "Both fields autocomplete against the bundled OSM index",
+    "Swap exchanges both selected coordinates and text",
+    "Confirm returns a real Bhopal–Indore driving route and renders route endpoints",
+    "Cancel discards edits and preserves the confirmed route",
+    "Current-location confirmation uses live GPS coordinates",
+    "Search and route calculations preserve the existing GPS service, one listener, map and drive panels",
+    "Three tab cycles and a background return retain the route and one GPS listener"
+  ],
+  "started": "2026-09-15T04:24:33.166Z",
+  "routes": [
+    {
+      "options": {
+        "fromLat": 23.2584857,
+        "fromLon": 77.401989,
+        "toLat": 22.7203616,
+        "toLon": 75.8681996
+      },
+      "points": 509,
+      "distance": 185952.80579081163,
+      "duration": 11373.006
+    },
+    {
+      "options": {
+        "fromLat": 23.30221397929793,
+        "fromLon": 77.35570456789229,
+        "toLat": 23.2584857,
+        "toLon": 77.401989
+      },
+      "points": 52,
+      "distance": 8386.7230451675,
+      "duration": 576.986
+    }
+  ],
+  "passed": true,
+  "finished": "2026-09-15T04:24:51.878Z"
+}

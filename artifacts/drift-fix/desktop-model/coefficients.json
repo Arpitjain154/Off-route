@@ -1,0 +1,44 @@
+{
+  "candidate_only": true,
+  "features": [
+    "accel_norm_mean",
+    "accel_norm_std",
+    "accel_norm_p95",
+    "centered_accel_energy",
+    "gyro_norm_mean",
+    "gyro_norm_std",
+    "gyro_norm_p95"
+  ],
+  "positive_class": "speed_below_0.5_mps",
+  "standardizer_fit": "Eligible train windows only",
+  "mean": [
+    10.179592836425222,
+    0.79780560548455,
+    11.461760158081287,
+    6.690958666078165,
+    0.23893245474323324,
+    0.1331933379232848,
+    0.47724728520803256
+  ],
+  "scale": [
+    0.3886733774043511,
+    0.511549504691684,
+    1.2237388611936633,
+    8.391195290010467,
+    0.1689462772934548,
+    0.11290945357781107,
+    0.375461159260482
+  ],
+  "coefficients": [
+    -0.7292642827369475,
+    -4.892587253129171,
+    0.7182835814511412,
+    2.871070228789158,
+    -1.4716407611286921,
+    1.9430095424714418,
+    -1.5617650902034532
+  ],
+  "intercept": -3.0507480968296403,
+  "stationary_probability_threshold": 0.9553000622735919,
+  "prediction": "sigmoid(dot((features-mean)/scale, coefficients)+intercept) >= threshold"
+}

@@ -1,0 +1,7 @@
+recording,mode,samples,rmse_m,p95_m,outage_p95_m,max_m,accepted_gps
+S-S1.csv,gps_available,5700,176.679,363.404,0.000,956.400,51
+S-S1.csv,injected_outages,5700,217.774,470.312,240.051,1156.128,36
+S-S2.csv,gps_available,5688,78.032,151.154,0.000,413.857,42
+S-S2.csv,injected_outages,5688,140.703,398.525,464.416,541.898,31
+S-S3a.csv,gps_available,5700,109.627,249.282,0.000,428.952,54
+S-S3a.csv,injected_outages,5700,148.761,329.565,228.662,556.638,43

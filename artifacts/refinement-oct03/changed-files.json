@@ -1,0 +1,17 @@
+[
+  "src\\App.tsx",
+  "src\\types.ts",
+  "android\\app\\build.gradle",
+  "android\\app\\src\\main\\java\\com\\idr\\navigator\\cloud\\CloudScheduler.java",
+  "android\\app\\src\\main\\java\\com\\idr\\navigator\\cloud\\CloudUploadWorker.java",
+  "android\\app\\src\\main\\java\\com\\idr\\navigator\\cloud\\SupabaseClient.java",
+  "android\\app\\src\\main\\java\\com\\idr\\navigator\\engine\\FeatureBuffer.java",
+  "android\\app\\src\\main\\java\\com\\idr\\navigator\\engine\\SensorCaptureService.java",
+  "src/AiSpeedStatus.tsx",
+  "android/app/src/main/java/com/idr/navigator/engine/AiSpeedReading.java",
+  "android/app/src/main/java/com/idr/navigator/cloud/CloudFailures.java",
+  "android/app/src/test/java/com/idr/navigator/engine/PredictionFreshnessTest.java",
+  "android/app/src/test/java/com/idr/navigator/cloud/StorageFailureTest.java",
+  "scripts/test-ai-speed-status.mjs",
+  "scripts/test-refinement-settings.mjs"
+]

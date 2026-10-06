@@ -1,0 +1,67 @@
+ACTIVITY MANAGER PROCESS EXIT INFO (dumpsys activity exit-info)
+Last Timestamp of Persistence Into Persistent Storage: 2026-09-15 03:06:07.188
+  package: com.idr.navigator
+    Historical Process Exit for uid=10469
+        ApplicationExitInfo #0:
+          timestamp=2026-09-15 03:16:22.735 pid=4440 realUid=99474 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=110MB description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #1:
+          timestamp=2026-09-15 03:16:22.727 pid=4406 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=10 (USER REQUESTED) subreason=21 (FORCE STOP) status=0
+          importance=125 pss=0.00 rss=276MB description=stop com.idr.navigator due to set debug app state=71 bytes trace=null
+        ApplicationExitInfo #2:
+          timestamp=2026-09-15 03:10:49.805 pid=1942 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=16 (PACKAGE UPDATED) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=0.00 description=stop com.idr.navigator due to installPackageLI state=71 bytes trace=null
+        ApplicationExitInfo #3:
+          timestamp=2026-09-15 01:25:26.101 pid=13408 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=0.00 description=crash state=71 bytes trace=null
+        ApplicationExitInfo #4:
+          timestamp=2026-09-15 00:31:36.181 pid=14626 realUid=99415 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=141MB description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #5:
+          timestamp=2026-09-15 00:31:36.164 pid=14587 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=3 (LOW_MEMORY) subreason=0 (UNKNOWN) status=0
+          importance=400 pss=0.00 rss=96MB description=null state=71 bytes trace=null
+        ApplicationExitInfo #6:
+          timestamp=2026-09-15 00:01:25.469 pid=11029 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=208MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #7:
+          timestamp=2026-09-14 23:48:01.656 pid=10487 realUid=99412 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=100 pss=0.00 rss=0.00 description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #8:
+          timestamp=2026-09-14 23:48:01.649 pid=10452 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=410MB description=crash state=empty trace=null
+        ApplicationExitInfo #9:
+          timestamp=2026-09-14 23:48:01.487 pid=10452 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=410MB description=crash state=71 bytes trace=null
+        ApplicationExitInfo #10:
+          timestamp=2026-09-14 23:46:44.488 pid=7578 realUid=99411 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=13 (OTHER KILLS BY SYSTEM) subreason=17 (ISOLATED NOT NEEDED) status=0
+          importance=300 pss=0.00 rss=204MB description=isolated not needed state=empty trace=null
+        ApplicationExitInfo #11:
+          timestamp=2026-09-14 23:46:44.379 pid=7535 realUid=10469 packageUid=10469 definingUid=10469 user=0
+          process=com.idr.navigator reason=4 (APP CRASH(EXCEPTION)) subreason=0 (UNKNOWN) status=0
+          importance=100 pss=0.00 rss=333MB description=crash state=71 bytes trace=null
+    Historical Process Exit for uid=99413
+        ApplicationExitInfo #0:
+          timestamp=2026-09-15 00:01:25.669 pid=11071 realUid=99413 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=0 (UNKNOWN) status=0
+          importance=400 pss=0.00 rss=150MB description=null state=empty trace=null
+    Historical Process Exit for uid=99434
+        ApplicationExitInfo #0:
+          timestamp=2026-09-15 01:25:26.347 pid=13483 realUid=99434 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=0 (UNKNOWN) status=0
+          importance=400 pss=0.00 rss=0.00 description=null state=empty trace=null
+    Historical Process Exit for uid=99471
+        ApplicationExitInfo #0:
+          timestamp=2026-09-15 03:10:49.917 pid=2057 realUid=99471 packageUid=10469 definingUid=10283 user=0
+          process=com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 reason=1 (EXIT_SELF) subreason=0 (UNKNOWN) status=0
+          importance=300 pss=0.00 rss=0.00 description=null state=empty trace=null

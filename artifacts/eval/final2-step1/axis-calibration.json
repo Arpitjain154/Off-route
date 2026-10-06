@@ -1,0 +1,770 @@
+[
+  {
+    "recording": "S-S1",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3562168866894422,
+      -0.9908171902219826,
+      0.7735700073574053
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 19,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3562168866894422,
+      -0.9908171902219826,
+      0.7735700073574053
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 19,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S1",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3562168866894422,
+      -0.9908171902219826,
+      0.7735700073574053
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 19,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 0,
+    "last_calibration_s": 59.900000000001455
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      0.40489239194433807,
+      -0.6926577713505321,
+      -0.056622716077588675
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 12,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      0.40489239194433807,
+      -0.6926577713505321,
+      -0.056622716077588675
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 12,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S2",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      0.40489239194433807,
+      -0.6926577713505321,
+      -0.056622716077588675
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 12,
+    "last_calibration_s": 299.9079999999958
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.798166787499229,
+      -0.9966434488233586,
+      0.4164462737625724
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.798166787499229,
+      -0.9966434488233586,
+      0.4164462737625724
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.798166787499229,
+      -0.9966434488233586,
+      0.4164462737625724
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.6356598611088455,
+      -0.9973930316026007,
+      0.2642797416371893
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.6356598611088455,
+      -0.9973930316026007,
+      0.2642797416371893
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3a",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.6356598611088455,
+      -0.9973930316026007,
+      0.2642797416371893
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.99899999999616
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.131210495537108,
+      -0.8396255224278594,
+      0.8048405126673298
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.131210495537108,
+      -0.8396255224278594,
+      0.8048405126673298
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.131210495537108,
+      -0.8396255224278594,
+      0.8048405126673298
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.90099999999802
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.02229028119098054,
+      -0.5587925068951392,
+      0.09167109421546805
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 20,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.02229028119098054,
+      -0.5587925068951392,
+      0.09167109421546805
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 20,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3b",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.02229028119098054,
+      -0.5587925068951392,
+      0.09167109421546805
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 20,
+    "last_calibration_s": 299.92699999999604
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.99900000001071
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3505625686229529,
+      -0.9992756427367773,
+      -0.004770119840165268
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 26,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3505625686229529,
+      -0.9992756427367773,
+      -0.004770119840165268
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 26,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S3c",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.3505625686229529,
+      -0.9992756427367773,
+      -0.004770119840165268
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 26,
+    "last_calibration_s": 299.90200000000186
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": false,
+    "calibration_samples": 2,
+    "last_calibration_s": 59.89999999999418
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.49726812286563526,
+      -0.9923842888838328,
+      0.6086869911962262
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 22,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.49726812286563526,
+      -0.9923842888838328,
+      0.6086869911962262
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 22,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-S4",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.49726812286563526,
+      -0.9923842888838328,
+      0.6086869911962262
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 22,
+    "last_calibration_s": 299.8999999999942
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.2723684193656043,
+      -0.8576649269561138,
+      0.19147571072936556
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.2723684193656043,
+      -0.8576649269561138,
+      0.19147571072936556
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.2723684193656043,
+      -0.8576649269561138,
+      0.19147571072936556
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 6,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.23571132428275138,
+      -0.8470300907329432,
+      0.45766121483156336
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 33,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.23571132428275138,
+      -0.8470300907329432,
+      0.45766121483156336
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 33,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa01",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.23571132428275138,
+      -0.8470300907329432,
+      0.45766121483156336
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 33,
+    "last_calibration_s": 299.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 30,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.42359127058723234,
+      -0.8378326094238143,
+      0.3480885515620226
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 4,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 60,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.42359127058723234,
+      -0.8378326094238143,
+      0.3480885515620226
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 4,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 120,
+    "start_s": 60.0,
+    "gyro_axis": 1,
+    "gyro_sign": 1.0,
+    "correlations": [
+      -0.42359127058723234,
+      -0.8378326094238143,
+      0.3480885515620226
+    ],
+    "gyro_reliable": true,
+    "forward_reliable": true,
+    "calibration_samples": 4,
+    "last_calibration_s": 59.9010000000053
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 30,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.11509693096016017,
+      0.2773554081462619,
+      -0.26816156552432135
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.90000000000146
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 60,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.11509693096016017,
+      0.2773554081462619,
+      -0.26816156552432135
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.90000000000146
+  },
+  {
+    "recording": "S-Vfa02",
+    "duration_s": 120,
+    "start_s": 300.0,
+    "gyro_axis": 2,
+    "gyro_sign": -1.0,
+    "correlations": [
+      0.11509693096016017,
+      0.2773554081462619,
+      -0.26816156552432135
+    ],
+    "gyro_reliable": false,
+    "forward_reliable": true,
+    "calibration_samples": 29,
+    "last_calibration_s": 299.90000000000146
+  }
+]

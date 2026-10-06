@@ -1,0 +1,428 @@
+--- before/android/app/build.gradle
++++ after/android/app/build.gradle
+@@ -22,8 +22,8 @@
+         applicationId "com.idr.navigator"
+         minSdkVersion rootProject.ext.minSdkVersion
+         targetSdkVersion rootProject.ext.targetSdkVersion
+-        versionCode 14
+-        versionName "1.5.5-offroute"
++        versionCode 15
++        versionName "1.5.6-offroute"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+         aaptOptions {
+              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+--- before/android/app/src/main/java/com/idr/navigator/engine/EdgeNavigator.java
++++ after/android/app/src/main/java/com/idr/navigator/engine/EdgeNavigator.java
+@@ -12,6 +12,7 @@
+     public boolean gnss(NavigationFusion.Fix fix,long now){return live.fix(fix,now);}
+     public void gnssUnavailable(){live.providerDisabled();}
+     public void roadMatch(long time,double sourceLatitude,double sourceLongitude,double matchedLatitude,double matchedLongitude,double heading,double trust){live.inertial.road(time,sourceLatitude,sourceLongitude,matchedLatitude,matchedLongitude,heading,trust);}
++    public void roadMatch(long now,long time,double sourceLatitude,double sourceLongitude,double matchedLatitude,double matchedLongitude,double heading,double trust){live.inertial.road(now,time,sourceLatitude,sourceLongitude,matchedLatitude,matchedLongitude,heading,trust);}
+     public void models(long time,double predictedSpeed,float[] motion,float[] health,Double referenceSpeed,boolean reliableGnss){live.inertial.models(time,predictedSpeed,motion,health,referenceSpeed,reliableGnss);}
+     public Pose position(long now){live.tick(now);return new Pose(live.latitude(),live.longitude(),live.speed(now),live.heading(),live.uncertainty(now),live.estimated(now),live.trackingAvailable(now),live.speedSource(now));}
+ }
+--- before/android/app/src/main/java/com/idr/navigator/engine/FusionTraceWriter.java
++++ after/android/app/src/main/java/com/idr/navigator/engine/FusionTraceWriter.java
+@@ -9,7 +9,7 @@
+     private long last;
+     public FusionTraceWriter(File file) throws IOException {
+         out=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),StandardCharsets.UTF_8),32768);
+-        out.write("t_ns,lat,lon,speed_mps,heading_deg,uncertainty_m,gps_age_s,gps_accuracy_m,stationary,heading_ready,ba_x,ba_y,ba_z,bg_x,bg_y,bg_z,nav_lat,nav_lon,nav_speed_mps,speed_available,position_fresh,nav_heading_deg,heading_source,gps_fix_ns,gps_speed_mps,gps_speed_error_mps,gps_bearing_deg,gps_bearing_error_deg\n");
++        out.write("t_ns,lat,lon,speed_mps,heading_deg,uncertainty_m,gps_age_s,gps_accuracy_m,stationary,heading_ready,ba_x,ba_y,ba_z,bg_x,bg_y,bg_z,nav_lat,nav_lon,nav_speed_mps,speed_available,position_fresh,nav_heading_deg,heading_source,gps_fix_ns,gps_speed_mps,gps_speed_error_mps,gps_bearing_deg,gps_bearing_error_deg,nav_stationary,nav_aligned,nav_uncertainty_m,nav_estimated,ins_gravity_t_ns,ins_gravity_x,ins_gravity_y,ins_gravity_z,ins_forward_x,ins_forward_y,ins_forward_z,ins_accel_mps2,ins_accel_bias_mps2,ins_gyro_bias_rps\n");
+     }
+     public void write(long t,NavigationFusion n,LiveNavigation live) throws IOException {
+         if(t-last<100_000_000L)return;last=t;Eskf f=n.filter;
+@@ -17,9 +17,14 @@
+             t,f.latitude(),f.longitude(),n.speed(t),f.heading(),f.uncertainty(),n.lastFix()==0?-1:(t-n.lastFix())*1e-9,n.gps.accuracy(),
+             n.physics.isStopped(t),n.aligned(),f.ba[0],f.ba[1],f.ba[2],f.bg[0],f.bg[1],f.bg[2]));
+         var gps=live.observation();
+-        out.write(String.format(Locale.ROOT,",%.9f,%.9f,%.5f,%b,%b,%.3f,%s,%d,%.5f,%.5f,%.3f,%.3f%n",
++        out.write(String.format(Locale.ROOT,",%.9f,%.9f,%.5f,%b,%b,%.3f,%s,%d,%.5f,%.5f,%.3f,%.3f",
+             live.latitude(),live.longitude(),live.speedAvailable(t)?live.speed(t):Double.NaN,live.speedAvailable(t),live.fresh(t),live.heading(),live.headingSource(t),live.fixTime(),
+             gps==null?Double.NaN:gps.speed(),gps==null?Double.NaN:gps.speedError(),gps==null?Double.NaN:gps.bearing(),gps==null?Double.NaN:gps.bearingError()));
++        var d=live.inertial.diagnostics();
++        out.write(String.format(Locale.ROOT,",%b,%b,%.5f,%b,%d,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f%n",
++            live.stopped(t),live.inertial.aligned(),live.uncertainty(t),live.estimated(t),d.gravityTime(),
++            d.gravityX(),d.gravityY(),d.gravityZ(),d.forwardX(),d.forwardY(),d.forwardZ(),
++            d.acceleration(),d.accelerationBias(),d.angularBias()));
+     }
+     public void close() throws IOException { out.close(); }
+ }
+--- before/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java
++++ after/android/app/src/main/java/com/idr/navigator/engine/InertialNavigation.java
+@@ -17,8 +17,6 @@
+     private double lastGpsSpeed;
+     private double biasVariance=.25,calibrationImpulse,calibrationDuration,calibrationStartSpeed,calibrationStartError;
+     private double previousGpsError=Double.NaN,previousGpsCourse=Double.NaN;
+-    private long stepTime,previousStep;private int steps;private double stepPeriod=.6,stepLength=.7;
+-    private boolean rising;private double priorVertical;private long previousGpsStepCount;
+     public String diagnostic="Waiting for GPS and mounting alignment";
+ 
+     public void gravity(long t,double x,double y,double z) {
+@@ -45,9 +43,7 @@
+         if(!Double.isFinite(measuredSpeed)||measuredSpeed<0)return;
+         double dt=anchorTime==0?0:(fix.time()-anchorTime)*1e-9;
+         calibrateBias(fix,dt);
+-        if(dt>0&&steps-previousGpsStepCount>=3&&measuredSpeed>.5&&measuredSpeed<2.5)
+-            stepLength=clamp(measuredSpeed*dt/(steps-previousGpsStepCount),.4,1.1);
+-        previousGpsStepCount=steps;accumulatedAcceleration=0;accumulatedTime=0;
++        accumulatedAcceleration=0;accumulatedTime=0;
+         lat=fix.lat();lon=fix.lon();speed=measuredSpeed;lastGpsSpeed=fix.speed();
+         previousGpsError=fix.speedValid()?fix.speedError():Double.NaN;
+         previousGpsCourse=fix.courseValid()?fix.bearing():Double.NaN;
+@@ -108,7 +104,7 @@
+         double gnorm=Math.sqrt(dot(gravity,gravity));double[] up={gravity[0]/gnorm,gravity[1]/gnorm,gravity[2]/gnorm};
+         double[] a={sample.ax()-gravity[0],sample.ay()-gravity[1],sample.az()-gravity[2]};
+         double[] w={sample.gx(),sample.gy(),sample.gz()};
+-        double angular=dot(w,up),linear=dot(a,forward),vertical=dot(a,up);
++        double angular=dot(w,up),linear=dot(a,forward);
+         boolean shock=Math.sqrt(dot(a,a))>12||Math.sqrt(dot(w,w))>2;
+         boolean quiet=Math.sqrt(dot(a,a))<.22&&Math.sqrt(dot(w,w))<.035;
+         if(quiet){if(quietSince==0)quietSince=t;}else quietSince=0;
+@@ -121,13 +117,9 @@
+         // Do not discard its confirmed stop because gravity removal has a small DC residual.
+         if(confirmedStop&&!shock)stopped=true;
+         else if(stopped&&(!quiet||Math.abs(linear-bias)>.25))stopped=false;
+-        if(quiet&&speed<.12&&quietSince>0&&t-quietSince>2_000_000_000L)stopped=true;
+-        // Step cadence is used only following pedestrian-speed GNSS, never for a moving car.
+-        if(!shock&&lastGpsSpeed<2.5&&vertical>.8&&priorVertical<=.8&&t-stepTime>300_000_000L){
+-            previousStep=stepTime;stepTime=t;
+-            if(previousStep>0&&t-previousStep<1_100_000_000L){steps++;stepPeriod=.6*stepPeriod+.4*(t-previousStep)*1e-9;}else steps=1;
+-        }
+-        priorVertical=vertical;
++        // Vehicle mode: quiet IMU does not distinguish constant-speed travel from
++        // rest. Only the independent GNSS/IMU detector can establish a stop.
++        // Vertical road pulses are not pedestrian steps or a speed measurement.
+         if(!shock){accumulatedAcceleration+=linear*dt;accumulatedTime+=dt;}
+         // Predict between healthy fixes too, so timeout-based handoff includes
+         // the distance travelled since the last receiver observation.
+@@ -146,7 +138,6 @@
+         double target=shock?0:clamp(linear-bias,-8,5);
+         acceleration+=(target-acceleration)*(1-Math.exp(-dt/.18));
+         if(stopped){speed=0;acceleration=0;speedVariance=Math.min(speedVariance,.04);}
+-        else if(steps>=3&&lastGpsSpeed<2.5){speed=t-stepTime<1_800_000_000L?stepLength/Math.max(.3,stepPeriod):0;}
+         else {
+             speed=clamp(speed+acceleration*dt,0,80);
+             if(modelWeight>0&&t-modelTime<2_000_000_000L&&t-lastGoodModel<60_000_000_000L) {
+@@ -157,7 +148,7 @@
+         double distance=stopped?0:(oldSpeed+speed)*.5*dt,h=Math.toRadians(heading);
+         lat+=distance*Math.cos(h)/111320;lon+=distance*Math.sin(h)/(111320*Math.cos(Math.toRadians(lat)));
+         positionVariance+=distance*distance*yawVariance;
+-        diagnostic=!unaided?"Mount calibrated · GNSS aiding":stopped?"Sensor tracking · confirmed stop":steps>=3&&lastGpsSpeed<2.5?"Step-based inertial tracking":
++        diagnostic=!unaided?"Mount calibrated · GNSS aiding":stopped?"Sensor tracking · confirmed stop":
+             modelWeight>0?"Sensor tracking · calibrated AI speed correction":"Sensor tracking · inertial estimate";
+     }
+     public void models(long now,double prediction,float[] motion,float[] health,Double gpsSpeed,boolean goodGps) {
+@@ -185,9 +176,15 @@
+         bias=0;gyroBias=0;acceleration=0;accumulatedAcceleration=0;accumulatedTime=0;
+         biasVariance=.25;calibrationImpulse=0;calibrationDuration=0;previousGpsError=Double.NaN;previousGpsCourse=Double.NaN;
+     }
++    /** Synchronous edge callers: the match is processed at the most recent IMU timestamp. */
+     public void road(long t,double sourceLat,double sourceLon,double matchedLat,double matchedLon,double roadHeading,double trust) {
++        road(last,t,sourceLat,sourceLon,matchedLat,matchedLon,roadHeading,trust);
++    }
++    /** Asynchronous callers must supply delivery time, not only the source-observation time. */
++    public void road(long now,long t,double sourceLat,double sourceLon,double matchedLat,double matchedLon,double roadHeading,double trust) {
++        if(!available(now))return;
+         if(!Double.isFinite(sourceLat+sourceLon+matchedLat+matchedLon+roadHeading+trust))return;
+-        if(!unaided||!aligned||t<=mapTime||t>last||last-t>3_000_000_000L||trust<.3||trust>1)return;
++        if(!unaided||!aligned||stopped||!predictionFresh||t<=anchorTime||t<=mapTime||t>last||last-t>3_000_000_000L||trust<.3||trust>1)return;
+         mapTime=t;
+         double north=(matchedLat-sourceLat)*111320,east=(matchedLon-sourceLon)*111320*Math.cos(Math.toRadians(lat));
+         double angle=Math.abs(delta(roadHeading-heading));angle=Math.min(angle,180-angle);
+@@ -208,6 +205,11 @@
+     public double latitude(){return lat;}public double longitude(){return lon;}public double speed(){return speed;}
+     public double heading(){return heading;}public double uncertainty(){return Math.sqrt(positionVariance);}
+     public double aiWeight(long now){return now-lastGoodModel<60_000_000_000L?modelWeight:0;}
++    record DiagnosticSnapshot(long gravityTime,double gravityX,double gravityY,double gravityZ,
++                              double forwardX,double forwardY,double forwardZ,double acceleration,
++                              double accelerationBias,double angularBias) {}
++    DiagnosticSnapshot diagnostics(){return new DiagnosticSnapshot(gravityTime,gravity[0],gravity[1],gravity[2],
++        forward[0],forward[1],forward[2],acceleration,bias,gyroBias);}
+     public double modelRmse(){return Math.sqrt(modelError);}public int calibrationSamples(){return calibrationSamples;}
+     private static double dot(double[] a,double[] b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];}
+     private static double[] cross(double[] a,double[] b){return new double[]{a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]};}
+--- before/android/app/src/main/java/com/idr/navigator/engine/MapMatchAdvisor.java
++++ after/android/app/src/main/java/com/idr/navigator/engine/MapMatchAdvisor.java
+@@ -59,10 +59,10 @@
+     }
+ 
+     public void observe(long timestamp, double lat, double lon) {
+-        if (disabled || matcher == null || !Double.isFinite(lat) || !Double.isFinite(lon)) return;
++        if (disabled || matcher == null || !Double.isFinite(lat) || !Double.isFinite(lon)) { matched=null;trust=0;return; }
+         if (statewide ? lat<21.0706 || lat>26.8696 || lon<74.0293 || lon>82.8127 :
+             lat < 23.22 || lat > 23.27 || lon < 77.38 || lon > 77.43) {
+-            trust = 0;
++            trust = 0; matched = null;
+             track.clear();
+             status = "Outside offline " + region + " area";
+             return;
+@@ -74,15 +74,15 @@
+             MatchResult result = matcher.match(new ArrayList<>(track));
+             PointList points = result.getMergedPath().calcPoints();
+             if (points.size() < 2) {
+-                trust = 0;
++                trust = 0; matched = null;
+                 return;
+             }
+             int last = points.size() - 1;
+             double mlat = points.getLat(last),
+                 mlon = points.getLon(last);
+-            double error = Math.hypot((lat - mlat) * 111320, (lon - mlon) * 102200);
++            double error = Math.hypot((lat - mlat) * 111320, (lon - mlon) * 111320 * Math.cos(Math.toRadians(lat)));
+             if (error > 120) {
+-                trust = 0;
++                trust = 0; matched = null;
+                 return;
+             }
+             trust = Math.min(.65, Math.exp((-error * error) / (2 * 30 * 30)) * .65);
+@@ -91,7 +91,7 @@
+             matchedTime = timestamp;
+             status = region + " HMM active";
+         } catch (RuntimeException ex) {
+-            trust = 0;
++            trust = 0; matched = null;
+             status = "No consistent road match";
+         }
+     }
+@@ -127,7 +127,7 @@
+     public void close() {
+         matcher = null;
+         matched = null;
+-        trust = 0;
++        trust = 0; matched = null;
+         track.clear();
+         GraphHopper previous = hopper;
+         hopper = null;
+--- before/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java
++++ after/android/app/src/main/java/com/idr/navigator/engine/SensorCaptureService.java
+@@ -435,7 +435,7 @@
+                     });
+                 }
+                 var match=map.latest();
+-                if(match!=null)live.inertial.road(match.time(),match.sourceLat(),match.sourceLon(),match.lat(),match.lon(),match.heading(),match.trust());
++                if(match!=null)live.inertial.road(now,match.time(),match.sourceLat(),match.sourceLon(),match.lat(),match.lon(),match.heading(),match.trust());
+                 publish(now);
+             } catch (Exception | LinkageError e) {
+                 fail("Updating tracking engine", e);
+--- before/android/app/src/test/java/com/idr/navigator/engine/MapMatchingTest.java
++++ after/android/app/src/test/java/com/idr/navigator/engine/MapMatchingTest.java
+@@ -47,6 +47,9 @@
+                 "Real OSM road should accept a 25m drifted track; " + advisor.status,
+                 available > 2
+             );
++            assertNotNull(advisor.latest());
++            advisor.observe(now+2_000_000_000L,0,0);
++            assertNull("Leaving coverage must invalidate the live correction",advisor.latest());
+         } finally {
+             advisor.close();
+         }
+--- before/ml/phone_learning.py
++++ after/ml/phone_learning.py
+@@ -40,19 +40,22 @@
+         # Only the first appearance of a new GNSS observation creates one candidate label.
+         seen.add(fix)
+         if not (0<=int(ts[i])-fix<=1_000_000_000 and np.isfinite(error) and 0<=error<=1 and gyro and 0<row['horiz_acc']<=15 and 0<=row['speed_mps']<=80 and row['flags']&1):reject('label_quality');continue
+-        end=int(ts[i]);start=end-2_990_000_000
++        end=fix;start=end-2_990_000_000
+         left=int(np.searchsorted(ts,start,side='right'))-1
+         if left<0:reject('short_history');continue
+-        segment=ts[left:i+1]
++        # GPS speed is measured at fix time, not when its callback reached the log.
++        # Include at most one bracketing IMU row for interpolation at that instant.
++        right=int(np.searchsorted(ts,end,side='left'))
++        segment=ts[left:right+1]
+         if len(segment)<2 or np.max(np.diff(segment))>100_000_000:reject('imu_gap');continue
+-        if not np.isfinite(imu[left:i+1]).all():reject('invalid_imu');continue
++        if not np.isfinite(imu[left:right+1]).all():reject('invalid_imu');continue
+         if any(int(t) not in quality or not quality[int(t)][2] for t in segment):reject('missing_sensor_quality');continue
+         grid=np.arange(300,dtype=np.int64)*10_000_000
+         # Relative integer times avoid precision loss in long-running Android clocks.
+         relative=segment-start
+-        w=np.column_stack([np.interp(grid,relative,imu[left:i+1,k]) for k in range(6)]).astype(np.float32)
++        w=np.column_stack([np.interp(grid,relative,imu[left:right+1,k]) for k in range(6)]).astype(np.float32)
+         w=np.repeat(w.reshape(30,10,6).mean(axis=1),10,axis=0)
+-        windows.append(w);labels.append(float(row['speed_mps']));times.append(end)
++        windows.append(w);labels.append(float(row['speed_mps']));times.append(int(ts[i])) # retain arrival identity for existing replay metadata
+     audit['accepted_fixes']=len(windows)
+     return np.asarray(windows,np.float32).reshape(-1,300,6),np.asarray(labels,np.float32),np.asarray(times,np.int64),audit
+ 
+--- before/ml/test_phone_learning.py
++++ after/ml/test_phone_learning.py
+@@ -35,6 +35,16 @@
+         self.assertEqual(w.shape,(5,300,6));np.testing.assert_array_equal(y,[6,7,8,9,10])
+         self.assertEqual(t[0],12_345_681_901_230_000);self.assertEqual(len(set(t)),5)
+         self.assertAlmostEqual(float(w[0,0,0]),.055,places=5)
++    def test_delayed_fix_window_ends_at_measurement_not_arrival(self):
++        m=self.module();path=self.recording();p=path.with_suffix('.quality.csv');rows=p.read_text().splitlines()
++        start=12_345_678_901_230_000;out=[rows[0]]
++        for i,row in enumerate(rows[1:]):
++            cols=row.split(',');cols[1]=str(start+((i-50)//100)*1_000_000_000) if i>=50 else '0';out.append(','.join(cols))
++        p.write_text('\n'.join(out));w,y,t,a=m.read_session(path)
++        # First label has fix timestamp start+3s, delivered at start+3.5s.
++        self.assertEqual(t[0],start+3_500_000_000)
++        self.assertAlmostEqual(float(w[0,-1,0]),2.955,places=5)
++
+     def test_no_legacy_or_simulation_labels(self):
+         m=self.module()
+         for path,reason in [(self.recording(quality=False),'missing_quality_metadata'),(self.recording(source='simulation'),'not_physical_device')]:
+--- /dev/null
++++ after/android/app/src/test/java/com/idr/navigator/engine/VehicleConstraintRegressionTest.java
+@@ -0,0 +1,45 @@
++package com.idr.navigator.engine;
++import static org.junit.Assert.*;
++import org.junit.Test;
++public class VehicleConstraintRegressionTest {
++ private static final long S=1_000_000_000L;
++ private NavigationFusion.Fix fix(long t,double speed){return new NavigationFusion.Fix(t,23.3,77.35,0,3,speed,.2,0,5);}
++ private InertialNavigation prepared(double speed){
++  var n=new InertialNavigation();n.gravity(S,0,0,9.80665);n.compass(S,0,5);n.anchor(fix(S,speed),S,speed,false,0);step(n,S,0,0,9.80665);return n;
++ }
++ private void step(InertialNavigation n,long t,double x,double y,double z){n.gravity(t,0,0,9.80665);n.predict(new ImuSample(t,x,y,z,0,0,0),false,false);}
++ @Test public void roadCannotMoveConfirmedStop(){
++  var n=prepared(10);n.anchor(fix(S,0),S,0,true,0);step(n,S+10_000_000L,0,0,9.80665);
++  double lat=n.latitude(),lon=n.longitude();n.road(S+10_000_000L,lat,lon,lat,lon+.00005,0,.65);
++  assertEquals(lat,n.latitude(),0);assertEquals(lon,n.longitude(),0);assertTrue(n.stopped());
++ }
++ @Test public void delayedRoadFromBeforeNewGpsCannotBeApplied(){
++  var n=prepared(10);step(n,S+10_000_000L,0,0,9.80665);n.anchor(fix(S+20_000_000L,10),S+20_000_000L,10,false,0);step(n,S+30_000_000L,0,0,9.80665);
++  double lon=n.longitude();n.road(S+10_000_000L,23.3,77.35,23.3,77.35005,0,.65);assertEquals(lon,n.longitude(),0);
++ }
++ @Test public void vehicleBumpsCannotEnablePedestrianCadenceSpeed(){
++  var n=prepared(2);
++  for(int i=1;i<=500;i++)step(n,S+i*10_000_000L,0,0,9.80665+(i%60<4?1.2:0));
++  assertEquals("Vertical road pulses do not observe vehicle speed",2,n.speed(),.001);
++ }
++ @Test public void smallIntegratedSpeedDoesNotProveVehicleIsStopped(){
++  var n=prepared(2);n.anchor(fix(S,.05),S,.05,false,0);
++  for(int i=1;i<=500;i++)step(n,S+i*10_000_000L,0,0,9.80665);
++  assertFalse("A quiet IMU plus an uncertain speed estimate cannot prove a stop",n.stopped());
++ }
++ @Test public void validRoadCorrectionIsLateralBoundedAndDoesNotAlterSpeed(){
++  var n=prepared(10);step(n,S+10_000_000L,0,0,9.80665);double lat=n.latitude(),lon=n.longitude();
++  n.road(S+10_000_000L,lat,lon,lat+.00002,lon+.00005,0,.65);
++  assertEquals(lat,n.latitude(),0);assertEquals(10,n.speed(),0);
++  assertEquals(2,(n.longitude()-lon)*111320*Math.cos(Math.toRadians(lat)),.001);
++ }
++ @Test public void delayedRoadCannotMovePoseAfterImuStreamStops(){
++  var n=prepared(10);step(n,S+10_000_000L,0,0,9.80665);double lon=n.longitude();
++  n.road(3*S,S+10_000_000L,n.latitude(),lon,n.latitude(),lon+.00005,0,.65);
++  assertEquals(lon,n.longitude(),0);
++ }
++ @Test public void lateralAndVerticalForcesDoNotCreateForwardVelocity(){
++  var n=prepared(10);for(int i=1;i<=500;i++)step(n,S+i*10_000_000L,2,0,10.5);
++  assertEquals(10,n.speed(),.001);
++ }
++}
+--- /dev/null
++++ after/android/app/src/test/java/com/idr/navigator/engine/LiveTraceTest.java
+@@ -0,0 +1,23 @@
++package com.idr.navigator.engine;
++import static org.junit.Assert.*;
++import org.junit.Test;
++import java.nio.file.*;
++import java.util.*;
++public class LiveTraceTest {
++ @Test public void traceSeparatesDisplayedEngineFromResearchFilter() throws Exception {
++  var file=Files.createTempFile("live-trace", ".csv");
++  try {
++   var research=new NavigationFusion();research.filter.initialize(23.3,77.35,0);
++   var live=new LiveNavigation();long t=1_000_000_000L;
++   live.gravity(t,0,0,9.80665);live.compass(t,0,5);live.fix(new NavigationFusion.Fix(t,23.3,77.35,0,3,10,.2,0,5),t);
++   live.imu(new ImuSample(t,0,0,9.80665,0,0,0));
++   try(var trace=new FusionTraceWriter(file.toFile())) {trace.write(t,research,live);}
++   var lines=Files.readAllLines(file);var names=Arrays.asList(lines.get(0).split(","));var values=lines.get(1).split(",");
++   assertEquals(names.size(),values.length);assertEquals("false",values[names.indexOf("heading_ready")]);
++   assertTrue("Record live alignment separately",names.contains("nav_aligned"));
++   assertEquals("true",values[names.indexOf("nav_aligned")]);
++   assertEquals(9.80665,Double.parseDouble(values[names.indexOf("ins_gravity_z")]),.00001);
++   assertEquals(3,Double.parseDouble(values[names.indexOf("nav_uncertainty_m")]),.001);
++  } finally {Files.deleteIfExists(file);}
++ }
++}
+--- /dev/null
++++ after/ml/vehicle_speed_candidate.py
+@@ -0,0 +1,68 @@
++"""Research-only phone-speed candidate. Never modifies deployed assets or validation flags.
++Uses rotation-invariant IMU statistics and whole-journey cross-validation within TRAIN.
++The existing production training/promotion gates remain authoritative.
++"""
++import argparse,json,hashlib
++from pathlib import Path
++import numpy as np
++from phone_learning import read_session,build_dataset,fit_ridge,predict_ridge,metrics,promotion_blockers
++
++def features(w):
++    w=np.asarray(w,dtype=np.float64)
++    a=w[:,:,:3];g=w[:,:,3:];centered=a-a.mean(axis=1,keepdims=True)
++    z=np.stack((np.sqrt(np.sum(a*a,axis=2)+1e-6)-9.80665,
++                np.sqrt(np.sum(g*g,axis=2)+1e-6),
++                np.sqrt(np.sum(centered*centered,axis=2)+1e-6),
++                np.sum(a*g,axis=2)/9.80665),axis=2)
++    return np.concatenate((z.mean(1),z.std(1),z.max(1),z[:,-50:].mean(1)-z[:,:50].mean(1),np.abs(np.diff(z,axis=1)).mean(1)),axis=1)
++
++def export(model,path):
++    import tensorflow as tf
++    class Candidate(tf.Module):
++        @tf.function(input_signature=[tf.TensorSpec([1,300,6],tf.float32)])
++        def __call__(self,w):
++            a=w[:,:,:3];g=w[:,:,3:];centered=a-tf.reduce_mean(a,1,keepdims=True)
++            z=tf.stack((tf.sqrt(tf.reduce_sum(a*a,2)+1e-6)-9.80665,tf.sqrt(tf.reduce_sum(g*g,2)+1e-6),tf.sqrt(tf.reduce_sum(centered*centered,2)+1e-6),tf.reduce_sum(a*g,2)/9.80665),2)
++            mean=tf.reduce_mean(z,1)
++            x=tf.concat((mean,tf.sqrt(tf.reduce_mean(tf.square(z-mean[:,None,:]),1)),tf.reduce_max(z,1),tf.reduce_mean(z[:,-50:],1)-tf.reduce_mean(z[:,:50],1),tf.reduce_mean(tf.abs(z[:,1:]-z[:,:-1]),1)),1)
++            weights=tf.constant((model['weights']/model['scale']).astype(np.float32))
++            bias=tf.constant(float(model['bias']-np.dot(model['mean'],model['weights']/model['scale'])),tf.float32)
++            return tf.reshape(tf.clip_by_value(tf.reduce_sum(x*weights,1)+bias,0.,80.),[1,1])
++    candidate=Candidate();converter=tf.lite.TFLiteConverter.from_concrete_functions([candidate.__call__.get_concrete_function()],candidate)
++    path.write_bytes(converter.convert())
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--prior',type=Path,required=True);p.add_argument('--new',type=Path,required=True);a=p.parse_args();a.out.mkdir(parents=True,exist_ok=True)
++    inventory=json.loads(a.prior.read_text());paths=[p for d in inventory['verified'] for p in Path(d).glob('*.drlog')]
++    # Local files take precedence over their byte-identical cloud copies; identity is deduplicated.
++    paths=list({p.stem:p for p in paths+list(Path('artifacts/refinement-oct03/phone/drives').glob('*.drlog'))}.values())
++    fresh=sorted(a.new.glob('*.drlog'));known={p.stem for p in paths};fresh=[p for p in fresh if p.stem not in known]
++    d,quality=build_dataset(paths);train=d['split']=='train';x=features(d['w']);groups=sorted(set(d['session'][train]))
++    if len(groups)<3:raise ValueError('At least three training journeys needed for grouped cross-validation')
++    def pred(m,x):return np.clip(predict_ridge(m,x),0,80)
++    scores=[]
++    for alpha in (1.,10.,100.,1000.):
++        folds=[]
++        for group in groups:
++            fit=train&(d['session']!=group);held=train&(d['session']==group)
++            m=fit_ridge(x[fit],d['speed'][fit],alpha);folds.append(metrics(d['speed'][held],pred(m,x[held]))['rmse'])
++        scores.append({'alpha':alpha,'mean_journey_rmse':float(np.mean(folds))})
++    alpha=min(scores,key=lambda r:r['mean_journey_rmse'])['alpha'];model=fit_ridge(x[train],d['speed'][train],alpha)
++    export(model,a.out/'speed-research-candidate.tflite');np.savez(a.out/'weights.npz',**model)
++    from laptop_agent.evaluate import predictions,compare_speed
++    baseline=Path('android/app/src/main/assets/models/speed.tflite')
++    report={'status':'research_only','promoted':False,'input':'IMU only; rotation-invariant statistics','production_blockers':quality['training_blockers'],'train_sessions':groups,'train_fixes':int(train.sum()),'selection':'leave-one-journey-out using training journeys only','cv':scores,'chosen_alpha':alpha,'evaluations':[]}
++    # Fresh supplied trip is evaluated only after fitting and selection, never used to tune.
++    for path in fresh:
++        w,y,t,audit=read_session(path)
++        if not len(y):report['evaluations'].append(audit);continue
++        expected=pred(model,features(w));actual=predictions(a.out/'speed-research-candidate.tflite',w)
++        delta=float(np.max(np.abs(actual-expected)))
++        if delta>.001:raise ValueError('Export parity error '+str(delta))
++        base=predictions(baseline,w);comparison=compare_speed(y,base,actual)
++        report['evaluations'].append({'session':path.stem,'quality':audit,'export_max_abs_error_mps':delta,**comparison})
++    held=d['split']=='test'
++    if held.any():report['reused_test_diagnostic']=compare_speed(d['speed'][held],predictions(baseline,d['w'][held]),predictions(a.out/'speed-research-candidate.tflite',d['w'][held]))
++    report['deployment_blockers']=list(dict.fromkeys(quality['training_blockers']+[b for e in report['evaluations'] for b in e.get('blockers',[])]+report.get('reused_test_diagnostic',{}).get('blockers',[])))+['Independent phone/outage validation required; GPS-denied lane-level accuracy is not established']
++    (a.out/'report.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))
++if __name__=='__main__':main()
+--- /dev/null
++++ after/ml/test_vehicle_speed_candidate.py
+@@ -0,0 +1,12 @@
++import unittest
++import numpy as np
++from vehicle_speed_candidate import features
++class VehicleSpeedFeatureTest(unittest.TestCase):
++ def test_phone_rotation_does_not_change_features(self):
++  rng=np.random.default_rng(17);w=rng.normal(size=(4,300,6)).astype(np.float32);w[:,:,2]+=9.8
++  q,_=np.linalg.qr(rng.normal(size=(3,3)));rotated=np.concatenate((w[:,:,:3]@q,w[:,:,3:]@q),axis=2)
++  np.testing.assert_allclose(features(w),features(rotated),rtol=2e-5,atol=1e-5)
++ def test_zero_motion_is_finite_and_batch_independent(self):
++  w=np.zeros((2,300,6),np.float32);w[:,:,2]=9.80665
++  x=features(w);self.assertEqual(x.shape,(2,20));self.assertTrue(np.isfinite(x).all());np.testing.assert_allclose(features(w[:1]),x[:1])
++if __name__=='__main__':unittest.main()

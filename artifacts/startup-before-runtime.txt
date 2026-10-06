@@ -1,0 +1,26 @@
+--------- beginning of main
+09-14 10:48:19.796  2436  2436 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-14 10:48:19.817  2436  2436 I AndroidRuntime: Using default boot image
+09-14 10:48:19.817  2436  2436 I AndroidRuntime: Leaving lock profiling enabled
+09-14 10:48:19.923  2436  2436 D AndroidRuntime: Calling main entry com.android.commands.am.Am
+09-14 10:48:20.582  2448  2461 I TestRunner: run started: 1 tests
+09-14 10:48:20.583  2448  2461 I TestRunner: started: startStopAndRestartKeepsAppAlive(com.idr.navigator.EngineStartupTest)
+--------- beginning of system
+09-14 10:48:20.625   696  1250 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 xflg=0x4 cmp=com.idr.navigator/.MainActivity} with LAUNCH_SINGLE_TASK from uid 10150 (BAL_ALLOW_PERMISSION) result code=0
+09-14 10:48:21.966   696   723 I ActivityTaskManager: Displayed com.idr.navigator/.MainActivity for user 0: +1s341ms
+09-14 10:48:22.548  2448  2588 I TensorFlowLite: Loaded native library: tensorflowlite_jni
+09-14 10:48:22.564  2448  2588 I TensorFlowLite: Didn't load native library: tensorflowlite_jni_gms_client
+09-14 10:48:22.564  2448  2588 I tflite  : Initialized TensorFlow Lite runtime.
+09-14 10:48:22.565  2448  2588 I tflite  : Created TensorFlow Lite XNNPACK delegate for CPU.
+09-14 10:48:22.565  2448  2588 I tflite  : Replacing 5 out of 5 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:22.568  2448  2588 I tflite  : Replacing 4 out of 4 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:22.569  2448  2588 I tflite  : Replacing 37 out of 39 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 4 partitions for subgraph 0.
+09-14 10:48:29.050  2448  2621 I tflite  : Replacing 5 out of 5 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:29.051  2448  2621 I tflite  : Replacing 4 out of 4 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:29.053  2448  2621 I tflite  : Replacing 37 out of 39 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 4 partitions for subgraph 0.
+09-14 10:48:35.653  2448  2647 I tflite  : Replacing 5 out of 5 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:35.654  2448  2647 I tflite  : Replacing 4 out of 4 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 1 partitions for subgraph 0.
+09-14 10:48:35.655  2448  2647 I tflite  : Replacing 37 out of 39 node(s) with delegate (TfLiteXNNPackDelegate) node, yielding 4 partitions for subgraph 0.
+09-14 10:48:41.509   696   770 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 xflg=0x4 cmp=com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity} with LAUNCH_MULTIPLE from uid 10150 (BAL_ALLOW_VISIBLE_WINDOW) result code=0
+09-14 10:48:42.480   696   723 I ActivityTaskManager: Displayed com.idr.navigator.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity for user 0: +1s3ms
+09-14 10:48:43.324  2448  2461 I TestRunner: finished: startStopAndRestartKeepsAppAlive(com.idr.navigator.EngineStartupTest)

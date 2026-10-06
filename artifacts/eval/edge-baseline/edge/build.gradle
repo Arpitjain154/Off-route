@@ -1,0 +1,20 @@
+plugins { id 'java-library'; id 'distribution' }
+group = 'com.idr.navigator'
+version = '1.5.0-qa'
+repositories { mavenCentral() }
+dependencies { implementation 'org.ejml:ejml-simple:0.43.1' }
+java { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17; withSourcesJar() }
+sourceSets.main.java {
+    srcDirs = ['../android/app/src/main/java']
+    include 'com/idr/navigator/engine/EdgeNavigator.java', 'com/idr/navigator/engine/LiveNavigation.java',
+        'com/idr/navigator/engine/InertialNavigation.java', 'com/idr/navigator/engine/StationaryDetector.java',
+        'com/idr/navigator/engine/ImuSample.java', 'com/idr/navigator/engine/NavigationFusion.java',
+        'com/idr/navigator/engine/Eskf.java', 'com/idr/navigator/engine/GpsAdvisor.java',
+        'com/idr/navigator/engine/PhysicsAdvisor.java', 'com/idr/navigator/engine/FilterAdvisor.java',
+        'com/idr/navigator/engine/Measurement.java', 'com/idr/navigator/engine/Butterworth.java'
+}
+distributions.main.contents {
+    from('README.md')
+    into('lib') { from jar; from configurations.runtimeClasspath }
+    into('sources') { from sourcesJar }
+}

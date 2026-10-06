@@ -1,0 +1,27 @@
+[
+  {
+    "name": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.drlog",
+    "bytes": 2246570,
+    "sha256": "a4f38184879974f290377f20c9113fbbd3f3cff44200c140721bb0296b81ef28"
+  },
+  {
+    "name": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.quality.csv",
+    "bytes": 2893036,
+    "sha256": "e567c5dd6dfc62930624916458d261b7818a6919385f4d2706649885b8f18633"
+  },
+  {
+    "name": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.fusion.csv",
+    "bytes": 1830031,
+    "sha256": "75c9655e8ee64de9f942933d3f4a30f3ec3ac3da57eb37a2c0f2161a1f79f835"
+  },
+  {
+    "name": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.training.json",
+    "bytes": 89,
+    "sha256": "78faef6516af27752e842d91fdff7c41db21d0975cc6dc477e118f7c8e954313"
+  },
+  {
+    "name": "e200b4eb-7315-472a-b1d5-eb8c86b901e1.summary.json",
+    "bytes": 233,
+    "sha256": "abe7d956f74506128ddda522cf6f21113b403a205e1c72ade253ffe155c4d73b"
+  }
+]

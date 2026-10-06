@@ -1,0 +1,84 @@
+{
+  "evaluations": [
+    {
+      "file": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb.drlog",
+      "rejections": {
+        "short_history": 4
+      },
+      "session": "1a4f91a0-f0fa-4e99-b16a-91bffaeff4fb",
+      "accepted_fixes": 118,
+      "speed_model_error_mps": {
+        "rmse": 16.497891524762537,
+        "mae": 14.408650776973168,
+        "p95": 25.64980158805846
+      },
+      "speed_prediction_range_kmh": [
+        0.008809174876660109,
+        138.1985870361328
+      ],
+      "mean_prediction_when_stopped_kmh": 41.39765267009551
+    },
+    {
+      "file": "1fe8393f-aae7-45ba-9f9d-05aa94917d90.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 5
+      },
+      "session": "1fe8393f-aae7-45ba-9f9d-05aa94917d90",
+      "accepted_fixes": 14,
+      "speed_model_error_mps": {
+        "rmse": 9.097951236083968,
+        "mae": 3.723481801181541,
+        "p95": 20.597255972027774
+      },
+      "speed_prediction_range_kmh": [
+        0.0005231000657659025,
+        110.2580062866211
+      ],
+      "mean_prediction_when_stopped_kmh": 12.435938148312271
+    },
+    {
+      "file": "380421b3-98bc-43f6-a803-aeb1a16427d3.drlog",
+      "rejections": {
+        "short_history": 4,
+        "label_quality": 8
+      },
+      "session": "380421b3-98bc-43f6-a803-aeb1a16427d3",
+      "accepted_fixes": 131,
+      "speed_model_error_mps": {
+        "rmse": 15.927773628820065,
+        "mae": 13.165854304460613,
+        "p95": 30.929907724261284
+      },
+      "speed_prediction_range_kmh": [
+        0.0021125314990058544,
+        123.13558959960938
+      ],
+      "mean_prediction_when_stopped_kmh": 43.60472214259706
+    },
+    {
+      "file": "8c988ee6-b59d-4e1c-9050-bd7142cb1841.drlog",
+      "rejections": {
+        "short_history": 3,
+        "label_quality": 31
+      },
+      "session": "8c988ee6-b59d-4e1c-9050-bd7142cb1841",
+      "accepted_fixes": 125,
+      "speed_model_error_mps": {
+        "rmse": 5.641813149468205,
+        "mae": 2.0009080591480597,
+        "p95": 15.153244638442994
+      },
+      "speed_prediction_range_kmh": [
+        0.000423978638718836,
+        91.58821105957031
+      ],
+      "mean_prediction_when_stopped_kmh": 3.5283345113389206
+    }
+  ],
+  "training_blockers": [
+    "Need at least five independent sessions",
+    "Insufficient speed diversity in train",
+    "Need at least 100 quality fixes in validation"
+  ]
+}
