@@ -1,6 +1,6 @@
 # IDR Navigator
 
-**Current version: OFF-ROUTE 1.6.0 (Android version code 17).** The live ESKF integration, raw IMU/GNSS recording format, physical phone checks, and verified Supabase-to-laptop data path are documented in [current implementation and verification](docs/live-eskf-and-training.md). The submission ZIP includes `START-HERE.md` with installation, asset restoration and rebuild instructions. Bundled IO-VNBD models are trained but remain unvalidated for navigation corrections. Driving/outage accuracy remains unverified. The older release notes below describe historical versions and are superseded by the current report where they differ.
+**Current version: OFF-ROUTE. The live ESKF integration, raw IMU/GNSS recording format, physical phone checks, and verified Supabase-to-laptop data path are documented in [current implementation and verification](docs/live-eskf-and-training.md). The submission ZIP includes `START-HERE.md` with installation, asset restoration and rebuild instructions. Bundled IO-VNBD models are trained but remain unvalidated for navigation corrections. Driving/outage accuracy remains unverified. The older release notes below describe historical versions and are superseded by the current report where they differ.
 
 A React 18 + Capacitor 6 Android app with a Java sensor-fusion engine, Madhya Pradesh offline maps, and an Express/MongoDB drive and model registry. The browser includes an explicitly labeled simulation for exploring the complete recording/upload workflow.
 
